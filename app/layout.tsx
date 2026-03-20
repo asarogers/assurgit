@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,24 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Assurgit",
+  "url": "https://assurgit.com",
+  "description": "AI-powered video content system for businesses. Assurgit creates 5 branded videos per week using your personal avatar and voice clone, researched, scripted, and published to Instagram, TikTok, LinkedIn, and YouTube on autopilot.",
+  "sameAs": [
+    "https://www.linkedin.com/company/assurgit",
+    "https://twitter.com/assurgit",
+    "https://www.youtube.com/@assurgit"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "email": "hello@assurgit.com"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,9 +64,27 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+        <Toaster richColors position="top-right" />
         <AnalyticsProvider />
+
+        {/* Microsoft Clarity */}
+        <Script id="clarity-init" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "vyiz437qrx");
+          `}
+        </Script>
 
         {/* Google Analytics 4 */}
         {gaMeasurementId && (

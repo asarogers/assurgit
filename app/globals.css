@@ -45,7 +45,77 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-brand-accent:       var(--brand-accent);
+  --color-brand-accent-hov:   var(--brand-accent-hov);
+  --color-brand-accent-muted: var(--brand-accent-muted);
+  --color-brand-hero:         var(--brand-hero-bg);
+  --color-brand-hero-fg:      var(--brand-hero-fg);
+  --color-brand-hero-sub:     var(--brand-hero-sub);
+  --color-brand-cta:          var(--brand-cta-bg);
 }
+
+/* ═══════════════════════════════════════════════════════
+   BRAND THEME — uncomment ONE block to activate
+   ═══════════════════════════════════════════════════════ */
+
+/* THEME B — Steel blue + navy (ACTIVE) */
+:root {
+  --brand-accent:       #2563eb;
+  --brand-accent-hov:   #1d4ed8;
+  --brand-accent-muted: #dbeafe;
+  --brand-hero-bg:      #eff6ff;
+  --brand-hero-fg:      #0f172a;
+  --brand-hero-sub:     #475569;
+  --brand-cta-bg:       #1e3a8a;
+}
+
+/* THEME E — Soft indigo hero
+:root {
+  --brand-accent:       #4f46e5;
+  --brand-accent-hov:   #4338ca;
+  --brand-accent-muted: #e0e7ff;
+  --brand-hero-bg:      #eef2ff;
+  --brand-hero-fg:      #030712;
+  --brand-hero-sub:     #6b7280;
+  --brand-cta-bg:       #4f46e5;
+}
+*/
+
+/* THEME A — Clean white + indigo */
+/* :root {
+  --brand-accent:       #4f46e5;
+  --brand-accent-hov:   #4338ca;
+  --brand-accent-muted: #eef2ff;
+  --brand-hero-bg:      #f8fafc;
+  --brand-hero-fg:      #0f172a;
+  --brand-hero-sub:     #64748b;
+  --brand-cta-bg:       #0f172a;
+} */
+
+
+/* THEME C — Warm white + emerald */
+/* :root {
+  --brand-accent:       #059669;
+  --brand-accent-hov:   #047857;
+  --brand-accent-muted: #d1fae5;
+  --brand-hero-bg:      #fafaf9;
+  --brand-hero-fg:      #1c1917;
+  --brand-hero-sub:     #78716c;
+  --brand-cta-bg:       #059669;
+} */
+
+
+/* THEME D — White + orange */
+/* :root {
+  --brand-accent:       #f97316;
+  --brand-accent-hov:   #ea580c;
+  --brand-accent-muted: #fff7ed;
+  --brand-hero-bg:      #ffffff;
+  --brand-hero-fg:      #030712;
+  --brand-hero-sub:     #6b7280;
+  --brand-cta-bg:       #030712;
+} */
+
 
 :root {
   --background: oklch(1 0 0);

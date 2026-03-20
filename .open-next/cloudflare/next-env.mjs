@@ -1,3 +1,3 @@
-export const production = {};
-export const development = {};
+export const production = {"ANTHROPIC_API_KEY":"your_anthropic_api_key_here","NEXT_PUBLIC_CALCOM_USERNAME":"assurgit","NEXT_PUBLIC_CALCOM_EVENT_SLUG":"30min","OWNER_PASSWORD":"hellp","SESSION_SECRET":"ca14b8920444c125cb88102637412aae311bab180d3dc38849381748e1cacee7","NEXT_PUBLIC_GA_MEASUREMENT_ID":"G-YNWT2XH3EG","RESEND_API_KEY":"re_MoMzYrm8_Md9xPDbC3J8E7DssakqLc5zh","TOKEN_SECRET":"40956dd724790043f29a782ca5a20eac103cbc47efbcf82d5fcc46dab1e448c3","NEXT_PUBLIC_APP_URL":"https://assurgit.com"};
+export const development = {"ANTHROPIC_API_KEY":"your_anthropic_api_key_here","NEXT_PUBLIC_CALCOM_USERNAME":"assurgit","NEXT_PUBLIC_CALCOM_EVENT_SLUG":"30min","OWNER_PASSWORD":"hellp","SESSION_SECRET":"ca14b8920444c125cb88102637412aae311bab180d3dc38849381748e1cacee7","NEXT_PUBLIC_GA_MEASUREMENT_ID":"G-YNWT2XH3EG","RESEND_API_KEY":"re_MoMzYrm8_Md9xPDbC3J8E7DssakqLc5zh","TOKEN_SECRET":"40956dd724790043f29a782ca5a20eac103cbc47efbcf82d5fcc46dab1e448c3","NEXT_PUBLIC_APP_URL":"https://assurgit.com"};
 export const test = {};

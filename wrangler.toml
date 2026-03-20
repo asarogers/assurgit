@@ -8,4 +8,7 @@ directory = ".open-next/assets"
 binding = "ASSETS"
 
 [vars]
-# NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-XXXXXXXXXX"
+NEXT_PUBLIC_APP_URL = "https://assurgit.com"
+NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-YNWT2XH3EG"
+NEXT_PUBLIC_CALCOM_USERNAME = "assurgit"
+NEXT_PUBLIC_CALCOM_EVENT_SLUG = "30min"

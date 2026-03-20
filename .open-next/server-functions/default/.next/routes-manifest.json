@@ -14,13 +14,65 @@
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
     }
   ],
-  "headers": [],
+  "headers": [
+    {
+      "source": "/uploads/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000"
+        }
+      ],
+      "regex": "^/uploads(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    }
+  ],
   "rewrites": {
     "beforeFiles": [],
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
+  "dynamicRoutes": [
+    {
+      "page": "/api/cards/[id]",
+      "regex": "^/api/cards/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/cards/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/cards/[id]/video",
+      "regex": "^/api/cards/([^/]+?)/video(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/cards/(?<nxtPid>[^/]+?)/video(?:/)?$"
+    },
+    {
+      "page": "/api/projects/[id]",
+      "regex": "^/api/projects/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/projects/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/projects/[id]/send",
+      "regex": "^/api/projects/([^/]+?)/send(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/projects/(?<nxtPid>[^/]+?)/send(?:/)?$"
+    },
+    {
+      "page": "/api/projects/[id]/token",
+      "regex": "^/api/projects/([^/]+?)/token(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/projects/(?<nxtPid>[^/]+?)/token(?:/)?$"
+    }
+  ],
   "staticRoutes": [
     {
       "page": "/",
@@ -41,10 +93,142 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/api/auth/login",
+      "regex": "^/api/auth/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/login(?:/)?$"
+    },
+    {
+      "page": "/api/auth/logout",
+      "regex": "^/api/auth/logout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/logout(?:/)?$"
+    },
+    {
+      "page": "/api/hooks",
+      "regex": "^/api/hooks(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/hooks(?:/)?$"
+    },
+    {
+      "page": "/api/projects",
+      "regex": "^/api/projects(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/projects(?:/)?$"
+    },
+    {
+      "page": "/api/review/approve",
+      "regex": "^/api/review/approve(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/review/approve(?:/)?$"
+    },
+    {
+      "page": "/api/review/deny",
+      "regex": "^/api/review/deny(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/review/deny(?:/)?$"
+    },
+    {
+      "page": "/api/review/descriptions",
+      "regex": "^/api/review/descriptions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/review/descriptions(?:/)?$"
+    },
+    {
+      "page": "/api/review/session",
+      "regex": "^/api/review/session(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/review/session(?:/)?$"
+    },
+    {
+      "page": "/blog",
+      "regex": "^/blog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog(?:/)?$"
+    },
+    {
+      "page": "/blog/ai-video-ads-pricing-2026",
+      "regex": "^/blog/ai\\-video\\-ads\\-pricing\\-2026(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog/ai\\-video\\-ads\\-pricing\\-2026(?:/)?$"
+    },
+    {
+      "page": "/blog/best-ai-video-agency-for-coaches",
+      "regex": "^/blog/best\\-ai\\-video\\-agency\\-for\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog/best\\-ai\\-video\\-agency\\-for\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/blog/done-for-you-ai-video-content",
+      "regex": "^/blog/done\\-for\\-you\\-ai\\-video\\-content(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog/done\\-for\\-you\\-ai\\-video\\-content(?:/)?$"
+    },
+    {
+      "page": "/blog/heygen-vs-custom-ai-avatars",
+      "regex": "^/blog/heygen\\-vs\\-custom\\-ai\\-avatars(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog/heygen\\-vs\\-custom\\-ai\\-avatars(?:/)?$"
+    },
+    {
+      "page": "/book",
+      "regex": "^/book(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/book(?:/)?$"
+    },
+    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/pricing",
+      "regex": "^/pricing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/pricing(?:/)?$"
+    },
+    {
+      "page": "/review",
+      "regex": "^/review(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/review(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
+      "page": "/terminal",
+      "regex": "^/terminal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/terminal(?:/)?$"
+    },
+    {
+      "page": "/tools",
+      "regex": "^/tools(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/tools(?:/)?$"
+    },
+    {
+      "page": "/tools/ai-video-tools",
+      "regex": "^/tools/ai\\-video\\-tools(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/tools/ai\\-video\\-tools(?:/)?$"
+    },
+    {
+      "page": "/tools/hook-generator",
+      "regex": "^/tools/hook\\-generator(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/tools/hook\\-generator(?:/)?$"
     }
   ],
   "dataRoutes": [],

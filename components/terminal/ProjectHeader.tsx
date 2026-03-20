@@ -50,17 +50,22 @@ export function ProjectHeader({ project, onUpdated }: Props) {
   async function sendLink() {
     if (!email) return;
     setSending(true);
-    const res = await fetch(`/api/projects/${project.id}/send`, {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body:   JSON.stringify({ email }),
-    });
-    const data = await res.json();
-    if (res.ok) {
-      setReviewUrl(data.reviewUrl);
-      toast.success("Review link sent to " + email);
-      setSendOpen(false);
-    } else {
-      toast.error(data.error ?? "Failed to send");
+    try {
+      const res = await fetch(`/api/projects/${project.id}/send`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body:   JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setReviewUrl(data.reviewUrl);
+        toast.success("Review link sent to " + email);
+        setSendOpen(false);
+      } else {
+        toast.error(data.error ?? "Failed to send");
+      }
+    } catch (err) {
+      toast.error("Network error — could not reach server");
+      console.error(err);
     }
     setSending(false);
   }

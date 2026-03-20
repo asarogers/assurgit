@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY ?? "placeholder");
 
 export async function sendReviewLink({
   to,
@@ -22,7 +22,7 @@ export async function sendReviewLink({
   });
 
   return resend.emails.send({
-    from:    "Content Approval <onboarding@resend.dev>",
+    from:    "Assurgit <noreply@assurgit.com>",
     to,
     subject: `Review ready: ${projectName}`,
     html: `
