@@ -1,0 +1,204 @@
+COMPLETE ONLINE VISIBILITY & GROWTH CHECKLIST
+
+Assurgit
+
+Ordered by priority. Work top to bottom. Don't skip ahead.
+
+assurgit.com
+
+STATUS KEY:
+[ ] not started
+[X] completed
+[~] partial / needs verification
+
+─────────────────────────────────────────────────────
+CRITICAL — Do first
+─────────────────────────────────────────────────────
+
+1. Cloudflare + Domain Setup
+[ ] Manual: point assurgit.com nameservers to Cloudflare.
+  - Add domain to Cloudflare (free plan).
+  - Set nameservers at registrar.
+  - Add CNAME records pointing to Workers.dev URL.
+  - Add custom domain to Cloudflare Worker.
+  - Deploy site: npm run deploy.
+
+2. Google Analytics 4
+[ ] Manual: create GA4 property and add Measurement ID to env.
+  - analytics.google.com → new property → assurgit.com.
+  - Copy Measurement ID (G-XXXXXXXXXX).
+  - Add to wrangler.toml or .env.local as NEXT_PUBLIC_GA_MEASUREMENT_ID.
+  - Deploy. Verify events appear within 24–48 hrs.
+  - Mark form_submit, demo_booked, pricing_click as conversions.
+
+3. Google Search Console
+[ ] Manual: verify domain and submit sitemap.
+  - Add assurgit.com as property.
+  - Verify via DNS TXT record in Cloudflare.
+  - Submit sitemap at https://assurgit.com/sitemap.xml.
+  - Request indexing on homepage.
+
+4. Build the Website
+[ ] Development: build out the actual site.
+  - Homepage: hero, how it works, pricing, social proof, CTA.
+  - How It Works page.
+  - Pricing page (Starter / Growth / Scale tiers).
+  - Case Studies / Results page.
+  - FAQ page.
+  - Contact / Book a Demo page.
+  - Schema markup: SoftwareApplication + Organization JSON-LD.
+  - Sitemap + robots.txt.
+
+5. Schema Markup on Website
+[ ] Implement in code.
+  - Organization schema on all pages (via layout.tsx).
+  - SoftwareApplication schema on homepage.
+  - FAQ schema on FAQ page.
+  - Validate at https://search.google.com/test/rich-results.
+
+─────────────────────────────────────────────────────
+HIGH — Do next
+─────────────────────────────────────────────────────
+
+6. LinkedIn Company Page
+[ ] Manual: create LinkedIn Company Page.
+  - Company name: Assurgit.
+  - Website: https://assurgit.com.
+  - Industry: Marketing Services / Software.
+  - Description: keyword-rich, benefit-led.
+  - Upload logo and banner.
+  - Post 3x/week: client results, behind-the-scenes, tips.
+
+7. LinkedIn Personal Outreach
+[ ] Manual: start direct outreach via your personal LinkedIn.
+  - Define ideal client profile (see SETUP.md).
+  - Send 20 connection requests/day to ideal clients.
+  - Use the DM template in SETUP.md.
+  - Follow up 3–4 days after connection if no reply.
+  - Target: marketing managers, agency owners, e-commerce brands.
+
+8. Cold Email Infrastructure
+[ ] Manual: set up email outreach system.
+  - Add mail.assurgit.com subdomain (MX + SPF + DKIM + DMARC in Cloudflare).
+  - Sign up for Instantly.ai or Smartlead — run 2–4 week warm-up.
+  - Sign up for Apollo.io — build lead list (marketing directors, social media managers).
+  - Write 5-email sequence (intro → case study → objection → breakup → re-engage).
+  - Target: 50–100 emails/day after warm-up.
+
+9. Twitter/X Account
+[ ] Manual: create @assurgit Twitter/X account.
+  - Post 1–2x/day: results, screenshots, client wins, process clips.
+  - Engage with marketing, AI, and social media creator communities.
+  - UTM link in bio: see SETUP.md.
+
+10. YouTube Channel
+[ ] Manual: create Assurgit YouTube channel.
+  - Post: client result breakdowns, how AI video works, before/after comparisons.
+  - Optimized titles: "How [Client] Gets 7 Videos/Week Without Filming Anything".
+  - Use YouTube Shorts to cross-post TikTok/Reels content.
+  - UTM link in description of every video.
+
+11. Waitlist / Early Access Page
+[ ] Development: launch a waitlist page before full site is ready.
+  - Simple landing page: headline, 3 bullet benefits, email capture form.
+  - Hook up Resend to deliver confirmation email.
+  - Goal: capture leads while the full site is being built.
+
+─────────────────────────────────────────────────────
+MEDIUM — Within a month
+─────────────────────────────────────────────────────
+
+12. ProductHunt Launch
+[ ] Manual: plan and execute ProductHunt launch.
+  - Create a maker account at producthunt.com.
+  - Prepare: 60-char tagline, 260-char description, 3–5 screenshots/GIFs, demo video.
+  - Line up supporters before launch day (email list, LinkedIn followers).
+  - Launch on a Tuesday or Wednesday for best exposure.
+  - UTM link: https://assurgit.com?utm_source=producthunt&utm_medium=referral&utm_campaign=ph-launch.
+
+13. G2 / Capterra Listing
+[ ] Manual: create free software listing.
+  - G2: g2.com/products/new.
+  - Capterra: capterra.com/vendors.
+  - Category: Social Media Management / AI Content Creation / Video Marketing.
+  - Get early clients to leave reviews immediately after launch.
+
+14. Clutch.co Profile
+[ ] Manual: create agency profile on Clutch.
+  - clutch.co — register as a provider.
+  - Category: Social Media Marketing / Content Marketing / AI Services.
+  - Request reviews from early clients — Clutch reviews carry strong B2B trust.
+
+15. AI Tool Directories
+[ ] Manual: submit to AI-specific directories.
+  - There's An AI For That: theresanaiforthat.com/submit.
+  - Futurepedia: futurepedia.io/submit-tool.
+  - Toolify: toolify.ai.
+  - AI Tool Hunt: aitoolhunt.com.
+  - These drive SEO backlinks + qualified traffic from AI-curious audiences.
+
+16. Crunchbase / Wellfound Profile
+[ ] Manual: create company profiles.
+  - Crunchbase: crunchbase.com/add-new-organization.
+  - Wellfound (AngelList): wellfound.com/company/add.
+  - Signals legitimacy to investors, press, and enterprise buyers.
+
+17. Facebook Groups Outreach
+[ ] Manual: join and participate in relevant Facebook groups.
+  - Groups: entrepreneurs, small business owners, social media marketing, AI tools.
+  - Answer questions, share tips — mention Assurgit only when relevant and natural.
+  - Do not post promotional content directly — builds trust over time.
+
+18. Microsoft Clarity
+[ ] Manual: set up heatmaps and session recordings.
+  - clarity.microsoft.com → new project → assurgit.com.
+  - Link to GA4 in settings (no code changes needed).
+
+─────────────────────────────────────────────────────
+LOW — Ongoing
+─────────────────────────────────────────────────────
+
+19. Reddit Participation
+[ ] Manual: participate in relevant communities.
+  - r/entrepreneur, r/smallbusiness, r/socialmediamarketing, r/AItools, r/marketing.
+  - Helpful answers only — no self-promotion.
+  - Share results and insights; link to Assurgit only when genuinely useful.
+
+20. Podcast Guesting
+[ ] Manual: pitch yourself as a guest on marketing / AI / entrepreneur podcasts.
+  - Topics: AI content creation, video marketing at scale, the future of branded video.
+  - Use Podmatch or Rephonic to find shows with your target audience.
+
+21. Referral Program
+[ ] Develop a referral structure.
+  - Offer existing clients a discount or commission for referrals.
+  - Agencies can white-label — build a partner program.
+
+22. Newsletter / Email List
+[ ] Manual: start building an email list from day one.
+  - Publish a weekly or bi-weekly newsletter: AI content trends, client results, tips.
+  - Drive signups from LinkedIn, Twitter/X, and YouTube.
+  - Platform: Beehiiv or Resend (already set up).
+
+23. Bing Webmaster Tools
+[ ] Manual: submit site to Bing.
+  - bing.com/webmasters → add assurgit.com.
+  - Verify via CNAME in Cloudflare.
+  - Submit sitemap.
+
+24. AI Visibility Monitoring
+[ ] Manual: monthly check.
+  - Ask ChatGPT / Gemini / Perplexity: "best AI video content service for businesses."
+  - Track whether Assurgit appears and what is said.
+
+25. Quarterly Content / Pricing Refresh
+[ ] Manual: every 90 days.
+  - Update case studies with fresh client results.
+  - Adjust pricing and tier features based on what's selling.
+  - Refresh FAQ based on sales call objections.
+
+NOTES:
+- No GBP needed — Assurgit is an online B2B service, not a local business.
+- Primary acquisition channels: LinkedIn outreach + cold email + ProductHunt + AI directories.
+- First 10 clients should come from direct outreach, not inbound — focus there before SEO.
+- SEO and content marketing compounds over 6–12 months; outreach drives revenue now.
