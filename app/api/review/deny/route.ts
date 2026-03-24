@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { cards, reviewSessions } from "@/lib/db/schema";
 import { validateReviewToken } from "@/lib/token";
 import { eq, and } from "drizzle-orm";
@@ -9,7 +9,8 @@ export async function POST(req: Request) {
 
   if (!token) return Response.json({ error: "Token required" }, { status: 400 });
 
-  const parsed = validateReviewToken(token);
+  const db = getDb();
+  const parsed = await validateReviewToken(token);
   if (!parsed) return Response.json({ error: "Invalid token" }, { status: 403 });
 
   const session = await db.query.reviewSessions.findFirst({
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
   if (Date.now() > session.expiresAt) return Response.json({ error: "Link expired" }, { status: 410 });
   if (session.deniesLeft <= 0) return Response.json({ error: "No denials remaining" }, { status: 403 });
 
-  const { cardId } = await req.json();
+  const { cardId } = await req.json() as { cardId: string };
   if (!cardId) return Response.json({ error: "cardId required" }, { status: 400 });
 
   // Mark card denied

@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { projects, cards } from "@/lib/db/schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { generateReviewToken } from "@/lib/token";
@@ -13,6 +13,7 @@ export async function GET(req: Request) {
     return unauthorizedResponse();
   }
 
+  const db = getDb();
   const all = await db.query.projects.findMany({
     orderBy: [desc(projects.createdAt)],
   });
@@ -26,7 +27,8 @@ export async function POST(req: Request) {
     return unauthorizedResponse();
   }
 
-  const { name } = await req.json();
+  const { name } = await req.json() as { name: string };
+  const db        = getDb();
   const now       = Date.now();
   const projectId = nanoid();
   const token     = generateReviewToken(projectId);

@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { cards } from "@/lib/db/schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { saveUploadedVideo } from "@/lib/upload";
@@ -12,6 +12,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   }
 
   const { id }   = await params;
+  const db       = getDb();
   const formData = await req.formData();
   const file     = formData.get("video") as File | null;
   const isFinal  = formData.get("final") === "true";

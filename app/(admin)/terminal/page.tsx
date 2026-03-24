@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect }  from "next/navigation";
 import { verifyOwnerSession } from "@/lib/auth";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { projects } from "@/lib/db/schema";
 import { desc } from "drizzle-orm";
 import { TerminalClient } from "@/components/terminal/TerminalClient";
@@ -14,6 +14,7 @@ export default async function TerminalPage() {
     redirect("/login");
   }
 
+  const db = getDb();
   const allProjects = await db.query.projects.findMany({
     orderBy: [desc(projects.createdAt)],
     with:    { cards: { orderBy: (c, { asc }) => [asc(c.position)] } },

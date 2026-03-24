@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS projects (
+  id          TEXT PRIMARY KEY,
+  name        TEXT NOT NULL,
+  token       TEXT NOT NULL UNIQUE,
+  phase       TEXT NOT NULL DEFAULT 'transcript',
+  created_at  INTEGER NOT NULL,
+  updated_at  INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS cards (
+  id                TEXT PRIMARY KEY,
+  project_id        TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+  position          INTEGER NOT NULL,
+  transcript_v1     TEXT DEFAULT '',
+  transcript_v2     TEXT,
+  video_path        TEXT,
+  final_video_path  TEXT,
+  status            TEXT NOT NULL DEFAULT 'waiting',
+  desc_instagram    TEXT DEFAULT '',
+  desc_tiktok       TEXT DEFAULT '',
+  desc_facebook     TEXT DEFAULT '',
+  desc_youtube      TEXT DEFAULT '',
+  created_at        INTEGER NOT NULL,
+  updated_at        INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS review_sessions (
+  id           TEXT PRIMARY KEY,
+  project_id   TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+  email        TEXT NOT NULL,
+  denies_left  INTEGER NOT NULL DEFAULT 2,
+  expires_at   INTEGER NOT NULL,
+  completed_at INTEGER,
+  created_at   INTEGER NOT NULL
+);

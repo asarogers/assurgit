@@ -1,9 +1,11 @@
 import { relations } from "drizzle-orm";
 import { projects, cards, reviewSessions } from "./schema";
+import { socialAccounts } from "./social-schema";
 
 export const projectRelations = relations(projects, ({ many }) => ({
   cards:          many(cards),
   reviewSessions: many(reviewSessions),
+  socialAccounts: many(socialAccounts),
 }));
 
 export const cardRelations = relations(cards, ({ one }) => ({

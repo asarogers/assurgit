@@ -45,7 +45,7 @@ export function ReviewClient({ token, projectName, phase, cards: initialCards, s
       method: "POST", headers: { "Content-Type": "application/json" },
       body:   JSON.stringify({ cardId }),
     });
-    const data = await res.json();
+    const data = await res.json() as any;
     if (!res.ok) {
       toast.error(data.error ?? "Failed to deny");
       return;

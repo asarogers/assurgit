@@ -1,16 +1,28 @@
 import { ReviewClient } from "@/components/review/ReviewClient";
+import { getDb } from "@/lib/db";
+import { asc } from "drizzle-orm";
 
 interface Props {
   searchParams: Promise<{ token?: string }>;
 }
 
 async function getSession(token: string) {
-  const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  const res  = await fetch(`${base}/api/review/session?token=${token}`, {
-    cache: "no-store",
+  const db = getDb();
+
+  const project = await db.query.projects.findFirst({
+    where: (p, { eq }) => eq(p.token, token),
+    with:  { cards: { orderBy: (c) => [asc(c.position)] } },
   });
-  if (!res.ok) return null;
-  return res.json();
+
+  if (!project) return null;
+
+  const session = await db.query.reviewSessions.findFirst({
+    where: (s, { eq }) => eq(s.projectId, project.id),
+  });
+
+  if (!session || Date.now() > session.expiresAt) return null;
+
+  return { project, session };
 }
 
 export default async function ReviewPage({ searchParams }: Props) {
@@ -44,7 +56,12 @@ export default async function ReviewPage({ searchParams }: Props) {
       projectName={project.name}
       phase={project.phase}
       cards={project.cards}
-      session={session}
+      session={{
+        id:          session.id,
+        deniesLeft:  session.deniesLeft,
+        expiresAt:   session.expiresAt,
+        completedAt: session.completedAt,
+      }}
     />
   );
 }

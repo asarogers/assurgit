@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { cards } from "@/lib/db/schema";
 import { validateReviewToken } from "@/lib/token";
 import { eq, and } from "drizzle-orm";
@@ -9,7 +9,8 @@ export async function PATCH(req: Request) {
 
   if (!token) return Response.json({ error: "Token required" }, { status: 400 });
 
-  const parsed = validateReviewToken(token);
+  const db = getDb();
+  const parsed = await validateReviewToken(token);
   if (!parsed) return Response.json({ error: "Invalid token" }, { status: 403 });
 
   const session = await db.query.reviewSessions.findFirst({
@@ -19,7 +20,7 @@ export async function PATCH(req: Request) {
   if (!session) return Response.json({ error: "Session not found" }, { status: 404 });
   if (Date.now() > session.expiresAt) return Response.json({ error: "Link expired" }, { status: 410 });
 
-  const { cardId, descInstagram, descTiktok, descFacebook, descYoutube } = await req.json();
+  const { cardId, descInstagram, descTiktok, descFacebook, descYoutube } = await req.json() as { cardId: string; descInstagram?: string; descTiktok?: string; descFacebook?: string; descYoutube?: string };
   if (!cardId) return Response.json({ error: "cardId required" }, { status: 400 });
 
   const updates: Record<string, unknown> = { updatedAt: Date.now() };

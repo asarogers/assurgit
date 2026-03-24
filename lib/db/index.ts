@@ -1,13 +1,11 @@
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import * as schema    from "./schema";
-import * as relations from "./relations";
-import path from "path";
+import { drizzle } from "drizzle-orm/d1";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import * as schema         from "./schema";
+import * as relations      from "./relations";
+import * as socialSchema   from "./social-schema";
+import * as socialRelations from "./social-relations";
 
-const dbPath = path.join(process.cwd(), "content-approval.db");
-const sqlite = new Database(dbPath);
-
-sqlite.pragma("journal_mode = WAL");
-sqlite.pragma("foreign_keys = ON");
-
-export const db = drizzle(sqlite, { schema: { ...schema, ...relations } });
+export function getDb() {
+  const { env } = getCloudflareContext();
+  return drizzle(env.DB, { schema: { ...schema, ...relations, ...socialSchema, ...socialRelations } });
+}

@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { cards, reviewSessions } from "@/lib/db/schema";
 import { validateReviewToken } from "@/lib/token";
 import { eq, and, ne } from "drizzle-orm";
@@ -9,7 +9,8 @@ export async function POST(req: Request) {
 
   if (!token) return Response.json({ error: "Token required" }, { status: 400 });
 
-  const parsed = validateReviewToken(token);
+  const db = getDb();
+  const parsed = await validateReviewToken(token);
   if (!parsed) return Response.json({ error: "Invalid token" }, { status: 403 });
 
   const session = await db.query.reviewSessions.findFirst({

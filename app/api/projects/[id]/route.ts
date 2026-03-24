@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { projects } from "@/lib/db/schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq } from "drizzle-orm";
@@ -11,6 +11,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   }
 
   const { id } = await params;
+  const db = getDb();
   const project = await db.query.projects.findFirst({
     where: (p, { eq }) => eq(p.id, id),
     with:  { cards: { orderBy: (c, { asc }) => [asc(c.position)] } },
@@ -28,7 +29,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   }
 
   const { id }  = await params;
-  const body    = await req.json();
+  const db      = getDb();
+  const body    = await req.json() as Record<string, unknown>;
   const updates: Record<string, unknown> = { updatedAt: Date.now() };
 
   if (body.name  !== undefined) updates.name  = body.name;
@@ -51,6 +53,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
   }
 
   const { id } = await params;
+  const db = getDb();
   await db.delete(projects).where(eq(projects.id, id));
   return Response.json({ ok: true });
 }

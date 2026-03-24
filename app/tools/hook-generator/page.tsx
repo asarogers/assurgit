@@ -61,7 +61,7 @@ export default function HookGeneratorPage() {
         body: JSON.stringify({ niche, topic: topic.trim(), platform }),
       });
 
-      const data = await res.json();
+      const data = await res.json() as any;
 
       if (!res.ok) {
         setError(data.error || "Something went wrong. Please try again.");

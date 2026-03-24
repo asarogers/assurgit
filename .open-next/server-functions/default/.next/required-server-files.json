@@ -101,7 +101,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/home/asaace00/repo/business/assurgit",
+    "outputFileTracingRoot": "/Users/atlas/repo/assurgit",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -158,7 +158,7 @@
       "proxyPrefetch": "flexible",
       "optimisticClientCache": true,
       "manualClientBasePath": false,
-      "cpus": 31,
+      "cpus": 27,
       "memoryBasedWorkersCount": false,
       "imgOptConcurrency": null,
       "imgOptTimeoutInSeconds": 7,
@@ -297,11 +297,11 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
-      "root": "/home/asaace00/repo/business/assurgit"
+      "root": "/Users/atlas/repo/assurgit"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/home/asaace00/repo/business/assurgit",
+  "appDir": "/Users/atlas/repo/assurgit",
   "relativeAppDir": "",
   "files": [
     ".next/routes-manifest.json",

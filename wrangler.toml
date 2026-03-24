@@ -3,12 +3,23 @@ main = ".open-next/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
+routes = [
+  { pattern = "assurgit.com/*", zone_name = "assurgit.com" },
+  { pattern = "www.assurgit.com/*", zone_name = "assurgit.com" }
+]
+
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "assurgit-db"
+database_id = "d67312d3-bac1-40ea-8445-1470668ef7e3"
 
 [vars]
 NEXT_PUBLIC_APP_URL = "https://assurgit.com"
 NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-YNWT2XH3EG"
 NEXT_PUBLIC_CALCOM_USERNAME = "assurgit"
 NEXT_PUBLIC_CALCOM_EVENT_SLUG = "30min"
+INSTAGRAM_REDIRECT_URI = "https://assurgit.com/api/social/instagram/callback"

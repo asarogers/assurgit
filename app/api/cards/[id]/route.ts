@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { cards } from "@/lib/db/schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq } from "drizzle-orm";
@@ -11,7 +11,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   }
 
   const { id } = await params;
-  const body   = await req.json();
+  const db     = getDb();
+  const body   = await req.json() as Record<string, unknown>;
   const updates: Record<string, unknown> = { updatedAt: Date.now() };
 
   const allowed = [

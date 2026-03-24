@@ -33,7 +33,7 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
       method: "PATCH", headers: { "Content-Type": "application/json" },
       body:   JSON.stringify({ [field]: value }),
     });
-    const data = await res.json();
+    const data = await res.json() as any;
     onUpdated(data);
   }
 
@@ -43,7 +43,7 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
       method: "PATCH", headers: { "Content-Type": "application/json" },
       body:   JSON.stringify({ status }),
     });
-    const data = await res.json();
+    const data = await res.json() as any;
     onUpdated(data);
     toast.success(`Status set to ${status}`);
   }
@@ -55,7 +55,7 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
     if (isFinal) form.append("final", "true");
 
     const res  = await fetch(`/api/cards/${card.id}/video`, { method: "POST", body: form });
-    const data = await res.json();
+    const data = await res.json() as any;
 
     if (res.ok) {
       onUpdated({ ...card, ...(isFinal ? { finalVideoPath: data.path } : { videoPath: data.path }) });

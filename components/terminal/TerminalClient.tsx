@@ -40,7 +40,7 @@ export function TerminalClient({ initialProjects }: Props) {
       method: "POST", headers: { "Content-Type": "application/json" },
       body:   JSON.stringify({ name: newName.trim() }),
     });
-    const data = await res.json();
+    const data = await res.json() as any;
     setProjects((prev) => [data, ...prev]);
     setIndex(0);
     setNewName("");
@@ -65,7 +65,7 @@ export function TerminalClient({ initialProjects }: Props) {
       method: "PATCH", headers: { "Content-Type": "application/json" },
       body:   JSON.stringify({ phase }),
     });
-    const data = await res.json();
+    const data = await res.json() as any;
     setProjects((prev) => prev.map((p) => (p.id === data.id ? { ...p, ...data } : p)));
     toast.success(`Phase set to ${phase === "final_video" ? "Final Video" : "Transcript"}`);
   }
@@ -175,6 +175,7 @@ export function TerminalClient({ initialProjects }: Props) {
 
               {project && (
                 <ProjectHeader
+                  key={project.id}
                   project={project}
                   onUpdated={(p) =>
                     setProjects((prev) =>
@@ -190,7 +191,7 @@ export function TerminalClient({ initialProjects }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {project.cards.map((card) => (
                   <CardEditor
-                    key={card.id}
+                    key={`${project.id}-${card.id}`}
                     card={card}
                     phase={project.phase}
                     onUpdated={updateCard}

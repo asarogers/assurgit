@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { projects, reviewSessions } from "@/lib/db/schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { sendReviewLink } from "@/lib/email";
@@ -14,7 +14,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   }
 
   const { id }   = await params;
-  const { email } = await req.json();
+  const db       = getDb();
+  const { email } = await req.json() as { email: string };
 
   if (!email) return Response.json({ error: "Email required" }, { status: 400 });
 

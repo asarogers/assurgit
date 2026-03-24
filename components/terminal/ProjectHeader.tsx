@@ -32,7 +32,7 @@ export function ProjectHeader({ project, onUpdated }: Props) {
       method: "PATCH", headers: { "Content-Type": "application/json" },
       body:   JSON.stringify({ name }),
     });
-    const data = await res.json();
+    const data = await res.json() as any;
     onUpdated(data);
     toast.success("Project renamed");
   }
@@ -40,7 +40,7 @@ export function ProjectHeader({ project, onUpdated }: Props) {
   async function generateToken() {
     setRegen(true);
     const res  = await fetch(`/api/projects/${project.id}/token`, { method: "POST" });
-    const data = await res.json();
+    const data = await res.json() as any;
     setReviewUrl(data.reviewUrl);
     onUpdated({ ...project, token: data.token });
     toast.success("New review link generated");
@@ -55,7 +55,7 @@ export function ProjectHeader({ project, onUpdated }: Props) {
         method: "POST", headers: { "Content-Type": "application/json" },
         body:   JSON.stringify({ email }),
       });
-      const data = await res.json();
+      const data = await res.json() as any;
       if (res.ok) {
         setReviewUrl(data.reviewUrl);
         toast.success("Review link sent to " + email);

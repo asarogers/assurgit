@@ -146,6 +146,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/blog/linkedin-video-strategy-for-business-owners": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blog/linkedin-video-strategy-for-business-owners",
+      "dataRoute": "/blog/linkedin-video-strategy-for-business-owners.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/blog": {
       "experimentalBypassFor": [
         {
@@ -295,6 +319,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/privacy": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/privacy",
+      "dataRoute": "/privacy.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/sitemap.xml": {
       "initialHeaders": {
         "cache-control": "public, max-age=0, must-revalidate",
@@ -400,8 +448,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "24e66d8cf956f91badbcaf0426b63c1f",
-    "previewModeSigningKey": "1f19cb76f39ec622e297db9d382d1d0d70060101a234ce84cf899f80750aabf3",
-    "previewModeEncryptionKey": "351ca79e35fe8d97dfaaa984e9b6141fee9453ffe4dfd0c27ab005b24af5d4fd"
+    "previewModeId": "762020f3ff20a3a606a7fbc75216caaa",
+    "previewModeSigningKey": "18a352724d2aa54270e903003b1908ae7be571663bca59fa38ee35e35256dbf5",
+    "previewModeEncryptionKey": "c0401bd242a8893dd92cc6196f4f7f255d2b629c2345c4366f224d7c1855f471"
   }
 }

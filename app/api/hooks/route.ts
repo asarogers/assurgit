@@ -10,7 +10,7 @@ Return ONLY valid JSON — no explanation, no markdown, no code fences.`;
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = await request.json() as { niche: string; topic: string; platform: string };
     const { niche, topic, platform } = body;
 
     if (!niche || !topic || !platform) {

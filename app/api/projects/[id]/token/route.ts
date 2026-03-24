@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { projects } from "@/lib/db/schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { generateReviewToken } from "@/lib/token";
@@ -12,6 +12,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   }
 
   const { id }  = await params;
+  const db      = getDb();
   const token   = generateReviewToken(id);
   const now     = Date.now();
 
