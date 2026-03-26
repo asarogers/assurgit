@@ -6,6 +6,7 @@ import { projects }  from "@/lib/db/schema";
 import { scheduledPosts } from "@/lib/db/social-schema";
 import { desc, eq }  from "drizzle-orm";
 import { SocialClient } from "@/components/social/SocialClient";
+import { ADMIN_EMAIL }  from "@/lib/email";
 
 export default async function SocialPage() {
   const cookieStore = await cookies();
@@ -34,6 +35,7 @@ export default async function SocialPage() {
     <SocialClient
       initialProjects={allProjects as any}
       initialPosts={postsByProject}
+      adminEmail={ADMIN_EMAIL}
     />
   );
 }

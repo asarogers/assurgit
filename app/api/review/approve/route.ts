@@ -1,6 +1,7 @@
 import { getDb } from "@/lib/db";
-import { cards, reviewSessions } from "@/lib/db/schema";
+import { cards, projects, reviewSessions } from "@/lib/db/schema";
 import { validateReviewToken } from "@/lib/token";
+import { sendApprovalNotification } from "@/lib/email";
 import { eq, and, ne } from "drizzle-orm";
 
 export async function POST(req: Request) {
@@ -34,6 +35,15 @@ export async function POST(req: Request) {
   await db.update(reviewSessions)
     .set({ completedAt: Date.now() })
     .where(eq(reviewSessions.id, session.id));
+
+  const project = await db.query.projects.findFirst({
+    where: (p, { eq }) => eq(p.id, parsed.projectId),
+  });
+
+  sendApprovalNotification({
+    projectName: project?.name ?? parsed.projectId,
+    clientEmail: session.email,
+  }).catch(() => {});
 
   return Response.json({ ok: true });
 }

@@ -7,7 +7,7 @@ export async function exchangeCodeForToken(
   appSecret: string,
   redirectUri: string
 ): Promise<{ accessToken: string; expiresIn: number }> {
-  // Step 1: short-lived token via Instagram endpoint
+  // Step 1: short-lived Instagram user access token
   const short = await fetch(`${IG_BASE}/oauth/access_token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -53,13 +53,13 @@ export async function refreshInstagramToken(
   return { accessToken: res.access_token, expiresIn: res.expires_in ?? 5184000 };
 }
 
-export async function publishInstagramPost(
+export async function createInstagramContainer(
   igUserId: string,
   accessToken: string,
   caption: string,
   mediaUrl: string,
   mediaType: "IMAGE" | "VIDEO" | "REEL"
-): Promise<{ containerId: string; mediaId: string }> {
+): Promise<string> {
   const containerParams: Record<string, string> = {
     caption,
     access_token: accessToken,
@@ -69,28 +69,60 @@ export async function publishInstagramPost(
     containerParams.image_url  = mediaUrl;
   } else {
     containerParams.video_url  = mediaUrl;
-    containerParams.media_type = mediaType;
+    // Instagram API uses "REELS" for reels; regular VIDEO is deprecated — map to REELS
+    containerParams.media_type = "REELS";
   }
 
-  const container = await fetch(`${GIG_BASE}/${igUserId}/media`, {
+  const containerRes = await fetch(`${GIG_BASE}/v21.0/${igUserId}/media`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(containerParams),
-  }).then((r) => r.json()) as any;
+  });
+  const container = await containerRes.json() as any;
 
-  if (container.error) throw new Error(container.error.message);
+  if (container.error) throw new Error(`Container error: ${container.error.message} (code ${container.error.code})`);
+  if (!container.id) throw new Error(`Container creation failed: ${JSON.stringify(container)}`);
 
-  if (mediaType !== "IMAGE") {
-    await new Promise((r) => setTimeout(r, 10000));
-  }
+  return container.id;
+}
 
-  const publish = await fetch(`${GIG_BASE}/${igUserId}/media_publish`, {
+// Returns mediaId if published, null if container not ready yet (call again next cron run)
+export async function publishInstagramContainer(
+  igUserId: string,
+  accessToken: string,
+  containerId: string
+): Promise<string | null> {
+  const statusRes = await fetch(
+    `${GIG_BASE}/v21.0/${containerId}?fields=status_code,status&access_token=${accessToken}`
+  );
+  const status = await statusRes.json() as any;
+
+  if (status.status_code === "ERROR") throw new Error(`Container processing failed: ${JSON.stringify(status)}`);
+  if (status.status_code !== "FINISHED") return null; // not ready, try again next cron run
+
+  const publishRes = await fetch(`${GIG_BASE}/v21.0/${igUserId}/media_publish`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ creation_id: container.id, access_token: accessToken }),
-  }).then((r) => r.json()) as any;
+    body: new URLSearchParams({ creation_id: containerId, access_token: accessToken }),
+  });
+  const publish = await publishRes.json() as any;
 
-  if (publish.error) throw new Error(publish.error.message);
+  if (publish.error) throw new Error(`Publish error: ${publish.error.message} (code ${publish.error.code})`);
+  if (!publish.id) throw new Error(`Publish failed: ${JSON.stringify(publish)}`);
 
-  return { containerId: container.id, mediaId: publish.id };
+  return publish.id;
+}
+
+export async function getPostInsights(
+  mediaId: string,
+  accessToken: string
+): Promise<{ impressions: number; reach: number; likes: number; comments: number; shares: number; saved: number } | null> {
+  const res = await fetch(
+    `https://graph.instagram.com/v21.0/${mediaId}/insights?metric=impressions,reach,likes,comments,shares,saved&access_token=${accessToken}`
+  );
+  if (!res.ok) return null;
+  const json = await res.json() as any;
+  const data: Record<string, number> = {};
+  for (const item of json.data ?? []) data[item.name] = item.values?.[0]?.value ?? item.value ?? 0;
+  return { impressions: data.impressions ?? 0, reach: data.reach ?? 0, likes: data.likes ?? 0, comments: data.comments ?? 0, shares: data.shares ?? 0, saved: data.saved ?? 0 };
 }

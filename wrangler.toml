@@ -12,6 +12,17 @@ routes = [
 directory = ".open-next/assets"
 binding = "ASSETS"
 
+[triggers]
+crons = ["*/2 * * * *"]
+
+[[services]]
+binding = "SELF"
+service = "assurgit"
+
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "assurgit-media"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "assurgit-db"
@@ -23,3 +34,4 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-YNWT2XH3EG"
 NEXT_PUBLIC_CALCOM_USERNAME = "assurgit"
 NEXT_PUBLIC_CALCOM_EVENT_SLUG = "30min"
 INSTAGRAM_REDIRECT_URI = "https://assurgit.com/api/social/instagram/callback"
+MEDIA_BUCKET_URL = "https://media.assurgit.com"

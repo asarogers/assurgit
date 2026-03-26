@@ -27,6 +27,9 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const now      = Date.now();
   const expires  = now + REVIEW_EXPIRY_MS;
 
+  // Cache the client email on the project for future use
+  await db.update(projects).set({ clientEmail: email }).where(eq(projects.id, id));
+
   // Delete old session for this project (reset deny counter on resend)
   await db.delete(reviewSessions).where(eq(reviewSessions.projectId, id));
 

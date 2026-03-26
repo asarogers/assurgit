@@ -24,6 +24,15 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     if (body[key] !== undefined) updates[key] = body[key];
   }
 
+  // When transcriptV1 is revised on a denied card, reset it to waiting
+  // so the client sees it as a fresh card needing review, not still flagged.
+  if (body.transcriptV1 !== undefined && !body.status) {
+    const existing = await db.query.cards.findFirst({ where: (c, { eq }) => eq(c.id, id) });
+    if (existing?.status === "denied") {
+      updates.status = "waiting";
+    }
+  }
+
   await db.update(cards).set(updates).where(eq(cards.id, id));
 
   const card = await db.query.cards.findFirst({ where: (c, { eq }) => eq(c.id, id) });

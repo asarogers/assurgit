@@ -40,4 +40,16 @@ export default {
             return handler(reqOrResp, env, ctx, request.signal);
         });
     },
+  async scheduled(event, env, ctx) {
+    const appUrl = env.NEXT_PUBLIC_APP_URL ?? "https://assurgit.com";
+    const cronSecret = env.CRON_SECRET ?? "";
+    // Use SELF service binding to call own fetch handler directly (avoids 522 network loop)
+    const target = env.SELF ?? { fetch: (r) => fetch(r) };
+    ctx.waitUntil(
+      target.fetch(new Request(`${appUrl}/api/cron/publish`, {
+        headers: { "Authorization": `Bearer ${cronSecret}` },
+      })).then((r) => console.log("[cron] publish status:", r.status))
+        .catch((err) => console.error("[cron] publish failed:", err))
+    );
+  },
 };

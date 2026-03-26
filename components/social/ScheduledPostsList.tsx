@@ -32,10 +32,18 @@ export function ScheduledPostsList({ posts, onDeleted }: Props) {
   }
 
   function PostRow({ post }: { post: ScheduledPost }) {
+    const headline = post.title || post.caption;
+    const subline  = post.title ? post.caption : null;
     return (
       <div className="flex items-start justify-between gap-3 py-2.5 border-b last:border-0">
         <div className="flex-1 min-w-0">
-          <p className="text-xs truncate text-foreground">{post.caption || <span className="text-muted-foreground italic">No caption</span>}</p>
+          <p className="text-xs truncate text-foreground font-medium">
+            {headline || <span className="text-muted-foreground italic">No content</span>}
+          </p>
+          {subline && <p className="text-xs text-muted-foreground truncate mt-0.5">{subline}</p>}
+          {post.subreddit && (
+            <p className="text-xs text-muted-foreground mt-0.5">r/{post.subreddit}</p>
+          )}
           {post.scheduledFor && (
             <p className="text-xs text-muted-foreground mt-0.5">
               {new Date(post.scheduledFor).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}

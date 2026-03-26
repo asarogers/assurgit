@@ -17,7 +17,10 @@ export default async function TerminalPage() {
   const db = getDb();
   const allProjects = await db.query.projects.findMany({
     orderBy: [desc(projects.createdAt)],
-    with:    { cards: { orderBy: (c, { asc }) => [asc(c.position)] } },
+    with: {
+      cards:          { orderBy: (c, { asc }) => [asc(c.position)] },
+      reviewSessions: true,
+    },
   });
 
   return <TerminalClient initialProjects={allProjects as any} />;

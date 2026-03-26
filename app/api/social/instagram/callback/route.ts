@@ -50,9 +50,15 @@ export async function GET(req: Request) {
       updatedAt:      now,
     });
 
-    return Response.redirect(`${appUrl}/social?connected=1`);
+    const dest = parsed.connectToken
+      ? `${appUrl}/connect?token=${encodeURIComponent(parsed.connectToken)}&connected=1`
+      : `${appUrl}/social?connected=1`;
+    return Response.redirect(dest);
   } catch (err: any) {
     console.error("Instagram OAuth error:", err);
-    return Response.redirect(`${appUrl}/social?error=${encodeURIComponent(err.message ?? "unknown")}`);
+    const dest = parsed?.connectToken
+      ? `${appUrl}/connect?token=${encodeURIComponent(parsed.connectToken)}&error=${encodeURIComponent(err.message ?? "unknown")}`
+      : `${appUrl}/social?error=${encodeURIComponent(err.message ?? "unknown")}`;
+    return Response.redirect(dest);
   }
 }

@@ -1,6 +1,7 @@
 import { getDb } from "@/lib/db";
-import { cards, reviewSessions } from "@/lib/db/schema";
+import { cards, projects, reviewSessions } from "@/lib/db/schema";
 import { validateReviewToken } from "@/lib/token";
+import { sendDenialNotification } from "@/lib/email";
 import { eq, and } from "drizzle-orm";
 
 export async function POST(req: Request) {
@@ -34,6 +35,18 @@ export async function POST(req: Request) {
   await db.update(reviewSessions)
     .set({ deniesLeft: newDeniesLeft })
     .where(eq(reviewSessions.id, session.id));
+
+  const [project, card] = await Promise.all([
+    db.query.projects.findFirst({ where: (p, { eq }) => eq(p.id, parsed.projectId) }),
+    db.query.cards.findFirst({ where: (c, { eq }) => eq(c.id, cardId) }),
+  ]);
+
+  sendDenialNotification({
+    projectName: project?.name ?? parsed.projectId,
+    clientEmail: session.email,
+    cardPosition: card?.position ?? 0,
+    deniesLeft:   newDeniesLeft,
+  }).catch(() => {});
 
   return Response.json({ deniesLeft: newDeniesLeft });
 }

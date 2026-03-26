@@ -22,10 +22,12 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try { await requireOwner(req); } catch { return unauthorizedResponse(); }
 
-  const { projectId, socialAccountId, caption, mediaUrl, mediaType, scheduledFor } =
+  const { projectId, socialAccountId, caption, title, subreddit, visibility, metadata, mediaUrl, mediaType, scheduledFor } =
     await req.json() as {
       projectId: string; socialAccountId: string; caption: string;
-      mediaUrl?: string; mediaType?: "IMAGE" | "VIDEO" | "REEL"; scheduledFor?: number;
+      title?: string; subreddit?: string; visibility?: "public" | "unlisted" | "private";
+      metadata?: Record<string, unknown>;
+      mediaUrl?: string; mediaType?: "IMAGE" | "VIDEO" | "REEL" | "SHORT"; scheduledFor?: number;
     };
 
   const db  = getDb();
@@ -35,7 +37,10 @@ export async function POST(req: Request) {
     id:              nanoid(),
     projectId,
     socialAccountId,
+    title:           title ?? null,
     caption,
+    subreddit:       subreddit ?? null,
+    visibility:      visibility ?? null,
     mediaUrl:        mediaUrl ?? null,
     mediaType:       mediaType ?? "IMAGE",
     scheduledFor:    scheduledFor ?? null,
@@ -43,6 +48,7 @@ export async function POST(req: Request) {
     publishedAt:     null,
     igContainerId:   null,
     igMediaId:       null,
+    metadata:        metadata ? JSON.stringify(metadata) : null,
     errorMessage:    null,
     createdAt:       now,
     updatedAt:       now,

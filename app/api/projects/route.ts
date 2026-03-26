@@ -2,7 +2,7 @@ import { getDb } from "@/lib/db";
 import { projects, cards } from "@/lib/db/schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { generateReviewToken } from "@/lib/token";
-import { CARDS_PER_PROJECT } from "@/lib/constants";
+import { DEFAULT_CARDS_PER_PROJECT, MAX_CARDS_PER_PROJECT } from "@/lib/constants";
 import { nanoid } from "nanoid";
 import { desc } from "drizzle-orm";
 
@@ -27,23 +27,24 @@ export async function POST(req: Request) {
     return unauthorizedResponse();
   }
 
-  const { name } = await req.json() as { name: string };
+  const { name, cardCount } = await req.json() as { name: string; cardCount?: number };
   const db        = getDb();
   const now       = Date.now();
   const projectId = nanoid();
   const token     = generateReviewToken(projectId);
+  const count     = Math.min(Math.max(cardCount ?? DEFAULT_CARDS_PER_PROJECT, 1), MAX_CARDS_PER_PROJECT);
 
   await db.insert(projects).values({
     id:        projectId,
-    name:      name ?? "Untitled Project",
+    name:      name ?? "Untitled Batch",
     token,
     phase:     "transcript",
     createdAt: now,
     updatedAt: now,
   });
 
-  // Seed 5 empty cards
-  const cardRows = Array.from({ length: CARDS_PER_PROJECT }, (_, i) => ({
+  // Seed N empty cards
+  const cardRows = Array.from({ length: count }, (_, i) => ({
     id:        nanoid(),
     projectId,
     position:  i + 1,

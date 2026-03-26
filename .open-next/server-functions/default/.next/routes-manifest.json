@@ -49,6 +49,14 @@
       "namedRegex": "^/api/cards/(?<nxtPid>[^/]+?)/video(?:/)?$"
     },
     {
+      "page": "/api/onboard/file/[id]",
+      "regex": "^/api/onboard/file/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/onboard/file/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/projects/[id]",
       "regex": "^/api/projects/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -63,6 +71,14 @@
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/api/projects/(?<nxtPid>[^/]+?)/send(?:/)?$"
+    },
+    {
+      "page": "/api/projects/[id]/send-connect",
+      "regex": "^/api/projects/([^/]+?)/send\\-connect(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/projects/(?<nxtPid>[^/]+?)/send\\-connect(?:/)?$"
     },
     {
       "page": "/api/projects/[id]/token",
@@ -101,6 +117,12 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/analytics",
+      "regex": "^/analytics(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/analytics(?:/)?$"
+    },
+    {
       "page": "/api/auth/login",
       "regex": "^/api/auth/login(?:/)?$",
       "routeKeys": {},
@@ -113,10 +135,34 @@
       "namedRegex": "^/api/auth/logout(?:/)?$"
     },
     {
+      "page": "/api/cron/publish",
+      "regex": "^/api/cron/publish(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cron/publish(?:/)?$"
+    },
+    {
       "page": "/api/hooks",
       "regex": "^/api/hooks(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/hooks(?:/)?$"
+    },
+    {
+      "page": "/api/media",
+      "regex": "^/api/media(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/media(?:/)?$"
+    },
+    {
+      "page": "/api/onboard/file",
+      "regex": "^/api/onboard/file(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/onboard/file(?:/)?$"
+    },
+    {
+      "page": "/api/onboard/submit",
+      "regex": "^/api/onboard/submit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/onboard/submit(?:/)?$"
     },
     {
       "page": "/api/projects",
@@ -149,6 +195,18 @@
       "namedRegex": "^/api/review/session(?:/)?$"
     },
     {
+      "page": "/api/social/data-deletion",
+      "regex": "^/api/social/data\\-deletion(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/data\\-deletion(?:/)?$"
+    },
+    {
+      "page": "/api/social/insights/sync",
+      "regex": "^/api/social/insights/sync(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/insights/sync(?:/)?$"
+    },
+    {
       "page": "/api/social/instagram/callback",
       "regex": "^/api/social/instagram/callback(?:/)?$",
       "routeKeys": {},
@@ -171,6 +229,48 @@
       "regex": "^/api/social/posts(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/social/posts(?:/)?$"
+    },
+    {
+      "page": "/api/social/reddit/callback",
+      "regex": "^/api/social/reddit/callback(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/reddit/callback(?:/)?$"
+    },
+    {
+      "page": "/api/social/reddit/connect",
+      "regex": "^/api/social/reddit/connect(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/reddit/connect(?:/)?$"
+    },
+    {
+      "page": "/api/social/reddit/subreddits",
+      "regex": "^/api/social/reddit/subreddits(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/reddit/subreddits(?:/)?$"
+    },
+    {
+      "page": "/api/social/youtube/callback",
+      "regex": "^/api/social/youtube/callback(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/youtube/callback(?:/)?$"
+    },
+    {
+      "page": "/api/social/youtube/connect",
+      "regex": "^/api/social/youtube/connect(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/youtube/connect(?:/)?$"
+    },
+    {
+      "page": "/api/social/zernio/callback",
+      "regex": "^/api/social/zernio/callback(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/zernio/callback(?:/)?$"
+    },
+    {
+      "page": "/api/social/zernio/connect",
+      "regex": "^/api/social/zernio/connect(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/zernio/connect(?:/)?$"
     },
     {
       "page": "/blog",
@@ -215,16 +315,40 @@
       "namedRegex": "^/book(?:/)?$"
     },
     {
+      "page": "/connect",
+      "regex": "^/connect(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/connect(?:/)?$"
+    },
+    {
+      "page": "/data-deletion",
+      "regex": "^/data\\-deletion(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/data\\-deletion(?:/)?$"
+    },
+    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
     },
     {
+      "page": "/guide",
+      "regex": "^/guide(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/guide(?:/)?$"
+    },
+    {
       "page": "/login",
       "regex": "^/login(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/onboard",
+      "regex": "^/onboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/onboard(?:/)?$"
     },
     {
       "page": "/pricing",
@@ -261,6 +385,12 @@
       "regex": "^/terminal(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/terminal(?:/)?$"
+    },
+    {
+      "page": "/terms",
+      "regex": "^/terms(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/terms(?:/)?$"
     },
     {
       "page": "/tools",

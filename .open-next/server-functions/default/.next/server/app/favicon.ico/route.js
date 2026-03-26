@@ -1,5 +1,5 @@
 var R=require("../../chunks/[turbopack]_runtime.js")("server/app/favicon.ico/route.js")
-R.c("server/chunks/[externals]_next_dist_a6d89067._.js")
+R.c("server/chunks/[externals]_next_dist_5d827350._.js")
 R.c("server/chunks/node_modules_next_dist_esm_build_templates_app-route_d6a474cc.js")
 R.c("server/chunks/node_modules_next_1402a1da._.js")
 R.c("server/chunks/[root-of-the-server]__8f5ebbc3._.js")
