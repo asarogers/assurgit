@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { href: "/#how-it-works", label: "How It Works" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/local-seo", label: "Local SEO" },
   { href: "/tools", label: "Tools" },
-  { href: "/blog", label: "Blogs" },
-  { href: "/book", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/compare/done-for-you-vs-diy-video", label: "Compare" },
 ];
 
 export default function Navbar() {
@@ -25,8 +27,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-gray-950/95 backdrop-blur-md shadow-lg shadow-black/20"
-          : "bg-gray-950/80 backdrop-blur-sm"
+          ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20"
+          : "bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -37,7 +39,7 @@ export default function Navbar() {
             className="flex items-center flex-shrink-0 group"
             aria-label="Assurgit — return to homepage"
           >
-            <span className="font-mono font-black text-xl tracking-tight text-white group-hover:text-brand-accent transition-colors">
+            <span className="font-mono font-black text-xl tracking-tight text-gray-900 dark:text-white group-hover:text-brand-accent transition-colors">
               Assurgit
             </span>
           </Link>
@@ -48,40 +50,44 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                className="underline-slide text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm font-medium transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
+          {/* Desktop CTA + Toggle */}
+          <div className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
             <Link
               href="/book"
-              className="bg-brand-accent hover:bg-brand-accent-hov text-white font-semibold px-5 py-2 rounded-lg text-sm transition-colors"
+              className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-5 py-2 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5 glow-blue-btn"
             >
               Book a Call
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-gray-300 hover:text-white p-2 rounded-md transition-colors"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-          >
-            {isOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+          {/* Mobile: Toggle + Hamburger */}
+          <div className="md:hidden flex items-center gap-1">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-2 rounded-md transition-colors"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -90,13 +96,13 @@ export default function Navbar() {
             isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="border-t border-gray-800 py-4 space-y-1">
+          <div className="border-t border-gray-200 dark:border-gray-800 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-gray-300 hover:text-white hover:bg-gray-800 px-4 py-3 rounded-lg text-base font-medium transition-colors"
+                className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 px-4 py-3 rounded-lg text-base font-medium transition-colors"
               >
                 {link.label}
               </Link>

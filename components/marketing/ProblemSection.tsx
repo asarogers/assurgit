@@ -28,38 +28,39 @@ const problems = [
   },
 ];
 
+import { StaggerContainer, MotionItem, MotionWrapper } from "@/components/marketing/MotionWrapper";
+
 export default function ProblemSection() {
   return (
-    <section className="bg-gray-950 py-16 md:py-24">
+    <section className="bg-gray-50 dark:bg-gray-950 py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+        <MotionWrapper className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 dark:text-white mb-4 tracking-tight">
             Most businesses know video works.
             <br className="hidden sm:block" />
-            <span className="text-gray-400"> They just can&apos;t keep up.</span>
+            <span className="text-gray-500 dark:text-gray-400"> They just can&apos;t keep up.</span>
           </h2>
-        </div>
+        </MotionWrapper>
 
         {/* Problem cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <StaggerContainer className="grid md:grid-cols-3 gap-6">
           {problems.map((problem, i) => (
-            <div
-              key={i}
-              className="bg-gray-900 border border-gray-800 rounded-2xl p-8"
-            >
-              <div className="w-14 h-14 bg-red-950/50 border border-red-900/50 rounded-xl flex items-center justify-center text-red-400 mb-6">
+            <MotionItem key={i}>
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 h-full transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 dark:hover:border-gray-700">
+              <div className="w-14 h-14 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/50 rounded-xl flex items-center justify-center text-red-500 dark:text-red-400 mb-6">
                 {problem.icon}
               </div>
-              <h3 className="text-white font-bold text-lg mb-3 leading-snug">
+              <h3 className="text-gray-950 dark:text-white font-bold text-lg mb-3 leading-snug">
                 {problem.headline}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                 {problem.body}
               </p>
             </div>
+            </MotionItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

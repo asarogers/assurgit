@@ -17,11 +17,12 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
   const allowed = [
     "transcriptV1", "transcriptV2", "status",
-    "descInstagram", "descTiktok", "descFacebook", "descYoutube",
+    "descInstagram", "descTiktok", "descFacebook", "descYoutube", "descYoutubeTitle", "descRedditTitle", "descRedditSubreddit",
+    "videoPath", "finalVideoPath",
   ];
 
   for (const key of allowed) {
-    if (body[key] !== undefined) updates[key] = body[key];
+    if (body[key] !== undefined) updates[key] = body[key] ?? null;
   }
 
   // When transcriptV1 is revised on a denied card, reset it to waiting

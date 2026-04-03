@@ -57,6 +57,25 @@ export async function refreshAccessToken(
   return { accessToken: res.access_token, expiresIn: res.expires_in ?? 3600 };
 }
 
+export async function getRedditPostStats(
+  postId: string  // Reddit fullname like "t3_xxxxx" or just "xxxxx"
+): Promise<{ upvotes: number; comments: number; upvoteRatio: number } | null> {
+  const fullname = postId.startsWith("t3_") ? postId : `t3_${postId}`;
+  const res = await fetch(
+    `https://www.reddit.com/api/info.json?id=${fullname}`,
+    { headers: { "User-Agent": "Assurgit/1.0" } }
+  ).then(r => r.json()) as any;
+
+  const child = res?.data?.children?.[0]?.data;
+  if (!child) return null;
+
+  return {
+    upvotes:     child.score        ?? 0,
+    comments:    child.num_comments ?? 0,
+    upvoteRatio: child.upvote_ratio ?? 0,
+  };
+}
+
 export async function getRedditUser(
   accessToken: string
 ): Promise<{ userId: string; username: string; avatarUrl?: string }> {

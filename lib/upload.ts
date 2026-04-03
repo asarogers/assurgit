@@ -1,19 +1,23 @@
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { nanoid } from "nanoid";
 
 export async function saveUploadedVideo(
   file: File,
   prefix: string
 ): Promise<string> {
-  const uploadDir = path.join(process.cwd(), "public", "uploads");
-  await mkdir(uploadDir, { recursive: true });
+  const { env } = getCloudflareContext() as any;
+  const bucket  = env.MEDIA_BUCKET as R2Bucket;
 
-  const ext      = file.name.split(".").pop() ?? "mp4";
-  const filename = `${prefix}-${Date.now()}.${ext}`;
-  const filepath = path.join(uploadDir, filename);
+  if (!bucket) throw new Error("Storage not configured");
 
-  const buffer = Buffer.from(await file.arrayBuffer());
-  await writeFile(filepath, buffer);
+  const ext      = file.type === "video/quicktime" ? "mov" : "mp4";
+  const key      = `cards/${prefix}-${nanoid()}.${ext}`;
+  const arrayBuf = await file.arrayBuffer();
 
-  return `/uploads/${filename}`;
+  await bucket.put(key, arrayBuf, {
+    httpMetadata: { contentType: file.type },
+  });
+
+  const bucketUrl = (env.MEDIA_BUCKET_URL as string) ?? "";
+  return `${bucketUrl}/${key}`;
 }

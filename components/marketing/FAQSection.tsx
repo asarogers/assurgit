@@ -4,9 +4,14 @@ import { useState } from "react";
 
 const faqs = [
   {
+    question: "What does the $397/month Launch plan actually include?",
+    answer:
+      "The Launch plan includes everything core to the system: your personal AI avatar built from a short video recording, your voice clone, 5 short-form videos every week written with research-backed scripts, human QC on every video before delivery, and MP4 delivery to your inbox. You post them across all 4 platforms (IG, TT, LI, YT). It's the full system — just without auto-publishing, which unlocks on Starter and Growth.",
+  },
+  {
     question: "Is it really my face and voice?",
     answer:
-      "Yes. We build a avatar clone from a short video recording and a voice clone from a 1–2 minute audio sample. Every video uses your actual appearance and voice — not a stock avatar or generic AI voice.",
+      "Yes. We build an avatar clone from a short video recording and a voice clone from a 1–2 minute audio sample. Every video uses your actual appearance and voice — not a stock avatar or generic AI voice.",
   },
   {
     question: "Will the videos look professional?",
@@ -21,7 +26,7 @@ const faqs = [
   {
     question: "What platforms do you publish to?",
     answer:
-      "Growth and Scale plans: Instagram, TikTok, LinkedIn, and YouTube. Starter plan delivers MP4 files via email for you to post manually or through your own scheduler.",
+      "Starter and Growth plans auto-publish to Instagram, TikTok, LinkedIn, and YouTube. The Launch plan delivers MP4 files via email for you to post manually. All plans include your avatar and voice clone.",
   },
   {
     question: "How long does setup take?",
@@ -52,18 +57,18 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-gray-200 last:border-0">
+    <div className="border-b border-gray-200 dark:border-gray-700 last:border-0">
       <button
         onClick={onToggle}
         className="w-full flex items-start justify-between gap-4 py-5 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="text-gray-950 font-semibold text-base group-hover:text-brand-accent transition-colors">
+        <span className="text-gray-950 dark:text-white font-semibold text-base group-hover:text-brand-accent transition-colors">
           {question}
         </span>
         <span
-          className={`flex-shrink-0 w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center mt-0.5 transition-all ${
-            isOpen ? "bg-brand-accent border-brand-accent rotate-180" : "bg-white"
+          className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center mt-0.5 transition-all ${
+            isOpen ? "bg-brand-accent border-brand-accent rotate-180" : "bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
           }`}
         >
           <svg
@@ -82,7 +87,7 @@ function FAQItem({
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="text-gray-500 text-sm leading-relaxed pb-5">{answer}</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed pb-5">{answer}</p>
       </div>
     </div>
   );
@@ -96,20 +101,20 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="bg-gray-50 py-16 md:py-24">
+    <section id="faq" className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 dark:text-white mb-4 tracking-tight">
             Frequently asked questions
           </h2>
-          <p className="text-lg text-gray-500">
+          <p className="text-lg text-gray-500 dark:text-gray-400">
             Everything you need to know before booking a call.
           </p>
         </div>
 
         {/* FAQ list */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-6 md:px-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm px-6 md:px-8">
           {faqs.map((faq, i) => (
             <FAQItem
               key={i}

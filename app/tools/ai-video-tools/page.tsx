@@ -1,5 +1,8 @@
 "use client";
 
+
+export const dynamic = "force-static"
+
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { ExternalLink, Check, } from "lucide-react";
@@ -46,7 +49,7 @@ const ALL_TOOLS: Tool[] = [
     tagline: "Fully Managed AI Video Service",
     website: "https://assurgit.com",
     category: "Done-For-You",
-    priceLabel: "From $1,997/mo",
+    priceLabel: "From $397/mo",
     priceRange: "agency",
     description:
       "The only fully done-for-you AI video service. Assurgit builds your personal avatar and voice clone, writes research-backed scripts, renders videos, does human QC, and publishes to all 4 platforms weekly. You never film.",
@@ -609,6 +612,30 @@ export default function AIVideoToolsPage() {
             <p className="text-gray-400 text-sm">
               Last updated: March 2026 &middot; 13 tools reviewed
             </p>
+            <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800 max-w-2xl">
+              <strong>Disclosure:</strong> Assurgit is the publisher of this ranking and is included in the list.
+              Scores are based on direct testing, published documentation, and publicly available information.
+              We update scores monthly as tools evolve.
+            </div>
+          </div>
+
+          {/* Methodology */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 mb-10">
+            <h2 className="text-base font-bold text-gray-950 mb-3">How we score tools</h2>
+            <div className="grid sm:grid-cols-3 gap-4 text-sm text-gray-600">
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">Seven dimensions</p>
+                <p>Overall, avatar quality, voice quality, ease of use, script quality, publishing automation, and value for money. Each scored 0–10.</p>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">Direct testing</p>
+                <p>We test each tool against a standardized business use case: create a short-form video from a script, publish or export, and evaluate the result.</p>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">Monthly updates</p>
+                <p>AI tools evolve fast. We re-evaluate scores when major updates ship. Last full review: March 2026.</p>
+              </div>
+            </div>
           </div>
 
           {/* Filter Bar */}

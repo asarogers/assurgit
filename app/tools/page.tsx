@@ -1,12 +1,14 @@
 import Link from "next/link";
-import { Zap, BarChart3 } from "lucide-react";
+import { BarChart3 } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+
+export const dynamic = "force-static"
 
 export const metadata = {
   title: "Free Tools for Video Content Creators | Assurgit",
   description:
-    "Free AI tools built by Assurgit to help you get more from video content. Hook generator, AI video tool rankings, and more.",
+    "Free AI tools built by Assurgit to help you get more from video content. AI video tool rankings and more.",
 };
 
 export default function ToolsPage() {
@@ -28,36 +30,6 @@ export default function ToolsPage() {
 
           {/* Tool Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Hook Generator */}
-            <Link
-              href="/tools/hook-generator"
-              className="group bg-white rounded-2xl border border-gray-200 p-7 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all flex flex-col gap-4"
-            >
-              <div className="w-11 h-11 bg-indigo-50 rounded-xl flex items-center justify-center group-hover:bg-indigo-100 transition-colors">
-                <Zap className="w-5 h-5 text-indigo-600" />
-              </div>
-
-              <div className="flex-1">
-                <h2 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-indigo-700 transition-colors">
-                  AI Video Hook Generator
-                </h2>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Generate 8 platform-optimized video hooks for any topic in
-                  seconds. Choose your niche, platform, and topic — get hooks in
-                  every style.
-                </p>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-400 font-medium">
-                  Free · No signup required
-                </span>
-                <span className="text-indigo-600 text-sm font-semibold group-hover:translate-x-0.5 transition-transform">
-                  Generate Hooks →
-                </span>
-              </div>
-            </Link>
-
             {/* AI Tool Rankings */}
             <Link
               href="/tools/ai-video-tools"

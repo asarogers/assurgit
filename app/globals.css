@@ -64,6 +64,7 @@
   --brand-accent-hov:   #1d4ed8;
   --brand-accent-muted: #dbeafe;
   --brand-hero-bg:      #eff6ff;
+  --brand-hero-dark:    #0a0f1e;
   --brand-hero-fg:      #0f172a;
   --brand-hero-sub:     #475569;
   --brand-cta-bg:       #1e3a8a;
@@ -184,6 +185,99 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ═══════════════════════════════════════════════════════
+   REDESIGN KEYFRAMES & UTILITIES
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.18; }
+  33%       { transform: translate(30px, -20px) scale(1.08); opacity: 0.22; }
+  66%       { transform: translate(-20px, 15px) scale(0.95); opacity: 0.15; }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.12; }
+  40%       { transform: translate(-25px, 20px) scale(1.05); opacity: 0.18; }
+  70%       { transform: translate(15px, -10px) scale(0.98); opacity: 0.10; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-orb {
+  animation: orb-drift 12s ease-in-out infinite;
+}
+
+.animate-orb-2 {
+  animation: orb-drift-2 16s ease-in-out infinite;
+}
+
+/* CTA section glow — fades in then gently pulses */
+@keyframes cta-glow {
+  0%   { opacity: 0.04; transform: scale(0.7); }
+  40%  { opacity: 0.14; transform: scale(1.0); }
+  70%  { opacity: 0.16; transform: scale(1.1); }
+  100% { opacity: 0.13; transform: scale(1.05); }
+}
+.animate-cta-glow {
+  animation: cta-glow 2.5s ease-out forwards;
+}
+
+/* Starter plan card — breathing glow pulse to draw attention */
+@keyframes starter-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px #2563eb, 0 0 40px rgba(37, 99, 235, 0.25); }
+  50%       { box-shadow: 0 0 0 1px #3b82f6, 0 0 65px rgba(37, 99, 235, 0.48), 0 0 100px rgba(37, 99, 235, 0.18); }
+}
+
+.animate-starter-pulse {
+  animation: starter-pulse 3.5s ease-in-out infinite;
+}
+
+/* Respect OS-level reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-orb,
+  .animate-orb-2,
+  .animate-starter-pulse,
+  .animate-cta-glow {
+    animation: none;
+  }
+  .animate-cta-glow { opacity: 0.1; }
+}
+
+.glow-blue {
+  box-shadow: 0 0 0 1px #2563eb, 0 0 40px rgba(37, 99, 235, 0.25);
+}
+
+.glow-blue-btn {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+.underline-slide {
+  position: relative;
+}
+.underline-slide::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brand-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.underline-slide:hover::after {
+  transform: scaleX(1);
 }
 
 @layer base {

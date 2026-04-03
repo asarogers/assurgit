@@ -5,10 +5,12 @@ import FAQSection from "@/components/marketing/FAQSection";
 import CTASection from "@/components/marketing/CTASection";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Pricing — AI Video Content Starting at $397/Month",
   description:
-    "Simple, transparent pricing for AI video content. Starter at $1,997/month, Growth at $3,497/month, Scale at $5,997/month. Month-to-month, no contracts.",
+    "Done-for-you AI video content starting at $397/month. Launch, Starter, and Growth plans. Avatar + voice clone included on every plan. No contracts.",
 };
 
 export default function PricingPage() {
@@ -20,12 +22,12 @@ export default function PricingPage() {
         <section className="bg-gray-950 pt-32 pb-16 md:pt-40 md:pb-20 text-center">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-5 tracking-tight">
-              Simple, transparent pricing
+              AI video content starting at $397/month
             </h1>
-            <p className="text-lg md:text-xl text-gray-400 max-w-xl mx-auto">
-              Month-to-month. No contracts. No setup fees.
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+              Your face. Your voice. Done for you — every week.
               <br />
-              Cancel any time.
+              Month-to-month. No contracts. No setup fees. Cancel anytime.
             </p>
           </div>
         </section>

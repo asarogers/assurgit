@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "Data Deletion — Assurgit",
   description: "Confirm or request deletion of your Assurgit data.",

@@ -170,9 +170,11 @@ export function SchedulePostDialog({
       return;
     }
 
-    const form = new FormData();
-    form.append("file", file);
-    const res  = await fetch("/api/media", { method: "POST", body: form });
+    const res  = await fetch("/api/media", {
+      method:  "POST",
+      headers: { "Content-Type": file.type },
+      body:    file,
+    });
     const data = await res.json() as any;
     if (!res.ok) { toast.error(data.error ?? "Upload failed"); setUploading(false); return; }
 

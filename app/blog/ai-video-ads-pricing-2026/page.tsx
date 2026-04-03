@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "AI Video Content Pricing in 2026: What You Should Expect to Pay",
   description:
@@ -123,7 +125,7 @@ export default function AIVideoPricingPage() {
             <div className="bg-indigo-600/10 border border-indigo-500/40 rounded-xl p-6">
               <div className="flex items-start justify-between gap-4 mb-3">
                 <h3 className="text-lg font-semibold text-white">Tier 4: Done-For-You AI Avatar Video Services</h3>
-                <span className="bg-indigo-600/30 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">$1,997–$6,000/month</span>
+                <span className="bg-indigo-600/30 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">$397–$3,497/month</span>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed mb-1">
                 Your face, your voice, researched and scripted content — published for you, week after week. The gap most people didn&apos;t know existed until recently.
@@ -187,11 +189,11 @@ export default function AIVideoPricingPage() {
 
           {/* Section 3 */}
           <h2 className="text-2xl font-semibold text-white mt-12 mb-4">
-            What $3,497/Month Actually Buys You: The Assurgit Growth Plan Breakdown
+            What $397–$1,997/Month Actually Buys You: The Assurgit Plan Breakdown
           </h2>
 
           <p className="text-gray-300 leading-relaxed mb-6">
-            Let&apos;s put the Growth plan price in context by breaking down what each component is equivalent to if you tried to hire for it separately:
+            Let&apos;s put the Starter plan price in context by breaking down what each component is equivalent to if you tried to hire for it separately:
           </p>
 
           <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden mb-6">
@@ -220,8 +222,8 @@ export default function AIVideoPricingPage() {
                   <span className="text-indigo-300 font-bold">$7,000–$10,000+/month</span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-3 pt-3 border-t border-indigo-500/20">
-                  <p className="text-white font-bold">Assurgit Growth Plan</p>
-                  <span className="text-white font-bold text-lg">$3,497/month</span>
+                  <p className="text-white font-bold">Assurgit Starter Plan</p>
+                  <span className="text-white font-bold text-lg">$997/month</span>
                 </div>
               </div>
             </div>
@@ -229,7 +231,7 @@ export default function AIVideoPricingPage() {
 
           {/* Mid CTA */}
           <div className="my-10 bg-indigo-600/10 border border-indigo-500/30 rounded-2xl p-8 text-center">
-            <p className="text-white font-semibold text-lg mb-2">See the Growth plan in detail</p>
+            <p className="text-white font-semibold text-lg mb-2">See the Starter plan in detail</p>
             <p className="text-gray-400 text-sm mb-6">Book a free call to get pricing for your specific situation and see a sample of your content.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
@@ -350,7 +352,7 @@ export default function AIVideoPricingPage() {
       <div className="sticky bottom-0 left-0 right-0 bg-gray-950/95 backdrop-blur-md border-t border-gray-800 py-4 px-4 z-40">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-gray-300 text-sm text-center sm:text-left">
-            See if the Growth plan is right for your business.
+            See if the Starter plan is right for your business.
           </p>
           <Link
             href="/book"

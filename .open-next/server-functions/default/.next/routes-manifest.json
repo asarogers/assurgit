@@ -41,6 +41,14 @@
       "namedRegex": "^/api/cards/(?<nxtPid>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/api/cards/[id]/upload-url",
+      "regex": "^/api/cards/([^/]+?)/upload\\-url(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/cards/(?<nxtPid>[^/]+?)/upload\\-url(?:/)?$"
+    },
+    {
       "page": "/api/cards/[id]/video",
       "regex": "^/api/cards/([^/]+?)/video(?:/)?$",
       "routeKeys": {
@@ -117,6 +125,12 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
       "page": "/analytics",
       "regex": "^/analytics(?:/)?$",
       "routeKeys": {},
@@ -139,6 +153,24 @@
       "regex": "^/api/cron/publish(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/cron/publish(?:/)?$"
+    },
+    {
+      "page": "/api/gbp-queue",
+      "regex": "^/api/gbp\\-queue(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/gbp\\-queue(?:/)?$"
+    },
+    {
+      "page": "/api/gbp-queue/sync",
+      "regex": "^/api/gbp\\-queue/sync(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/gbp\\-queue/sync(?:/)?$"
+    },
+    {
+      "page": "/api/gbp-schedule",
+      "regex": "^/api/gbp\\-schedule(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/gbp\\-schedule(?:/)?$"
     },
     {
       "page": "/api/hooks",
@@ -193,6 +225,24 @@
       "regex": "^/api/review/session(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/review/session(?:/)?$"
+    },
+    {
+      "page": "/api/schedule",
+      "regex": "^/api/schedule(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/schedule(?:/)?$"
+    },
+    {
+      "page": "/api/schedule/cards",
+      "regex": "^/api/schedule/cards(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/schedule/cards(?:/)?$"
+    },
+    {
+      "page": "/api/social/accounts",
+      "regex": "^/api/social/accounts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/accounts(?:/)?$"
     },
     {
       "page": "/api/social/data-deletion",
@@ -273,6 +323,54 @@
       "namedRegex": "^/api/social/zernio/connect(?:/)?$"
     },
     {
+      "page": "/best/ai-avatar-service-for-business",
+      "regex": "^/best/ai\\-avatar\\-service\\-for\\-business(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/ai\\-avatar\\-service\\-for\\-business(?:/)?$"
+    },
+    {
+      "page": "/best/ai-tools-for-loan-officers",
+      "regex": "^/best/ai\\-tools\\-for\\-loan\\-officers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/ai\\-tools\\-for\\-loan\\-officers(?:/)?$"
+    },
+    {
+      "page": "/best/ai-tools-personal-brand",
+      "regex": "^/best/ai\\-tools\\-personal\\-brand(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/ai\\-tools\\-personal\\-brand(?:/)?$"
+    },
+    {
+      "page": "/best/done-for-you-ai-video-service",
+      "regex": "^/best/done\\-for\\-you\\-ai\\-video\\-service(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/done\\-for\\-you\\-ai\\-video\\-service(?:/)?$"
+    },
+    {
+      "page": "/best/done-for-you-social-media-content-services",
+      "regex": "^/best/done\\-for\\-you\\-social\\-media\\-content\\-services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/done\\-for\\-you\\-social\\-media\\-content\\-services(?:/)?$"
+    },
+    {
+      "page": "/best/heygen-alternatives",
+      "regex": "^/best/heygen\\-alternatives(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/heygen\\-alternatives(?:/)?$"
+    },
+    {
+      "page": "/best/video-content-service-for-coaches",
+      "regex": "^/best/video\\-content\\-service\\-for\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/video\\-content\\-service\\-for\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/best/video-content-services-real-estate-agents",
+      "regex": "^/best/video\\-content\\-services\\-real\\-estate\\-agents(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/video\\-content\\-services\\-real\\-estate\\-agents(?:/)?$"
+    },
+    {
       "page": "/blog",
       "regex": "^/blog(?:/)?$",
       "routeKeys": {},
@@ -303,6 +401,12 @@
       "namedRegex": "^/blog/heygen\\-vs\\-custom\\-ai\\-avatars(?:/)?$"
     },
     {
+      "page": "/blog/how-to-get-clients-from-social-media-without-posting-every-day",
+      "regex": "^/blog/how\\-to\\-get\\-clients\\-from\\-social\\-media\\-without\\-posting\\-every\\-day(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog/how\\-to\\-get\\-clients\\-from\\-social\\-media\\-without\\-posting\\-every\\-day(?:/)?$"
+    },
+    {
       "page": "/blog/linkedin-video-strategy-for-business-owners",
       "regex": "^/blog/linkedin\\-video\\-strategy\\-for\\-business\\-owners(?:/)?$",
       "routeKeys": {},
@@ -313,6 +417,48 @@
       "regex": "^/book(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/book(?:/)?$"
+    },
+    {
+      "page": "/case-studies",
+      "regex": "^/case\\-studies(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/case\\-studies(?:/)?$"
+    },
+    {
+      "page": "/compare/assurgit-vs-freelance-video-editor",
+      "regex": "^/compare/assurgit\\-vs\\-freelance\\-video\\-editor(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/compare/assurgit\\-vs\\-freelance\\-video\\-editor(?:/)?$"
+    },
+    {
+      "page": "/compare/assurgit-vs-heygen",
+      "regex": "^/compare/assurgit\\-vs\\-heygen(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/compare/assurgit\\-vs\\-heygen(?:/)?$"
+    },
+    {
+      "page": "/compare/assurgit-vs-in-house-video-team",
+      "regex": "^/compare/assurgit\\-vs\\-in\\-house\\-video\\-team(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/compare/assurgit\\-vs\\-in\\-house\\-video\\-team(?:/)?$"
+    },
+    {
+      "page": "/compare/assurgit-vs-marketing-agency",
+      "regex": "^/compare/assurgit\\-vs\\-marketing\\-agency(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/compare/assurgit\\-vs\\-marketing\\-agency(?:/)?$"
+    },
+    {
+      "page": "/compare/assurgit-vs-synthesia",
+      "regex": "^/compare/assurgit\\-vs\\-synthesia(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/compare/assurgit\\-vs\\-synthesia(?:/)?$"
+    },
+    {
+      "page": "/compare/done-for-you-vs-diy-video",
+      "regex": "^/compare/done\\-for\\-you\\-vs\\-diy\\-video(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/compare/done\\-for\\-you\\-vs\\-diy\\-video(?:/)?$"
     },
     {
       "page": "/connect",
@@ -333,10 +479,196 @@
       "namedRegex": "^/favicon\\.ico(?:/)?$"
     },
     {
+      "page": "/features/ai-avatar",
+      "regex": "^/features/ai\\-avatar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/features/ai\\-avatar(?:/)?$"
+    },
+    {
+      "page": "/features/ai-script-writing",
+      "regex": "^/features/ai\\-script\\-writing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/features/ai\\-script\\-writing(?:/)?$"
+    },
+    {
+      "page": "/features/auto-publishing",
+      "regex": "^/features/auto\\-publishing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/features/auto\\-publishing(?:/)?$"
+    },
+    {
+      "page": "/features/competitive-intelligence",
+      "regex": "^/features/competitive\\-intelligence(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/features/competitive\\-intelligence(?:/)?$"
+    },
+    {
+      "page": "/features/human-qc",
+      "regex": "^/features/human\\-qc(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/features/human\\-qc(?:/)?$"
+    },
+    {
+      "page": "/features/research-pipeline",
+      "regex": "^/features/research\\-pipeline(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/features/research\\-pipeline(?:/)?$"
+    },
+    {
+      "page": "/features/voice-cloning",
+      "regex": "^/features/voice\\-cloning(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/features/voice\\-cloning(?:/)?$"
+    },
+    {
+      "page": "/for/attorneys",
+      "regex": "^/for/attorneys(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/attorneys(?:/)?$"
+    },
+    {
+      "page": "/for/business-coaches",
+      "regex": "^/for/business\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/business\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/for/career-coaches",
+      "regex": "^/for/career\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/career\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/for/chiropractors",
+      "regex": "^/for/chiropractors(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/chiropractors(?:/)?$"
+    },
+    {
+      "page": "/for/consultants",
+      "regex": "^/for/consultants(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/consultants(?:/)?$"
+    },
+    {
+      "page": "/for/cpas",
+      "regex": "^/for/cpas(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/cpas(?:/)?$"
+    },
+    {
+      "page": "/for/dentists",
+      "regex": "^/for/dentists(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/dentists(?:/)?$"
+    },
+    {
+      "page": "/for/financial-advisors",
+      "regex": "^/for/financial\\-advisors(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/financial\\-advisors(?:/)?$"
+    },
+    {
+      "page": "/for/fitness-coaches",
+      "regex": "^/for/fitness\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/fitness\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/for/handyman-contractors",
+      "regex": "^/for/handyman\\-contractors(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/handyman\\-contractors(?:/)?$"
+    },
+    {
+      "page": "/for/insurance-agents",
+      "regex": "^/for/insurance\\-agents(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/insurance\\-agents(?:/)?$"
+    },
+    {
+      "page": "/for/life-coaches",
+      "regex": "^/for/life\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/life\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/for/loan-officers",
+      "regex": "^/for/loan\\-officers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/loan\\-officers(?:/)?$"
+    },
+    {
+      "page": "/for/meal-prep-coaches",
+      "regex": "^/for/meal\\-prep\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/meal\\-prep\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/for/mortgage-brokers",
+      "regex": "^/for/mortgage\\-brokers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/mortgage\\-brokers(?:/)?$"
+    },
+    {
+      "page": "/for/nutritionists",
+      "regex": "^/for/nutritionists(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/nutritionists(?:/)?$"
+    },
+    {
+      "page": "/for/personal-trainers",
+      "regex": "^/for/personal\\-trainers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/personal\\-trainers(?:/)?$"
+    },
+    {
+      "page": "/for/physical-therapists",
+      "regex": "^/for/physical\\-therapists(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/physical\\-therapists(?:/)?$"
+    },
+    {
+      "page": "/for/real-estate-agents",
+      "regex": "^/for/real\\-estate\\-agents(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/real\\-estate\\-agents(?:/)?$"
+    },
+    {
+      "page": "/for/sales-coaches",
+      "regex": "^/for/sales\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/sales\\-coaches(?:/)?$"
+    },
+    {
+      "page": "/for/therapists",
+      "regex": "^/for/therapists(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/therapists(?:/)?$"
+    },
+    {
+      "page": "/for/wellness-coaches",
+      "regex": "^/for/wellness\\-coaches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for/wellness\\-coaches(?:/)?$"
+    },
+    {
       "page": "/guide",
       "regex": "^/guide(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/guide(?:/)?$"
+    },
+    {
+      "page": "/how-it-works",
+      "regex": "^/how\\-it\\-works(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/how\\-it\\-works(?:/)?$"
+    },
+    {
+      "page": "/local-seo",
+      "regex": "^/local\\-seo(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/local\\-seo(?:/)?$"
     },
     {
       "page": "/login",
@@ -367,6 +699,18 @@
       "regex": "^/review(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/review(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/schedule",
+      "regex": "^/schedule(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/schedule(?:/)?$"
     },
     {
       "page": "/sitemap.xml",
@@ -403,12 +747,6 @@
       "regex": "^/tools/ai\\-video\\-tools(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/tools/ai\\-video\\-tools(?:/)?$"
-    },
-    {
-      "page": "/tools/hook-generator",
-      "regex": "^/tools/hook\\-generator(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/tools/hook\\-generator(?:/)?$"
     }
   ],
   "dataRoutes": [],

@@ -1,48 +1,52 @@
 # Assurgit
 
-> AI-powered video content system for businesses. 7 branded videos per week using your avatar and voice clone — researched, scripted, and published on autopilot.
+> Online Presence Launch System for service businesses. Short-form AI clone content every week using your avatar and voice clone — researched, scripted, and published on autopilot.
 
 ## What Assurgit Does
 
-Assurgit is a done-for-you AI video content service. Businesses get up to 7 professionally produced, fully branded videos every week without filming. Each video uses a personalized AI avatar and voice clone (built from a 30-minute setup session) to look and sound exactly like the business owner or spokesperson.
+Assurgit is an Online Presence Launch System for service businesses. The core offer is the AI Clone Content System: businesses get 5–10+ professionally produced, fully branded short-form videos every week without filming. Each video uses a personalized AI avatar and voice clone (built from a 30-minute setup session) to look and sound exactly like the business owner or spokesperson.
 
 The system:
 - Monitors each client's competitive landscape weekly
 - Writes platform-optimized scripts for Instagram, TikTok, LinkedIn, and YouTube
-- Renders videos using HeyGen avatar and voice clone technology
+- Renders videos using AI avatar and voice clone technology
 - Adds captions, formatting, and branding
-- Publishes directly to all platforms (Growth and Scale plans)
-- Sends a weekly competitive intelligence briefing
+- Publishes directly to all platforms (Starter and Growth plans)
+- Sends a weekly competitive intelligence briefing (Starter and Growth plans)
+- Includes an optional Presence Infrastructure layer (GBP, listings, GEO, social setup)
+- Offers Website + Presence Launch as a project-based add-on
 
 ## Plans
 
-- **Starter** — $1,997/month — 7 AI videos/week delivered as MP4s
-- **Growth** — $3,497/month — 7 videos/week + auto-publishing to 4 platforms + competitive intelligence
-- **Scale** — $5,997/month — Everything in Growth + Friday strategy call + priority support
+- **Launch** — $397/month — 5 short-form videos/week, MP4 delivery, all 4 platforms, avatar + voice clone, human QC
+- **Starter** — $997/month — 5 videos/week + auto-publishing + weekly competitive intel + Friday strategy call
+- **Growth** — $1,997/month — 10+ videos/week + auto-publishing + white-glove service + monthly business review
 
-All plans are month-to-month with no contracts.
+All plans are month-to-month with no contracts. Non-recurring offers: Presence Infrastructure (add-on) and Website + Presence Launch (project-based).
 
 ## Who It's For
 
-Small businesses, coaches, consultants, service providers, and entrepreneurs who want consistent video presence on social media but don't have time to film, script, or edit content.
+Local service businesses, coaches, consultants, loan officers, advisors, and growing service providers who want consistent video presence on social media but don't have time to film, script, or edit content.
 
 ## Technology
 
-- Avatar and voice clone: HeyGen
+- Avatar and voice clone: AI-generated from short video + audio recordings
 - Research pipeline: Custom AI system monitoring competitor content, trending topics, and keyword opportunities
 - Script writing: AI-assisted with human review
 - Publishing: Direct integration with Instagram, TikTok, LinkedIn, YouTube
 
 ## Free Tools
 
-- **AI Video Hook Generator** (https://assurgit.com/tools/hook-generator) — Generate 8 platform-specific hooks for any video topic using AI
-- **AI Video Tool Rankings** (https://assurgit.com/tools/ai-video-tools) — Rankings and comparisons of 13 AI video creation tools
+- **AI Video Tool Rankings** (https://assurgit.com/tools/ai-video-tools) — Rankings and comparisons of AI video creation tools
 
 ## Key Pages
 
 - Homepage: https://assurgit.com
 - Pricing: https://assurgit.com/pricing
 - Book a call: https://assurgit.com/book
+- How it works: https://assurgit.com/how-it-works
+- About: https://assurgit.com/about
+- Case studies: https://assurgit.com/case-studies
 - Blog: https://assurgit.com/blog
 - Tools: https://assurgit.com/tools
 

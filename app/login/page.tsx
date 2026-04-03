@@ -1,5 +1,8 @@
 "use client";
 
+
+export const dynamic = "force-static"
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";

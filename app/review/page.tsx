@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import { ReviewClient } from "@/components/review/ReviewClient";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 import { getDb } from "@/lib/db";
 import { asc } from "drizzle-orm";
 

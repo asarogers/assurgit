@@ -3,8 +3,9 @@ import { scheduledPosts, socialAccounts } from "@/lib/db/social-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { getPostInsights } from "@/lib/social/instagram";
 import { getVideoStats, refreshAccessToken as refreshYouTubeToken } from "@/lib/social/youtube";
+import { getRedditPostStats } from "@/lib/social/reddit";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { eq, and, isNotNull, isNull } from "drizzle-orm";
+import { eq, and, isNotNull } from "drizzle-orm";
 
 export async function POST(req: Request) {
   try { await requireOwner(req); } catch { return unauthorizedResponse(); }
@@ -50,6 +51,9 @@ export async function POST(req: Request) {
             .where(eq(socialAccounts.id, account.id));
         }
         metrics = await getVideoStats(post.igMediaId!, token);
+      } else if (account.platform === "reddit") {
+        // Reddit post stats are public — no auth required
+        metrics = await getRedditPostStats(post.igMediaId!);
       }
 
       if (metrics) {

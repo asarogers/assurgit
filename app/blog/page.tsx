@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "Insights & Strategy | AI Video Content for Business",
   description:
@@ -49,6 +51,14 @@ const posts = [
       "LinkedIn's algorithm is rewarding video harder than ever — and most of your competitors still aren't posting consistently. Here's how to show up every week without filming.",
     readTime: "8 min read",
     category: "LinkedIn",
+  },
+  {
+    slug: "how-to-get-clients-from-social-media-without-posting-every-day",
+    title: "How to Get Clients from Social Media Without Posting Every Day",
+    description:
+      "You don't need to post every day to get clients from social media. You need the right content, at the right frequency, published consistently. Here's the system.",
+    readTime: "9 min read",
+    category: "Strategy",
   },
 ];
 
@@ -122,7 +132,7 @@ export default function BlogIndexPage() {
               Ready to see what your content would look like?
             </h2>
             <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-              Book a free 20-minute call. We&apos;ll show you a sample, walk through the Growth plan, and answer every question.
+              Book a free 20-minute call. We&apos;ll show you a sample, walk through the Starter plan, and answer every question.
             </p>
             <Link
               href="/book"

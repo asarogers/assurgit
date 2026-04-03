@@ -12,7 +12,7 @@ async function publishRedditViaZernio(opts: {
   body:      string;
   subreddit: string;
   mediaUrl?: string;
-}): Promise<void> {
+}): Promise<string | null> {
   const body: Record<string, unknown> = {
     title:   opts.title,
     content: opts.body || opts.title,
@@ -39,6 +39,12 @@ async function publishRedditViaZernio(opts: {
     const err = await res.json() as any;
     throw new Error(err.message ?? err.error ?? `Zernio post failed (${res.status})`);
   }
+
+  // Try to extract native Reddit post ID from Zernio response
+  const data = await res.json() as any;
+  const platformEntry = data?.platforms?.find?.((p: any) => p.platform === "reddit")
+    ?? data?.posts?.find?.((p: any) => p.platform === "reddit");
+  return platformEntry?.postId ?? platformEntry?.platformPostId ?? data?.postId ?? null;
 }
 
 async function runPublish(db: ReturnType<typeof getDb>, env: Record<string, string>) {
@@ -53,58 +59,13 @@ async function runPublish(db: ReturnType<typeof getDb>, env: Record<string, stri
       lte(scheduledPosts.scheduledFor, now),
     ));
 
-  // ── Phase 1: Instagram — create container for posts that don't have one yet ──
-  for (const { post, account } of due.filter(({ post, account }) =>
-    account.platform === "instagram" && !post.igContainerId
-  )) {
-    try {
-      const containerId = await createInstagramContainer(
-        account.accountId,
-        account.accessToken,
-        post.caption,
-        post.mediaUrl ?? "",
-        post.mediaType as "IMAGE" | "VIDEO" | "REEL"
-      );
-      await db.update(scheduledPosts)
-        .set({ igContainerId: containerId, updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, post.id));
-    } catch (err: any) {
-      await db.update(scheduledPosts)
-        .set({ status: "failed", errorMessage: err.message ?? "Unknown error", updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, post.id));
-    }
-  }
-
-  // ── Phase 2: Instagram — publish containers that are ready ────────────────
-  const readyIg = await db
-    .select({ post: scheduledPosts, account: socialAccounts })
-    .from(scheduledPosts)
-    .innerJoin(socialAccounts, eq(scheduledPosts.socialAccountId, socialAccounts.id))
-    .where(and(
-      eq(scheduledPosts.status, "scheduled"),
-      isNotNull(scheduledPosts.igContainerId),
-      eq(socialAccounts.platform, "instagram"),
-    ));
-
-  for (const { post, account } of readyIg) {
-    try {
-      const mediaId = await publishInstagramContainer(
-        account.accountId,
-        account.accessToken,
-        post.igContainerId!
-      );
-      if (mediaId) {
-        await db.update(scheduledPosts)
-          .set({ status: "published", publishedAt: Date.now(), igMediaId: mediaId, updatedAt: Date.now() })
-          .where(eq(scheduledPosts.id, post.id));
-      }
-      // if null, container not ready — will retry next cron run
-    } catch (err: any) {
-      await db.update(scheduledPosts)
-        .set({ status: "failed", errorMessage: err.message ?? "Unknown error", updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, post.id));
-    }
-  }
+  // ── Phase 1 & 2: Instagram — disabled (not in use yet) ──────────────────────
+  // for (const { post, account } of due.filter(({ post, account }) =>
+  //   account.platform === "instagram" && !post.igContainerId
+  // )) { ... createInstagramContainer ... }
+  //
+  // const readyIg = await db.select()...where(instagram + igContainerId set)
+  // for (const { post, account } of readyIg) { ... publishInstagramContainer ... }
 
   // ── Phase 3: YouTube — direct upload via YouTube Data API v3 ─────────────
   for (const { post, account } of due.filter(({ account }) => account.platform === "youtube")) {
@@ -131,67 +92,15 @@ async function runPublish(db: ReturnType<typeof getDb>, env: Record<string, stri
     }
   }
 
-  // ── Phase 4: TikTok — publish via Zernio ─────────────────────────────────
-  for (const { post, account } of due.filter(({ account }) => account.platform === "tiktok")) {
-    try {
-      if (!post.mediaUrl) throw new Error("No video URL on this post");
-      const meta = post.metadata ? JSON.parse(post.metadata) : {};
-      const ttBody: Record<string, unknown> = {
-        content:  post.caption,
-        platforms: [{
-          platform:             "tiktok",
-          accountId:            account.accessToken, // Zernio accountId
-          platformSpecificData: {
-            privacyLevel:            meta.privacyLevel            ?? "PUBLIC_TO_EVERYONE",
-            allowComment:            meta.allowComment            ?? true,
-            allowDuet:               meta.allowDuet               ?? true,
-            allowStitch:             meta.allowStitch              ?? true,
-            contentPreviewConfirmed: meta.contentPreviewConfirmed ?? true,
-          },
-        }],
-        mediaItems: [{ type: "video", url: post.mediaUrl }],
-        publishNow: true,
-      };
-      const ttRes = await fetch("https://zernio.com/api/v1/posts", {
-        method:  "POST",
-        headers: { Authorization: `Bearer ${env.ZERNIO_API_KEY ?? ""}`, "Content-Type": "application/json" },
-        body:    JSON.stringify(ttBody),
-      });
-      if (!ttRes.ok) {
-        const err = await ttRes.json() as any;
-        throw new Error(err.message ?? err.error ?? `Zernio TikTok post failed (${ttRes.status})`);
-      }
-      await db.update(scheduledPosts)
-        .set({ status: "published", publishedAt: Date.now(), updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, post.id));
-    } catch (err: any) {
-      await db.update(scheduledPosts)
-        .set({ status: "failed", errorMessage: err.message ?? "Unknown error", updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, post.id));
-    }
-  }
+  // ── Phase 4: TikTok — disabled (handled locally via post-tiktok.py) ─────────
+  // for (const { post, account } of due.filter(({ account }) => account.platform === "tiktok")) {
+  //   ... Zernio TikTok post ...
+  // }
 
-  // ── Phase 5: Reddit — publish via Zernio ─────────────────────────────────
-  for (const { post, account } of due.filter(({ account }) => account.platform === "reddit")) {
-    try {
-      if (!post.subreddit) throw new Error("No subreddit set on this post");
-      await publishRedditViaZernio({
-        apiKey:    env.ZERNIO_API_KEY ?? "",
-        accountId: account.accessToken,  // Zernio accountId stored here on connect
-        title:     post.title ?? (post.caption.split("\n")[0].slice(0, 300) || "Post"),
-        body:      post.caption,
-        subreddit: post.subreddit,
-        mediaUrl:  post.mediaUrl ?? undefined,
-      });
-      await db.update(scheduledPosts)
-        .set({ status: "published", publishedAt: Date.now(), updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, post.id));
-    } catch (err: any) {
-      await db.update(scheduledPosts)
-        .set({ status: "failed", errorMessage: err.message ?? "Unknown error", updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, post.id));
-    }
-  }
+  // ── Phase 5: Reddit — disabled (handled locally via post-reddit.py) ──────────
+  // for (const { post, account } of due.filter(({ account }) => account.platform === "reddit")) {
+  //   ... Zernio Reddit post ...
+  // }
 }
 
 export async function GET(req: Request) {

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Badge }  from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge }     from "@/components/ui/badge";
+import { Button }    from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Trash2 } from "lucide-react";
+import { Trash2, Instagram, Youtube } from "lucide-react";
 import { toast }  from "sonner";
-import type { ScheduledPost } from "@/lib/db/social-schema";
+import type { ScheduledPost, SocialAccount } from "@/lib/db/social-schema";
 
 const STATUS_COLORS: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
   draft:     "secondary",
@@ -17,11 +17,22 @@ const STATUS_COLORS: Record<string, "default" | "secondary" | "destructive" | "o
 
 interface Props {
   posts:     ScheduledPost[];
+  accounts:  SocialAccount[];
   onDeleted: (id: string) => void;
 }
 
-export function ScheduledPostsList({ posts, onDeleted }: Props) {
+export function ScheduledPostsList({ posts, accounts, onDeleted }: Props) {
   const [deleting, setDeleting] = useState<string | null>(null);
+
+  function PlatformIcon({ accountId }: { accountId: string }) {
+    const acct = accounts.find((a) => a.id === accountId);
+    if (!acct) return null;
+    if (acct.platform === "instagram")
+      return <Instagram className="h-3 w-3 text-pink-500 shrink-0" />;
+    if (acct.platform === "youtube")
+      return <Youtube className="h-3 w-3 text-red-500 shrink-0" />;
+    return <span className="text-[10px] text-muted-foreground shrink-0">{acct.platform}</span>;
+  }
 
   async function deletePost(id: string) {
     setDeleting(id);
@@ -37,9 +48,12 @@ export function ScheduledPostsList({ posts, onDeleted }: Props) {
     return (
       <div className="flex items-start justify-between gap-3 py-2.5 border-b last:border-0">
         <div className="flex-1 min-w-0">
-          <p className="text-xs truncate text-foreground font-medium">
-            {headline || <span className="text-muted-foreground italic">No content</span>}
-          </p>
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <PlatformIcon accountId={post.socialAccountId} />
+            <p className="text-xs truncate text-foreground font-medium flex-1">
+              {headline || <span className="text-muted-foreground italic">No content</span>}
+            </p>
+          </div>
           {subline && <p className="text-xs text-muted-foreground truncate mt-0.5">{subline}</p>}
           {post.subreddit && (
             <p className="text-xs text-muted-foreground mt-0.5">r/{post.subreddit}</p>

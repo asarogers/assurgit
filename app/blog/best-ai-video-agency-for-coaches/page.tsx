@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "Best AI Video Agency for Coaches in 2026 (That Actually Sounds Like You)",
   description:
@@ -181,7 +183,7 @@ export default function BestAIVideoAgencyForCoachesPage() {
           </h2>
 
           <p className="text-gray-300 leading-relaxed mb-4">
-            Assurgit offers three plans. For most coaches, the <strong className="text-white">Growth plan at $3,497/month</strong> is the right starting point — it includes 7 videos a week across 4 platforms, auto-publishing, weekly competitive intel, and the Friday strategy call.
+            Assurgit offers four plans starting at $397/month. For most coaches getting started, the <strong className="text-white">Launch plan at $397/month</strong> is the right entry point — short-form videos every week, avatar + voice clone, human QC on one platform. For coaches ready for full automation, the <strong className="text-white">Starter plan at $997/month</strong> includes content across 4 platforms, auto-publishing, weekly competitive intel, and the Friday strategy call.
           </p>
 
           <p className="text-gray-300 leading-relaxed mb-4">
@@ -204,7 +206,7 @@ export default function BestAIVideoAgencyForCoachesPage() {
           </ul>
 
           <p className="text-gray-300 leading-relaxed mb-4">
-            The Growth plan replaces all three — with better output. View the full plan breakdown on the <Link href="/pricing" className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors">pricing page</Link>.
+            The Starter plan replaces all three — with better output. View the full plan breakdown on the <Link href="/pricing" className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors">pricing page</Link>.
           </p>
 
           {/* Section 7 */}
@@ -242,7 +244,7 @@ export default function BestAIVideoAgencyForCoachesPage() {
               See what your content would actually look like
             </h2>
             <p className="text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto">
-              Book a free call. We&apos;ll show you a sample of what your content would look like with your avatar and voice, walk through the Growth plan, and answer every question. No pitch deck, no hard sell — just 20 minutes to see if it&apos;s a fit.
+              Book a free call. We&apos;ll show you a sample of what your content would look like with your avatar and voice, walk through the Starter plan, and answer every question. No pitch deck, no hard sell — just 20 minutes to see if it&apos;s a fit.
             </p>
             <Link
               href="/book"

@@ -35,3 +35,6 @@ NEXT_PUBLIC_CALCOM_USERNAME = "assurgit"
 NEXT_PUBLIC_CALCOM_EVENT_SLUG = "30min"
 INSTAGRAM_REDIRECT_URI = "https://assurgit.com/api/social/instagram/callback"
 MEDIA_BUCKET_URL = "https://media.assurgit.com"
+# Secrets (set via `wrangler secret put`):
+# R2_ACCESS_KEY_ID     — R2 API token access key (for presigned upload URLs)
+# R2_SECRET_ACCESS_KEY — R2 API token secret key

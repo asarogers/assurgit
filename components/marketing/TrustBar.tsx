@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { StaggerContainer, MotionItem, MotionWrapper } from "@/components/marketing/MotionWrapper";
+
 const trustItems = [
   {
     icon: (
@@ -39,21 +42,36 @@ const trustItems = [
 
 export default function TrustBar() {
   return (
-    <section className="bg-gray-900 border-y border-gray-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="bg-gray-100 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+        {/* Social proof banner */}
+        <MotionWrapper className="text-center mb-8 pb-8 border-b border-gray-200 dark:border-gray-800">
+          <p className="text-gray-500 dark:text-gray-500 text-xs font-semibold uppercase tracking-wider mb-2">Real Client Result</p>
+          <p className="text-gray-900 dark:text-white text-base font-semibold">
+            <span className="text-emerald-600 dark:text-emerald-400 font-black">WellPreparedLife grew their business 50%</span>{" "}
+            in their first week with Assurgit — without filming a single new video.
+          </p>
+          <p className="text-gray-500 dark:text-gray-600 text-xs mt-2">
+            — <Link href="/for/meal-prep-coaches" className="hover:text-gray-700 dark:hover:text-gray-400 transition-colors">WellPreparedLife</Link>,
+            {" "}Bay Area meal prep & kitchen coaching for seniors
+          </p>
+        </MotionWrapper>
+
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {trustItems.map((item, i) => (
-            <div key={i} className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-brand-accent">
+            <MotionItem key={i}>
+            <div className="flex gap-4 items-start">
+              <div className="flex-shrink-0 w-10 h-10 bg-gray-200 dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-lg flex items-center justify-center text-brand-accent">
                 {item.icon}
               </div>
               <div>
-                <p className="text-white font-semibold text-sm mb-0.5">{item.title}</p>
-                <p className="text-gray-500 text-xs leading-relaxed">{item.description}</p>
+                <p className="text-gray-900 dark:text-white font-semibold text-sm mb-0.5">{item.title}</p>
+                <p className="text-gray-600 dark:text-gray-500 text-xs leading-relaxed">{item.description}</p>
               </div>
             </div>
+            </MotionItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

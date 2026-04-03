@@ -9,8 +9,9 @@ import { Input }    from "@/components/ui/input";
 import { WeekSidebar }   from "./WeekSidebar";
 import { ProjectHeader } from "./ProjectHeader";
 import { CardEditor }    from "./CardEditor";
+import { MetricsPanel }  from "./MetricsPanel";
 import { toast }         from "sonner";
-import { Menu, Trash2, Layers, Plus } from "lucide-react";
+import { Menu, Trash2, Layers, Plus, BarChart2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Project, Card as CardType, ReviewSession } from "@/lib/db/schema";
 
@@ -24,13 +25,14 @@ interface Props {
 }
 
 export function TerminalClient({ initialProjects }: Props) {
-  const [projects,    setProjects]    = useState<ProjectWithCards[]>(initialProjects);
-  const [selectedId,  setSelectedId]  = useState<string | undefined>(initialProjects[0]?.id);
-  const [createOpen,  setCreateOpen]  = useState(false);
-  const [creating,    setCreating]    = useState(false);
-  const [newName,     setNewName]     = useState("");
-  const [cardCount,   setCardCount]   = useState(DEFAULT_COUNT);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // mobile drawer
+  const [projects,      setProjects]      = useState<ProjectWithCards[]>(initialProjects);
+  const [selectedId,    setSelectedId]    = useState<string | undefined>(initialProjects[0]?.id);
+  const [createOpen,    setCreateOpen]    = useState(false);
+  const [creating,      setCreating]      = useState(false);
+  const [newName,       setNewName]       = useState("");
+  const [cardCount,     setCardCount]     = useState(DEFAULT_COUNT);
+  const [sidebarOpen,   setSidebarOpen]   = useState(false); // mobile drawer
+  const [metricsOpen,   setMetricsOpen]   = useState(false);
 
   const project = projects.find(p => p.id === selectedId);
 
@@ -157,6 +159,16 @@ export function TerminalClient({ initialProjects }: Props) {
 
             {/* Right actions */}
             <div className="ml-auto flex items-center gap-1.5">
+              {project && (
+                <Button
+                  size="sm" variant="outline" className="h-7 text-xs gap-1"
+                  onClick={() => setMetricsOpen(true)}
+                  title="View post performance"
+                >
+                  <BarChart2 className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Metrics</span>
+                </Button>
+              )}
               <Button
                 size="sm" variant="outline" className="h-7 text-xs"
                 onClick={openCreateDialog}
@@ -232,6 +244,15 @@ export function TerminalClient({ initialProjects }: Props) {
           )}
         </div>
       </div>
+
+      {/* ── Metrics panel ────────────────────────────────────────────── */}
+      {project && (
+        <MetricsPanel
+          projectId={project.id}
+          open={metricsOpen}
+          onOpenChange={setMetricsOpen}
+        />
+      )}
 
       {/* ── Create batch dialog ──────────────────────────────────────── */}
       <Dialog open={createOpen} onOpenChange={setCreateOpen}>

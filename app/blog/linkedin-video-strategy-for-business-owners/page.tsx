@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "LinkedIn Video Strategy for Business Owners in 2026 (Without Filming)",
   description:

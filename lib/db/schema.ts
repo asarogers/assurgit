@@ -31,6 +31,9 @@ export const cards = sqliteTable("cards", {
   descTiktok:       text("desc_tiktok").default(""),
   descFacebook:     text("desc_facebook").default(""),
   descYoutube:      text("desc_youtube").default(""),
+  descYoutubeTitle:     text("desc_youtube_title").default(""),
+  descRedditTitle:      text("desc_reddit_title").default(""),
+  descRedditSubreddit:  text("desc_reddit_subreddit").default(""),
 
   createdAt:        integer("created_at").notNull(),
   updatedAt:        integer("updated_at").notNull(),

@@ -9,11 +9,12 @@ import { Button }    from "@/components/ui/button";
 import { Badge }     from "@/components/ui/badge";
 import { toast }     from "sonner";
 import {
-  Upload, Video, CheckCircle2, XCircle, Clock,
+  Upload, Video, CheckCircle2, XCircle, Clock, Trash2, CalendarClock, Download,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TRANSCRIPT_CHAR_LIMIT } from "@/lib/constants";
 import type { Card as CardType } from "@/lib/db/schema";
+import { ScheduleCardDialog } from "./ScheduleCardDialog";
 
 interface Props {
   card:      CardType;
@@ -32,10 +33,22 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
   const [transcriptV2, setTranscriptV2] = useState(card.transcriptV2 ?? "");
   const [dragOver,     setDragOver]     = useState(false);
   const [uploading,    setUploading]    = useState(false);
-  const inputRef  = useRef<HTMLInputElement>(null);
-  const finalRef  = useRef<HTMLInputElement>(null);
-  const t1Ref     = useRef<HTMLTextAreaElement>(null);
-  const t2Ref     = useRef<HTMLTextAreaElement>(null);
+  const [schedOpen,    setSchedOpen]    = useState(false);
+  const [descIG,       setDescIG]       = useState(card.descInstagram    ?? "");
+  const [descTT,       setDescTT]       = useState(card.descTiktok      ?? "");
+  const [descYT,       setDescYT]       = useState(card.descYoutube     ?? "");
+  const [descYTTitle,  setDescYTTitle]  = useState(card.descYoutubeTitle ?? "");
+  const [descRD,       setDescRD]       = useState(card.descFacebook         ?? "");
+  const [descRDTitle,  setDescRDTitle]  = useState(card.descRedditTitle      ?? "");
+  const [descRDSub,    setDescRDSub]    = useState(card.descRedditSubreddit  ?? "");
+  const [descTab,      setDescTab]      = useState("instagram");
+  const descTimers = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+  const inputRef   = useRef<HTMLInputElement>(null);
+  const finalRef   = useRef<HTMLInputElement>(null);
+  const t1Ref      = useRef<HTMLTextAreaElement>(null);
+  const t2Ref      = useRef<HTMLTextAreaElement>(null);
+  const saveTimer1 = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const saveTimer2 = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function autoResize(el: HTMLTextAreaElement | null) {
     if (!el) return;
@@ -45,6 +58,26 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
 
   useEffect(() => { autoResize(t1Ref.current); }, [transcript]);
   useEffect(() => { autoResize(t2Ref.current); }, [transcriptV2]);
+
+  async function deleteVideo() {
+    const field = isFinalRef ? "finalVideoPath" : "videoPath";
+    const res   = await fetch(`/api/cards/${card.id}`, {
+      method: "PATCH", headers: { "Content-Type": "application/json" },
+      body:   JSON.stringify({ [field]: null }),
+    });
+    onUpdated(await res.json() as CardType);
+    toast.success("Video removed");
+  }
+
+  function saveDesc(field: "descInstagram"|"descTiktok"|"descYoutube"|"descYoutubeTitle"|"descFacebook"|"descRedditTitle"|"descRedditSubreddit", value: string) {
+    if (descTimers.current[field]) clearTimeout(descTimers.current[field]);
+    descTimers.current[field] = setTimeout(() => {
+      fetch(`/api/cards/${card.id}`, {
+        method: "PATCH", headers: { "Content-Type": "application/json" },
+        body:   JSON.stringify({ [field]: value }),
+      });
+    }, 800);
+  }
 
   async function saveTranscript(field: "transcriptV1" | "transcriptV2", value: string) {
     const res  = await fetch(`/api/cards/${card.id}`, {
@@ -66,18 +99,28 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
 
   async function uploadVideo(file: File, isFinal = false) {
     setUploading(true);
-    const form = new FormData();
-    form.append("video", file);
-    if (isFinal) form.append("final", "true");
-    const res  = await fetch(`/api/cards/${card.id}/video`, { method: "POST", body: form });
-    const data = await res.json() as any;
-    if (res.ok) {
-      onUpdated({ ...card, ...(isFinal ? { finalVideoPath: data.path } : { videoPath: data.path }) });
-      toast.success("Video uploaded");
-    } else {
-      toast.error("Upload failed");
+    try {
+      const res = await fetch(`/api/cards/${card.id}/video`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": file.type || "video/mp4",
+          "X-Is-Final":   isFinal ? "true" : "false",
+        },
+        body: file,
+      });
+      if (res.ok) {
+        const data = await res.json() as { path: string };
+        onUpdated({ ...card, ...(isFinal ? { finalVideoPath: data.path } : { videoPath: data.path }) });
+        toast.success("Video uploaded");
+      } else {
+        const body = await res.text().catch(() => "");
+        toast.error(`Upload failed (${res.status}): ${body.slice(0, 120)}`);
+      }
+    } catch (err) {
+      toast.error(`Upload failed: ${(err as Error).message}`);
+    } finally {
+      setUploading(false);
     }
-    setUploading(false);
   }
 
   const handleDrop = useCallback((e: React.DragEvent, isFinal = false) => {
@@ -86,6 +129,24 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
     const file = e.dataTransfer.files[0];
     if (file) uploadVideo(file, isFinal);
   }, [card.id]);
+
+  async function downloadVideo() {
+    if (!videoPath) return;
+    try {
+      const res  = await fetch(videoPath);
+      const blob = await res.blob();
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement("a");
+      a.href     = url;
+      a.download = `card-${card.position}${isFinalRef ? "-final" : ""}.mp4`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      toast.error("Download failed");
+    }
+  }
 
   const videoPath   = phase === "final_video" ? (card.finalVideoPath ?? card.videoPath) : card.videoPath;
   const charPct     = Math.round((transcript.length / TRANSCRIPT_CHAR_LIMIT) * 100);
@@ -112,6 +173,15 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
               <span className={cn("h-1.5 w-1.5 rounded-full", hasVideo ? "bg-emerald-500" : "bg-muted-foreground/30")} title="Video" />
             </div>
           </div>
+
+          {/* Schedule button */}
+          <button
+            onClick={() => setSchedOpen(true)}
+            title="Schedule this card"
+            className="p-1 rounded hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <CalendarClock className="h-3.5 w-3.5" />
+          </button>
 
           {/* Status icon buttons */}
           <div className="flex items-center rounded-md border overflow-hidden">
@@ -150,17 +220,33 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
           onDrop={e => handleDrop(e, isFinalRef)}
         >
           {videoPath ? (
-            <div className="relative group">
+            <div className="relative">
               <video src={videoPath} controls className="w-full max-h-40 object-contain bg-black" />
-              <button
-                onClick={() => (isFinalRef ? finalRef : inputRef).current?.click()}
-                disabled={uploading}
-                className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100"
-              >
-                <span className="bg-white/90 text-black text-xs font-medium px-2 py-1 rounded-md flex items-center gap-1">
-                  <Upload className="h-3 w-3" /> Replace
-                </span>
-              </button>
+              <div className="absolute top-1.5 right-1.5 flex gap-1">
+                <button
+                  onClick={downloadVideo}
+                  title="Download video"
+                  className="bg-black/60 hover:bg-black/80 text-white text-xs px-1.5 py-1 rounded flex items-center gap-1 backdrop-blur-sm"
+                >
+                  <Download className="h-3 w-3" />
+                </button>
+                <button
+                  onClick={() => (isFinalRef ? finalRef : inputRef).current?.click()}
+                  disabled={uploading}
+                  title="Replace video"
+                  className="bg-black/60 hover:bg-black/80 text-white text-xs px-1.5 py-1 rounded flex items-center gap-1 backdrop-blur-sm"
+                >
+                  <Upload className="h-3 w-3" />
+                </button>
+                <button
+                  onClick={deleteVideo}
+                  disabled={uploading}
+                  title="Delete video"
+                  className="bg-red-600/80 hover:bg-red-600 text-white text-xs px-1.5 py-1 rounded flex items-center gap-1 backdrop-blur-sm"
+                >
+                  <Trash2 className="h-3 w-3" />
+                </button>
+              </div>
             </div>
           ) : (
             <button
@@ -209,8 +295,14 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
           <Textarea
             ref={t1Ref}
             value={transcript}
-            onChange={e => { setTranscript(e.target.value); autoResize(e.target); }}
-            onBlur={() => saveTranscript("transcriptV1", transcript)}
+            onChange={e => {
+              const val = e.target.value;
+              setTranscript(val);
+              autoResize(e.target);
+              if (saveTimer1.current) clearTimeout(saveTimer1.current);
+              saveTimer1.current = setTimeout(() => saveTranscript("transcriptV1", val), 800);
+            }}
+            onBlur={() => { if (saveTimer1.current) clearTimeout(saveTimer1.current); saveTranscript("transcriptV1", transcript); }}
             maxLength={TRANSCRIPT_CHAR_LIMIT}
             className="min-h-24 resize-none text-sm overflow-hidden"
             placeholder="~30 second script (150 wpm)"
@@ -227,8 +319,14 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
             <Textarea
               ref={t2Ref}
               value={transcriptV2}
-              onChange={e => { setTranscriptV2(e.target.value); autoResize(e.target); }}
-              onBlur={() => saveTranscript("transcriptV2", transcriptV2)}
+              onChange={e => {
+                const val = e.target.value;
+                setTranscriptV2(val);
+                autoResize(e.target);
+                if (saveTimer2.current) clearTimeout(saveTimer2.current);
+                saveTimer2.current = setTimeout(() => saveTranscript("transcriptV2", val), 800);
+              }}
+              onBlur={() => { if (saveTimer2.current) clearTimeout(saveTimer2.current); saveTranscript("transcriptV2", transcriptV2); }}
               maxLength={TRANSCRIPT_CHAR_LIMIT}
               className="min-h-24 resize-none text-sm overflow-hidden"
               placeholder="Revised version shown alongside original during review"
@@ -236,7 +334,69 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
           </div>
         )}
 
+        {/* Platform descriptions */}
+        <div className="space-y-1.5 border-t pt-3">
+          <Label className="text-xs font-medium">Platform Descriptions</Label>
+          <div className="flex gap-1 flex-wrap">
+            {(["instagram","tiktok","youtube","reddit"] as const).map(p => (
+              <button key={p} onClick={() => setDescTab(p)}
+                className={cn(
+                  "text-[10px] px-2 py-0.5 rounded border transition-colors",
+                  descTab === p ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted text-muted-foreground"
+                )}
+              >
+                {p === "instagram" ? "Instagram" : p === "tiktok" ? "TikTok" : p === "youtube" ? "YouTube" : "Reddit"}
+              </button>
+            ))}
+          </div>
+          {descTab === "instagram" && (
+            <Textarea value={descIG} onChange={e => { setDescIG(e.target.value); saveDesc("descInstagram", e.target.value); }}
+              className="text-xs min-h-20 resize-none" placeholder="Instagram caption…" />
+          )}
+          {descTab === "tiktok" && (
+            <Textarea value={descTT} onChange={e => { setDescTT(e.target.value); saveDesc("descTiktok", e.target.value); }}
+              className="text-xs min-h-20 resize-none" placeholder="TikTok caption…" />
+          )}
+          {descTab === "youtube" && (
+            <div className="space-y-1.5">
+              <Input
+                value={descYTTitle}
+                onChange={e => { setDescYTTitle(e.target.value); saveDesc("descYoutubeTitle", e.target.value); }}
+                className="text-xs h-7"
+                placeholder="Video title (max 60 chars)…"
+                maxLength={100}
+              />
+              <Textarea value={descYT} onChange={e => { setDescYT(e.target.value); saveDesc("descYoutube", e.target.value); }}
+                className="text-xs min-h-20 resize-none" placeholder="YouTube description…" />
+            </div>
+          )}
+          {descTab === "reddit" && (
+            <div className="space-y-1.5">
+              <Input
+                value={descRDTitle}
+                onChange={e => { setDescRDTitle(e.target.value); saveDesc("descRedditTitle", e.target.value); }}
+                className="text-xs h-7"
+                placeholder="Post title (max 300 chars)…"
+                maxLength={300}
+              />
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-muted-foreground shrink-0">r/</span>
+                <Input
+                  value={descRDSub}
+                  onChange={e => { setDescRDSub(e.target.value.replace(/^r\//, "")); saveDesc("descRedditSubreddit", e.target.value.replace(/^r\//, "")); }}
+                  className="text-xs h-7"
+                  placeholder="subreddit"
+                />
+              </div>
+              <Textarea value={descRD} onChange={e => { setDescRD(e.target.value); saveDesc("descFacebook", e.target.value); }}
+                className="text-xs min-h-20 resize-none" placeholder="Reddit post body…" />
+            </div>
+          )}
+        </div>
+
       </CardContent>
+
+      <ScheduleCardDialog card={card} open={schedOpen} onOpenChange={setSchedOpen} />
     </Card>
   );
 }

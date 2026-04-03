@@ -210,9 +210,6 @@
       "turbopackFileSystemCacheForDev": true,
       "turbopackFileSystemCacheForBuild": false,
       "turbopackInferModuleSideEffects": false,
-      "serverActions": {
-        "bodySizeLimit": "500mb"
-      },
       "optimizePackageImports": [
         "lucide-react",
         "date-fns",
@@ -297,6 +294,9 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
+      "resolveAlias": {
+        "next/dist/compiled/@vercel/og/index.edge.js": "/Users/atlas/repo/assurgit/lib/og-stub.mjs"
+      },
       "root": "/Users/atlas/repo/assurgit"
     },
     "distDirRoot": ".next"

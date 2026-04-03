@@ -1,9 +1,15 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { MotionWrapper, StaggerContainer, MotionItem } from "@/components/marketing/MotionWrapper";
+
 const steps = [
   {
     number: "1",
     title: "We clone you",
     description:
-      "30-minute setup call. We build your HeyGen avatar and voice clone from a short recording. You never film again.",
+      "30-minute setup call. We build your personal AI avatar and voice clone from a short recording. You never film again.",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -34,52 +40,122 @@ const steps = [
   },
 ];
 
+function AnimatedConnector() {
+  const ref = useRef<SVGSVGElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.5 });
+
+  return (
+    <svg
+      ref={ref}
+      className="hidden md:block absolute top-10 left-0 w-full overflow-visible pointer-events-none"
+      height="2"
+      aria-hidden="true"
+      style={{ zIndex: 0 }}
+    >
+      {/* Dim baseline track */}
+      <line x1="16.67%" y1="1" x2="83.33%" y2="1" stroke="#e5e7eb" strokeWidth="1.5" />
+      {/* Animated blue fill */}
+      <motion.line
+        x1="16.67%"
+        y1="1"
+        x2="83.33%"
+        y2="1"
+        stroke="#2563eb"
+        strokeWidth="2"
+        strokeLinecap="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+        transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
+      />
+    </svg>
+  );
+}
+
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-white py-16 md:py-24">
+    <section id="how-it-works" className="bg-white dark:bg-gray-950 py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 mb-4 tracking-tight">
+        <MotionWrapper className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 dark:text-white mb-4 tracking-tight">
             How it works
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto">
-            From zero to 5 published videos a week in three simple steps.
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+            From zero to published content every week in three simple steps.
           </p>
-        </div>
+        </MotionWrapper>
 
         {/* Steps */}
-        <div className="relative grid md:grid-cols-3 gap-10 md:gap-8">
-          {/* Connector line (desktop only) */}
-          <div
-            className="hidden md:block absolute top-10 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-gray-200"
-            aria-hidden="true"
-          />
+        <div className="relative">
+          <AnimatedConnector />
+          <StaggerContainer className="grid md:grid-cols-3 gap-10 md:gap-8" delay={0.5}>
+            {steps.map((step, index) => (
+              <MotionItem key={step.number}>
+                <div className="relative flex flex-col items-center text-center">
+                  {/* Number circle — scales in */}
+                  <motion.div
+                    className="relative z-10 w-20 h-20 bg-[#2563eb] rounded-full flex items-center justify-center mb-6 shadow-xl"
+                    initial={{ scale: 0.75, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: 0.5 + index * 0.15, ease: "easeOut" }}
+                  >
+                    <span className="text-white font-black text-3xl">{step.number}</span>
+                  </motion.div>
 
-          {steps.map((step, index) => (
-            <div key={step.number} className="relative flex flex-col items-center text-center">
-              {/* Number circle */}
-              <div className="relative z-10 w-20 h-20 bg-brand-accent rounded-full flex items-center justify-center mb-6 shadow-xl">
-                <span className="text-white font-black text-3xl">{step.number}</span>
-              </div>
+                  {/* Icon */}
+                  <div className="text-[#2563eb] mb-4">{step.icon}</div>
 
-              {/* Icon */}
-              <div className="text-brand-accent mb-4">
-                {step.icon}
-              </div>
+                  <h3 className="text-xl font-bold text-gray-950 dark:text-white mb-3">{step.title}</h3>
+                  <p className="text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs">{step.description}</p>
 
-              <h3 className="text-xl font-bold text-gray-950 mb-3">{step.title}</h3>
-              <p className="text-gray-500 leading-relaxed max-w-xs">{step.description}</p>
-
-              {/* Mobile arrow */}
-              {index < steps.length - 1 && (
-                <div className="md:hidden mt-8 text-brand-accent text-2xl" aria-hidden="true">
-                  ↓
+                  {/* Mobile arrow */}
+                  {index < steps.length - 1 && (
+                    <div className="md:hidden mt-8 text-[#2563eb] text-2xl" aria-hidden="true">↓</div>
+                  )}
                 </div>
-              )}
-            </div>
-          ))}
+              </MotionItem>
+            ))}
+          </StaggerContainer>
         </div>
+
+        {/* Weekly cadence table */}
+        <MotionWrapper className="mt-20" delay={0.1}>
+          <h3 className="text-xl font-black text-gray-950 dark:text-white mb-2 text-center">
+            The weekly operating rhythm
+          </h3>
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-8">
+            Every client runs through the same reliable cycle — research, scripts, review, render, publish.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
+              <thead>
+                <tr className="bg-gray-950 text-white">
+                  <th className="text-left py-3 px-4 font-semibold">Day</th>
+                  <th className="text-left py-3 px-4 font-semibold">What happens</th>
+                  <th className="text-left py-3 px-4 font-semibold">Output</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { day: "Sunday", what: "Research refresh + planning", output: "Fresh topics, intent signals, competitive movement" },
+                  { day: "Monday", what: "Scripts generated and sent", output: "Draft scripts for the week" },
+                  { day: "Tue–Thu", what: "Review window + adjustments", output: "Approved scripts + issue resolution" },
+                  { day: "Saturday", what: "Rendering, post-processing, QC", output: "Publish-ready assets" },
+                  { day: "Sunday", what: "Scheduling + next-cycle setup", output: "Content loaded for the following week" },
+                ].map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? "bg-white dark:bg-gray-900" : "bg-gray-50 dark:bg-gray-800"}>
+                    <td className="py-3 px-4 font-semibold text-gray-900 dark:text-white">{row.day}</td>
+                    <td className="py-3 px-4 text-gray-700 dark:text-gray-300">{row.what}</td>
+                    <td className="py-3 px-4 text-gray-500 dark:text-gray-400">{row.output}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </MotionWrapper>
+
       </div>
     </section>
   );

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "Privacy Policy — Assurgit",
   description: "Privacy Policy for Assurgit and its services.",

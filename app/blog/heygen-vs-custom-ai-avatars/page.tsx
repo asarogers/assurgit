@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "HeyGen vs. Custom AI Avatars: DIY vs. Done-For-You (Which Actually Works?)",
   description:
@@ -279,7 +281,7 @@ export default function HeyGenVsCustomAIAvatarsPage() {
                   </div>
                   <div className="pt-3 border-t border-indigo-500/20">
                     <p className="text-white font-bold text-sm">Total cost</p>
-                    <p className="text-white font-bold text-lg">$3,497/month</p>
+                    <p className="text-white font-bold text-lg">From $397/month</p>
                   </div>
                 </div>
               </div>

@@ -24,7 +24,7 @@ const deliverables = [
       </svg>
     ),
     title: "Multi-Platform Publishing",
-    description: "Instagram, TikTok, LinkedIn, YouTube — auto-published on your schedule, every week.",
+    description: "Instagram, TikTok, LinkedIn, YouTube — auto-published on your schedule, every week. (Starter & Growth plans)",
   },
   {
     icon: (
@@ -33,7 +33,7 @@ const deliverables = [
       </svg>
     ),
     title: "Weekly Competitive Intel",
-    description: "Know what your competitors are doing before your audience does.",
+    description: "Know what your competitors are doing before your audience does. (Starter & Growth plans)",
   },
   {
     icon: (
@@ -51,39 +51,40 @@ const deliverables = [
       </svg>
     ),
     title: "Friday Strategy Call",
-    description: "Weekly briefing covering performance, research, and next week's content plan.",
+    description: "Weekly briefing covering performance, research, and next week's content plan. (Starter & Growth plans)",
   },
 ];
 
+import { StaggerContainer, MotionItem, MotionWrapper } from "@/components/marketing/MotionWrapper";
+
 export default function WhatYouGet() {
   return (
-    <section className="bg-gray-50 py-16 md:py-24">
+    <section className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 mb-4 tracking-tight">
+        <MotionWrapper className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 dark:text-white mb-4 tracking-tight">
             Everything in your plan, every week
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto">
+          <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             No guessing what you get. This is what ships every single week.
           </p>
-        </div>
+        </MotionWrapper>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {deliverables.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow"
-            >
-              <div className="w-10 h-10 bg-brand-accent-muted border border-brand-accent-muted rounded-lg flex items-center justify-center text-brand-accent mb-4">
+            <MotionItem key={i}>
+            <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6 h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-md hover:border-brand-accent-muted dark:hover:border-[#2563eb]/40">
+              <div className="w-10 h-10 bg-brand-accent-muted dark:bg-[#2563eb]/15 border border-brand-accent-muted dark:border-[#2563eb]/25 rounded-lg flex items-center justify-center text-brand-accent mb-4">
                 {item.icon}
               </div>
-              <h3 className="text-gray-950 font-bold text-base mb-2">{item.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+              <h3 className="text-gray-950 dark:text-white font-bold text-base mb-2">{item.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{item.description}</p>
             </div>
+            </MotionItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

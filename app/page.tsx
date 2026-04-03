@@ -2,12 +2,15 @@ import Navbar from "@/components/marketing/Navbar";
 import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
 import ProblemSection from "@/components/marketing/ProblemSection";
+import WhyWeWin from "@/components/marketing/WhyWeWin";
 import HowItWorks from "@/components/marketing/HowItWorks";
 import WhatYouGet from "@/components/marketing/WhatYouGet";
 import PricingSection from "@/components/marketing/PricingSection";
+import FounderSection from "@/components/marketing/FounderSection";
 import FAQSection from "@/components/marketing/FAQSection";
 import CTASection from "@/components/marketing/CTASection";
 import Footer from "@/components/marketing/Footer";
+import MobileStickyBar from "@/components/marketing/MobileStickyBar";
 
 const softwareSchema = {
   "@context": "https://schema.org",
@@ -15,13 +18,13 @@ const softwareSchema = {
   "name": "Assurgit",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "description": "Assurgit creates 7 fully branded AI videos per week for your business using your personal avatar and voice clone. The research pipeline monitors your competitive landscape, writes platform-optimized scripts, renders videos, and publishes to Instagram, TikTok, LinkedIn, and YouTube on autopilot.",
+  "description": "Assurgit is an Online Presence Launch System for service businesses. We turn your face, voice, and expertise into recurring AI clone content, then layer on publishing, visibility infrastructure, and GEO.",
   "offers": {
     "@type": "AggregateOffer",
-    "lowPrice": "1997",
-    "highPrice": "5997",
+    "lowPrice": "397",
+    "highPrice": "3497",
     "priceCurrency": "USD",
-    "offerCount": "3"
+    "offerCount": "4"
   },
   "provider": {
     "@type": "Organization",
@@ -60,10 +63,18 @@ const faqSchema = {
     },
     {
       "@type": "Question",
+      "name": "What does the $397/month Launch plan include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Launch plan at $397/month includes your personal AI avatar, voice clone, short-form videos every week with research-backed scripts, human QC on every video, and MP4 delivery to one platform. Auto-publishing to all 4 platforms is available on the Starter plan at $997/month."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What platforms do you publish to?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Growth and Scale plans: Instagram, TikTok, LinkedIn, and YouTube. Starter plan delivers MP4 files via email for you to post manually or through your own scheduler."
+        "text": "Starter and Growth plans auto-publish to Instagram, TikTok, LinkedIn, and YouTube. The Launch plan delivers MP4 files via email for manual posting."
       }
     },
     {
@@ -93,6 +104,8 @@ const faqSchema = {
   ]
 };
 
+export const dynamic = "force-static"
+
 export default function RootPage() {
   return (
     <>
@@ -109,13 +122,16 @@ export default function RootPage() {
         <Hero />
         <TrustBar />
         <ProblemSection />
+        <WhyWeWin />
         <HowItWorks />
         <WhatYouGet />
         <PricingSection />
+        <FounderSection />
         <FAQSection />
         <CTASection />
       </main>
       <Footer />
+      <MobileStickyBar />
     </>
   );
 }

@@ -197,6 +197,128 @@ npx wrangler secret put RESEND_FROM_EMAIL
 
 ---
 
+## 12. Analytics & Tracking
+
+### Google Analytics 4
+- Measurement ID: `G-YNWT2XH3EG`
+- GA4 Consent Mode v2 enabled (default denied, granted on cookie accept)
+- `url_passthrough` + `ads_data_redaction` enabled for cookieless modeling
+- Conversion events tracked: `cta_click`, `form_submit`, `demo_booked`, `pricing_click`, `scroll_depth`
+
+### Microsoft Clarity
+- Project ID: `vyiz437qrx`
+- Session recordings + heatmaps active
+- Clarity consent granted via cookie banner accept
+
+### Cookie Consent Banner
+- Component: `components/CookieBanner.tsx`
+- Stores preference in `localStorage` key `cookie_consent`
+- Grants all 4 GA4 consent signals + Clarity on accept
+
+### Google Search Console
+- Property: `https://assurgit.com`
+- Submit sitemap: `https://assurgit.com/sitemap.xml`
+
+---
+
+## 13. SEO Infrastructure
+
+### robots.txt
+- Auto-generated via `app/robots.ts` on every deploy
+- AI crawlers explicitly allowed: `GPTBot`, `OAI-SearchBot` (ChatGPT search — separate from GPTBot), `ChatGPT-User`, `Google-Extended`, `PerplexityBot`, `Claude-Web`, `anthropic-ai`, `Bytespider`, `cohere-ai`
+- Admin routes blocked: `/terminal`, `/login`, `/review`, `/api/`
+
+### Sitemap
+- Auto-generated via `app/sitemap.ts`
+- Includes: core pages, blog posts, /for/, /compare/, /best/, /features/ pages
+
+### Open Graph Image
+- Auto-generated via `app/opengraph-image.tsx` (1200×630px)
+- Dark navy background with blue brand accent
+
+### Schema Markup
+- Type: `Organization` with `@id`, `logo`, `image`, `sameAs`, `contactPoint`, `foundingDate`
+- Add `VideoObject` schema on any page with a demo/example video — helps Google surface video results
+- Validate at: https://validator.schema.org
+- Test rich results at: https://search.google.com/test/rich-results
+
+---
+
+## 14. Bing Webmaster Tools
+
+1. Go to **bing.com/webmasters** → sign in with Microsoft account
+2. Add site → enter `https://assurgit.com`
+3. Verify via XML file or DNS TXT record (same TXT record as Google Search Console works)
+4. Submit sitemap: `https://assurgit.com/sitemap.xml`
+5. Use **URL Submission** to manually submit new/updated pages after publishing
+
+---
+
+## 15. IndexNow (Instant Search Engine Pinging)
+
+IndexNow lets you notify Bing, Yandex, and other participating engines immediately when a page is added or updated. Bing shares submissions with other IndexNow participants.
+
+1. Go to **bing.com/webmasters** → IndexNow → Generate API key
+2. Download the key file and place it in `/public/` (e.g. `public/abc123.txt`)
+3. Automate pinging after deploy — add to `scripts/deploy.mjs`:
+
+```js
+// After wrangler deploy succeeds:
+const urls = ['https://assurgit.com', 'https://assurgit.com/blog', ...];
+await fetch('https://api.indexnow.org/indexnow', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    host: 'assurgit.com',
+    key: 'YOUR_INDEXNOW_KEY',
+    urlList: urls,
+  }),
+});
+```
+
+---
+
+## 16. PageSpeed Insights & Core Web Vitals
+
+Performance directly affects search ranking and conversion.
+
+- **PageSpeed Insights**: https://pagespeed.web.dev — run on homepage, /pricing, /book after each major deploy. Target: LCP < 2.5s, CLS < 0.1, INP < 200ms
+- **Search Console Core Web Vitals report**: shows real-world field data by page — check monthly under **Experience → Core Web Vitals**
+- **Cloudflare Analytics**: already active — shows performance per route
+
+---
+
+## 17. Technical SEO Crawler
+
+Use one of these to catch crawl errors, broken links, redirect chains, missing meta tags, and duplicate content:
+
+- **Ahrefs Webmaster Tools** (free for verified owners) — site audit + backlink data: https://ahrefs.com/webmaster-tools
+- **Semrush Site Audit** (free tier available) — prioritized issue list: https://semrush.com/siteaudit/
+
+Run a full crawl after major deploys or new page batches.
+
+---
+
+## 18. Rich Results Testing
+
+Run this after adding or changing any schema markup:
+
+- **Rich Results Test**: https://search.google.com/test/rich-results
+- **Schema Validator**: https://validator.schema.org
+
+Priority pages to test: homepage (Organization), blog posts (Article), /for/* pages (Service), any video pages (VideoObject).
+
+---
+
+## 19. Optional — Entity & Local Presence
+
+Only relevant if building brand/entity recognition or local search visibility:
+
+- **Google Business Profile**: supports service-area businesses with no public address — https://business.google.com
+- **Apple Business Connect**: controls how Assurgit appears across Apple Maps, Siri, Spotlight — https://businessconnect.apple.com
+
+---
+
 ## Quick Reference
 
 | Item | Value |
@@ -205,4 +327,6 @@ npx wrangler secret put RESEND_FROM_EMAIL
 | Cloudflare Worker | assurgit |
 | Workers.dev URL | assurgit.founder-asa.workers.dev |
 | Contact email | (set when ready) |
+| GA4 ID | G-YNWT2XH3EG |
+| Clarity ID | vyiz437qrx |
 | Deploy command | `npm run deploy` |

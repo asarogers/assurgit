@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import { verifyConnectToken } from "@/lib/social/connect-token";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 import { getDb } from "@/lib/db";
 import { socialAccounts } from "@/lib/db/social-schema";
 import { eq } from "drizzle-orm";

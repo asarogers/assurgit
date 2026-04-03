@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+export const dynamic = "force-static"
+
 export const metadata: Metadata = {
   title: "Done-For-You AI Video Content for Businesses: What It Is, What It Costs, and What to Expect",
   description:
@@ -264,7 +266,7 @@ export default function DoneForYouAIVideoContentPage() {
           </div>
 
           <p className="text-gray-300 leading-relaxed mb-4">
-            <strong className="text-white">What it costs:</strong> $1,997–$5,997/month depending on plan. View the full breakdown on the <Link href="/pricing" className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors">pricing page</Link>.
+            <strong className="text-white">What it costs:</strong> $397–$3,497/month depending on plan. View the full breakdown on the <Link href="/pricing" className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors">pricing page</Link>.
           </p>
 
           <p className="text-gray-300 leading-relaxed mb-4">
@@ -337,7 +339,7 @@ export default function DoneForYouAIVideoContentPage() {
               },
               {
                 q: "What platforms do you publish to?",
-                a: "Instagram, TikTok, LinkedIn, and YouTube. All four are included in the Growth plan. Platform-specific formatting is handled for each.",
+                a: "Instagram, TikTok, LinkedIn, and YouTube. All four are included on the Starter plan and above. Platform-specific formatting is handled for each.",
               },
               {
                 q: "What if the avatar doesn't look right?",

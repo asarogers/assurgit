@@ -1,31 +1,47 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import FounderSection from "@/components/marketing/FounderSection";
+
+export const dynamic = "force-static"
 
 export const metadata: Metadata = {
   title: "Book a Free Call",
   description:
-    "Book a 20-minute call with Assurgit. We'll show you exactly what your AI video content would look like before you spend a dollar.",
+    "Book a free call with Assurgit. We'll diagnose your platform needs, show you what your clone content could look like, and recommend your plan fit — Launch, Starter, Growth, or Scale.",
 };
 
+const whoThisIsFor = [
+  "Service businesses that want consistent video presence without filming",
+  "Coaches, consultants, loan officers, and advisors who need authority content",
+  "Busy professionals who've tried DIY and it collapsed under time pressure",
+  "Anyone who wants to know their plan fit before committing",
+];
+
+const whatWellDiagnose = [
+  "Your platform reach and publishing needs",
+  "Whether you need clone content only, or clone + infrastructure",
+  "Your tier fit: Launch, Starter, Growth, or Scale",
+];
+
 const expectations = [
-  {
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: "30 minutes",
-    description: "A focused, no-fluff conversation about your content goals.",
-  },
   {
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
       </svg>
     ),
-    title: "See sample videos",
-    description: "We'll show you real examples of what your avatar content looks like.",
+    title: "See what your clone content could look like",
+    description: "Real examples of avatar content built from faces and voices like yours.",
+  },
+  {
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
+      </svg>
+    ),
+    title: "Learn if you need clone-only or clone + infrastructure",
+    description: "We'll map your visibility gaps and show where content alone isn't enough.",
   },
   {
     icon: (
@@ -33,8 +49,8 @@ const expectations = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 11h.01M12 11h.01M15 11h.01M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    title: "Get a pricing recommendation",
-    description: "We'll recommend the right plan for your volume and goals.",
+    title: "Get a plan recommendation",
+    description: "Based on your economics, platform needs, and support level — Launch, Starter, Growth, or Scale.",
   },
   {
     icon: (
@@ -71,11 +87,36 @@ export default function BookPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left: What to expect */}
+            {/* Left: Context + What to expect */}
             <div>
-              <h2 className="text-xl font-bold text-gray-950 mb-6">
-                What to expect
-              </h2>
+              {/* Who this is for */}
+              <h2 className="text-xl font-bold text-gray-950 mb-4">Who this is for</h2>
+              <ul className="space-y-2 mb-8">
+                {whoThisIsFor.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                    <svg className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              {/* What we'll diagnose */}
+              <h2 className="text-xl font-bold text-gray-950 mb-4">What we&apos;ll diagnose</h2>
+              <ul className="space-y-2 mb-8">
+                {whatWellDiagnose.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                    <svg className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              {/* What to expect */}
+              <h2 className="text-xl font-bold text-gray-950 mb-4">What you&apos;ll leave with</h2>
               <div className="space-y-5">
                 {expectations.map((item, i) => (
                   <div key={i} className="flex gap-4 items-start">
@@ -157,6 +198,9 @@ export default function BookPage() {
               )}
             </div>
           </div>
+        </div>
+        <div className="mt-4 border-t border-gray-200">
+          <FounderSection />
         </div>
       </main>
       <Footer />
