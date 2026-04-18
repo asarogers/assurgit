@@ -19,15 +19,23 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     template: "%s | Assurgit",
-    default: "Assurgit — Online Presence Launch System for Service Businesses",
+    default: "Assurgit — Done-For-You AI Video Content Service",
   },
   description:
-    "Assurgit is an Online Presence Launch System for service businesses. We turn your face, voice, and expertise into recurring AI clone content, then layer on publishing, visibility infrastructure, and GEO so your business gets found across social, search, maps, and AI answers.",
+    "Assurgit is a done-for-you AI video content service. Your AI avatar and voice clone produce 5 research-backed videos every week, auto-published to Instagram, TikTok, LinkedIn, and YouTube. Starting at $397/month. No filming. No contracts.",
   metadataBase: new URL("https://assurgit.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Assurgit",
+    images: [
+      {
+        url: "https://assurgit.com/app-icon-1024.png",
+        width: 1024,
+        height: 1024,
+        alt: "Assurgit — Done-For-You AI Video Content Service",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -61,6 +69,25 @@ const organizationSchema = {
   }
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://assurgit.com/#website",
+  "url": "https://assurgit.com",
+  "name": "Assurgit",
+  "description": "AI-powered video content system for businesses.",
+  "publisher": { "@id": "https://assurgit.com/#organization" },
+  "inLanguage": "en-US",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://assurgit.com/blog?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,10 +98,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* hreflang — inline tags so audit tools see them (HTTP Link header covers per-page via middleware) */}
+        <link rel="alternate" hrefLang="en-US" href="https://assurgit.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://assurgit.com" />
         <meta name="facebook-domain-verification" content="n91pu6uqos8iiyz3gi53aasoc0x2r7" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         {/* Microsoft Clarity */}
         <script
