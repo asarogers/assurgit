@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for physical therapists. Build authority and attract patients through educational movement and recovery content. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/physical-therapists",
     title: "AI Video Content for Physical Therapists — Done For You",
     description:
       "Turn your physical therapy expertise into 5 weekly videos — published automatically. Reach patients searching for answers about pain, recovery, and movement.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/physical-therapists',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Physical Therapists",
+      "item": "https://assurgit.com/for/physical-therapists"
+    }
+  ]
+};
+
 export default function PhysicalTherapistsPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -68,9 +100,11 @@ export default function PhysicalTherapistsPage() {
             For Physical Therapists
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Patients in pain are searching for answers{" "}
-            <span className="text-cyan-400">right now — be the PT they find</span>
+            Done-for-You AI Video Content for <span className="text-cyan-400">Physical Therapists</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Patients in pain are searching for answers right now — be the PT they find
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what your patients are searching for about pain and recovery, and publishes 5 educational videos a week — positioning you as the movement authority they call first.
           </p>

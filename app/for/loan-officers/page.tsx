@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for loan officers. Your face, your voice, educational videos published weekly to Instagram, TikTok, LinkedIn, and YouTube. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/loan-officers",
     title: "AI Video Content for Loan Officers — Done For You",
     description:
       "Stop losing referrals to loan officers who show up online every week. Get your AI avatar, scripts, and auto-publishing — all done for you.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/loan-officers',
   },
 };
 
@@ -97,9 +102,36 @@ const plans = [
   { name: "Growth", price: "$1,997/mo", videos: "10+/week", platforms: "IG, TT, LI, YT", publishing: "Auto-publishing + White-glove", highlight: false },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Loan Officers",
+      "item": "https://assurgit.com/for/loan-officers"
+    }
+  ]
+};
+
 export default function LoanOfficersPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -112,10 +144,11 @@ export default function LoanOfficersPage() {
             For Loan Officers
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Stay top-of-mind with every{" "}
-            <span className="text-indigo-400">referral partner</span>
-            {" "}— without filming a single video
+            Done-for-You AI Video Content for <span className="text-indigo-400">Loan Officers</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Stay top-of-mind with every referral partner — without filming a single video
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, writes compliance-safe educational scripts, and publishes to LinkedIn, Instagram, TikTok, and YouTube — every week, on autopilot.
           </p>

@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "We build your website, fix your Google Business Profile, get you listed on 40+ directories, and set up proper indexing — everything Google needs to trust and rank your business. $200/month, no contracts.",
   openGraph: {
+    url: "https://assurgit.com/local-seo",
     title: "Local SEO for Small Businesses — $200/month",
     description:
       "Most small businesses are missing 30–50 directory listings, have the wrong GBP category, and have site-level penalties they don't know about. We fix all of it for $200/month.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/local-seo',
   },
 };
 

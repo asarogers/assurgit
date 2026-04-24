@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { resolveImagePath } from "@/lib/image-path";
 
 export const dynamic = "force-static"
 
@@ -10,16 +11,119 @@ export const metadata: Metadata = {
   description:
     "You don't need a camera crew or a studio. The best AI video agencies for coaches use your voice, your face, and your ideas — and handle the rest. Here's what to look for.",
   openGraph: {
+    url: "https://assurgit.com/blog/best-ai-video-agency-for-coaches",
     title: "Best AI Video Agency for Coaches in 2026 (That Actually Sounds Like You)",
     description:
       "You don't need a camera crew or a studio. The best AI video agencies for coaches use your voice, your face, and your ideas — and handle the rest.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
   },
+  alternates: {
+    canonical: 'https://assurgit.com/blog/best-ai-video-agency-for-coaches',
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I have to film anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. After the initial 30-minute setup — which includes your avatar training video and your voice clone recording — you never need to film again. Everything is generated from your existing avatar and voice clone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it actually sound like me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your voice clone is generated from your actual voice recordings using industry-leading technology. The difference between a generic text-to-speech voice and a proper voice clone is significant — and it's what determines whether your audience connects with the content or tunes it out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long until I see results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consistency compounds. Most clients see meaningful engagement growth by week 8. Authority takes longer — six months of weekly posting builds a presence that very few coaches in any niche have."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I approve content before it goes live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every Monday, your five scripts are delivered for optional review. You have a 48-hour window to read them, request changes, or approve them. If you don't respond, they auto-approve and move to rendering — keeping the production schedule on track without creating a bottleneck."
+      }
+    }
+  ]
+}
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best AI Video Agency for Coaches in 2026 (That Actually Sounds Like You)",
+  "description": "You don't need a camera crew or a studio. The best AI video agencies for coaches use your voice, your face, and your ideas \u2014 and handle the rest. Here's what to look for.",
+  "image": "https://assurgit.com/app-icon-1024.png",
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01",
+  "url": "https://assurgit.com/blog/best-ai-video-agency-for-coaches",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://assurgit.com/blog/best-ai-video-agency-for-coaches"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://assurgit.com/app-icon-1024.png"
+    }
+  }
+}
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://assurgit.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Best AI Video Agency For Coaches",
+      "item": "https://assurgit.com/blog/best-ai-video-agency-for-coaches"
+    }
+  ]
 };
 
 export default function BestAIVideoAgencyForCoachesPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="min-h-screen bg-gray-950 text-white">
       <Navbar />
 
       <main className="pt-24 pb-20">
@@ -50,6 +154,14 @@ export default function BestAIVideoAgencyForCoachesPage() {
           <p className="text-gray-400 text-lg leading-relaxed">
             Most coaches know they need to post video. Most coaches also know they&apos;re never actually going to sit down and film seven of them this week. That&apos;s not a discipline problem. It&apos;s a systems problem.
           </p>
+        </div>
+
+        {/* Featured Image */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 mb-10">
+          <img
+            src={resolveImagePath('blog', 'best-ai-video-agency-for-coaches')}
+            alt="Best AI video agency for coaches comparison"
+            className="w-full h-64 md:h-80 object-cover rounded-2xl" loading="lazy" />
         </div>
 
         {/* Article Body */}
@@ -298,5 +410,6 @@ export default function BestAIVideoAgencyForCoachesPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for business coaches. Your face, your voice, thought leadership videos published weekly to Instagram, TikTok, LinkedIn, and YouTube. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/business-coaches",
     title: "AI Video Content for Business Coaches — Done For You",
     description:
       "Stop losing coaching clients to coaches who show up online every week. Get your AI avatar, scripts, and auto-publishing — all done for you.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/business-coaches',
   },
 };
 
@@ -97,9 +102,36 @@ const plans = [
   { name: "Growth", price: "$1,997/mo", videos: "10+/week", platforms: "IG, TT, LI, YT", publishing: "Auto-publishing + White-glove", highlight: false },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Business Coaches",
+      "item": "https://assurgit.com/for/business-coaches"
+    }
+  ]
+};
+
 export default function BusinessCoachesPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -112,10 +144,11 @@ export default function BusinessCoachesPage() {
             For Business Coaches
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Your ideal clients hire the coach they{" "}
-            <span className="text-indigo-400">see every week</span>
-            {" "}— make sure that&apos;s you
+            Done-for-You AI Video Content for <span className="text-indigo-400">Business Coaches</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Your ideal clients hire the coach they see every week — make sure that&apos;s you
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, writes research-backed thought leadership scripts, and publishes to LinkedIn, Instagram, TikTok, and YouTube — every week, on autopilot.
           </p>

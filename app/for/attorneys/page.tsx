@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for attorneys and law firms. Build authority, attract clients, and stay top-of-mind with 5 educational legal videos per week — without filming. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/attorneys",
     title: "AI Video Content for Attorneys — Done For You",
     description:
       "Turn your legal expertise into 5 weekly videos published automatically. Build authority and attract clients without spending hours on content.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/attorneys',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Attorneys",
+      "item": "https://assurgit.com/for/attorneys"
+    }
+  ]
+};
+
 export default function AttorneysPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -68,10 +100,11 @@ export default function AttorneysPage() {
             For Attorneys & Law Firms
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Your legal expertise,{" "}
-            <span className="text-blue-400">building trust with clients</span>
-            {" "}— every week, on autopilot
+            Done-for-You AI Video Content for <span className="text-blue-400">Attorneys</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Your legal expertise, building trust with clients — every week, on autopilot
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what potential clients in your practice area are searching for, and publishes 5 educational videos a week — while you focus on practicing law.
           </p>

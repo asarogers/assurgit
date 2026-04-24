@@ -9,6 +9,7 @@ import { ExternalLink, Check, } from "lucide-react";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
 
+
 type Tool = {
   id: string;
   name: string;
@@ -559,6 +560,32 @@ function ScoreBar({ label, score }: { label: string; score: number }) {
   );
 }
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://assurgit.com/tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Video Tools",
+      "item": "https://assurgit.com/tools/ai-video-tools"
+    }
+  ]
+};
+
 export default function AIVideoToolsPage() {
   const [useCase, setUseCase] = useState("All");
   const [priceFilter, setPriceFilter] = useState("all");
@@ -596,6 +623,8 @@ export default function AIVideoToolsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
       <Navbar />
 
       <main className="flex-1 pt-24 pb-16">

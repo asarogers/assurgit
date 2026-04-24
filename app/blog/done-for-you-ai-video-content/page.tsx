@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { resolveImagePath } from "@/lib/image-path";
 
 export const dynamic = "force-static"
 
@@ -10,16 +11,135 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content means your face, your voice, and your ideas — published to 4 platforms weekly, without you lifting a finger. Here's exactly how it works.",
   openGraph: {
+    url: "https://assurgit.com/blog/done-for-you-ai-video-content",
     title: "Done-For-You AI Video Content for Businesses: What It Is, What It Costs, and What to Expect",
     description:
       "Done-for-you AI video content means your face, your voice, and your ideas — published to 4 platforms weekly, without you lifting a finger. Here's exactly how it works.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
   },
+  alternates: {
+    canonical: 'https://assurgit.com/blog/done-for-you-ai-video-content',
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to film anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only at setup — a short video for avatar training and a brief audio recording for voice cloning. After that, no filming required. Your avatar and voice clone handle everything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does setup take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "30 minutes for the onboarding call. Avatar training and voice clone generation happen on our side. Most clients are live and publishing within 5–7 business days of onboarding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I want changes to a script?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Request revisions during the 48-hour Monday review window. We handle them same-day. You can flag tone, topic, specific claims, or anything that doesn't fit your current positioning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there contracts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Month-to-month. No long-term contracts required. The clients who stay do so because results compound over time — not because they're locked in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What platforms do you publish to?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Instagram, TikTok, LinkedIn, and YouTube. All four are included on the Starter plan and above. Platform-specific formatting is handled for each."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the avatar doesn't look right?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every avatar goes through quality review before going live. If something doesn't meet the standard, we re-train. You approve the avatar before it's ever used in published content."
+      }
+    }
+  ]
+}
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Done-For-You AI Video Content for Businesses: What It Is, What It Costs, and What to Expect",
+  "description": "Done-for-you AI video content means your face, your voice, and your ideas \u2014 published to 4 platforms weekly, without you lifting a finger. Here's exactly how it works.",
+  "image": "https://assurgit.com/app-icon-1024.png",
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01",
+  "url": "https://assurgit.com/blog/done-for-you-ai-video-content",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://assurgit.com/blog/done-for-you-ai-video-content"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://assurgit.com/app-icon-1024.png"
+    }
+  }
+}
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://assurgit.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Done For You AI Video Content",
+      "item": "https://assurgit.com/blog/done-for-you-ai-video-content"
+    }
+  ]
 };
 
 export default function DoneForYouAIVideoContentPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="min-h-screen bg-gray-950 text-white">
       <Navbar />
 
       <main className="pt-24 pb-20">
@@ -50,6 +170,14 @@ export default function DoneForYouAIVideoContentPage() {
           <p className="text-gray-400 text-lg leading-relaxed">
             Done-for-you used to mean hiring an agency to produce generic branded videos with stock footage and a voiceover that sounds like nobody you know. AI changed that. Done-for-you now means your face, your voice, your content — published automatically. Here&apos;s what that actually looks like in practice.
           </p>
+        </div>
+
+        {/* Featured Image */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 mb-10">
+          <img
+            src={resolveImagePath('blog', 'done-for-you-ai-video-content')}
+            alt="Done-for-you AI video content production workflow"
+            className="w-full h-64 md:h-80 object-cover rounded-2xl" loading="lazy" />
         </div>
 
         {/* Article Body */}
@@ -421,5 +549,6 @@ export default function DoneForYouAIVideoContentPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

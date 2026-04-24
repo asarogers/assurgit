@@ -1,7 +1,7 @@
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { getDb } from "@/lib/db";
 import { socialAccounts } from "@/lib/db/social-schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 export async function GET(req: Request) {
   try { await requireOwner(req); } catch { return unauthorizedResponse(); }
@@ -16,9 +16,7 @@ export async function GET(req: Request) {
   if (accountId) {
     try {
       const db = getDb();
-      const account = await db.query.socialAccounts.findFirst({
-        where: (a, { and }) => and(eq(a.id, accountId), eq(a.platform, "reddit")),
-      });
+      const account = (await db.select().from(socialAccounts).where(and(eq(socialAccounts.id, accountId), eq(socialAccounts.platform, "reddit"))).limit(1))[0];
       accessToken = account?.accessToken ?? null;
     } catch {}
   }

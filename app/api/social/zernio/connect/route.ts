@@ -2,6 +2,10 @@ import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { signOAuthState } from "@/lib/social/oauth-state";
 import { verifyConnectToken } from "@/lib/social/connect-token";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { getDb } from "@/lib/db";
+import { getPgDb } from "@/lib/db/pg";
+import { projects } from "@/lib/db/pg-schema";
+import { eq } from "drizzle-orm";
 
 const SUPPORTED_PLATFORMS = ["reddit", "tiktok"] as const;
 type ZernioPlatform = typeof SUPPORTED_PLATFORMS[number];
@@ -24,12 +28,15 @@ export async function GET(req: Request) {
     try { await requireOwner(req); } catch { return unauthorizedResponse(); }
   }
 
+  const db = getPgDb();
+  const [project] = await db.select({ clientId: projects.clientId }).from(projects).where(eq(projects.id, projectId)).limit(1);
+  const state = await signOAuthState(projectId, connectToken ?? undefined, project?.clientId ?? undefined);
+
   const { env } = getCloudflareContext() as any;
   const apiKey    = env.ZERNIO_API_KEY    as string ?? "";
   const profileId = env.ZERNIO_PROFILE_ID as string ?? "";
   const appUrl    = (env.NEXT_PUBLIC_APP_URL as string) ?? "https://assurgit.com";
 
-  const state       = await signOAuthState(projectId, connectToken ?? undefined);
   const redirectUrl = `${appUrl}/api/social/zernio/callback?state=${encodeURIComponent(state)}`;
 
   const res = await fetch(

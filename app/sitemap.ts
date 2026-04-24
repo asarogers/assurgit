@@ -82,7 +82,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog/how-to-get-clients-from-social-media-without-posting-every-day`, lastModified: new Date("2026-03-27"), changeFrequency: "monthly", priority: 0.7 },
 
     // Tools
+    { url: `${base}/tools`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/tools/ai-video-tools`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/tools/seo-audit`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
 
     // Use case pages (/for/)
     ...forSlugs.map((slug) => ({

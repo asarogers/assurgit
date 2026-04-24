@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for therapists building a private practice. Reduce stigma, attract ideal clients, and grow your practice with 5 educational videos per week. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/therapists",
     title: "AI Video Content for Therapists — Done For You",
     description:
       "Turn your mental health expertise into 5 weekly videos — published automatically. Build the trust that helps clients take the first step toward therapy.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/therapists',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Therapists",
+      "item": "https://assurgit.com/for/therapists"
+    }
+  ]
+};
+
 export default function TherapistsPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -68,10 +100,11 @@ export default function TherapistsPage() {
             For Therapists & Mental Health Professionals
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Help people feel understood{" "}
-            <span className="text-rose-400">before they ever pick up the phone</span>
-            {" "}— and fill your practice
+            Done-for-You AI Video Content for <span className="text-rose-400">Therapists</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Help people feel understood before they ever pick up the phone — and fill your practice
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what your ideal clients are searching for about mental health, and publishes 5 educational videos a week — reducing stigma, building trust, and attracting people who are ready for the right therapist.
           </p>

@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { LayoutGrid, Share2, BarChart2, BookOpen, LogOut } from "lucide-react";
+import { LayoutGrid, Share2, BarChart2, BookOpen, Database, LogOut } from "lucide-react";
 
 const NAV_ITEMS = [
-  { href: "/terminal",  label: "Projects",   icon: LayoutGrid },
-  { href: "/social",    label: "Social",     icon: Share2 },
-  { href: "/analytics", label: "Analytics",  icon: BarChart2 },
-  { href: "/guide",     label: "Guide",      icon: BookOpen },
+  { href: "/terminal",  label: "Projects",  icon: LayoutGrid },
+  { href: "/social",    label: "Social",    icon: Share2 },
+  { href: "/analytics", label: "Analytics", icon: BarChart2 },
+  { href: "/database",  label: "Database",  icon: Database },
+  { href: "/guide",     label: "Guide",     icon: BookOpen },
 ];
 
 export function AdminNav() {

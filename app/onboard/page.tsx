@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { validateReviewToken } from "@/lib/token";
 import { getDb } from "@/lib/db";
+import { projects, onboardingSubmissions, onboardingFiles } from "@/lib/db/schema";
+import { eq, asc } from "drizzle-orm";
 import { OnboardClient } from "./OnboardClient";
 
 export const metadata: Metadata = {
   title: "Client Onboarding — Assurgit",
   robots: { index: false, follow: false },
+  alternates: {
+    canonical: 'https://assurgit.com/onboard',
+  },
 };
 
 function ErrorPage({ message }: { message: string }) {
@@ -34,12 +39,9 @@ export default async function OnboardPage({
 
   const db = getDb();
   const [project, submission, files] = await Promise.all([
-    db.query.projects.findFirst({ where: (p, { eq }) => eq(p.id, parsed.projectId) }),
-    db.query.onboardingSubmissions.findFirst({ where: (s, { eq }) => eq(s.projectId, parsed.projectId) }),
-    db.query.onboardingFiles.findMany({
-      where: (f, { eq }) => eq(f.projectId, parsed.projectId),
-      orderBy: (f, { asc }) => [asc(f.createdAt)],
-    }),
+    db.select().from(projects).where(eq(projects.id, parsed.projectId)).limit(1).then((r) => r[0]),
+    db.select().from(onboardingSubmissions).where(eq(onboardingSubmissions.projectId, parsed.projectId)).limit(1).then((r) => r[0]),
+    db.select().from(onboardingFiles).where(eq(onboardingFiles.projectId, parsed.projectId)).orderBy(asc(onboardingFiles.createdAt)),
   ]);
 
   if (!project) return <ErrorPage message="Project not found." />;

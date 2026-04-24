@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { resolveImagePath } from "@/lib/image-path";
 
 export const dynamic = "force-static"
 
@@ -10,10 +11,15 @@ export const metadata: Metadata = {
   description:
     "You don't need to post every day to get clients from social media. You need the right content, at the right frequency, published consistently. Here's the system.",
   openGraph: {
+    url: "https://assurgit.com/blog/how-to-get-clients-from-social-media-without-posting-every-day",
     title: "How to Get Clients from Social Media Without Posting Every Day",
     description:
       "The counterintuitive truth about social media and client acquisition — and why consistency beats frequency every time.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/blog/how-to-get-clients-from-social-media-without-posting-every-day',
   },
 };
 
@@ -48,13 +54,40 @@ const faqSchema = {
       "acceptedAnswer": { "@type": "Answer", "text": "Yes — if the content is actually you. An AI avatar built from your face and voice clone isn't fake content; it's you delivering your own expertise, rendered automatically. What makes content feel fake is generic stock footage or impersonal templates. Content that uses your actual face, voice, and knowledge is authentic regardless of how it was produced." }
     },
   ]
+}
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://assurgit.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How To Get Clients From Social Media Without Posting Every Day",
+      "item": "https://assurgit.com/blog/how-to-get-clients-from-social-media-without-posting-every-day"
+    }
+  ]
 };
 
 export default function HowToGetClientsFromSocialMediaPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <Navbar />
 
       <main className="pt-24 pb-20">
@@ -74,6 +107,14 @@ export default function HowToGetClientsFromSocialMediaPage() {
             <p className="text-gray-400 text-lg leading-relaxed">
               Every business coach will tell you: &ldquo;You need to post every day.&rdquo; Most of them are wrong. Here&apos;s what actually drives client acquisition from social media — and why the frequency conversation is a distraction from the consistency conversation.
             </p>
+          </div>
+
+          {/* Featured Image */}
+          <div className="mb-10">
+            <img
+              src={resolveImagePath('blog', 'how-to-get-clients-from-social-media-without-posting-every-day')}
+              alt="How to get clients from social media without posting every day"
+              className="w-full h-64 md:h-80 object-cover rounded-2xl" loading="lazy" />
           </div>
 
           {/* Article body */}

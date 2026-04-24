@@ -20,8 +20,7 @@ export const gbpSchedule = sqliteTable("gbp_schedule", {
   id:        text("id").primaryKey(),
   projectId: text("project_id").notNull().references(() => projects.id, { onDelete: "cascade" }),
   dayOfWeek: integer("day_of_week").notNull(),
-  time1:     text("time_1").notNull(),
-  time2:     text("time_2").notNull(),
+  times:     text("times").notNull(), // JSON array of "HH:MM" strings
   weekOf:    text("week_of").notNull(),
   createdAt: integer("created_at").notNull(),
 });

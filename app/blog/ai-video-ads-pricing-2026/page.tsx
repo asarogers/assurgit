@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { resolveImagePath } from "@/lib/image-path";
 
 export const dynamic = "force-static"
 
@@ -10,16 +11,127 @@ export const metadata: Metadata = {
   description:
     "AI video production ranges from $50/month DIY tools to $10,000+/month for full agencies. Here's a complete breakdown of what each tier delivers — and what's actually worth it.",
   openGraph: {
+    url: "https://assurgit.com/blog/ai-video-ads-pricing-2026",
     title: "AI Video Content Pricing in 2026: What You Should Expect to Pay",
     description:
       "AI video production ranges from $50/month DIY tools to $10,000+/month for full agencies. Here's a complete breakdown of what each tier delivers — and what's actually worth it.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
   },
+  alternates: {
+    canonical: 'https://assurgit.com/blog/ai-video-ads-pricing-2026',
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it my face and voice, or a generic avatar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This is the most important question. Generic avatars don't build your authority — they build a character's."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do they write the scripts, or do I?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If script writing is on you, you've outsourced the easiest part and kept the hardest part."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do they publish, or just deliver files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "File delivery is not done-for-you. Publishing to 4 platforms weekly, formatted correctly, is done-for-you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a research component — do they know your niche?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Generic scripts don't create authority. Research-backed content does."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a human reviewing the final output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI can make mistakes. A human QC step is the difference between a professional result and an embarrassing one."
+      }
+    }
+  ]
+}
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI Video Content Pricing in 2026: What You Should Expect to Pay",
+  "description": "AI video production ranges from $50/month DIY tools to $10,000+/month for full agencies. Here's a complete breakdown of what each tier delivers \u2014 and what's actually worth it.",
+  "image": "https://assurgit.com/app-icon-1024.png",
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01",
+  "url": "https://assurgit.com/blog/ai-video-ads-pricing-2026",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://assurgit.com/blog/ai-video-ads-pricing-2026"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://assurgit.com/app-icon-1024.png"
+    }
+  }
+}
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://assurgit.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Video Ads Pricing 2026",
+      "item": "https://assurgit.com/blog/ai-video-ads-pricing-2026"
+    }
+  ]
 };
 
 export default function AIVideoPricingPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="min-h-screen bg-gray-950 text-white">
       <Navbar />
 
       <main className="pt-24 pb-20">
@@ -50,6 +162,14 @@ export default function AIVideoPricingPage() {
           <p className="text-gray-400 text-lg leading-relaxed">
             &ldquo;AI video&rdquo; can mean a $29/month Canva subscription or a $10,000/month managed service. Both involve AI. The difference in what you get is enormous. Here&apos;s how to know what you&apos;re actually comparing.
           </p>
+        </div>
+
+        {/* Featured Image */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 mb-10">
+          <img
+            src={resolveImagePath('blog', 'ai-video-ads-pricing-2026')}
+            alt="AI video ads pricing breakdown for 2026"
+            className="w-full h-64 md:h-80 object-cover rounded-2xl" loading="lazy" />
         </div>
 
         {/* Article Body */}
@@ -365,5 +485,6 @@ export default function AIVideoPricingPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/marketing/Navbar";
 import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
@@ -12,19 +13,48 @@ import CTASection from "@/components/marketing/CTASection";
 import Footer from "@/components/marketing/Footer";
 import MobileStickyBar from "@/components/marketing/MobileStickyBar";
 
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Home \u2014 learn more on our site.",
+  alternates: {
+    canonical: "https://assurgit.com",
+  },
+  openGraph: {
+    title: "Home",
+    description: "Home \u2014 learn more on our site.",
+    url: "https://assurgit.com",
+    type: "website",
+    images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
+};
+
 const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Assurgit",
+  "url": "https://assurgit.com",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "description": "Assurgit is an Online Presence Launch System for service businesses. We turn your face, voice, and expertise into recurring AI clone content, then layer on publishing, visibility infrastructure, and GEO.",
+  "description": "Assurgit is a done-for-you AI video content service. Your AI avatar and voice clone produce 5 research-backed videos every week, auto-published to Instagram, TikTok, LinkedIn, and YouTube. Starting at $397/month.",
+  "featureList": "AI avatar creation, voice cloning, research-backed scripting, human QC, auto-publishing to Instagram, TikTok, LinkedIn, and YouTube",
+  "screenshot": "https://assurgit.com/screenshot.png",
+  "author": {
+    "@type": "Person",
+    "name": "Asa Rogers"
+  },
+  "dateModified": "2026-04-01",
   "offers": {
     "@type": "AggregateOffer",
     "lowPrice": "397",
-    "highPrice": "3497",
+    "highPrice": "1997",
     "priceCurrency": "USD",
-    "offerCount": "4"
+    "offerCount": "3"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "38"
   },
   "provider": {
     "@type": "Organization",
@@ -106,9 +136,26 @@ const faqSchema = {
 
 export const dynamic = "force-static"
 
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Assurgit",
+  "url": "https://assurgit.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://assurgit.com/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
 export default function RootPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}

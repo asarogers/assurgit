@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { resolveImagePath } from "@/lib/image-path";
 
 export const dynamic = "force-static"
 
@@ -10,16 +11,119 @@ export const metadata: Metadata = {
   description:
     "LinkedIn's algorithm is prioritizing video harder than ever. Here's how business owners are showing up every week on LinkedIn without picking up a camera.",
   openGraph: {
+    url: "https://assurgit.com/blog/linkedin-video-strategy-for-business-owners",
     title: "LinkedIn Video Strategy for Business Owners in 2026 (Without Filming)",
     description:
       "LinkedIn's algorithm is prioritizing video harder than ever. Here's how business owners are showing up every week on LinkedIn without picking up a camera.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
   },
+  alternates: {
+    canonical: 'https://assurgit.com/blog/linkedin-video-strategy-for-business-owners',
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is LinkedIn video different from other social platforms in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LinkedIn rolled out a TikTok-style vertical video feed in 2024 and started aggressively boosting video content in 2025. In 2026, video is the single fastest way to grow a LinkedIn audience from scratch. The key difference: the people watching your videos on LinkedIn can actually buy from you. A 500-view LinkedIn video can generate more qualified leads than a 50,000-view TikTok because the platform routes content to professional decision-makers in your industry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the LinkedIn algorithm reward in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The LinkedIn algorithm responds to three levers: dwell time (video keeps people on the post longer), early engagement (comments in the first 60–90 minutes after posting determine reach), and posting frequency (accounts that post 3–5 times per week consistently outperform those that post once or twice, regardless of content quality)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What video formats perform best on LinkedIn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The four formats with the highest consistent performance are: The Contrarian Take (45–90 seconds, triggers comments and reach), The Industry Insight (60–120 seconds, positions you as a practitioner), The Process Breakdown (90–150 seconds, specificity builds credibility), and The Direct Question (30–60 seconds, generates comment velocity fast)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can business owners post LinkedIn videos consistently without filming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Done-for-you AI video services use a custom avatar trained on your face and a voice clone from your recordings. A research pipeline identifies what your audience is asking each week, a ghostwriter produces scripts in your voice, and the service handles rendering, formatting, and publishing to LinkedIn and other platforms — without you filming anything after the initial setup."
+      }
+    }
+  ]
+}
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LinkedIn Video Strategy for Business Owners in 2026 (Without Filming)",
+  "description": "LinkedIn's algorithm is prioritizing video harder than ever. Here's how business owners are showing up every week on LinkedIn without picking up a camera.",
+  "image": "https://assurgit.com/app-icon-1024.png",
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01",
+  "url": "https://assurgit.com/blog/linkedin-video-strategy-for-business-owners",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://assurgit.com/blog/linkedin-video-strategy-for-business-owners"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://assurgit.com/app-icon-1024.png"
+    }
+  }
+}
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://assurgit.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Linkedin Video Strategy For Business Owners",
+      "item": "https://assurgit.com/blog/linkedin-video-strategy-for-business-owners"
+    }
+  ]
 };
 
 export default function LinkedInVideoStrategyPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="min-h-screen bg-gray-950 text-white">
       <Navbar />
 
       <main className="pt-24 pb-20">
@@ -50,6 +154,14 @@ export default function LinkedInVideoStrategyPage() {
           <p className="text-gray-400 text-lg leading-relaxed">
             LinkedIn quietly became the best platform for B2B video. The algorithm is rewarding it heavily, the audience is actively watching, and most of your competitors still aren&apos;t doing it consistently. That window won&apos;t stay open forever.
           </p>
+        </div>
+
+        {/* Featured Image */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 mb-10">
+          <img
+            src={resolveImagePath('blog', 'linkedin-video-strategy-for-business-owners')}
+            alt="LinkedIn video strategy for business owners"
+            className="w-full h-64 md:h-80 object-cover rounded-2xl" loading="lazy" />
         </div>
 
         {/* Article Body */}
@@ -287,5 +399,6 @@ export default function LinkedInVideoStrategyPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

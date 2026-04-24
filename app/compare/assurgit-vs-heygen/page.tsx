@@ -10,9 +10,14 @@ export const metadata: Metadata = {
   description:
     "HeyGen gives you a tool. Assurgit does it for you. Compare pricing, output, time investment, and results to see which is right for your business.",
   openGraph: {
+    url: "https://assurgit.com/compare/assurgit-vs-heygen",
     title: "Assurgit vs. HeyGen: Done-For-You vs. Do-It-Yourself",
     description: "HeyGen gives you a tool. Assurgit does it for you. Real comparison of price, effort, and results.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/compare/assurgit-vs-heygen',
   },
 };
 
@@ -66,9 +71,36 @@ const rows = [
   { feature: "Onboarding", assurgit: "30-minute call, live in 5 days", heygen: "Self-serve setup" },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compare",
+      "item": "https://assurgit.com/compare"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Assurgit VS Heygen",
+      "item": "https://assurgit.com/compare/assurgit-vs-heygen"
+    }
+  ]
+};
+
 export default function AssurgitVsHeygenPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
 

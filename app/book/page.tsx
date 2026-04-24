@@ -6,9 +6,16 @@ import FounderSection from "@/components/marketing/FounderSection";
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
+  openGraph: {
+  url: "https://assurgit.com/book",
+  images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
   title: "Book a Free Call",
   description:
     "Book a free call with Assurgit. We'll diagnose your platform needs, show you what your clone content could look like, and recommend your plan fit — Launch, Starter, Growth, or Scale.",
+  alternates: {
+    canonical: 'https://assurgit.com/book',
+  },
 };
 
 const whoThisIsFor = [
@@ -154,6 +161,30 @@ export default function BookPage() {
                   <p className="text-gray-500 text-sm leading-relaxed">
                     After the call, you&apos;ll receive a summary email with the recommended plan and next steps. No invoice until you decide to move forward.
                   </p>
+                </div>
+              </div>
+
+              {/* FAQ Section */}
+              <h2 className="text-xl font-bold text-gray-950 mb-4 mt-12">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                  <p className="font-semibold">How long is the free call?</p>
+                  <p className="text-gray-600 mt-1">The free call typically lasts 30 minutes. During this time, we'll cover your platform needs, content requirements, and plan recommendations.</p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                  <p className="font-semibold">What if I'm not sure about my platform needs?</p>
+                  <p className="text-gray-600 mt-1">No problem! We'll help you clarify your needs and goals during the call. Our goal is to provide clarity, not pressure.</p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                  <p className="font-semibold">Do I need any special equipment for the call?</p>
+                  <p className="text-gray-600 mt-1">No special equipment is required. A standard web browser and internet connection are sufficient.</p>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                  <p className="font-semibold">What happens after the call?</p>
+                  <p className="text-gray-600 mt-1">You'll receive a summary email with our recommendations. From there, you can choose to move forward or take more time to consider.</p>
                 </div>
               </div>
             </div>

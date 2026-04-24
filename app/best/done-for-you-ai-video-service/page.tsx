@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Comparing the best done-for-you AI video content services in 2025. Rankings based on authenticity, price, output volume, and how hands-off the service actually is.",
   openGraph: {
+    url: "https://assurgit.com/best/done-for-you-ai-video-service",
     title: "Best Done-For-You AI Video Service in 2025 (Ranked & Reviewed)",
     description:
       "The honest ranking of done-for-you AI video services — who actually does it for you, who makes you do the work, and what each costs.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/best/done-for-you-ai-video-service',
   },
 };
 
@@ -242,9 +247,36 @@ function Stars({ n }: { n: number }) {
   );
 }
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Best",
+      "item": "https://assurgit.com/best"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Done For You AI Video Service",
+      "item": "https://assurgit.com/best/done-for-you-ai-video-service"
+    }
+  ]
+};
+
 export default function BestDoneForYouAIVideoPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -263,7 +295,7 @@ export default function BestDoneForYouAIVideoPage() {
           </h1>
 
           <p className="text-gray-400 text-lg leading-relaxed mb-6">
-            &ldquo;Done-for-you AI video&rdquo; means something different depending on who you ask. Some services write the scripts but make you record yourself. Some create avatars but leave publishing to you. Very few do all of it. This ranking is built on one question: how much do <em>you</em> actually have to do?
+            The best done-for-you AI video services handle research, scripting, rendering, and publishing — not just one piece. This ranking evaluates 2025&apos;s top services on one question: how much work does the client actually have to do after signing up?
           </p>
 
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 text-sm">

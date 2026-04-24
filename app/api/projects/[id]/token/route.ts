@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { projects } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { projects } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { generateReviewToken } from "@/lib/token";
 import { eq } from "drizzle-orm";
@@ -12,7 +12,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   }
 
   const { id }  = await params;
-  const db      = getDb();
+  const db      = getPgDb();
   const token   = generateReviewToken(id);
   const now     = Date.now();
 

@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "The best video content services for real estate agents — ranked by local authority building, consistency, and what agents actually have to do each week.",
   openGraph: {
+    url: "https://assurgit.com/best/video-content-services-real-estate-agents",
     title: "Best Video Content Services for Real Estate Agents in 2026",
     description:
       "The best video content services for real estate agents — ranked by local authority building, consistency, and what agents actually have to do each week.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/best/video-content-services-real-estate-agents',
   },
 };
 
@@ -231,9 +236,36 @@ function Stars({ n }: { n: number }) {
   );
 }
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Best",
+      "item": "https://assurgit.com/best"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Video Content Services Real Estate Agents",
+      "item": "https://assurgit.com/best/video-content-services-real-estate-agents"
+    }
+  ]
+};
+
 export default function BestVideoContentServicesRealEstateAgentsPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

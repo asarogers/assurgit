@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Compare Assurgit's AI video content service against a traditional marketing agency. Price, speed, output volume, authenticity, and flexibility — side by side.",
   openGraph: {
+    url: "https://assurgit.com/compare/assurgit-vs-marketing-agency",
     title: "AI Video Content Service vs. Traditional Marketing Agency",
     description:
       "Honest comparison of Assurgit vs. a traditional marketing agency. Who wins on price, speed, and consistency — and when does an agency make more sense?",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/compare/assurgit-vs-marketing-agency',
   },
 };
 
@@ -161,9 +166,36 @@ const comparisonRows = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compare",
+      "item": "https://assurgit.com/compare"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Assurgit VS Marketing Agency",
+      "item": "https://assurgit.com/compare/assurgit-vs-marketing-agency"
+    }
+  ]
+};
+
 export default function AssurgitVsMarketingAgencyPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

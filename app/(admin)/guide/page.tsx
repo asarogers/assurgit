@@ -12,9 +12,7 @@ export default async function GuidePage() {
   if (!session || !(await verifyOwnerSession(session))) redirect("/login");
 
   const db = getDb();
-  const allProjects = await db.query.projects.findMany({
-    orderBy: [desc(projects.createdAt)],
-  });
+  const allProjects = await db.select().from(projects).orderBy(desc(projects.createdAt));
 
   const projectList = allProjects.map((p) => ({
     id: p.id,

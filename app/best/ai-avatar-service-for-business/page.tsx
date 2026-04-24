@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "The best AI avatar services for businesses in 2026. Ranked by authenticity, hands-off automation, video output, and real-world results — not just features.",
   openGraph: {
+    url: "https://assurgit.com/best/ai-avatar-service-for-business",
     title: "Best AI Avatar Service for Business in 2026",
     description:
       "Which AI avatar service actually works for business video content? Honest rankings based on what you get vs. what you have to do.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/best/ai-avatar-service-for-business',
   },
 };
 
@@ -199,9 +204,36 @@ function Stars({ n }: { n: number }) {
   );
 }
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Best",
+      "item": "https://assurgit.com/best"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Avatar Service For Business",
+      "item": "https://assurgit.com/best/ai-avatar-service-for-business"
+    }
+  ]
+};
+
 export default function BestAIAvatarServicePage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

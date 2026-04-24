@@ -5,8 +5,15 @@ import Footer from "@/components/marketing/Footer";
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
+  openGraph: {
+  url: "https://assurgit.com/terms",
+  images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
   title: "Terms of Service — Assurgit",
   description: "Terms of Service for Assurgit and its AI video content services.",
+  alternates: {
+    canonical: 'https://assurgit.com/terms',
+  },
 };
 
 export default function TermsPage() {

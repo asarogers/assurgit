@@ -1,6 +1,10 @@
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { signOAuthState } from "@/lib/social/oauth-state";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { getDb } from "@/lib/db";
+import { getPgDb } from "@/lib/db/pg";
+import { projects } from "@/lib/db/pg-schema";
+import { eq } from "drizzle-orm";
 
 export async function GET(req: Request) {
   try { await requireOwner(req); } catch { return unauthorizedResponse(); }
@@ -9,7 +13,9 @@ export async function GET(req: Request) {
   const projectId = searchParams.get("projectId");
   if (!projectId) return Response.json({ error: "projectId required" }, { status: 400 });
 
-  const state = await signOAuthState(projectId);
+  const db = getPgDb();
+  const [project] = await db.select({ clientId: projects.clientId }).from(projects).where(eq(projects.id, projectId)).limit(1);
+  const state = await signOAuthState(projectId, undefined, project?.clientId ?? undefined);
 
   const { env } = getCloudflareContext() as any;
   const clientId    = env.REDDIT_CLIENT_ID as string ?? "";

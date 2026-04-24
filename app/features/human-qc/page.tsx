@@ -10,9 +10,14 @@ export const metadata: Metadata = {
   description:
     "Every Assurgit video passes a human quality check before publishing. Rendering errors, caption issues, branding problems, and format mismatches get caught before your audience sees them.",
   openGraph: {
+    url: "https://assurgit.com/features/human-qc",
     title: "Human QC — Every Video Reviewed Before It Goes Live | Assurgit",
     description: "A human reviews every video before it publishes. Here's what gets checked and why it matters.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/features/human-qc',
   },
 };
 
@@ -71,9 +76,36 @@ const checklistItems = [
   { label: "Hook and pacing", detail: "The first 3 seconds are strong enough to stop a scroll. Pacing is appropriate for short-form retention." },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://assurgit.com/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Human QC",
+      "item": "https://assurgit.com/features/human-qc"
+    }
+  ]
+};
+
 export default function HumanQcPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

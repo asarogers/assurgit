@@ -2,6 +2,10 @@ import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { signOAuthState } from "@/lib/social/oauth-state";
 import { verifyConnectToken } from "@/lib/social/connect-token";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { getDb } from "@/lib/db";
+import { getPgDb } from "@/lib/db/pg";
+import { projects } from "@/lib/db/pg-schema";
+import { eq } from "drizzle-orm";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -10,7 +14,6 @@ export async function GET(req: Request) {
 
   if (!projectId) return Response.json({ error: "projectId required" }, { status: 400 });
 
-  // Accept either admin session OR a valid client connect token for this project
   if (connectToken) {
     const ct = await verifyConnectToken(connectToken);
     if (!ct || ct.projectId !== projectId) return Response.json({ error: "Invalid connect token" }, { status: 401 });
@@ -18,7 +21,9 @@ export async function GET(req: Request) {
     try { await requireOwner(req); } catch { return unauthorizedResponse(); }
   }
 
-  const state = await signOAuthState(projectId, connectToken ?? undefined);
+  const db = getPgDb();
+  const [project] = await db.select({ clientId: projects.clientId }).from(projects).where(eq(projects.id, projectId)).limit(1);
+  const state = await signOAuthState(projectId, connectToken ?? undefined, project?.clientId ?? undefined);
 
   const { env } = getCloudflareContext() as any;
   const appId       = env.INSTAGRAM_APP_ID as string ?? "";

@@ -6,9 +6,14 @@ const secret = () => new TextEncoder().encode(
 
 export async function signOAuthState(
   projectId: string,
-  connectToken?: string   // present when the OAuth was initiated from the client connect portal
+  connectToken?: string,  // present when initiated from client connect portal
+  clientId?: string       // present when project belongs to a client (shared credentials)
 ): Promise<string> {
-  return new SignJWT({ projectId, ...(connectToken ? { connectToken } : {}) })
+  return new SignJWT({
+    projectId,
+    ...(connectToken ? { connectToken } : {}),
+    ...(clientId     ? { clientId }     : {}),
+  })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime("10m")
@@ -17,13 +22,14 @@ export async function signOAuthState(
 
 export async function verifyOAuthState(
   state: string
-): Promise<{ projectId: string; connectToken?: string } | null> {
+): Promise<{ projectId: string; connectToken?: string; clientId?: string } | null> {
   try {
     const { payload } = await jwtVerify(state, secret());
     if (typeof payload.projectId !== "string") return null;
     return {
       projectId:    payload.projectId,
       connectToken: typeof payload.connectToken === "string" ? payload.connectToken : undefined,
+      clientId:     typeof payload.clientId     === "string" ? payload.clientId     : undefined,
     };
   } catch {
     return null;

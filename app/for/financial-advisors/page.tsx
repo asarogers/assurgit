@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for financial advisors and wealth managers. Compliance-safe educational content published weekly to LinkedIn, Instagram, TikTok, and YouTube. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/financial-advisors",
     title: "AI Video Content for Financial Advisors — Done For You",
     description:
       "Stop losing prospects to advisors who educate online every week. Get compliance-safe AI video content — your face, your voice, done for you.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/financial-advisors',
   },
 };
 
@@ -97,9 +102,36 @@ const plans = [
   { name: "Growth", price: "$1,997/mo", videos: "10+/week", platforms: "IG, TT, LI, YT", publishing: "Auto-publishing + White-glove", highlight: false },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Financial Advisors",
+      "item": "https://assurgit.com/for/financial-advisors"
+    }
+  ]
+};
+
 export default function FinancialAdvisorsPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -112,10 +144,11 @@ export default function FinancialAdvisorsPage() {
             For Financial Advisors
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Prospects hire the advisor who{" "}
-            <span className="text-indigo-400">educated them</span>
-            {" "}— be that advisor every week
+            Done-for-You AI Video Content for <span className="text-indigo-400">Financial Advisors</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Prospects hire the advisor who educated them — be that advisor every week
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, writes compliance-safe educational scripts, and publishes to LinkedIn, Instagram, TikTok, and YouTube — every week, completely hands-free.
           </p>

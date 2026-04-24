@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { scheduledPosts } from "@/lib/db/social-schema";
+import { getPgDb } from "@/lib/db/pg";
+import { scheduledPosts } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq, desc } from "drizzle-orm";
 import { nanoid } from "nanoid";
@@ -11,11 +11,8 @@ export async function GET(req: Request) {
   const projectId = searchParams.get("projectId");
   if (!projectId) return Response.json({ error: "projectId required" }, { status: 400 });
 
-  const db   = getDb();
-  const posts = await db.query.scheduledPosts.findMany({
-    where: (p, { eq }) => eq(p.projectId, projectId),
-    orderBy: [desc(scheduledPosts.createdAt)],
-  });
+  const db   = getPgDb();
+  const posts = await db.select().from(scheduledPosts).where(eq(scheduledPosts.projectId, projectId)).orderBy(desc(scheduledPosts.createdAt));
   return Response.json(posts);
 }
 
@@ -30,7 +27,7 @@ export async function POST(req: Request) {
       mediaUrl?: string; mediaType?: "IMAGE" | "VIDEO" | "REEL" | "SHORT"; scheduledFor?: number;
     };
 
-  const db  = getDb();
+  const db  = getPgDb();
   const now = Date.now();
 
   const post = {

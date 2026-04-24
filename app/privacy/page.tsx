@@ -5,8 +5,15 @@ import Footer from "@/components/marketing/Footer";
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
+  openGraph: {
+  url: "https://assurgit.com/privacy",
+  images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
   title: "Privacy Policy — Assurgit",
   description: "Privacy Policy for Assurgit and its services.",
+  alternates: {
+    canonical: 'https://assurgit.com/privacy',
+  },
 };
 
 export default function PrivacyPage() {

@@ -2,6 +2,10 @@ import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { signOAuthState } from "@/lib/social/oauth-state";
 import { verifyConnectToken } from "@/lib/social/connect-token";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { getDb } from "@/lib/db";
+import { getPgDb } from "@/lib/db/pg";
+import { projects } from "@/lib/db/pg-schema";
+import { eq } from "drizzle-orm";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -17,7 +21,9 @@ export async function GET(req: Request) {
     try { await requireOwner(req); } catch { return unauthorizedResponse(); }
   }
 
-  const state = await signOAuthState(projectId, connectToken ?? undefined);
+  const db = getPgDb();
+  const [project] = await db.select({ clientId: projects.clientId }).from(projects).where(eq(projects.id, projectId)).limit(1);
+  const state = await signOAuthState(projectId, connectToken ?? undefined, project?.clientId ?? undefined);
 
   const { env } = getCloudflareContext() as any;
   const clientId  = env.GOOGLE_CLIENT_ID as string ?? "";
@@ -28,7 +34,7 @@ export async function GET(req: Request) {
     client_id:     clientId,
     redirect_uri:  redirectUri,
     response_type: "code",
-    scope:         "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.readonly",
+    scope:         "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/yt-analytics.readonly",
     access_type:   "offline",
     prompt:        "consent",
     state,

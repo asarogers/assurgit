@@ -40,7 +40,8 @@ interface Kpis {
 }
 interface PlatformStat { platform: string; published: number; failed: number; scheduled: number; accounts: number; successRate: number; }
 interface ProjectStat { id: string; name: string; clientEmail: string | null; platforms: string[]; published: number; failed: number; scheduled: number; successRate: number; lastPublishedAt: number | null; }
-interface RecentPost { id: string; platform: string; accountName: string; projectName: string; caption: string; title: string | null; subreddit: string | null; publishedAt: number; mediaType: string; igMediaId: string | null; metrics: string | null; }
+interface PostMetrics { impressions?: number; views?: number; likes?: number; comments?: number; upvotes?: number; }
+interface RecentPost { id: string; platform: string; accountName: string; projectName: string; caption: string; title: string | null; subreddit: string | null; publishedAt: number; mediaType: string; igMediaId: string | null; metrics: PostMetrics | null; }
 interface VideoPost { id: string; projectId: string; projectName: string; platform: string; accountName: string; title: string | null; caption: string; publishedAt: number; views: number | null; likes: number | null; comments: number | null; }
 interface ClientItem { id: string; name: string; }
 interface Props { period: string; kpis: Kpis; activityDays: { date: string; count: number }[]; platforms: PlatformStat[]; projectStats: ProjectStat[]; recentPosts: RecentPost[]; videoPosts: VideoPost[]; clientList: ClientItem[]; }
@@ -418,8 +419,7 @@ export function AnalyticsDashboard({ period, kpis, activityDays, platforms, proj
           <div className="divide-y">
             {recentPosts.map((post) => {
               const cfg = PLATFORM_CONFIG[post.platform];
-              let metrics: Record<string, number> | null = null;
-              try { if (post.metrics) metrics = JSON.parse(post.metrics); } catch {}
+              const metrics = post.metrics;
               const headline = post.title ?? post.caption;
               const sub      = post.title ? post.caption : null;
 

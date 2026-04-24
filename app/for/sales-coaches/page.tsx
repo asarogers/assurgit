@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for sales coaches and sales trainers. Build authority, attract corporate clients, and stay top-of-mind with 5 videos per week. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/sales-coaches",
     title: "AI Video Content for Sales Coaches — Done For You",
     description:
       "Turn your sales expertise into 5 weekly educational videos — published automatically. Build the authority that attracts corporate training contracts.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/sales-coaches',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Sales Coaches",
+      "item": "https://assurgit.com/for/sales-coaches"
+    }
+  ]
+};
+
 export default function SalesCoachesPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -67,10 +99,11 @@ export default function SalesCoachesPage() {
             For Sales Coaches & Trainers
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Be the sales coach{" "}
-            <span className="text-yellow-400">every VP of Sales already knows</span>
-            {" "}before you pitch
+            Done-for-You AI Video Content for <span className="text-yellow-400">Sales Coaches</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Be the sales coach every VP of Sales already knows before you pitch
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what your target clients are searching for, and publishes 5 tactical sales education videos a week — while you focus on delivering results.
           </p>

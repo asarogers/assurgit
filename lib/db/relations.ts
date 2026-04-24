@@ -1,8 +1,13 @@
 import { relations } from "drizzle-orm";
-import { projects, cards, reviewSessions, onboardingSubmissions, onboardingFiles } from "./schema";
+import { clients, projects, cards, reviewSessions, onboardingSubmissions, onboardingFiles } from "./schema";
 import { socialAccounts } from "./social-schema";
 
-export const projectRelations = relations(projects, ({ many }) => ({
+export const clientRelations = relations(clients, ({ many }) => ({
+  projects: many(projects),
+}));
+
+export const projectRelations = relations(projects, ({ one, many }) => ({
+  client:                 one(clients, { fields: [projects.clientId], references: [clients.id] }),
   cards:                  many(cards),
   reviewSessions:         many(reviewSessions),
   socialAccounts:         many(socialAccounts),

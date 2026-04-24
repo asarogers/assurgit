@@ -13,7 +13,7 @@ directory = ".open-next/assets"
 binding = "ASSETS"
 
 [triggers]
-crons = ["*/2 * * * *"]
+crons = ["*/15 * * * *"]
 
 [[services]]
 binding = "SELF"

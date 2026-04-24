@@ -10,9 +10,14 @@ export const metadata: Metadata = {
   description:
     "Assurgit clones your real voice from a 1–2 minute audio sample. Every video sounds like you — not a generic text-to-speech engine. Here's exactly how it works.",
   openGraph: {
+    url: "https://assurgit.com/features/voice-cloning",
     title: "Voice Cloning — Your Voice, Not a Robot | Assurgit",
     description: "One short audio sample. A voice clone used in every video, every week. No robot voices.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/features/voice-cloning',
   },
 };
 
@@ -80,9 +85,36 @@ const callouts = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://assurgit.com/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Voice Cloning",
+      "item": "https://assurgit.com/features/voice-cloning"
+    }
+  ]
+};
+
 export default function VoiceCloningPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -99,7 +131,7 @@ export default function VoiceCloningPage() {
             Voice Cloning — Your Voice, Not a Robot
           </h1>
           <p className="text-gray-400 text-lg leading-relaxed">
-            Generic text-to-speech voices are identifiable in two seconds. They flatten everything into the same cadence, kill nuance, and make content feel cheap. Assurgit clones your actual voice from a short audio sample — so every video sounds like you recorded it yourself.
+            Every Assurgit video uses your actual voice, not a stock AI voice. We build the clone from a 1–2 minute audio sample. Combined with your avatar, the result is branded video content that sounds and looks like you — without you recording a single word.
           </p>
         </div>
 

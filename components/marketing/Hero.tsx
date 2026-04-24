@@ -77,11 +77,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-950 dark:text-white leading-[1.05] tracking-tight mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 dark:text-white leading-[1.05] tracking-tight mb-4"
             >
-              Your face.{" "}
+              Done-for-You AI Video Content{" "}
               <br className="hidden sm:block" />
-              Your voice.
+              for Service Professionals
             </motion.h1>
 
             {/* Rotating persona line */}
@@ -91,12 +91,12 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.35 }}
               className="flex items-baseline gap-3 justify-center lg:justify-start flex-wrap mb-6"
             >
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-400 dark:text-white/50 leading-none tracking-tight">
-                No filming for
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-400 dark:text-white/50 leading-none tracking-tight">
+                Your face. Your voice. No filming for
               </span>
               <span
-                className="relative inline-block overflow-hidden text-3xl sm:text-4xl lg:text-5xl font-black leading-none tracking-tight"
-                style={{ minWidth: "clamp(160px, 22vw, 280px)", height: "1.2em" }}
+                className="relative inline-block overflow-hidden text-2xl sm:text-3xl lg:text-4xl font-black leading-none tracking-tight"
+                style={{ minWidth: "clamp(130px, 18vw, 240px)", height: "1.2em" }}
               >
                 <AnimatePresence mode="wait">
                   <motion.span

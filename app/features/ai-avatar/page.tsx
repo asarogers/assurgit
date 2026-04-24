@@ -10,9 +10,14 @@ export const metadata: Metadata = {
   description:
     "How Assurgit builds a custom AI avatar from a 30-minute recording session — so your face and presence appear in every video, every week, without you ever picking up a camera again.",
   openGraph: {
+    url: "https://assurgit.com/features/ai-avatar",
     title: "AI Avatar Creation — Your Face in Every Video, Without Filming | Assurgit",
     description: "One recording session. A custom avatar that shows up for you every week. Here's exactly how it works.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/features/ai-avatar',
   },
 };
 
@@ -80,9 +85,36 @@ const callouts = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://assurgit.com/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Avatar",
+      "item": "https://assurgit.com/features/ai-avatar"
+    }
+  ]
+};
+
 export default function AiAvatarPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -99,7 +131,7 @@ export default function AiAvatarPage() {
             AI Avatar Creation — Your Face in Every Video, Without Filming
           </h1>
           <p className="text-gray-400 text-lg leading-relaxed">
-            Most people assume video content means filming content. With Assurgit, you record once — about 30 minutes — and we train a custom AI avatar on your face and likeness. That avatar then appears in every video we produce for you, indefinitely.
+            Assurgit&apos;s AI avatar service creates a personal video presenter from your face and voice — built once, used for every video we produce. No green screen, no studio, no re-recording. Your avatar is ready within 48–72 hours of your setup call.
           </p>
         </div>
 

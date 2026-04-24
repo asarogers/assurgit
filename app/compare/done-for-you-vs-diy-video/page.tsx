@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "A definitive guide to choosing between done-for-you AI video services and DIY AI video tools. Compare cost, time, output quality, and long-term results.",
   openGraph: {
+    url: "https://assurgit.com/compare/done-for-you-vs-diy-video",
     title: "Done-For-You vs. DIY AI Video Content: Which Is Right for Your Business?",
     description:
       "Honest breakdown of DFY vs DIY AI video content — what each costs, who each is for, and how to choose.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/compare/done-for-you-vs-diy-video',
   },
 };
 
@@ -161,9 +166,36 @@ const comparisonRows = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compare",
+      "item": "https://assurgit.com/compare"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Done For You VS DIY Video",
+      "item": "https://assurgit.com/compare/done-for-you-vs-diy-video"
+    }
+  ]
+};
+
 export default function DoneForYouVsDIYPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

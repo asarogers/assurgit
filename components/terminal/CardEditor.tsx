@@ -100,22 +100,23 @@ export function CardEditor({ card, phase, onUpdated }: Props) {
   async function uploadVideo(file: File, isFinal = false) {
     setUploading(true);
     try {
+      // Upload directly through the Worker's R2 binding (same-origin, no CORS issues)
       const res = await fetch(`/api/cards/${card.id}/video`, {
         method: "PUT",
         headers: {
           "Content-Type": file.type || "video/mp4",
-          "X-Is-Final":   isFinal ? "true" : "false",
+          "x-is-final": isFinal ? "true" : "false",
         },
         body: file,
       });
-      if (res.ok) {
-        const data = await res.json() as { path: string };
-        onUpdated({ ...card, ...(isFinal ? { finalVideoPath: data.path } : { videoPath: data.path }) });
-        toast.success("Video uploaded");
-      } else {
+      if (!res.ok) {
         const body = await res.text().catch(() => "");
         toast.error(`Upload failed (${res.status}): ${body.slice(0, 120)}`);
+        return;
       }
+      const { path: fileUrl } = await res.json() as { path: string };
+      onUpdated({ ...card, ...(isFinal ? { finalVideoPath: fileUrl } : { videoPath: fileUrl }) });
+      toast.success("Video uploaded");
     } catch (err) {
       toast.error(`Upload failed: ${(err as Error).message}`);
     } finally {

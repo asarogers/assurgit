@@ -8,9 +8,16 @@ import Footer from "@/components/marketing/Footer";
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
+  openGraph: {
+  url: "https://assurgit.com/pricing",
+  images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
   title: "Pricing — AI Video Content Starting at $397/Month",
   description:
     "Done-for-you AI video content starting at $397/month. Launch, Starter, and Growth plans. Avatar + voice clone included on every plan. No contracts.",
+  alternates: {
+    canonical: 'https://assurgit.com/pricing',
+  },
 };
 
 export default function PricingPage() {

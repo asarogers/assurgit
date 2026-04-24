@@ -1,5 +1,6 @@
 {
   "/(admin)/analytics/page": "/analytics",
+  "/(admin)/database/page": "/database",
   "/(admin)/guide/page": "/guide",
   "/(admin)/schedule/page": "/schedule",
   "/(admin)/social/page": "/social",
@@ -12,6 +13,9 @@
   "/api/cards/[id]/route": "/api/cards/[id]",
   "/api/cards/[id]/upload-url/route": "/api/cards/[id]/upload-url",
   "/api/cards/[id]/video/route": "/api/cards/[id]/video",
+  "/api/cards/route": "/api/cards",
+  "/api/clients/[id]/route": "/api/clients/[id]",
+  "/api/clients/route": "/api/clients",
   "/api/cron/publish/route": "/api/cron/publish",
   "/api/gbp-queue/route": "/api/gbp-queue",
   "/api/gbp-queue/sync/route": "/api/gbp-queue/sync",
@@ -43,6 +47,8 @@
   "/api/social/reddit/callback/route": "/api/social/reddit/callback",
   "/api/social/reddit/connect/route": "/api/social/reddit/connect",
   "/api/social/reddit/subreddits/route": "/api/social/reddit/subreddits",
+  "/api/social/tiktok/callback/route": "/api/social/tiktok/callback",
+  "/api/social/tiktok/connect/route": "/api/social/tiktok/connect",
   "/api/social/youtube/callback/route": "/api/social/youtube/callback",
   "/api/social/youtube/connect/route": "/api/social/youtube/connect",
   "/api/social/zernio/callback/route": "/api/social/zernio/callback",
@@ -114,5 +120,7 @@
   "/sitemap.xml/route": "/sitemap.xml",
   "/terms/page": "/terms",
   "/tools/ai-video-tools/page": "/tools/ai-video-tools",
-  "/tools/page": "/tools"
+  "/tools/page": "/tools",
+  "/tools/seo-audit/page": "/tools/seo-audit",
+  "/tools/seo-leaderboard/page": "/tools/seo-leaderboard"
 }

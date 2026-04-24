@@ -6,9 +6,16 @@ import Footer from "@/components/marketing/Footer";
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
+  openGraph: {
+  url: "https://assurgit.com/blog",
+  images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
   title: "Insights & Strategy | AI Video Content for Business",
   description:
     "Guides on AI video production, pricing, and strategy for coaches, consultants, and growing businesses. Learn how done-for-you AI video content works and what it costs.",
+  alternates: {
+    canonical: 'https://assurgit.com/blog',
+  },
 };
 
 const posts = [
@@ -62,9 +69,40 @@ const posts = [
   },
 ];
 
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Insights & Strategy | AI Video Content for Business",
+  "description": "Guides on AI video production, pricing, and strategy for coaches, consultants, and growing businesses. Learn how done-for-you AI video content works and what it costs.",
+  "image": "https://assurgit.com/app-icon-1024.png",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-01-01",
+  "url": "https://assurgit.com/blog",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://assurgit.com/blog"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://assurgit.com/app-icon-1024.png"
+    }
+  }
+}
+
 export default function BlogIndexPage() {
-  return (
-    <div className="min-h-screen bg-gray-950 text-white">
+  return (<>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="min-h-screen bg-gray-950 text-white">
       <Navbar />
 
       <main className="pt-24 pb-20">
@@ -81,6 +119,31 @@ export default function BlogIndexPage() {
               Guides on pricing, tools, and strategy for coaches, consultants, and growing businesses who want to build authority through consistent video — without filming.
             </p>
           </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
+          <h2 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+          <dl className="space-y-8">
+            <div>
+              <dt className="text-lg font-semibold text-white">How does AI video content work?</dt>
+              <dd className="mt-2 text-gray-400">
+                AI video platforms use your voice, face, and written scripts to generate professional videos automatically. No camera needed!
+              </dd>
+            </div>
+            <div>
+              <dt className="text-lg font-semibold text-white">Is it hard to get started?</dt>
+              <dd className="mt-2 text-gray-400">
+                Most platforms offer templates and guided workflows, making it easy even for non-tech users. We'll show you how in our free call.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-lg font-semibold text-white">Can I use AI video on LinkedIn?</dt>
+              <dd className="mt-2 text-gray-400">
+                Absolutely! In fact, LinkedIn rewards video content heavily. We'll teach you the best strategies for maximum engagement.
+              </dd>
+            </div>
+          </dl>
         </div>
 
         {/* Post Grid */}
@@ -142,9 +205,23 @@ export default function BlogIndexPage() {
             </Link>
           </div>
         </div>
+
+        {/* Additional Content */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-12">
+          <h3 className="text-xl font-bold text-white mb-6">Why Choose AI Video Content?</h3>
+          <ul className="list-disc list-inside space-y-4 text-gray-400">
+            <li>Consistent branding across all your videos</li>
+            <li>No need for expensive equipment or camera crews</li>
+            <li>Scalable content production that grows with your business</li>
+            <li>Better engagement rates than static images</li>
+            <li>Easier to repurpose content across multiple platforms</li>
+          </ul>
+        </div>
+
       </main>
 
       <Footer />
     </div>
+    </>
   );
 }

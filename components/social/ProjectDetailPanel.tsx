@@ -13,8 +13,9 @@ import { toast }  from "sonner";
 import { DateTimePicker }     from "./DateTimePicker";
 import { ScheduledPostsList } from "./ScheduledPostsList";
 import { ScheduleGrid }       from "./ScheduleGrid";
-import type { Project }       from "@/lib/db/schema";
-import type { SocialAccount, ScheduledPost } from "@/lib/db/social-schema";
+import type { Project }       from "@/lib/db/pg-schema";
+import type { ScheduledPost } from "@/lib/db/pg-schema";
+import type { SocialAccount } from "@/lib/db/social-schema";
 
 type ProjectWithAccounts = Project & { socialAccounts: SocialAccount[] };
 type Platform = "instagram" | "youtube";

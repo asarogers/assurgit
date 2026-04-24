@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for life coaches. Stand out in a crowded market with consistent educational videos that build trust before the first call. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/life-coaches",
     title: "AI Video Content for Life Coaches — Done For You",
     description:
       "Turn your life coaching expertise into 5 weekly videos — published automatically. Differentiate yourself before prospects ever book a discovery call.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/life-coaches',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Life Coaches",
+      "item": "https://assurgit.com/for/life-coaches"
+    }
+  ]
+};
+
 export default function LifeCoachesPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -68,10 +100,11 @@ export default function LifeCoachesPage() {
             For Life Coaches
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            In a crowded coaching market,{" "}
-            <span className="text-purple-400">the coach who shows up consistently</span>
-            {" "}wins
+            Done-for-You AI Video Content for <span className="text-purple-400">Life Coaches</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            In a crowded coaching market, the coach who shows up consistently wins
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what your ideal clients are searching for, and publishes 5 educational videos a week — building the trust that converts strangers into paying clients.
           </p>

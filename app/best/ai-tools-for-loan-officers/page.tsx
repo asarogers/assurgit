@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "The best AI tools for loan officers in 2026 — video content, CRM automation, lead generation, and more. Ranked by what actually moves the needle for mortgage professionals.",
   openGraph: {
+    url: "https://assurgit.com/best/ai-tools-for-loan-officers",
     title: "Best AI Tools for Loan Officers in 2026",
     description:
       "Which AI tools do loan officers actually use to grow their business? Ranked by category: video content, lead gen, CRM, and client education.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/best/ai-tools-for-loan-officers',
   },
 };
 
@@ -189,9 +194,36 @@ function Stars({ n }: { n: number }) {
   );
 }
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Best",
+      "item": "https://assurgit.com/best"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Tools For Loan Officers",
+      "item": "https://assurgit.com/best/ai-tools-for-loan-officers"
+    }
+  ]
+};
+
 export default function AIToolsForLoanOfficersPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

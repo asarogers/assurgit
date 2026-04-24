@@ -3,9 +3,11 @@ import { redirect }  from "next/navigation";
 import { verifyOwnerSession } from "@/lib/auth";
 import { getDb }     from "@/lib/db";
 import { projects }  from "@/lib/db/schema";
-import { scheduledPosts, socialAccounts } from "@/lib/db/social-schema";
+import { scheduledPosts } from "@/lib/db/pg-schema";
+import { socialAccounts } from "@/lib/db/social-schema";
 import { desc, eq, gte } from "drizzle-orm";
 import { AnalyticsDashboard } from "@/components/analytics/AnalyticsDashboard";
+import { syncMetrics }        from "@/lib/social/sync-metrics";
 
 const PERIODS = { "7": 7, "30": 30, "90": 90, "all": 365 * 10 } as const;
 
@@ -24,13 +26,14 @@ export default async function AnalyticsPage({
 
   const db = getDb();
 
+  // Sync metrics on page load — skips posts fetched within the last 8 hours
+  try { await syncMetrics(); } catch { /* non-fatal */ }
+
   // All projects
-  const allProjects = await db.query.projects.findMany({
-    orderBy: [desc(projects.createdAt)],
-  });
+  const allProjects = await db.select().from(projects).orderBy(desc(projects.createdAt));
 
   // All social accounts
-  const allAccounts = await db.query.socialAccounts.findMany();
+  const allAccounts = await db.select().from(socialAccounts);
 
   // All scheduled posts joined with account info (for platform)
   const allPosts = await db
@@ -147,25 +150,50 @@ export default async function AnalyticsPage({
 
   const recentPosts = publishedPosts
     .slice(0, 30)
-    .map(({ post, account }) => ({
-      id:          post.id,
-      platform:    account.platform,
-      accountName: account.accountName,
-      projectName: projectNameMap.get(post.projectId) ?? "Unknown",
-      caption:     post.caption,
-      title:       post.title,
-      subreddit:   post.subreddit,
-      publishedAt: post.publishedAt ?? post.updatedAt,
-      mediaType:   post.mediaType,
-      igMediaId:   post.igMediaId,
-      metrics:     post.metrics,
-    }));
+    .map(({ post, account }) => {
+      // Read from typed columns; fall back to legacy JSON blob for older rows
+      let metrics: { impressions?: number; views?: number; likes?: number; comments?: number; upvotes?: number } | null = null;
+      if (post.metricsFetchedAt) {
+        metrics = {
+          impressions: post.metricsImpressions ?? undefined,
+          views:       post.metricsViews       ?? undefined,
+          likes:       post.metricsLikes        ?? undefined,
+          comments:    post.metricsComments     ?? undefined,
+          upvotes:     post.metricsUpvotes      ?? undefined,
+        };
+      } else if (post.metrics) {
+        try { metrics = JSON.parse(post.metrics); } catch {}
+      }
+      return {
+        id:          post.id,
+        platform:    account.platform,
+        accountName: account.accountName,
+        projectName: projectNameMap.get(post.projectId) ?? "Unknown",
+        caption:     post.caption,
+        title:       post.title,
+        subreddit:   post.subreddit,
+        publishedAt: post.publishedAt ?? post.updatedAt,
+        mediaType:   post.mediaType,
+        igMediaId:   post.igMediaId,
+        metrics,
+      };
+    });
 
   // ── Video performance (all published posts with views data) ──────────
   const videoPosts = publishedPosts
     .map(({ post, account }) => {
-      let m: Record<string, number> | null = null;
-      try { if (post.metrics) m = JSON.parse(post.metrics); } catch {}
+      // Typed columns first; legacy JSON fallback for rows not yet re-synced
+      let views: number | null    = post.metricsViews ?? post.metricsImpressions ?? null;
+      let likes: number | null    = post.metricsLikes ?? null;
+      let comments: number | null = post.metricsComments ?? null;
+      if (views === null && post.metrics) {
+        try {
+          const m = JSON.parse(post.metrics);
+          views    = m?.views ?? m?.impressions ?? null;
+          likes    = m?.likes    ?? null;
+          comments = m?.comments ?? null;
+        } catch {}
+      }
       return {
         id:          post.id,
         projectId:   post.projectId,
@@ -175,9 +203,9 @@ export default async function AnalyticsPage({
         title:       post.title,
         caption:     post.caption,
         publishedAt: post.publishedAt ?? post.updatedAt,
-        views:       m?.views ?? m?.impressions ?? null,
-        likes:       m?.likes ?? null,
-        comments:    m?.comments ?? null,
+        views,
+        likes,
+        comments,
       };
     })
     .filter((p) => p.views !== null)

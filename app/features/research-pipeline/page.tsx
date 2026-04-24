@@ -10,9 +10,14 @@ export const metadata: Metadata = {
   description:
     "Assurgit's research pipeline runs the full cycle from trend monitoring to published video — every week, automatically. Here's the complete system and why it beats DIY content creation.",
   openGraph: {
+    url: "https://assurgit.com/features/research-pipeline",
     title: "Research Pipeline — The System Behind Every Script | Assurgit",
     description: "Trend monitoring → competitor analysis → topic selection → script writing → review → render → QC → publish. The full Assurgit pipeline explained.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/features/research-pipeline',
   },
 };
 
@@ -104,9 +109,36 @@ const pipelineSteps = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://assurgit.com/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Research Pipeline",
+      "item": "https://assurgit.com/features/research-pipeline"
+    }
+  ]
+};
+
 export default function ResearchPipelinePage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

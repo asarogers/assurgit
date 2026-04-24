@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { scheduledPosts } from "@/lib/db/social-schema";
+import { getPgDb } from "@/lib/db/pg";
+import { scheduledPosts } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq } from "drizzle-orm";
 
@@ -8,7 +8,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
   const { id } = await params;
   const body   = await req.json() as Record<string, unknown>;
-  const db     = getDb();
+  const db     = getPgDb();
   const now    = Date.now();
 
   const allowed = ["caption", "mediaUrl", "mediaType", "scheduledFor", "status"];
@@ -20,7 +20,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   if (updates.scheduledFor && !updates.status) updates.status = "scheduled";
 
   await db.update(scheduledPosts).set(updates).where(eq(scheduledPosts.id, id));
-  const post = await db.query.scheduledPosts.findFirst({ where: (p, { eq }) => eq(p.id, id) });
+  const post = (await db.select().from(scheduledPosts).where(eq(scheduledPosts.id, id)).limit(1))[0];
   return Response.json(post);
 }
 
@@ -28,7 +28,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
   try { await requireOwner(req); } catch { return unauthorizedResponse(); }
 
   const { id } = await params;
-  const db     = getDb();
+  const db     = getPgDb();
   await db.delete(scheduledPosts).where(eq(scheduledPosts.id, id));
   return Response.json({ ok: true });
 }

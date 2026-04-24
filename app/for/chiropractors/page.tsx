@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for chiropractors and chiropractic practices. 5 educational videos per week — patient education, pain relief tips, and authority content. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/chiropractors",
     title: "AI Video Content for Chiropractors — Done For You",
     description:
       "Turn your chiropractic expertise into 5 weekly educational videos — published automatically. Build authority and attract new patients without filming.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/chiropractors',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Chiropractors",
+      "item": "https://assurgit.com/for/chiropractors"
+    }
+  ]
+};
+
 export default function ChiropractorsPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -68,9 +100,11 @@ export default function ChiropractorsPage() {
             For Chiropractors & Chiropractic Practices
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Educate patients before they walk in.{" "}
-            <span className="text-teal-400">Build authority that books appointments.</span>
+            Done-for-You AI Video Content for <span className="text-teal-400">Chiropractors</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Educate patients before they walk in. Build authority that books appointments.
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what patients in your area are searching for, and publishes 5 educational videos a week — while you focus on your practice.
           </p>

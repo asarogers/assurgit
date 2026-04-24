@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { onboardingFiles } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { onboardingFiles } from "@/lib/db/pg-schema";
 import { validateReviewToken } from "@/lib/token";
 import { eq, and } from "drizzle-orm";
 
@@ -12,7 +12,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
   if (!parsed) return Response.json({ error: "Invalid token" }, { status: 403 });
 
   const { id } = await params;
-  const db = getDb();
+  const db = getPgDb();
 
   await db.delete(onboardingFiles).where(
     and(eq(onboardingFiles.id, id), eq(onboardingFiles.projectId, parsed.projectId))
@@ -31,7 +31,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
   const { id }      = await params;
   const { category } = await req.json() as { category: string };
-  const db = getDb();
+  const db = getPgDb();
 
   await db.update(onboardingFiles)
     .set({ category })

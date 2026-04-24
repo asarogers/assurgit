@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for CPAs and tax professionals. Build authority, generate referrals, and attract ideal clients through educational tax content. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/cpas",
     title: "AI Video Content for CPAs & Tax Professionals — Done For You",
     description:
       "Turn your tax expertise into 5 weekly videos — published automatically. Build the authority that generates referrals and attracts high-quality clients year-round.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/cpas',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "CPAS",
+      "item": "https://assurgit.com/for/cpas"
+    }
+  ]
+};
+
 export default function CPAsPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -68,10 +100,11 @@ export default function CPAsPage() {
             For CPAs & Tax Professionals
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            The CPA who educates publicly{" "}
-            <span className="text-emerald-400">becomes the one everyone refers</span>
-            {" "}— without chasing clients
+            Done-for-You AI Video Content for <span className="text-emerald-400">CPAs</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            The CPA who educates publicly becomes the one everyone refers — without chasing clients
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what business owners and individuals are searching for about taxes, and publishes 5 educational videos a week — building the authority that generates referrals year-round.
           </p>

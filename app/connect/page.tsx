@@ -3,8 +3,12 @@ import { verifyConnectToken } from "@/lib/social/connect-token";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
+  alternates: {
+    canonical: 'https://assurgit.com/connect',
+  },
 };
 import { getDb } from "@/lib/db";
+import { projects } from "@/lib/db/schema";
 import { socialAccounts } from "@/lib/db/social-schema";
 import { eq } from "drizzle-orm";
 import { ConnectPortal } from "@/components/social/ConnectPortal";
@@ -27,16 +31,14 @@ export default async function ConnectPage({ searchParams }: Props) {
 
   const db = getDb();
 
-  const project = await db.query.projects.findFirst({
-    where: (p, { eq }) => eq(p.id, parsed.projectId),
-  });
+  const project = (await db.select().from(projects).where(eq(projects.id, parsed.projectId)).limit(1))[0];
   if (!project) {
     return <InvalidLink message="Project not found." />;
   }
 
-  const accounts = await db.query.socialAccounts.findMany({
-    where: (a, { eq }) => eq(a.projectId, parsed.projectId),
-  });
+  const accounts = project.clientId
+    ? await db.select().from(socialAccounts).where(eq(socialAccounts.clientId, project.clientId))
+    : await db.select().from(socialAccounts).where(eq(socialAccounts.projectId, parsed.projectId));
 
   return (
     <ConnectPortal

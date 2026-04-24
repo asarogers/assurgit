@@ -7,8 +7,10 @@
 
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/lib/db";
-import { socialAccounts, scheduledPosts } from "@/lib/db/social-schema";
-import { eq, and } from "drizzle-orm";
+import { socialAccounts } from "@/lib/db/social-schema";
+import { getPgDb } from "@/lib/db/pg";
+import { scheduledPosts } from "@/lib/db/pg-schema";
+import { eq, and, or } from "drizzle-orm";
 
 async function parseSignedRequest(
   signedRequest: string,
@@ -91,23 +93,23 @@ export async function POST(req: Request) {
 
   // Delete all social accounts and associated scheduled posts for this Meta user
   try {
-    const db = getDb();
-    const accounts = await db.query.socialAccounts.findMany({
-      where: (a, { and, eq, or }) =>
-        and(
-          or(eq(a.platform, "instagram"), eq(a.platform, "facebook")),
-          eq(a.accountId, user_id)
-        ),
-    });
+    const d1Db = getDb();
+    const pgDb = getPgDb();
+    const accounts = await d1Db.select().from(socialAccounts).where(
+      and(
+        or(eq(socialAccounts.platform, "instagram"), eq(socialAccounts.platform, "facebook")),
+        eq(socialAccounts.accountId, user_id)
+      )
+    );
 
     for (const account of accounts) {
-      await db
+      await pgDb
         .delete(scheduledPosts)
         .where(eq(scheduledPosts.socialAccountId, account.id));
     }
 
     if (accounts.length > 0) {
-      await db
+      await d1Db
         .delete(socialAccounts)
         .where(and(eq(socialAccounts.accountId, user_id)));
     }

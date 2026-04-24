@@ -29,8 +29,9 @@ export default function FounderSection() {
           {/* Photo + name */}
           <div className="flex flex-col items-center md:items-start">
             <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 mb-4 flex-shrink-0">
+              {/* TODO: add /public/founder.jpg — no founder photo exists yet; using app icon as placeholder */}
               <Image
-                src="/founder.jpg"
+                src="/app-icon-1024.png"
                 alt="Asa Rogers, Founder of Assurgit"
                 width={160}
                 height={160}

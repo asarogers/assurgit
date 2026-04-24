@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { onboardingSubmissions, onboardingFiles, projects } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { onboardingSubmissions, onboardingFiles, projects } from "@/lib/db/pg-schema";
 import { validateReviewToken } from "@/lib/token";
 import { sendOnboardingNotification } from "@/lib/email";
 import { eq } from "drizzle-orm";
@@ -14,12 +14,10 @@ export async function POST(req: Request) {
   if (!parsed) return Response.json({ error: "Invalid token" }, { status: 403 });
 
   const body = await req.json() as Record<string, string>;
-  const db   = getDb();
+  const db   = getPgDb();
   const now  = Date.now();
 
-  const existing = await db.query.onboardingSubmissions.findFirst({
-    where: (s, { eq }) => eq(s.projectId, parsed.projectId),
-  });
+  const existing = (await db.select().from(onboardingSubmissions).where(eq(onboardingSubmissions.projectId, parsed.projectId)).limit(1))[0];
 
   const data = {
     projectId:      parsed.projectId,
@@ -48,8 +46,8 @@ export async function POST(req: Request) {
   }
 
   const [project, files] = await Promise.all([
-    db.query.projects.findFirst({ where: (p, { eq }) => eq(p.id, parsed.projectId) }),
-    db.query.onboardingFiles.findMany({ where: (f, { eq }) => eq(f.projectId, parsed.projectId) }),
+    db.select().from(projects).where(eq(projects.id, parsed.projectId)).limit(1).then((r) => r[0]),
+    db.select().from(onboardingFiles).where(eq(onboardingFiles.projectId, parsed.projectId)),
   ]);
 
   const notifData: Record<string, string> = {

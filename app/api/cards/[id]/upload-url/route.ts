@@ -3,15 +3,6 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getPresignedPutUrl, BUCKET_URL } from "@/lib/r2-presign";
 import { nanoid } from "nanoid";
 
-const CONTENT_TYPES: Record<string, string> = {
-  mp4: "video/mp4",
-  mov: "video/quicktime",
-  jpg: "image/jpeg",
-  jpeg: "image/jpeg",
-  png: "image/png",
-  webp: "image/webp",
-};
-
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     await requireOwner(req);
@@ -22,17 +13,25 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const { id }                   = await params;
   const { isFinal, ext = "mp4" } = await req.json() as { isFinal?: boolean; ext?: string };
 
-  const { env } = getCloudflareContext() as any;
+  let env: any;
+  try {
+    env = (getCloudflareContext() as any).env;
+  } catch {
+    return Response.json({ error: "Runtime context unavailable" }, { status: 500 });
+  }
   if (!env.R2_ACCESS_KEY_ID || !env.R2_SECRET_ACCESS_KEY) {
     return Response.json({ error: "Storage credentials not configured" }, { status: 500 });
   }
 
-  const suffix      = isFinal ? "-final" : "";
-  const key         = `cards/card-${id}${suffix}-${nanoid()}.${ext}`;
-  const contentType = CONTENT_TYPES[ext.toLowerCase()] ?? "video/mp4";
-  const fileUrl     = `${BUCKET_URL}/${key}`;
+  const suffix  = isFinal ? "-final" : "";
+  const key     = `cards/card-${id}${suffix}-${nanoid()}.${ext}`;
+  const fileUrl = `${BUCKET_URL}/${key}`;
 
-  const uploadUrl = await getPresignedPutUrl(key, contentType, env);
-
-  return Response.json({ uploadUrl, fileUrl });
+  try {
+    const uploadUrl = await getPresignedPutUrl(key, env);
+    return Response.json({ uploadUrl, fileUrl });
+  } catch (err) {
+    console.error("[upload-url]", err);
+    return Response.json({ error: "Failed to generate upload URL" }, { status: 500 });
+  }
 }

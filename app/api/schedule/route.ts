@@ -1,7 +1,7 @@
+import { getPgDb } from "@/lib/db/pg";
 import { getDb } from "@/lib/db";
-import { postingSchedule } from "@/lib/db/schedule-schema";
-import { scheduledPosts, socialAccounts } from "@/lib/db/social-schema";
-import { gbpSchedule } from "@/lib/db/gbp-schema";
+import { postingSchedule, scheduledPosts, gbpSchedule } from "@/lib/db/pg-schema";
+import { socialAccounts } from "@/lib/db/social-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq, and, inArray, asc } from "drizzle-orm";
 import { nanoid } from "nanoid";
@@ -70,7 +70,7 @@ function slotToUtcMs(weekOf: string, dayOfWeek: number, time: string, tzOffsetMi
   return localMidnightMs + h * 3600000 + m * 60000;
 }
 
-async function clearWeek(db: ReturnType<typeof getDb>, projectId: string, platform: string, weekOf: string) {
+async function clearWeek(db: ReturnType<typeof getPgDb>, projectId: string, platform: string, weekOf: string) {
   await db.delete(postingSchedule).where(and(
     eq(postingSchedule.projectId, projectId),
     eq(postingSchedule.platform,  platform),
@@ -88,7 +88,7 @@ export async function GET(req: Request) {
 
   if (!projectId) return Response.json({ error: "projectId required" }, { status: 400 });
 
-  const db   = getDb();
+  const db   = getPgDb();
   const rows = await db.select().from(postingSchedule)
     .where(and(
       eq(postingSchedule.projectId, projectId),
@@ -126,7 +126,7 @@ export async function POST(req: Request) {
 
   // "Post Now" — insert a posting_schedule slot for now+2min AND set YouTube scheduledFor=now
   if (postNow) {
-    const db       = getDb();
+    const db       = getPgDb();
     const now      = Date.now();
     const weekOf   = getMonday(new Date());
     const jsDow    = new Date().getDay();
@@ -165,20 +165,23 @@ export async function POST(req: Request) {
       createdAt: now,
     });
 
-    // Schedule that many YouTube posts for right now (Cloudflare cron picks them up)
-    const pending = await db
-      .select({ post: scheduledPosts })
+    // Schedule that many YouTube posts for right now
+    const ytAccounts = await getDb().select({ id: socialAccounts.id }).from(socialAccounts)
+      .where(eq(socialAccounts.platform, "youtube"));
+    const ytIds = ytAccounts.map((a) => a.id);
+
+    const pending = ytIds.length === 0 ? [] : await db
+      .select()
       .from(scheduledPosts)
-      .innerJoin(socialAccounts, eq(scheduledPosts.socialAccountId, socialAccounts.id))
       .where(and(
         eq(scheduledPosts.projectId, projectId),
         inArray(scheduledPosts.status, ["draft", "scheduled"]),
-        eq(socialAccounts.platform, "youtube"),
+        inArray(scheduledPosts.socialAccountId, ytIds),
       ))
       .orderBy(asc(scheduledPosts.createdAt))
       .limit(slotCount);
 
-    for (const { post } of pending) {
+    for (const post of pending) {
       await db.update(scheduledPosts)
         .set({ scheduledFor: now, status: "scheduled", updatedAt: now })
         .where(eq(scheduledPosts.id, post.id));
@@ -189,7 +192,7 @@ export async function POST(req: Request) {
   if (slotsPerDay === 0) return Response.json({ weekOf: requestedWeek ?? getMonday(new Date()), schedule: [] });
 
   const weekOf = requestedWeek || getMonday(new Date());
-  const db     = getDb();
+  const db     = getPgDb();
 
   await clearWeek(db, projectId, platform, weekOf);
 
@@ -199,14 +202,17 @@ export async function POST(req: Request) {
   }
 
   // Auto-schedule any draft/pending IG+YT posts for this project
-  const pendingPosts = await db
-    .select({ post: scheduledPosts, account: socialAccounts })
+  const igYtAccounts = await getDb().select({ id: socialAccounts.id }).from(socialAccounts)
+    .where(inArray(socialAccounts.platform, ["instagram", "youtube"]));
+  const igYtIds = igYtAccounts.map((a) => a.id);
+
+  const pendingPosts = igYtIds.length === 0 ? [] : await db
+    .select()
     .from(scheduledPosts)
-    .innerJoin(socialAccounts, eq(scheduledPosts.socialAccountId, socialAccounts.id))
     .where(and(
       eq(scheduledPosts.projectId, projectId),
       inArray(scheduledPosts.status, ["draft", "scheduled"]),
-      inArray(socialAccounts.platform, ["instagram", "youtube"]),
+      inArray(scheduledPosts.socialAccountId, igYtIds),
     ));
 
   if (pendingPosts.length > 0) {
@@ -218,7 +224,7 @@ export async function POST(req: Request) {
       const scheduledFor = slotToUtcMs(weekOf, slot.dayOfWeek, slot.time, timezoneOffsetMinutes);
       await db.update(scheduledPosts)
         .set({ scheduledFor, status: "scheduled", updatedAt: Date.now() })
-        .where(eq(scheduledPosts.id, pendingPosts[i].post.id));
+        .where(eq(scheduledPosts.id, pendingPosts[i].id));
     }
   }
 
@@ -238,8 +244,7 @@ export async function POST(req: Request) {
       id:        nanoid(),
       projectId,
       dayOfWeek: dow,
-      time1:     sorted[0],
-      time2:     sorted[1] ?? sorted[0],
+      times:     JSON.stringify(sorted),
       weekOf,
       createdAt: Date.now(),
     });
@@ -268,7 +273,7 @@ export async function PUT(req: Request) {
   if (!projectId || !weekOf || !Array.isArray(days))
     return Response.json({ error: "projectId, weekOf, and days required" }, { status: 400 });
 
-  const db = getDb();
+  const db = getPgDb();
   await clearWeek(db, projectId, platform, weekOf);
 
   for (const { dayOfWeek, times } of days) {
@@ -299,7 +304,7 @@ export async function DELETE(req: Request) {
 
   if (!projectId) return Response.json({ error: "projectId required" }, { status: 400 });
 
-  const db = getDb();
+  const db = getPgDb();
   await db.delete(postingSchedule).where(and(
     eq(postingSchedule.projectId, projectId),
     eq(postingSchedule.weekOf,    weekOf),

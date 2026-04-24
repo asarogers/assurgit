@@ -7,9 +7,16 @@ import FAQSection from "@/components/marketing/FAQSection";
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
-  title: "How It Works",
+  openGraph: {
+  url: "https://assurgit.com/how-it-works",
+  images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
+  title: "How Assurgit Works — AI Video Content From Setup to Weekly System",
   description:
-    "See the exact 4-week onboarding process and weekly operating system behind Assurgit's AI clone content service — from clone setup to recurring publish-ready content.",
+    "Assurgit's done-for-you AI video content system runs a 4-week setup, then produces and publishes 5 researched videos every week on autopilot. See the exact process from clone setup to recurring content.",
+  alternates: {
+    canonical: 'https://assurgit.com/how-it-works',
+  },
 };
 
 const onboardingWeeks = [

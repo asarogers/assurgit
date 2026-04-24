@@ -1,0 +1,66 @@
+import { getDb } from "@/lib/db";
+import { socialAccounts } from "@/lib/db/social-schema";
+import { verifyOAuthState } from "@/lib/social/oauth-state";
+import { exchangeCodeForToken, getTikTokUser } from "@/lib/social/tiktok";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { eq, and } from "drizzle-orm";
+import { nanoid } from "nanoid";
+
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const code  = searchParams.get("code");
+  const state = searchParams.get("state");
+  const error = searchParams.get("error");
+
+  const { env } = getCloudflareContext() as any;
+  const appUrl       = (env.NEXT_PUBLIC_APP_URL as string) ?? "https://assurgit.com";
+  const clientKey    = env.TIKTOK_CLIENT_KEY    as string ?? "";
+  const clientSecret = env.TIKTOK_CLIENT_SECRET as string ?? "";
+  const redirectUri  = `${appUrl}/api/social/tiktok/callback`;
+
+  if (error || !code || !state) {
+    return Response.redirect(`${appUrl}/social?error=oauth_denied`);
+  }
+
+  const parsed = await verifyOAuthState(state);
+  if (!parsed) return Response.redirect(`${appUrl}/social?error=invalid_state`);
+
+  try {
+    const { accessToken, refreshToken, expiresIn, openId } = await exchangeCodeForToken(code, clientKey, clientSecret, redirectUri);
+    const { displayName, avatarUrl } = await getTikTokUser(accessToken);
+
+    const db  = getDb();
+    const now = Date.now();
+
+    if (parsed.clientId) {
+      await db.delete(socialAccounts).where(and(eq(socialAccounts.clientId, parsed.clientId), eq(socialAccounts.platform, "tiktok")));
+    }
+    await db.delete(socialAccounts).where(and(eq(socialAccounts.projectId, parsed.projectId), eq(socialAccounts.platform, "tiktok")));
+
+    await db.insert(socialAccounts).values({
+      id:             nanoid(),
+      projectId:      parsed.projectId,
+      clientId:       parsed.clientId ?? null,
+      platform:       "tiktok",
+      accountId:      openId,
+      accountName:    displayName,
+      accountAvatar:  avatarUrl ?? null,
+      accessToken,
+      refreshToken,
+      tokenExpiresAt: now + expiresIn * 1000,
+      createdAt:      now,
+      updatedAt:      now,
+    });
+
+    const dest = parsed.connectToken
+      ? `${appUrl}/connect?token=${encodeURIComponent(parsed.connectToken)}&connected=1`
+      : `${appUrl}/social?connected=1`;
+    return Response.redirect(dest);
+  } catch (err: any) {
+    console.error("TikTok OAuth error:", err);
+    const dest = parsed?.connectToken
+      ? `${appUrl}/connect?token=${encodeURIComponent(parsed.connectToken)}&error=${encodeURIComponent(err.message ?? "unknown")}`
+      : `${appUrl}/social?error=${encodeURIComponent(err.message ?? "unknown")}`;
+    return Response.redirect(dest);
+  }
+}

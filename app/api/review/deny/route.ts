@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { cards, projects, reviewSessions } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { cards, projects, reviewSessions } from "@/lib/db/pg-schema";
 import { validateReviewToken } from "@/lib/token";
 import { sendDenialNotification } from "@/lib/email";
 import { eq, and } from "drizzle-orm";
@@ -10,13 +10,11 @@ export async function POST(req: Request) {
 
   if (!token) return Response.json({ error: "Token required" }, { status: 400 });
 
-  const db = getDb();
+  const db = getPgDb();
   const parsed = await validateReviewToken(token);
   if (!parsed) return Response.json({ error: "Invalid token" }, { status: 403 });
 
-  const session = await db.query.reviewSessions.findFirst({
-    where: (s, { eq }) => eq(s.projectId, parsed.projectId),
-  });
+  const session = (await db.select().from(reviewSessions).where(eq(reviewSessions.projectId, parsed.projectId)).limit(1))[0];
 
   if (!session) return Response.json({ error: "Session not found" }, { status: 404 });
   if (Date.now() > session.expiresAt) return Response.json({ error: "Link expired" }, { status: 410 });
@@ -37,8 +35,8 @@ export async function POST(req: Request) {
     .where(eq(reviewSessions.id, session.id));
 
   const [project, card] = await Promise.all([
-    db.query.projects.findFirst({ where: (p, { eq }) => eq(p.id, parsed.projectId) }),
-    db.query.cards.findFirst({ where: (c, { eq }) => eq(c.id, cardId) }),
+    db.select().from(projects).where(eq(projects.id, parsed.projectId)).limit(1).then((r) => r[0]),
+    db.select().from(cards).where(eq(cards.id, cardId)).limit(1).then((r) => r[0]),
   ]);
 
   sendDenialNotification({

@@ -10,9 +10,14 @@ export const metadata: Metadata = {
   description:
     "Assurgit writes five research-backed scripts per week, tailored to your niche and written in your voice. You review in 48 hours or we publish. No generic ChatGPT prompts.",
   openGraph: {
+    url: "https://assurgit.com/features/ai-script-writing",
     title: "AI Script Writing — Research-Backed Scripts in Your Voice, Every Week | Assurgit",
     description: "Competitive research, niche targeting, and your brand voice — in five scripts every week. Here's how it works.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/features/ai-script-writing',
   },
 };
 
@@ -80,9 +85,36 @@ const callouts = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://assurgit.com/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Script Writing",
+      "item": "https://assurgit.com/features/ai-script-writing"
+    }
+  ]
+};
+
 export default function AiScriptWritingPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

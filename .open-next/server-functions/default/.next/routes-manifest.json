@@ -24,6 +24,20 @@
         }
       ],
       "regex": "^/uploads(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Last-Modified",
+          "value": "Thu, 23 Apr 2026 04:50:00 GMT"
+        },
+        {
+          "key": "Vary",
+          "value": "Accept-Encoding"
+        }
+      ],
+      "regex": "^(?:/(.*))(?:/)?$"
     }
   ],
   "rewrites": {
@@ -55,6 +69,14 @@
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/api/cards/(?<nxtPid>[^/]+?)/video(?:/)?$"
+    },
+    {
+      "page": "/api/clients/[id]",
+      "regex": "^/api/clients/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/clients/(?<nxtPid>[^/]+?)(?:/)?$"
     },
     {
       "page": "/api/onboard/file/[id]",
@@ -147,6 +169,18 @@
       "regex": "^/api/auth/logout(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/auth/logout(?:/)?$"
+    },
+    {
+      "page": "/api/cards",
+      "regex": "^/api/cards(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cards(?:/)?$"
+    },
+    {
+      "page": "/api/clients",
+      "regex": "^/api/clients(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/clients(?:/)?$"
     },
     {
       "page": "/api/cron/publish",
@@ -297,6 +331,18 @@
       "regex": "^/api/social/reddit/subreddits(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/social/reddit/subreddits(?:/)?$"
+    },
+    {
+      "page": "/api/social/tiktok/callback",
+      "regex": "^/api/social/tiktok/callback(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/tiktok/callback(?:/)?$"
+    },
+    {
+      "page": "/api/social/tiktok/connect",
+      "regex": "^/api/social/tiktok/connect(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/social/tiktok/connect(?:/)?$"
     },
     {
       "page": "/api/social/youtube/callback",
@@ -471,6 +517,12 @@
       "regex": "^/data\\-deletion(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/data\\-deletion(?:/)?$"
+    },
+    {
+      "page": "/database",
+      "regex": "^/database(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/database(?:/)?$"
     },
     {
       "page": "/favicon.ico",
@@ -747,6 +799,18 @@
       "regex": "^/tools/ai\\-video\\-tools(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/tools/ai\\-video\\-tools(?:/)?$"
+    },
+    {
+      "page": "/tools/seo-audit",
+      "regex": "^/tools/seo\\-audit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/tools/seo\\-audit(?:/)?$"
+    },
+    {
+      "page": "/tools/seo-leaderboard",
+      "regex": "^/tools/seo\\-leaderboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/tools/seo\\-leaderboard(?:/)?$"
     }
   ],
   "dataRoutes": [],

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { ReviewClient } from "@/components/review/ReviewClient";
+import { getDb } from "@/lib/db";
+import { projects, cards, reviewSessions } from "@/lib/db/schema";
+import { eq, asc } from "drizzle-orm";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
+  alternates: {
+    canonical: 'https://assurgit.com/review',
+  },
 };
-import { getDb } from "@/lib/db";
-import { asc } from "drizzle-orm";
 
 interface Props {
   searchParams: Promise<{ token?: string }>;
@@ -14,20 +18,23 @@ interface Props {
 async function getSession(token: string) {
   const db = getDb();
 
-  const project = await db.query.projects.findFirst({
-    where: (p, { eq }) => eq(p.token, token),
-    with:  { cards: { orderBy: (c) => [asc(c.position)] } },
-  });
+  const [projectRows] = await db
+    .select()
+    .from(projects)
+    .where(eq(projects.token, token))
+    .limit(1);
 
-  if (!project) return null;
+  if (!projectRows) return null;
 
-  const session = await db.query.reviewSessions.findFirst({
-    where: (s, { eq }) => eq(s.projectId, project.id),
-  });
+  const [cardRows, sessionRows] = await Promise.all([
+    db.select().from(cards).where(eq(cards.projectId, projectRows.id)).orderBy(asc(cards.position)),
+    db.select().from(reviewSessions).where(eq(reviewSessions.projectId, projectRows.id)).limit(1),
+  ]);
 
+  const session = sessionRows[0];
   if (!session || Date.now() > session.expiresAt) return null;
 
-  return { project, session };
+  return { project: { ...projectRows, cards: cardRows }, session };
 }
 
 export default async function ReviewPage({ searchParams }: Props) {

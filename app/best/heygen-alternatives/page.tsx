@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "The best HeyGen alternatives for businesses who want AI video content without doing it yourself. Ranked by how much you have to do, output quality, and real results.",
   openGraph: {
+    url: "https://assurgit.com/best/heygen-alternatives",
     title: "Best HeyGen Alternatives in 2026 (Ranked by What You Actually Get)",
     description:
       "The best HeyGen alternatives for businesses who want AI video content without doing it yourself. Ranked by effort, quality, and real results.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/best/heygen-alternatives',
   },
 };
 
@@ -243,9 +248,36 @@ function Stars({ n }: { n: number }) {
   );
 }
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Best",
+      "item": "https://assurgit.com/best"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Heygen Alternatives",
+      "item": "https://assurgit.com/best/heygen-alternatives"
+    }
+  ]
+};
+
 export default function BestHeyGenAlternativesPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

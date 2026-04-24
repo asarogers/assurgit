@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Done-for-you AI video content for wellness coaches. Build authority, attract clients, and grow your practice with 5 educational videos per week. Starting at $397/month.",
   openGraph: {
+    url: "https://assurgit.com/for/wellness-coaches",
     title: "AI Video Content for Wellness Coaches — Done For You",
     description:
       "Turn your wellness expertise into 5 weekly videos — published automatically. Build the trust that converts followers into clients.",
     type: "website",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/for/wellness-coaches',
   },
 };
 
@@ -53,9 +58,36 @@ const faqSchema = {
   ]
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For",
+      "item": "https://assurgit.com/for"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Wellness Coaches",
+      "item": "https://assurgit.com/for/wellness-coaches"
+    }
+  ]
+};
+
 export default function WellnessCoachesPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
@@ -68,10 +100,11 @@ export default function WellnessCoachesPage() {
             For Wellness Coaches
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Build the trust that makes{" "}
-            <span className="text-violet-400">clients choose you</span>
-            {" "}— before they ever book a call
+            Done-for-You AI Video Content for <span className="text-violet-400">Wellness Coaches</span>
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-white/80 max-w-2xl mx-auto mb-4">
+            Build the trust that makes clients choose you — before they ever book a call
+          </p>
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
             Assurgit builds your AI avatar and voice clone, researches what your audience is searching for, and publishes 5 educational videos a week — positioning you as the authority in your wellness niche.
           </p>

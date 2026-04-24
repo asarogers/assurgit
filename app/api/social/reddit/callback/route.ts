@@ -32,13 +32,15 @@ export async function GET(req: Request) {
     const db  = getDb();
     const now = Date.now();
 
-    await db.delete(socialAccounts).where(
-      and(eq(socialAccounts.projectId, parsed.projectId), eq(socialAccounts.platform, "reddit"))
-    );
+    if (parsed.clientId) {
+      await db.delete(socialAccounts).where(and(eq(socialAccounts.clientId, parsed.clientId), eq(socialAccounts.platform, "reddit")));
+    }
+    await db.delete(socialAccounts).where(and(eq(socialAccounts.projectId, parsed.projectId), eq(socialAccounts.platform, "reddit")));
 
     await db.insert(socialAccounts).values({
       id:             nanoid(),
       projectId:      parsed.projectId,
+      clientId:       parsed.clientId ?? null,
       platform:       "reddit",
       accountId:      userId,
       accountName:    username,

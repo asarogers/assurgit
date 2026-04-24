@@ -10,10 +10,15 @@ export const metadata: Metadata = {
   description:
     "Synthesia is a DIY enterprise tool with stock avatars and no publishing. Assurgit is a done-for-you service with your personal avatar, voice clone, and auto-publishing. See the real difference.",
   openGraph: {
+    url: "https://assurgit.com/compare/assurgit-vs-synthesia",
     title: "Assurgit vs. Synthesia: Done-For-You vs. DIY Enterprise Video",
     description:
       "Synthesia charges enterprise prices for a tool you still have to run yourself. Assurgit does everything for you — at a lower total cost.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/compare/assurgit-vs-synthesia',
   },
 };
 
@@ -155,9 +160,36 @@ const comparisonRows = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compare",
+      "item": "https://assurgit.com/compare"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Assurgit VS Synthesia",
+      "item": "https://assurgit.com/compare/assurgit-vs-synthesia"
+    }
+  ]
+};
+
 export default function AssurgitVsSynthesiaPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

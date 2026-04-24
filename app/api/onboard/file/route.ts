@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { onboardingFiles } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { onboardingFiles } from "@/lib/db/pg-schema";
 import { validateReviewToken } from "@/lib/token";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { nanoid } from "nanoid";
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
   const bucketUrl = (env.MEDIA_BUCKET_URL as string) ?? "";
   const fileUrl   = `${bucketUrl}/${key}`;
 
-  const db  = getDb();
+  const db  = getPgDb();
   const now = Date.now();
   const id  = nanoid();
 

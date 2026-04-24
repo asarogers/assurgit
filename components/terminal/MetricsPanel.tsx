@@ -7,7 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { RefreshCw, Loader2, Eye, Heart, MessageCircle, Share2, BookmarkIcon, TrendingUp, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { ScheduledPost, SocialAccount } from "@/lib/db/social-schema";
+import type { ScheduledPost } from "@/lib/db/pg-schema";
+import type { SocialAccount } from "@/lib/db/social-schema";
 
 interface Props {
   projectId: string;

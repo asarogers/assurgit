@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { gbpQueue } from "@/lib/db/gbp-schema";
+import { getPgDb } from "@/lib/db/pg";
+import { gbpQueue } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq, and, asc } from "drizzle-orm";
 import { nanoid } from "nanoid";
@@ -14,7 +14,7 @@ export async function GET(req: Request) {
 
   if (!projectId) return Response.json({ error: "projectId required" }, { status: 400 });
 
-  const db = getDb();
+  const db = getPgDb();
   const conditions = [eq(gbpQueue.projectId, projectId)];
   if (status) conditions.push(eq(gbpQueue.status, status));
 
@@ -32,7 +32,7 @@ export async function PATCH(req: Request) {
   const { id, status = "posted" } = await req.json() as { id: string; status?: string };
   if (!id) return Response.json({ error: "id required" }, { status: 400 });
 
-  const db = getDb();
+  const db = getPgDb();
   await db.update(gbpQueue)
     .set({ status, postedAt: status === "posted" ? Date.now() : null })
     .where(eq(gbpQueue.id, id));

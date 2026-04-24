@@ -9,7 +9,7 @@ type ScheduleRow = {
 };
 type GbpScheduleRow = {
   id: string; projectId: string;
-  dayOfWeek: number; time1: string; time2: string; weekOf: string;
+  dayOfWeek: number; times: string[]; weekOf: string;
 };
 type Card = {
   id: string; position: number; status: string;
@@ -63,6 +63,8 @@ export function ScheduleClient({ initialProjects }: { initialProjects: Project[]
   const [gbpGenerating, setGbpGenerating] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [syncResult, setSyncResult] = useState<string | null>(null);
+  // Per-day post counts: { "1": 2, "2": 3, ... } — keyed by dayOfWeek
+  const [dayCounts, setDayCounts] = useState<Record<string, number>>({ "1": 2, "2": 2, "3": 2, "4": 2, "5": 2 });
 
   const fetchInstagram = async () => {
     if (!selectedProject) return;
@@ -117,7 +119,7 @@ export function ScheduleClient({ initialProjects }: { initialProjects: Project[]
     const res = await fetch("/api/gbp-schedule", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ projectId: selectedProject, weekOf }),
+      body: JSON.stringify({ projectId: selectedProject, weekOf, dayCounts }),
     });
     const data = await res.json() as { schedule?: GbpScheduleRow[] };
     setGbpSchedule(data.schedule || []);
@@ -148,9 +150,9 @@ export function ScheduleClient({ initialProjects }: { initialProjects: Project[]
   const getGbpRowForDay = (dow: number) => gbpSchedule.find((r) => r.dayOfWeek === dow);
   const getCardForSlot = (i: number) => cards[i] || null;
 
-  // Next 2 pending GBP items for a given slot index (0-based across the week)
   const pendingQueue = gbpQueue.filter(q => q.status === "pending");
   const postedQueue  = gbpQueue.filter(q => q.status === "posted");
+  // slotIndex is the cumulative slot number across all days (0-based)
   const getGbpItemForSlot = (slotIndex: number) => pendingQueue[slotIndex] || null;
 
   const selectedName = projects.find((p) => p.id === selectedProject)?.name || "";
@@ -274,6 +276,37 @@ export function ScheduleClient({ initialProjects }: { initialProjects: Project[]
         {/* ===== GOOGLE POSTS TAB ===== */}
         {tab === "google" && (
           <>
+            {/* Per-day count picker */}
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-5">
+              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-3">Posts per day</p>
+              <div className="flex gap-4 flex-wrap">
+                {DAYS.map((day, i) => {
+                  const dow = String(i + 1);
+                  return (
+                    <div key={dow} className="flex flex-col items-center gap-1.5">
+                      <span className="text-xs text-gray-500">{day.slice(0, 3)}</span>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => setDayCounts(prev => ({ ...prev, [dow]: Math.max(0, (prev[dow] ?? 2) - 1) }))}
+                          className="w-6 h-6 bg-gray-800 hover:bg-gray-700 rounded text-gray-300 text-sm font-bold flex items-center justify-center"
+                        >−</button>
+                        <span className="w-6 text-center text-white font-bold text-sm">{dayCounts[dow] ?? 2}</span>
+                        <button
+                          onClick={() => setDayCounts(prev => ({ ...prev, [dow]: Math.min(12, (prev[dow] ?? 2) + 1) }))}
+                          className="w-6 h-6 bg-gray-800 hover:bg-gray-700 rounded text-gray-300 text-sm font-bold flex items-center justify-center"
+                        >+</button>
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="flex items-end ml-4">
+                  <span className="text-xs text-gray-500">
+                    {Object.values(dayCounts).reduce((a, b) => a + b, 0)} posts this week
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <div className="flex gap-3 mb-8 flex-wrap">
               <button onClick={generateGbp} disabled={gbpGenerating} className="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-5 py-2.5 rounded-lg text-sm disabled:opacity-50">
                 {gbpGenerating ? "Generating..." : "Generate Random Times"}
@@ -308,51 +341,56 @@ export function ScheduleClient({ initialProjects }: { initialProjects: Project[]
             {gbpLoading ? <p className="text-gray-500">Loading...</p> : gbpSchedule.length === 0 ? (
               <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 text-center">
                 <p className="text-gray-400 mb-2">No Google Posts schedule for this week.</p>
-                <p className="text-gray-500 text-sm">Click &quot;Generate Random Times&quot; to create one.</p>
+                <p className="text-gray-500 text-sm">Set posts per day above, then click &quot;Generate Random Times&quot;.</p>
               </div>
-            ) : (
-              <div className="space-y-3">
-                {DAYS.map((day, i) => {
-                  const row = getGbpRowForDay(i + 1);
-                  if (!row) return null;
-                  const [h1, m1] = row.time1.split(":").map(Number);
-                  const [h2, m2] = row.time2.split(":").map(Number);
-                  const gap = ((h2 * 60 + m2) - (h1 * 60 + m1)) / 60;
-                  const item1 = getGbpItemForSlot(i * 2);
-                  const item2 = getGbpItemForSlot(i * 2 + 1);
+            ) : (() => {
+              // Track cumulative slot index across all days so queue items line up correctly
+              let slotCursor = 0;
+              return (
+                <div className="space-y-3">
+                  {DAYS.map((day, i) => {
+                    const row = getGbpRowForDay(i + 1);
+                    if (!row) return null;
+                    const times = Array.isArray(row.times) ? row.times : JSON.parse(row.times as unknown as string || "[]");
+                    const slots = times.map((time: string, j: number) => {
+                      const item = getGbpItemForSlot(slotCursor + j);
+                      return { time, item };
+                    });
+                    slotCursor += times.length;
 
-                  return (
-                    <div key={i} className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-white font-semibold">{day}</h3>
-                        <span className="text-gray-500 text-xs">{gap.toFixed(1)}h apart</span>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {([{ time: row.time1, item: item1, color: "blue" }, { time: row.time2, item: item2, color: "teal" }] as const).map(({ time, item, color }) => (
-                          <div key={time} className={`bg-gray-800/50 rounded-lg p-4`}>
-                            <div className="flex items-center gap-2 mb-2">
-                              <span className={`bg-${color}-900/40 text-${color}-300 px-2.5 py-1 rounded-md text-xs font-mono`}>{fmt(time)}</span>
-                              {item && (
-                                <span className={`text-xs px-2 py-0.5 rounded-full ${item.type === "service" ? "bg-blue-900/30 text-blue-400" : "bg-purple-900/30 text-purple-400"}`}>
-                                  {item.type}
-                                </span>
-                              )}
-                            </div>
-                            {item ? (
-                              <div>
-                                <p className="text-white text-xs font-medium mb-1 truncate">{item.title}</p>
-                                <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">{item.body}</p>
-                                <a href={item.url} target="_blank" rel="noreferrer" className="text-blue-400 text-xs mt-1 inline-block hover:underline truncate max-w-full">{item.url}</a>
+                    return (
+                      <div key={i} className="bg-gray-900 border border-gray-800 rounded-xl p-5">
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className="text-white font-semibold">{day}</h3>
+                          <span className="text-gray-500 text-xs">{times.length} post{times.length !== 1 ? "s" : ""}</span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {slots.map(({ time, item }: { time: string; item: GbpQueueItem | null }, j: number) => (
+                            <div key={j} className="bg-gray-800/50 rounded-lg p-4">
+                              <div className="flex items-center gap-2 mb-2">
+                                <span className="bg-blue-900/40 text-blue-300 px-2.5 py-1 rounded-md text-xs font-mono">{fmt(time)}</span>
+                                {item && (
+                                  <span className={`text-xs px-2 py-0.5 rounded-full ${item.type === "service" ? "bg-blue-900/30 text-blue-400" : "bg-purple-900/30 text-purple-400"}`}>
+                                    {item.type}
+                                  </span>
+                                )}
                               </div>
-                            ) : <p className="text-gray-600 text-xs italic">Queue empty</p>}
-                          </div>
-                        ))}
+                              {item ? (
+                                <div>
+                                  <p className="text-white text-xs font-medium mb-1 truncate">{item.title}</p>
+                                  <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">{item.body}</p>
+                                  <a href={item.url} target="_blank" rel="noreferrer" className="text-blue-400 text-xs mt-1 inline-block hover:underline truncate max-w-full">{item.url}</a>
+                                </div>
+                              ) : <p className="text-gray-600 text-xs italic">Queue empty</p>}
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+                    );
+                  })}
+                </div>
+              );
+            })()}
 
             {/* Full queue */}
             {gbpQueue.length > 0 && (

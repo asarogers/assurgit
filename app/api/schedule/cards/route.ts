@@ -1,6 +1,6 @@
-import { getDb } from "@/lib/db";
-import { cards } from "@/lib/db/schema";
-import { projects } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { cards } from "@/lib/db/pg-schema";
+import { projects } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq, and, asc } from "drizzle-orm";
 
@@ -12,7 +12,7 @@ export async function GET(req: Request) {
   const projectId = searchParams.get("projectId");
   if (!projectId) return Response.json({ error: "projectId required" }, { status: 400 });
 
-  const db = getDb();
+  const db = getPgDb();
   const rows = await db.select({
     id: cards.id,
     position: cards.position,

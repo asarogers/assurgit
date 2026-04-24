@@ -1,8 +1,9 @@
-import { getDb } from "@/lib/db";
-import { projects, reviewSessions } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { projects, reviewSessions } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { sendReviewLink } from "@/lib/email";
 import { REVIEW_EXPIRY_MS, MAX_DENIES } from "@/lib/constants";
+import { generateReviewToken } from "@/lib/token";
 import { eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
 
@@ -14,14 +15,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   }
 
   const { id }   = await params;
-  const db       = getDb();
+  const db       = getPgDb();
   const { email } = await req.json() as { email: string };
 
   if (!email) return Response.json({ error: "Email required" }, { status: 400 });
 
-  const project = await db.query.projects.findFirst({
-    where: (p, { eq }) => eq(p.id, id),
-  });
+  const project = (await db.select().from(projects).where(eq(projects.id, id)).limit(1))[0];
   if (!project) return Response.json({ error: "Not found" }, { status: 404 });
 
   const now      = Date.now();
@@ -42,8 +41,15 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     createdAt:  now,
   });
 
+  // Generate token if not yet set (e.g. projects created before token field was added)
+  let projectToken = project.token;
+  if (!projectToken) {
+    projectToken = generateReviewToken(id);
+    await db.update(projects).set({ token: projectToken, updatedAt: Date.now() }).where(eq(projects.id, id));
+  }
+
   const appUrl   = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  const reviewUrl = `${appUrl}/review?token=${project.token}`;
+  const reviewUrl = `${appUrl}/review?token=${projectToken}`;
 
   try {
     await sendReviewLink({ to: email, projectName: project.name, reviewUrl, expiresAt: expires });

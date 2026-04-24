@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { cards } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { cards, reviewSessions } from "@/lib/db/pg-schema";
 import { validateReviewToken } from "@/lib/token";
 import { eq, and } from "drizzle-orm";
 
@@ -9,13 +9,11 @@ export async function PATCH(req: Request) {
 
   if (!token) return Response.json({ error: "Token required" }, { status: 400 });
 
-  const db = getDb();
+  const db = getPgDb();
   const parsed = await validateReviewToken(token);
   if (!parsed) return Response.json({ error: "Invalid token" }, { status: 403 });
 
-  const session = await db.query.reviewSessions.findFirst({
-    where: (s, { eq }) => eq(s.projectId, parsed.projectId),
-  });
+  const session = (await db.select().from(reviewSessions).where(eq(reviewSessions.projectId, parsed.projectId)).limit(1))[0];
 
   if (!session) return Response.json({ error: "Session not found" }, { status: 404 });
   if (Date.now() > session.expiresAt) return Response.json({ error: "Link expired" }, { status: 410 });
@@ -33,6 +31,6 @@ export async function PATCH(req: Request) {
     .set(updates)
     .where(and(eq(cards.id, cardId), eq(cards.projectId, parsed.projectId)));
 
-  const card = await db.query.cards.findFirst({ where: (c, { eq }) => eq(c.id, cardId) });
+  const card = (await db.select().from(cards).where(eq(cards.id, cardId)).limit(1))[0];
   return Response.json(card);
 }

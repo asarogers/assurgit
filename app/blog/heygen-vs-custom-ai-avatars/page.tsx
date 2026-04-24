@@ -2,24 +2,128 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/marketing/Navbar";
 import Footer from "@/components/marketing/Footer";
+import { resolveImagePath } from "@/lib/image-path";
 
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
   title: "HeyGen vs. Custom AI Avatars: DIY vs. Done-For-You (Which Actually Works?)",
   description:
-    "HeyGen is a powerful tool. But subscribing to HeyGen and getting 7 branded videos published every week are very different things. Here's what most people miss.",
+    "HeyGen is a powerful tool. But subscribing to HeyGen and getting 5 branded videos published every week are very different things. Here's what most people miss.",
   openGraph: {
+    url: "https://assurgit.com/blog/heygen-vs-custom-ai-avatars",
     title: "HeyGen vs. Custom AI Avatars: DIY vs. Done-For-You (Which Actually Works?)",
     description:
-      "HeyGen is a powerful tool. But subscribing to HeyGen and getting 7 branded videos published every week are very different things. Here's what most people miss.",
+      "HeyGen is a powerful tool. But subscribing to HeyGen and getting 5 branded videos published every week are very different things. Here's what most people miss.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
   },
+  alternates: {
+    canonical: 'https://assurgit.com/blog/heygen-vs-custom-ai-avatars',
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is HeyGen and what does it actually do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HeyGen is a video rendering platform. You give it a script and an avatar configuration, and it renders a video. What HeyGen doesn't do: research your niche, write your scripts, develop your content strategy, format content for different platforms, post to social media, review the output for quality issues, or ensure you're posting consistently week after week."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much time does it take to publish 5 videos per week with HeyGen on your own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Doing it properly takes 9–16 hours per week. This includes researching what to create (2–4 hours), writing 5 scripts in your brand voice (3–5 hours), formatting for each platform (1–2 hours), rendering in HeyGen (30–60 minutes), post-processing each video (1–2 hours), uploading and scheduling to each platform (1–2 hours), and reviewing performance (1 hour)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does DIY HeyGen make sense?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DIY HeyGen makes sense if you're a developer or creator who enjoys the technical workflow, if you have dedicated content time genuinely blocked in your calendar, if you're pre-revenue and need to keep costs minimal, or if you have an existing VA or editor who can own most of the workflow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does done-for-you AI video make sense over DIY HeyGen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Done-for-you makes sense if you're revenue-generating and your time is worth more than $200/hour, if you want 5 videos published every week regardless of how busy your week gets, or if you want research-backed scripts instead of gut-feel content."
+      }
+    }
+  ]
+}
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HeyGen vs. Custom AI Avatars: DIY vs. Done-For-You (Which Actually Works?)",
+  "description": "HeyGen is a powerful tool. But subscribing to HeyGen and getting 5 branded videos published every week are very different things. Here's what most people miss.",
+  "image": "https://assurgit.com/app-icon-1024.png",
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-01",
+  "url": "https://assurgit.com/blog/heygen-vs-custom-ai-avatars",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://assurgit.com/blog/heygen-vs-custom-ai-avatars"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://assurgit.com/app-icon-1024.png"
+    }
+  }
+}
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://assurgit.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Heygen VS Custom AI Avatars",
+      "item": "https://assurgit.com/blog/heygen-vs-custom-ai-avatars"
+    }
+  ]
 };
 
 export default function HeyGenVsCustomAIAvatarsPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="min-h-screen bg-gray-950 text-white">
       <Navbar />
 
       <main className="pt-24 pb-20">
@@ -50,6 +154,14 @@ export default function HeyGenVsCustomAIAvatarsPage() {
           <p className="text-gray-400 text-lg leading-relaxed">
             HeyGen is excellent. If you&apos;ve already trained your avatar, generated your voice clone, and you&apos;re consistently publishing 5 videos a week — you don&apos;t need to read this. But if you subscribed to HeyGen three months ago and you&apos;re still at zero videos, this is for you.
           </p>
+        </div>
+
+        {/* Featured Image */}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 mb-10">
+          <img
+            src={resolveImagePath('blog', 'heygen-vs-custom-ai-avatars')}
+            alt="HeyGen vs custom AI avatars feature comparison"
+            className="w-full h-64 md:h-80 object-cover rounded-2xl" loading="lazy" />
         </div>
 
         {/* Article Body */}
@@ -227,7 +339,7 @@ export default function HeyGenVsCustomAIAvatarsPage() {
           </ul>
 
           <p className="text-gray-300 leading-relaxed mb-4">
-            You get the output — 7 branded videos, live across 4 platforms — without the overhead of managing the workflow yourself.
+            You get the output — 5 branded videos per week, live across 4 platforms — without the overhead of managing the workflow yourself.
           </p>
 
           {/* Mid CTA */}
@@ -369,5 +481,6 @@ export default function HeyGenVsCustomAIAvatarsPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

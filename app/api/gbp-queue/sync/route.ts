@@ -5,9 +5,9 @@
  * Called automatically on `npm run deploy` via a post-deploy script.
  * Only adds items not already in the queue — never removes or reorders existing ones.
  */
-import { getDb } from "@/lib/db";
-import { gbpQueue } from "@/lib/db/gbp-schema";
-import { projects } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { gbpQueue } from "@/lib/db/pg-schema";
+import { projects } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { eq, and } from "drizzle-orm";
 import { nanoid } from "nanoid";
@@ -73,7 +73,7 @@ export async function POST(req: Request) {
 
   const { projectName = "Well prepped life" } = await req.json().catch(() => ({})) as { projectName?: string };
 
-  const db = getDb();
+  const db = getPgDb();
 
   // Find project
   const projectRows = await db.select().from(projects).where(eq(projects.name, projectName));

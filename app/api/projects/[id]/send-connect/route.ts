@@ -1,5 +1,5 @@
-import { getDb } from "@/lib/db";
-import { projects } from "@/lib/db/schema";
+import { getPgDb } from "@/lib/db/pg";
+import { projects } from "@/lib/db/pg-schema";
 import { requireOwner, unauthorizedResponse } from "@/lib/auth";
 import { signConnectToken } from "@/lib/social/connect-token";
 import { sendSocialConnectEmail } from "@/lib/email";
@@ -10,11 +10,9 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   try { await requireOwner(req); } catch { return unauthorizedResponse(); }
 
   const { id } = await params;
-  const db     = getDb();
+  const db     = getPgDb();
 
-  const project = await db.query.projects.findFirst({
-    where: (p, { eq }) => eq(p.id, id),
-  });
+  const project = (await db.select().from(projects).where(eq(projects.id, id)).limit(1))[0];
   if (!project) return Response.json({ error: "Not found" }, { status: 404 });
 
   const { env } = getCloudflareContext() as any;

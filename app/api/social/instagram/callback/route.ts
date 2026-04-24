@@ -32,14 +32,15 @@ export async function GET(req: Request) {
     const db  = getDb();
     const now = Date.now();
 
-    // Upsert: remove existing IG account for this project, then insert fresh
-    await db.delete(socialAccounts).where(
-      and(eq(socialAccounts.projectId, parsed.projectId), eq(socialAccounts.platform, "instagram"))
-    );
+    if (parsed.clientId) {
+      await db.delete(socialAccounts).where(and(eq(socialAccounts.clientId, parsed.clientId), eq(socialAccounts.platform, "instagram")));
+    }
+    await db.delete(socialAccounts).where(and(eq(socialAccounts.projectId, parsed.projectId), eq(socialAccounts.platform, "instagram")));
 
     await db.insert(socialAccounts).values({
       id:             nanoid(),
       projectId:      parsed.projectId,
+      clientId:       parsed.clientId ?? null,
       platform:       "instagram",
       accountId,
       accountName,

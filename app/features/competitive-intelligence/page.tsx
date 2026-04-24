@@ -10,9 +10,14 @@ export const metadata: Metadata = {
   description:
     "Assurgit's research pipeline monitors competitor content, trending topics, and niche keywords every week. The findings feed directly into your scripts — so your content is always one step ahead.",
   openGraph: {
+    url: "https://assurgit.com/features/competitive-intelligence",
     title: "Competitive Intelligence — Know What's Working Before Your Competitors Do | Assurgit",
     description: "Weekly competitor monitoring, trend tracking, and niche keyword research — all feeding into your video scripts automatically.",
     type: "article",
+    images: [{ url: "https://assurgit.com/app-icon-1024.png", width: 1024, height: 1024, alt: "Assurgit — Done-For-You AI Video Content Service" }],
+  },
+  alternates: {
+    canonical: 'https://assurgit.com/features/competitive-intelligence',
   },
 };
 
@@ -80,9 +85,36 @@ const callouts = [
   },
 ];
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://assurgit.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://assurgit.com/features"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Competitive Intelligence",
+      "item": "https://assurgit.com/features/competitive-intelligence"
+    }
+  ]
+};
+
 export default function CompetitiveIntelligencePage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />

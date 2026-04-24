@@ -7,9 +7,16 @@ import FounderSection from "@/components/marketing/FounderSection";
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
-  title: "About",
+  openGraph: {
+  url: "https://assurgit.com/about",
+  images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
+  },
+  title: "About Assurgit — Done-For-You AI Video Content | Asa Rogers",
   description:
-    "Assurgit is an Online Presence Launch System for service businesses, built by Asa Rogers. Learn the story, the system, and the operating principles behind it.",
+    "Assurgit is a done-for-you AI video content company built by Asa Rogers. Every plan includes a personal AI avatar, voice clone, and 5 research-backed videos published weekly. Learn how the system works.",
+  alternates: {
+    canonical: 'https://assurgit.com/about',
+  },
 };
 
 const operatingPrinciples = [
@@ -78,8 +85,9 @@ export default function AboutPage() {
               A system, not an agency
             </h1>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Assurgit is an Online Presence Launch System for service businesses, built around
-              AI clone content and supporting visibility infrastructure.
+              Assurgit is a done-for-you AI video content company built by Asa Rogers, a software
+              engineer with 10+ years in AI systems and automation. Every plan includes a personal
+              avatar, voice clone, and weekly videos researched and produced for your specific niche.
             </p>
           </div>
         </section>

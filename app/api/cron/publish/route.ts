@@ -1,38 +1,45 @@
+import { getPgDb } from "@/lib/db/pg";
 import { getDb } from "@/lib/db";
-import { scheduledPosts, socialAccounts } from "@/lib/db/social-schema";
-import { createInstagramContainer, publishInstagramContainer } from "@/lib/social/instagram";
-import { publishYouTubeVideo } from "@/lib/social/youtube";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { eq, and, lte, isNotNull } from "drizzle-orm";
+import { scheduledPosts } from "@/lib/db/pg-schema";
+import { socialAccounts } from "@/lib/db/social-schema";
+import { eq, and, lte, inArray } from "drizzle-orm";
 
-async function publishRedditViaZernio(opts: {
-  apiKey:    string;
-  accountId: string;   // Zernio accountId stored on connect
-  title:     string;
-  body:      string;
-  subreddit: string;
-  mediaUrl?: string;
+async function publishViaZernio(opts: {
+  apiKey:     string;
+  profileId:  string;
+  accountId:  string;
+  platform:   "tiktok" | "reddit";
+  title:      string;
+  body:       string;
+  mediaUrl?:  string;
+  subreddit?: string;
 }): Promise<string | null> {
-  const body: Record<string, unknown> = {
+  const platformSpecificData: Record<string, unknown> = {};
+  if (opts.platform === "reddit" && opts.subreddit) {
+    platformSpecificData.subreddit = opts.subreddit;
+    platformSpecificData.title     = opts.title;
+  }
+
+  const payload: Record<string, unknown> = {
     title:   opts.title,
     content: opts.body || opts.title,
     platforms: [{
-      platform:             "reddit",
+      platform:             opts.platform,
       accountId:            opts.accountId,
-      platformSpecificData: { subreddit: opts.subreddit, title: opts.title },
+      ...(Object.keys(platformSpecificData).length ? { platformSpecificData } : {}),
     }],
     publishNow: true,
   };
 
   if (opts.mediaUrl) {
     const isVideo = /\.(mp4|mov|webm)$/i.test(opts.mediaUrl);
-    body.mediaItems = [{ type: isVideo ? "video" : "image", url: opts.mediaUrl }];
+    payload.mediaItems = [{ type: isVideo ? "video" : "image", url: opts.mediaUrl }];
   }
 
   const res = await fetch("https://zernio.com/api/v1/posts", {
     method:  "POST",
     headers: { Authorization: `Bearer ${opts.apiKey}`, "Content-Type": "application/json" },
-    body:    JSON.stringify(body),
+    body:    JSON.stringify(payload),
   });
 
   if (!res.ok) {
@@ -40,80 +47,88 @@ async function publishRedditViaZernio(opts: {
     throw new Error(err.message ?? err.error ?? `Zernio post failed (${res.status})`);
   }
 
-  // Try to extract native Reddit post ID from Zernio response
   const data = await res.json() as any;
-  const platformEntry = data?.platforms?.find?.((p: any) => p.platform === "reddit")
-    ?? data?.posts?.find?.((p: any) => p.platform === "reddit");
-  return platformEntry?.postId ?? platformEntry?.platformPostId ?? data?.postId ?? null;
+  const entry = data?.platforms?.find?.((p: any) => p.platform === opts.platform)
+    ?? data?.posts?.find?.((p: any) => p.platform === opts.platform);
+  return entry?.postId ?? entry?.platformPostId ?? data?.postId ?? null;
 }
 
-async function runPublish(db: ReturnType<typeof getDb>, env: Record<string, string>) {
-  const now = Date.now();
+async function runPublish(env: Record<string, string>) {
+  const now  = Date.now();
+  const pgDb = getPgDb();
+  const d1Db = getDb();
 
-  const due = await db
-    .select({ post: scheduledPosts, account: socialAccounts })
+  // Fetch due scheduled posts from PG
+  const duePosts = await pgDb
+    .select()
     .from(scheduledPosts)
-    .innerJoin(socialAccounts, eq(scheduledPosts.socialAccountId, socialAccounts.id))
     .where(and(
       eq(scheduledPosts.status, "scheduled"),
       lte(scheduledPosts.scheduledFor, now),
     ));
 
-  // ── Phase 1 & 2: Instagram — disabled (not in use yet) ──────────────────────
-  // for (const { post, account } of due.filter(({ post, account }) =>
-  //   account.platform === "instagram" && !post.igContainerId
-  // )) { ... createInstagramContainer ... }
-  //
-  // const readyIg = await db.select()...where(instagram + igContainerId set)
-  // for (const { post, account } of readyIg) { ... publishInstagramContainer ... }
+  if (duePosts.length === 0) return;
 
-  // ── Phase 3: YouTube — direct upload via YouTube Data API v3 ─────────────
-  for (const { post, account } of due.filter(({ account }) => account.platform === "youtube")) {
+  // Fetch associated social accounts from D1
+  const accountIds = [...new Set(duePosts.map((p) => p.socialAccountId))];
+  const accounts   = await d1Db.select().from(socialAccounts).where(inArray(socialAccounts.id, accountIds));
+  const accountMap = new Map(accounts.map((a) => [a.id, a]));
+
+  const due = duePosts
+    .map((post) => ({ post, account: accountMap.get(post.socialAccountId) }))
+    .filter((x): x is { post: typeof duePosts[0]; account: NonNullable<typeof accounts[0]> } => !!x.account);
+
+  // ── Phase 4: TikTok via Zernio ─────────────────────────────────────────────────
+  for (const { post, account } of due.filter(({ account }) => account.platform === "tiktok")) {
+    if (!post.mediaUrl) continue;
     try {
-      if (!post.mediaUrl) throw new Error("No video URL on this post");
-      const videoId = await publishYouTubeVideo({
-        accessToken:    account.accessToken,
-        refreshToken:   account.refreshToken ?? "",
-        clientId:       env.GOOGLE_CLIENT_ID    ?? "",
-        clientSecret:   env.GOOGLE_CLIENT_SECRET ?? "",
-        tokenExpiresAt: account.tokenExpiresAt,
-        mediaUrl:       post.mediaUrl,
-        title:          post.title ?? (post.caption.split("\n")[0].slice(0, 100) || "Untitled"),
-        description:    post.caption,
-        visibility:     (post.visibility as "public" | "unlisted" | "private") ?? "public",
+      await publishViaZernio({
+        apiKey:    env.ZERNIO_API_KEY    as string,
+        profileId: env.ZERNIO_PROFILE_ID as string,
+        accountId: account.accountId,
+        platform:  "tiktok",
+        title:     post.title ?? post.caption.slice(0, 100),
+        body:      post.caption,
+        mediaUrl:  post.mediaUrl,
       });
-      await db.update(scheduledPosts)
-        .set({ status: "published", publishedAt: Date.now(), igMediaId: videoId, updatedAt: Date.now() })
+      await pgDb.update(scheduledPosts)
+        .set({ status: "published", publishedAt: Date.now() })
         .where(eq(scheduledPosts.id, post.id));
     } catch (err: any) {
-      await db.update(scheduledPosts)
-        .set({ status: "failed", errorMessage: err.message ?? "Unknown error", updatedAt: Date.now() })
+      console.error(`TikTok publish failed for post ${post.id}:`, err.message);
+      await pgDb.update(scheduledPosts)
+        .set({ status: "failed", errorMessage: err.message })
         .where(eq(scheduledPosts.id, post.id));
     }
   }
-
-  // ── Phase 4: TikTok — disabled (handled locally via post-tiktok.py) ─────────
-  // for (const { post, account } of due.filter(({ account }) => account.platform === "tiktok")) {
-  //   ... Zernio TikTok post ...
-  // }
-
-  // ── Phase 5: Reddit — disabled (handled locally via post-reddit.py) ──────────
-  // for (const { post, account } of due.filter(({ account }) => account.platform === "reddit")) {
-  //   ... Zernio Reddit post ...
-  // }
 }
 
 export async function GET(req: Request) {
-  const { env, ctx } = getCloudflareContext() as any;
-  const cronSecret = (env.CRON_SECRET as string) ?? "";
+  // Support both Cloudflare Worker (env from context) and Node.js (process.env)
+  let env: Record<string, string> = process.env as Record<string, string>;
+  let waitUntil: ((p: Promise<unknown>) => void) | null = null;
 
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const ctx = getCloudflareContext() as any;
+    env = ctx.env;
+    waitUntil = ctx.ctx?.waitUntil?.bind(ctx.ctx) ?? null;
+  } catch {
+    // Running in Node.js — use process.env
+  }
+
+  const cronSecret = env.CRON_SECRET ?? "";
   const authHeader = req.headers.get("Authorization");
   if (!authHeader || authHeader !== `Bearer ${cronSecret}`) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
-  ctx.waitUntil(runPublish(db, env));
+  const work = runPublish(env);
+  if (waitUntil) {
+    waitUntil(work);
+  } else {
+    await work;
+  }
 
   return Response.json({ ok: true });
 }

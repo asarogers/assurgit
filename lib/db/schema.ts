@@ -1,7 +1,15 @@
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
+export const clients = sqliteTable("clients", {
+  id:        text("id").primaryKey(),
+  name:      text("name").notNull(),
+  createdAt: integer("created_at").notNull(),
+  updatedAt: integer("updated_at").notNull(),
+});
+
 export const projects = sqliteTable("projects", {
   id:            text("id").primaryKey(),
+  clientId:      text("client_id").references(() => clients.id, { onDelete: "set null" }),
   name:          text("name").notNull(),
   token:         text("token").notNull().unique(),
   phase:         text("phase", { enum: ["transcript", "final_video"] })
@@ -81,6 +89,7 @@ export const onboardingFiles = sqliteTable("onboarding_files", {
   createdAt: integer("created_at").notNull(),
 });
 
+export type Client                = typeof clients.$inferSelect;
 export type Project               = typeof projects.$inferSelect;
 export type Card                  = typeof cards.$inferSelect;
 export type ReviewSession         = typeof reviewSessions.$inferSelect;

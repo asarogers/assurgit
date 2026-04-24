@@ -3,20 +3,16 @@ import { MetadataRoute } from 'next'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      {
-        userAgent: [
-          'GPTBot',          // ChatGPT training
-          'OAI-SearchBot',   // ChatGPT search results (separate from GPTBot)
-          'ChatGPT-User',
-          'Google-Extended',
-          'PerplexityBot',
-          'Claude-Web',
-          'anthropic-ai',
-          'Bytespider',
-          'cohere-ai',
-        ],
-        allow: '/',
-      },
+            { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'OAI-SearchBot', allow: '/' },
+      { userAgent: 'ChatGPT-User', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'Claude-Web', allow: '/' },
+      { userAgent: 'anthropic-ai', allow: '/' },
+      { userAgent: 'Bytespider', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'cohere-ai', allow: '/' },
       {
         userAgent: '*',
         allow: '/',

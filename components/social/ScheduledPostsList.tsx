@@ -6,7 +6,8 @@ import { Button }    from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trash2, Instagram, Youtube } from "lucide-react";
 import { toast }  from "sonner";
-import type { ScheduledPost, SocialAccount } from "@/lib/db/social-schema";
+import type { ScheduledPost } from "@/lib/db/pg-schema";
+import type { SocialAccount } from "@/lib/db/social-schema";
 
 const STATUS_COLORS: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
   draft:     "secondary",

@@ -6,7 +6,6 @@ export const BUCKET_URL = "https://media.assurgit.com";
 
 export async function getPresignedPutUrl(
   key: string,
-  contentType: string,
   env: { R2_ACCESS_KEY_ID: string; R2_SECRET_ACCESS_KEY: string }
 ): Promise<string> {
   const aws = new AwsClient({
@@ -18,11 +17,12 @@ export async function getPresignedPutUrl(
 
   const url = `https://${ACCOUNT_ID}.r2.cloudflarestorage.com/${BUCKET_NAME}/${key}`;
 
+  // Sign only the host header (auto-included). Content-Type is NOT signed
+  // so the browser can send any Content-Type without breaking the signature.
+  // R2 will still use the Content-Type header from the PUT request to set
+  // the object's metadata.
   const signed = await aws.sign(
-    new Request(url, {
-      method:  "PUT",
-      headers: { "Content-Type": contentType },
-    }),
+    new Request(url, { method: "PUT" }),
     { aws: { signQuery: true } }
   );
 
