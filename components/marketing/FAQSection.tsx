@@ -4,44 +4,54 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "What does the $397/month Launch plan actually include?",
+    question: "Do you guarantee a #1 ranking on Google?",
     answer:
-      "The Launch plan includes everything core to the system: your personal AI avatar built from a short video recording, your voice clone, 5 short-form videos every week written with research-backed scripts, human QC on every video before delivery, and MP4 delivery to your inbox. You post them across all 4 platforms (IG, TT, LI, YT). It's the full system — just without auto-publishing, which unlocks on Starter and Growth.",
+      "No — and nobody honestly can. Google's algorithm has 50+ factors and explicitly forbids guaranteed-ranking gigs. Anyone promising #1 is either lying or planning to use spam tactics that will get your profile suspended within 90 days. What we guarantee is that your profile and site will be optimized correctly — which is the single biggest controllable factor in local rankings.",
   },
   {
-    question: "Is it really my face and voice?",
+    question: "I already have a website. Do you have to rebuild it?",
     answer:
-      "Yes. We build an avatar clone from a short video recording and a voice clone from a 1–2 minute audio sample. Every video uses your actual appearance and voice — not a stock avatar or generic AI voice.",
+      "Yes — but you don't lose anything. We migrate your existing content into our template, set up 301 redirects so Google treats your new site as the same entity (preserving any existing ranking authority), and import your blog posts and photos. The old site comes down only when the new one verifiably matches or outranks it. Most clients see no ranking dip — and a measurable lift within 60 days from the technical improvements alone.",
   },
   {
-    question: "Will the videos look professional?",
+    question: "Can I cancel anytime, really?",
     answer:
-      "Yes. Every video goes through human QC before it's published or delivered. We review for rendering quality, caption accuracy, branding, and format specs. If something looks off, we fix it before it goes live.",
+      "Starter: yes. Month-to-month from day one, 7 days notice before your renewal date. Growth and Scale: not for the first 3 months. The initial term exists because the work — citations, content, GBP signals, indexing — needs 60–90 days to register. After month 3 it becomes month-to-month with 30 days notice. In all cases the cancellation itself is clean: no fee, no contract clause, no transition fee. You walk away with your domain, code, GBP, content, reviews, and citations.",
   },
   {
-    question: "Do I need to film anything after setup?",
+    question: "How much is the deposit and is it refundable?",
     answer:
-      "After the initial 30-minute setup call and recording, no. The system runs on autopilot. You approve scripts (or skip approval — it's optional) and we handle everything else: rendering, QC, scheduling, publishing.",
+      "$97 Starter / $148 Growth / $324 Scale — roughly half of the first month's subscription. Non-refundable; covers build labor performed before you're billed for month one (site setup, schema, citations kickoff, GBP setup, research, content drafting). If you cancel during onboarding before launch, the deposit stays with us — but you keep everything we've built (code drafts, research, content) as a free export.",
   },
   {
-    question: "What platforms do you publish to?",
+    question: "What if I'm not tech-savvy?",
     answer:
-      "Starter and Growth plans auto-publish to Instagram, TikTok, LinkedIn, and YouTube. The Launch plan delivers MP4 files via email for you to post manually. All plans include your avatar and voice clone.",
+      "After the 15-minute intake call, almost nothing. We need you to give us Manager access on your GBP (we send a step-by-step screenshot guide), forward us your existing domain registrar login (or we register on your behalf), and approve content drafts as we send them. That's it. No code, no plugins, no logging into anything ongoing.",
   },
   {
-    question: "How long does setup take?",
+    question: "What happens after I cancel?",
     answer:
-      "Your avatar and voice clone are ready within 48–72 hours of the setup call. Your first batch of videos goes live the Monday after setup is complete.",
+      "Free and automatic. Site stays live until end of the billing cycle. You get a complete code + content export (zip or git push), the citations list with logins where applicable, a GBP handoff doc, a 5-minute Loom walkthrough of how everything is wired together, and we remove our Manager access from your profile. Optional paid migration ($200–$500) if you'd rather we physically move the site to your new host instead of handing the zip to a developer.",
   },
   {
-    question: "Can I approve content before it goes live?",
+    question: "Can I keep my current domain, email, and booking system?",
     answer:
-      "Yes. Every Monday, you receive 5 scripts by email with a 48-hour review window. Approve as-is, request one round of revisions, or skip review entirely — your choice. The system is built to run with or without your input.",
+      "Yes to all three. Domain ownership stays with you — we point your existing domain to our hosting. Email aliases on your domain (name@yourdomain.com) get set up free as part of foundation; if you have an existing Google Workspace or Microsoft 365 setup, we leave it alone. Booking: we integrate with whatever you use today — Booksy, Fresha, Square Appointments, Cal.com, Vagaro, GlossGenius, Calendly. You don't need to switch platforms.",
   },
   {
-    question: "What if I want to cancel?",
+    question: "Do you take a commission on my leads?",
     answer:
-      "Month-to-month. No contracts, no cancellation fees, no awkward conversations. We'd rather earn your business every month than lock you in.",
+      "No. Every lead is yours. We don't insert ourselves between you and your customers. There's no per-lead fee, no booking fee, no markup on your service prices.",
+  },
+  {
+    question: "What if my Google Business Profile is suspended?",
+    answer:
+      "Fixable. GBP suspension reinstatement is included free with Growth and Scale — we identify the violation, draft the appeal, gather supporting documentation, and submit it. Most reinstatements come back in 2–4 weeks. If you're not yet verified, we coach you through the 60-second video walkthrough that gets you verified in 24–48 hours instead of the 2-week postcard wait.",
+  },
+  {
+    question: "Will my work be done by someone in the US?",
+    answer:
+      "The strategy, audits, monthly reports, and review responses are written by us in the US. Some content drafting is AI-assisted (Claude and GPT) — we edit before publish. Citations submissions are run by our own automation, not offshore labor at $5/hr. No part of your account is handed off to a stranger overseas.",
   },
 ];
 
@@ -84,7 +94,7 @@ function FAQItem({
 
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed pb-5">{answer}</p>

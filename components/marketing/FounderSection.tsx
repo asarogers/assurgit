@@ -3,20 +3,22 @@ import { MotionWrapper, StaggerContainer, MotionItem } from "@/components/market
 
 const credentials = [
   {
-    signal: "Current role",
+    signal: "Why this exists",
     detail:
-      "Software Engineer at ServiceNow building AI systems — RAG pipelines, document intelligence tooling, and workflow automation.",
-    relevance: "The infrastructure behind Assurgit is production-grade, not a weekend project.",
+      "Built by an owner of multiple service businesses who got tired of the agency runaround — opaque deliverables, six-month contracts, no proof of work, and no real ownership of the assets they paid to build.",
+    relevance: "Assurgit is the system the founder wished existed — own what you build, see what's done, and leave any time without losing the work.",
   },
   {
-    signal: "Prior experience",
-    detail: "Sandia National Laboratories, Deloitte, and Sonoco across enterprise software, defense applications, and manufacturing automation.",
-    relevance: "Deep systems experience across regulated, high-stakes environments.",
+    signal: "Engineering background",
+    detail:
+      "Software engineer building production AI systems — RAG pipelines, document intelligence, workflow automation. Prior work at Sandia National Labs, Deloitte, and Sonoco across regulated and high-stakes environments.",
+    relevance: "The infrastructure behind Assurgit — the citations engine, the SERP scraping, the schema generation, the monthly health reports — is production-grade automation, not a freelancer juggling tools.",
   },
   {
-    signal: "Education",
-    detail: "MS Robotics, Northwestern University — hands-on work in control, autonomy, perception, and automation.",
-    relevance: "Multi-agent orchestration is core to how Assurgit operates at scale.",
+    signal: "How we work",
+    detail:
+      "US-based. Manager-only on your Google Business Profile. Strategy, audits, and review responses written by us — not handed to offshore labor at $5/hr. Content drafting is AI-assisted; we edit before publish.",
+    relevance: "You always know who's doing the work, where the data lives, and what happens if you leave (free handoff, no fee, no fight).",
   },
 ];
 
@@ -29,7 +31,6 @@ export default function FounderSection() {
           {/* Photo + name */}
           <div className="flex flex-col items-center md:items-start">
             <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 mb-4 flex-shrink-0">
-              {/* TODO: add /public/founder.jpg — no founder photo exists yet; using app icon as placeholder */}
               <Image
                 src="/app-icon-1024.png"
                 alt="Asa Rogers, Founder of Assurgit"
@@ -48,14 +49,13 @@ export default function FounderSection() {
               Why the system is credible
             </p>
             <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-8">
-              Background in multi-agent systems, orchestration, APIs, and automation increases trust that
-              Assurgit is a real operating system — not a freelancer juggling tools.
+              Local SEO is one of the most opaque corners of the marketing world. Owners get pitched the same vague packages, sign 6-month contracts, and end up with nothing they actually own. Assurgit was built to change exactly that — own what we build for you, see what&apos;s done, and walk away clean any time.
             </p>
             <StaggerContainer className="space-y-5">
               {credentials.map((cred) => (
                 <MotionItem key={cred.signal}>
                 <div className="flex gap-4 items-start">
-                  <div className="min-w-[100px] text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider pt-0.5">
+                  <div className="min-w-[120px] text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider pt-0.5">
                     {cred.signal}
                   </div>
                   <div>

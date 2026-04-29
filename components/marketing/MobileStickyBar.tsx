@@ -32,7 +32,7 @@ export default function MobileStickyBar() {
             hover:-translate-y-0.5 glow-blue-btn
           "
         >
-          Book a Free Call
+          Book a 15-min Intake Call
         </Link>
       </div>
     </div>

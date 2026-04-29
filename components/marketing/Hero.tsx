@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
-const personas = ["coaches", "consultants", "loan officers"];
+const personas = ["handymen", "salons", "barbers", "meal-prep services", "personal trainers", "chiropractors"];
 
 const trustSignals = [
-  "From $397/month",
-  "5 videos every week",
-  "Zero filming required",
-  "No contracts",
-  "Live in 5 days",
+  "From $189/month",
+  "$97 deposit to start",
+  "You own everything",
+  "Month-to-month after term",
+  "Live in 1–2 weeks",
 ];
 
 export default function Hero() {
@@ -40,8 +40,6 @@ export default function Hero() {
   }, []);
 
   const currentPersona = personas[personaIndex];
-  const captionPersona =
-    currentPersona === "loan officers" ? "loan officer" : currentPersona.replace(/s$/, "");
 
   return (
     <section ref={sectionRef} className="relative bg-[#eff6ff] dark:bg-[#0a0f1e] min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
@@ -69,7 +67,7 @@ export default function Hero() {
               transition={{ duration: 0.4, delay: 0.1 }}
               className="text-xs font-bold uppercase tracking-[0.2em] text-[#2563eb] dark:text-[#2563eb] mb-5"
             >
-              AI Clone Content System
+              Local Presence System
             </motion.p>
 
             {/* Headline */}
@@ -79,9 +77,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 dark:text-white leading-[1.05] tracking-tight mb-4"
             >
-              Done-for-You AI Video Content{" "}
+              Get found and booked{" "}
               <br className="hidden sm:block" />
-              for Service Professionals
+              on Google. Done for you.
             </motion.h1>
 
             {/* Rotating persona line */}
@@ -92,11 +90,11 @@ export default function Hero() {
               className="flex items-baseline gap-3 justify-center lg:justify-start flex-wrap mb-6"
             >
               <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-400 dark:text-white/50 leading-none tracking-tight">
-                Your face. Your voice. No filming for
+                Built for
               </span>
               <span
                 className="relative inline-block overflow-hidden text-2xl sm:text-3xl lg:text-4xl font-black leading-none tracking-tight"
-                style={{ minWidth: "clamp(130px, 18vw, 240px)", height: "1.2em" }}
+                style={{ minWidth: "clamp(220px, 30vw, 360px)", height: "1.2em" }}
               >
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -120,7 +118,7 @@ export default function Hero() {
               transition={{ duration: 0.45, delay: 0.45 }}
               className="text-slate-600 dark:text-slate-400 text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
-              We turn your expertise into 5 research-backed short-form videos every week — published to Instagram, TikTok, LinkedIn, and YouTube on autopilot.
+              A done-for-you site, Google Business Profile, and local SEO system for service businesses — without selling you yet another &ldquo;website and SEO package.&rdquo;
             </motion.p>
 
             {/* CTAs */}
@@ -134,7 +132,7 @@ export default function Hero() {
                 href="/book"
                 className="w-full sm:w-auto bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-8 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-1 glow-blue-btn text-center"
               >
-                Book a Free Call
+                Book a 15-min Intake Call
               </Link>
               <a
                 href="#how-it-works"
@@ -151,8 +149,8 @@ export default function Hero() {
               transition={{ duration: 0.4, delay: 0.75 }}
               className="text-slate-600 dark:text-slate-500 text-sm mb-8 text-center lg:text-left"
             >
-              Clients go live in 5 days.{" "}
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">No filming required after setup.</span>
+              Site goes live in 1–2 weeks.{" "}
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">You own the code, content, GBP, and domain — day one.</span>
             </motion.p>
 
             {/* Trust signals */}
@@ -173,7 +171,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: Product mock — mid layer ── */}
+          {/* ── RIGHT: Local-SEO mock — mid layer ── */}
           <motion.div
             style={{ y: phoneY }}
             initial={{ opacity: 0, x: 40 }}
@@ -181,106 +179,143 @@ export default function Hero() {
             transition={{ duration: 0.65, delay: 0.7, ease: "easeOut" }}
             className="flex items-center justify-center lg:justify-end"
           >
-            <div className="animate-float relative w-[260px] sm:w-[290px]">
+            <div className="animate-float relative w-[280px] sm:w-[320px]">
 
-              {/* Phone frame */}
+              {/* Phone frame — Google Maps result mock */}
               <div
-                className="relative bg-[#111827] rounded-[2.5rem] border border-white/10 shadow-2xl overflow-hidden"
+                className="relative bg-white rounded-[2.5rem] border border-gray-200 dark:border-white/10 shadow-2xl overflow-hidden"
                 style={{ aspectRatio: "9/16" }}
               >
                 {/* Top notch */}
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-10" />
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-30" />
 
-                {/* Background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e3a8a]/60 to-[#0a0f1e]" />
-
-                {/* Avatar silhouette */}
-                <div className="absolute inset-x-0 top-[20%] bottom-[25%] flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400/40 to-blue-700/40 blur-md" />
-                  <div className="w-12 h-24 rounded-2xl bg-gradient-to-b from-blue-500/15 to-transparent mt-1" />
+                {/* Map background — stylized */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#e8f0e3] via-[#dde7d8] to-[#cfe0c8]">
+                  {/* Streets */}
+                  <svg className="absolute inset-0 w-full h-full opacity-60" viewBox="0 0 320 568" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 120 L320 80" stroke="#fff" strokeWidth="6" />
+                    <path d="M0 220 L320 200" stroke="#fff" strokeWidth="4" />
+                    <path d="M0 350 L320 360" stroke="#fff" strokeWidth="5" />
+                    <path d="M80 0 L60 568" stroke="#fff" strokeWidth="4" />
+                    <path d="M200 0 L220 568" stroke="#fff" strokeWidth="6" />
+                    <path d="M260 0 L280 568" stroke="#fff" strokeWidth="3" />
+                  </svg>
+                  {/* Water blob */}
+                  <div className="absolute top-[12%] right-[-10%] w-32 h-24 rounded-[50%] bg-blue-200/70 blur-sm" />
                 </div>
 
-                {/* Play button */}
-                <div className="absolute inset-0 flex items-center justify-center">
+                {/* Search bar overlay */}
+                <div className="absolute top-12 left-3 right-3 bg-white rounded-full shadow-lg flex items-center gap-2 px-4 py-2.5 z-20">
+                  <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 11h-2.06A6.99 6.99 0 0013 5.06V3h-2v2.06A6.99 6.99 0 005.06 11H3v2h2.06A6.99 6.99 0 0011 18.94V21h2v-2.06A6.99 6.99 0 0018.94 13H21v-2zm-9 6c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+                  </svg>
+                  <span className="text-[11px] text-gray-700 font-medium truncate">barber near me</span>
+                </div>
+
+                {/* Map pins */}
+                <div className="absolute top-[28%] left-[28%] z-10" aria-hidden="true">
+                  <div className="w-5 h-5 bg-red-500 rounded-full border-2 border-white shadow-md" />
+                </div>
+                <div className="absolute top-[42%] right-[22%] z-10" aria-hidden="true">
+                  <div className="w-5 h-5 bg-red-500 rounded-full border-2 border-white shadow-md" />
+                </div>
+                {/* The featured pin — YOUR business */}
+                <div className="absolute top-[33%] left-1/2 -translate-x-1/2 z-20">
                   <div className="relative">
-                    <div className="absolute inset-0 scale-150 rounded-full bg-[#2563eb] opacity-20 animate-pulse" />
-                    <div className="relative w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                      <svg className="w-6 h-6 text-[#0a0f1e] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                    <div className="absolute inset-0 scale-[2.5] rounded-full bg-[#2563eb] opacity-30 animate-pulse" />
+                    <div className="relative w-9 h-9 rounded-full bg-[#2563eb] border-[3px] border-white shadow-xl flex items-center justify-center">
+                      <span className="text-white text-[10px] font-black">YOU</span>
                     </div>
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#2563eb] rotate-45" />
                   </div>
                 </div>
 
-                {/* Caption strip */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent pt-10 pb-4 px-4">
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={captionPersona}
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-white text-[11px] font-semibold leading-snug mb-3"
-                    >
-                      5 things every {captionPersona} needs to post this week
-                    </motion.p>
-                  </AnimatePresence>
+                {/* Local 3-pack card overlay */}
+                <div className="absolute bottom-0 inset-x-0 bg-white pt-4 pb-5 px-4 rounded-t-3xl shadow-[0_-8px_24px_rgba(0,0,0,0.08)]">
+                  {/* Drag handle */}
+                  <div className="w-10 h-1 bg-gray-300 rounded-full mx-auto mb-3" />
 
-                  {/* Platform icons */}
-                  <div className="flex items-center gap-2">
-                    {/* Instagram */}
-                    <div className="w-6 h-6 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-md flex items-center justify-center">
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <rect x="2" y="2" width="20" height="20" rx="5" />
-                        <circle cx="12" cy="12" r="4" />
-                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                      </svg>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-2">Top 3 in Maps</p>
+
+                  {/* Result row 1 — featured */}
+                  <div className="flex items-start gap-2.5 pb-3 mb-2 border-b border-gray-100">
+                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                      <span className="text-white text-[10px] font-black">1</span>
                     </div>
-                    {/* TikTok */}
-                    <div className="w-6 h-6 bg-black border border-white/20 rounded-md flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.35 6.35 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z" />
-                      </svg>
+                    <div className="flex-1 min-w-0">
+                      <AnimatePresence mode="wait">
+                        <motion.p
+                          key={currentPersona}
+                          initial={{ opacity: 0, y: 4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="text-[11px] font-bold text-gray-900 leading-tight truncate"
+                        >
+                          Your {currentPersona === "salons" ? "salon" : currentPersona === "barbers" ? "barbershop" : currentPersona.replace(/s$/, "")}
+                        </motion.p>
+                      </AnimatePresence>
+                      <div className="flex items-center gap-1 mt-0.5">
+                        <span className="text-[9px] text-amber-500 font-bold">★ 4.9</span>
+                        <span className="text-[9px] text-gray-400">(132)</span>
+                        <span className="text-[9px] text-emerald-600 font-semibold">· Open</span>
+                      </div>
                     </div>
-                    {/* LinkedIn */}
-                    <div className="w-6 h-6 bg-[#0077b5] rounded-md flex items-center justify-center">
-                      <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                      </svg>
+                  </div>
+
+                  {/* Result row 2 — competitor */}
+                  <div className="flex items-start gap-2.5 pb-2 mb-1 opacity-60">
+                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center">
+                      <span className="text-gray-500 text-[10px] font-black">2</span>
                     </div>
-                    {/* YouTube */}
-                    <div className="w-6 h-6 bg-[#ff0000] rounded-md flex items-center justify-center">
-                      <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                      </svg>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] font-semibold text-gray-700 leading-tight truncate">Westside competitor</p>
+                      <div className="flex items-center gap-1 mt-0.5">
+                        <span className="text-[9px] text-amber-500 font-bold">★ 4.4</span>
+                        <span className="text-[9px] text-gray-400">(48)</span>
+                      </div>
                     </div>
-                    <span className="text-white/40 text-[9px] ml-auto">auto-published</span>
+                  </div>
+
+                  {/* Result row 3 — competitor */}
+                  <div className="flex items-start gap-2.5 opacity-50">
+                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center">
+                      <span className="text-gray-500 text-[10px] font-black">3</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] font-semibold text-gray-700 leading-tight truncate">Downtown competitor</p>
+                      <div className="flex items-center gap-1 mt-0.5">
+                        <span className="text-[9px] text-amber-500 font-bold">★ 4.2</span>
+                        <span className="text-[9px] text-gray-400">(31)</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Live indicator */}
-                <div className="absolute top-9 right-4 flex items-center gap-1 bg-black/60 rounded-full px-2 py-0.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                  <span className="text-[9px] text-white font-bold">LIVE</span>
+              {/* Floating badge — rank improvement */}
+              <div className="absolute -left-12 top-[24%] bg-white rounded-2xl shadow-xl px-3 py-2 flex items-center gap-2 border border-gray-100">
+                <span className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                  </svg>
+                </span>
+                <div>
+                  <p className="text-[10px] font-bold text-gray-900 leading-none">Now ranking</p>
+                  <p className="text-[10px] text-emerald-600 font-black">#1 in Maps</p>
                 </div>
               </div>
 
-              {/* Floating badge — weekly output */}
-              <div className="absolute -left-10 top-[22%] bg-white rounded-2xl shadow-xl px-3 py-2 flex items-center gap-2 border border-gray-100">
-                <span className="text-lg">🎬</span>
+              {/* Floating badge — GBP managed */}
+              <div className="absolute -right-10 bottom-[28%] bg-white rounded-2xl shadow-xl px-3 py-2 flex items-center gap-2 border border-gray-100">
+                <span className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center">
+                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
+                  </svg>
+                </span>
                 <div>
-                  <p className="text-[10px] font-bold text-gray-900 leading-none">5 videos</p>
-                  <p className="text-[9px] text-gray-500">this week</p>
-                </div>
-              </div>
-
-              {/* Floating badge — zero filming */}
-              <div className="absolute -right-8 bottom-[22%] bg-white rounded-2xl shadow-xl px-3 py-2 flex items-center gap-2 border border-gray-100">
-                <span className="text-lg">✅</span>
-                <div>
-                  <p className="text-[10px] font-bold text-gray-900 leading-none">0 hours</p>
-                  <p className="text-[9px] text-gray-500">filming</p>
+                  <p className="text-[10px] font-bold text-gray-900 leading-none">GBP managed</p>
+                  <p className="text-[9px] text-gray-500">You stay Owner</p>
                 </div>
               </div>
             </div>

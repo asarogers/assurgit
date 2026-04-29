@@ -7,34 +7,34 @@ import { MotionWrapper, StaggerContainer, MotionItem } from "@/components/market
 const steps = [
   {
     number: "1",
-    title: "We clone you",
+    title: "Deposit + 15-min intake",
     description:
-      "30-minute setup call. We build your personal AI avatar and voice clone from a short recording. You never film again.",
+      "$97 / $148 / $324 deposit (Starter / Growth / Scale) — roughly half the first month, covers build labor. We collect business info, NAP, services, target cities, competitors, and existing accounts.",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
     ),
   },
   {
     number: "2",
-    title: "We research & script",
+    title: "Setup phase (1–2 weeks)",
     description:
-      "Every week, our AI monitors your competitors, tracks trending content in your niche, and writes 5 platform-optimized scripts in your voice.",
+      "We build the site, integrate your booking platform (Booksy, Fresha, Square, Cal.com, Vagaro, GlossGenius), do GBP setup, ship schema markup, and submit to search engines. Growth and Scale layer on active GBP optimization, posts, and citations.",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437" />
       </svg>
     ),
   },
   {
     number: "3",
-    title: "We publish for you",
+    title: "Go live + first month begins",
     description:
-      "Videos render, get human QC, and go live on Instagram, TikTok, LinkedIn, and YouTube — on schedule, every week.",
+      "Subscription starts the day the site goes live. Starter is month-to-month from day one (7 days notice). Growth and Scale have a 3-month initial term — because honest local SEO needs 60–90 days to register — then become month-to-month with 30 days notice.",
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
   },
@@ -82,7 +82,7 @@ export default function HowItWorks() {
             How it works
           </h2>
           <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-            From zero to published content every week in three simple steps.
+            From deposit to live in 1–2 weeks. From live to ranking in 60–90 days.
           </p>
         </MotionWrapper>
 
@@ -120,30 +120,31 @@ export default function HowItWorks() {
           </StaggerContainer>
         </div>
 
-        {/* Weekly cadence table */}
+        {/* Realistic timeline */}
         <MotionWrapper className="mt-20" delay={0.1}>
           <h3 className="text-xl font-black text-gray-950 dark:text-white mb-2 text-center">
-            The weekly operating rhythm
+            What to expect, month by month
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-8">
-            Every client runs through the same reliable cycle — research, scripts, review, render, publish.
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+            Local SEO is a build, not a switch. Anyone promising &ldquo;top of Google overnight&rdquo; is either lying or planning to use tactics that get your profile suspended.
           </p>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
+            <table className="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden">
               <thead>
                 <tr className="bg-gray-950 text-white">
-                  <th className="text-left py-3 px-4 font-semibold">Day</th>
+                  <th className="text-left py-3 px-4 font-semibold">Window</th>
                   <th className="text-left py-3 px-4 font-semibold">What happens</th>
-                  <th className="text-left py-3 px-4 font-semibold">Output</th>
+                  <th className="text-left py-3 px-4 font-semibold">What you should NOT expect</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { day: "Sunday", what: "Research refresh + planning", output: "Fresh topics, intent signals, competitive movement" },
-                  { day: "Monday", what: "Scripts generated and sent", output: "Draft scripts for the week" },
-                  { day: "Tue–Thu", what: "Review window + adjustments", output: "Approved scripts + issue resolution" },
-                  { day: "Saturday", what: "Rendering, post-processing, QC", output: "Publish-ready assets" },
-                  { day: "Sunday", what: "Scheduling + next-cycle setup", output: "Content loaded for the following week" },
+                  { day: "Weeks 1–2", what: "Site live, GBP set up, sitemap submitted, citations begin (G/S), reviews flip on (G/S)", output: "Phone exploding, top-of-Google positions, immediate flood of leads" },
+                  { day: "Month 1", what: "40% of citations live, 2–3 secondary keywords moving, first measurable lift in Search Console impressions", output: "Page-1 head terms in your home city" },
+                  { day: "Weeks 6–7", what: "Citations 80% complete, striking-distance keywords hit page 1 (Growth), first measurable lead increase", output: "Domination across all keywords yet" },
+                  { day: "Months 2–3", what: "Core 30 pages indexed and ranking, Maps 3-pack stabilizing in your home city, 2–3× calls vs week 1 for most clients", output: "Head terms in competitive markets to be locked in (those take 4–9 months)" },
+                  { day: "Months 3–6", what: "Primary head terms moving page 2 → page 1, geographic expansion (Scale), 50+ reviews, AI search citations starting (Scale)", output: "Stopping the work — the compounding hasn't started yet" },
+                  { day: "6 Months+", what: "Sustained growth phase, rank map mostly green across your service area, review velocity stable", output: "Anyone telling you it took 30 days" },
                 ].map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-white dark:bg-gray-900" : "bg-gray-50 dark:bg-gray-800"}>
                     <td className="py-3 px-4 font-semibold text-gray-900 dark:text-white">{row.day}</td>

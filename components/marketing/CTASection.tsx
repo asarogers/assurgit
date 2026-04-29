@@ -12,17 +12,17 @@ export default function CTASection() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <MotionWrapper>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-5 tracking-tight leading-tight">
-            Stop being invisible.
+            Stop being invisible on Maps.
             <br />
-            Start showing up every week.
+            Start showing up where customers search.
           </h2>
 
           <p className="text-white/60 text-lg max-w-xl mx-auto mb-4 leading-relaxed">
-            Book a 20-minute call. We&apos;ll show you exactly what your content would look like — before you spend a dollar.
+            Book a 15-minute intake call. We&apos;ll look at your current GBP and site, tell you honestly which tier fits, and answer any questions before you put down a deposit.
           </p>
 
           <p className="text-white/40 text-sm mb-10">
-            WellPreparedLife grew their business 50% in week one. Your niche is next.
+            $97 / $148 / $324 one-time deposit to start (Starter / Growth / Scale). You own everything we build — day one.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
@@ -30,18 +30,18 @@ export default function CTASection() {
               href="/book"
               className="w-full sm:w-auto bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-10 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-1 glow-blue-btn"
             >
-              Book Your Free Call
+              Book Your 15-min Intake Call
             </Link>
             <Link
               href="#pricing"
               className="w-full sm:w-auto border border-white/20 hover:border-white/40 text-white/70 hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-all duration-200"
             >
-              See Pricing — from $397/mo
+              See Pricing — from $189/mo
             </Link>
           </div>
 
           <p className="text-white/40 text-sm font-medium">
-            No contracts. No filming. Cancel any time. — Asa Rogers, Founder
+            Manager-only on your GBP. Free code + content export anytime. No commission on your leads.
           </p>
         </MotionWrapper>
       </div>

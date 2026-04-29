@@ -8,9 +8,9 @@ const navLinks = [
   { href: "/#how-it-works", label: "How It Works" },
   { href: "/pricing", label: "Pricing" },
   { href: "/local-seo", label: "Local SEO" },
+  { href: "/case-studies", label: "Case Studies" },
   { href: "/tools", label: "Tools" },
   { href: "/blog", label: "Blog" },
-  { href: "/compare/done-for-you-vs-diy-video", label: "Compare" },
 ];
 
 export default function Navbar() {
@@ -64,7 +64,7 @@ export default function Navbar() {
               href="/book"
               className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-5 py-2 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5 glow-blue-btn"
             >
-              Book a Call
+              Book Intake Call
             </Link>
           </div>
 
@@ -113,7 +113,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="block w-full bg-brand-accent hover:bg-brand-accent-hov text-white font-semibold py-3 rounded-lg text-center text-sm transition-colors"
               >
-                Book a Call
+                Book Intake Call
               </Link>
             </div>
           </div>

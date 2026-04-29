@@ -15,6 +15,13 @@ const STATIC_PREFIXES = [
 ];
 
 export function middleware(req: NextRequest) {
+  // www → non-www 301
+  if (req.headers.get("host")?.startsWith("www.")) {
+    const url = req.nextUrl.clone();
+    url.host = url.host.replace(/^www\./, "");
+    return NextResponse.redirect(url, 301);
+  }
+
   const { pathname } = req.nextUrl;
 
   if (STATIC_PREFIXES.some((p) => pathname.startsWith(p))) {

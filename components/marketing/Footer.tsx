@@ -13,13 +13,13 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-5">
-              Assurgit is an Online Presence Launch System for service businesses, built around AI clone content and supporting visibility infrastructure.
+              A done-for-you local presence system for single-location and small multi-location service businesses. Custom site, GBP management, and local SEO — from $189/month.
             </p>
             <Link
               href="/book"
               className="inline-block bg-brand-accent hover:bg-brand-accent-hov text-white font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
             >
-              Book a Free Call →
+              Book a 15-min Intake Call →
             </Link>
           </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5">
               {[
-                { href: "/for/business-coaches", label: "Business Coaches" },
+                { href: "/for/business-coaches", label: "Coaches" },
                 { href: "/for/real-estate-agents", label: "Real Estate Agents" },
                 { href: "/for/financial-advisors", label: "Financial Advisors" },
                 { href: "/for/loan-officers", label: "Loan Officers" },
@@ -61,8 +61,9 @@ export default function Footer() {
                 { href: "/compare/assurgit-vs-synthesia", label: "vs. Synthesia" },
                 { href: "/compare/assurgit-vs-marketing-agency", label: "vs. Marketing Agency" },
                 { href: "/compare/assurgit-vs-freelance-video-editor", label: "vs. Freelance Editor" },
-                { href: "/best/done-for-you-ai-video-service", label: "Best AI Video Services" },
-                { href: "/best/ai-avatar-service-for-business", label: "Best AI Avatar Services" },
+                { href: "/best/done-for-you-ai-video-service", label: "Best Local SEO Services" },
+                { href: "/best/ai-avatar-service-for-business", label: "Best GBP Services" },
+                { href: "/case-studies", label: "Case Studies" },
                 { href: "/blog", label: "Blog & Guides" },
                 { href: "/tools", label: "Free Tools" },
               ].map((link) => (
@@ -84,11 +85,11 @@ export default function Footer() {
               {[
                 { href: "/", label: "Home" },
                 { href: "/about", label: "About" },
-                { href: "/pricing", label: "Pricing" },
-                { href: "/local-seo", label: "Local SEO — $200/mo" },
-                { href: "/book", label: "Book a Free Call" },
+                { href: "/pricing", label: "Pricing — from $189" },
+                { href: "/local-seo", label: "Local SEO" },
+                { href: "/book", label: "Book Intake Call" },
                 { href: "/how-it-works", label: "How It Works" },
-                { href: "/tools/ai-video-tools", label: "AI Tool Rankings" },
+                { href: "/onboard", label: "Client Onboarding" },
                 { href: "/login", label: "Client Login" },
               ].map((link) => (
                 <li key={link.href}>
@@ -122,7 +123,7 @@ export default function Footer() {
             &copy; 2026 Assurgit. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs text-center sm:text-right">
-            AI clone content, presence infrastructure, and visibility systems for service businesses.
+            Done-for-you local SEO, Google Business Profile, and websites for US service businesses. You own everything we build.
           </p>
         </div>
       </div>

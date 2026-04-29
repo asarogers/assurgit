@@ -15,14 +15,14 @@ import MobileStickyBar from "@/components/marketing/MobileStickyBar";
 
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Home \u2014 learn more on our site.",
+  title: "Assurgit — Done-for-you local SEO, GBP, and websites for service businesses",
+  description: "A done-for-you local presence system for service businesses. Custom site, Google Business Profile management, citations, and local SEO — from $189/month. You own everything we build.",
   alternates: {
     canonical: "https://assurgit.com",
   },
   openGraph: {
-    title: "Home",
-    description: "Home \u2014 learn more on our site.",
+    title: "Assurgit — Done-for-you local SEO for service businesses",
+    description: "Get found and booked on Google. Custom site + GBP + local SEO from $189/month. You own the code, content, and profile from day one.",
     url: "https://assurgit.com",
     type: "website",
     images: [{ url: "https://assurgit.com/opengraph-image.png", width: 1024, height: 1024, alt: "Assurgit" }],
@@ -31,23 +31,21 @@ export const metadata: Metadata = {
 
 const softwareSchema = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Assurgit",
+  "@type": "Service",
+  "name": "Assurgit Local Presence System",
   "url": "https://assurgit.com",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "description": "Assurgit is a done-for-you AI video content service. Your AI avatar and voice clone produce 5 research-backed videos every week, auto-published to Instagram, TikTok, LinkedIn, and YouTube. Starting at $397/month.",
-  "featureList": "AI avatar creation, voice cloning, research-backed scripting, human QC, auto-publishing to Instagram, TikTok, LinkedIn, and YouTube",
-  "screenshot": "https://assurgit.com/screenshot.png",
-  "author": {
-    "@type": "Person",
-    "name": "Asa Rogers"
+  "serviceType": "Local SEO + Google Business Profile management + custom website",
+  "description": "A done-for-you local presence system for single-location and small multi-location service businesses. Custom website, Google Business Profile management, citations, schema markup, AI-search-ready content, and ongoing local SEO. Three tiers from $189–$649/month with a one-time setup deposit.",
+  "areaServed": "United States",
+  "provider": {
+    "@type": "Organization",
+    "name": "Assurgit",
+    "url": "https://assurgit.com"
   },
-  "dateModified": "2026-04-01",
   "offers": {
     "@type": "AggregateOffer",
-    "lowPrice": "397",
-    "highPrice": "1997",
+    "lowPrice": "189",
+    "highPrice": "649",
     "priceCurrency": "USD",
     "offerCount": "3"
   },
@@ -55,11 +53,6 @@ const softwareSchema = {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
     "reviewCount": "38"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "Assurgit",
-    "url": "https://assurgit.com"
   }
 };
 
@@ -69,66 +62,66 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is it really my face and voice?",
+      "name": "Do you guarantee a #1 ranking on Google?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We build an avatar clone from a short video recording and a voice clone from a 1–2 minute audio sample. Every video uses your actual appearance and voice — not a stock avatar or generic AI voice."
+        "text": "No — and nobody honestly can. Google's algorithm has 50+ factors and explicitly forbids guaranteed-ranking gigs. What we guarantee is that your profile and site will be optimized correctly, which is the single biggest controllable factor in local rankings."
       }
     },
     {
       "@type": "Question",
-      "name": "Will the videos look professional?",
+      "name": "I already have a website. Do you have to rebuild it?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Every video goes through human QC before it's published or delivered. We review for rendering quality, caption accuracy, branding, and format specs. If something looks off, we fix it before it goes live."
+        "text": "Yes — but you don't lose anything. We migrate your content into our template, set up 301 redirects so Google treats your new site as the same entity, and import your blog posts and photos. The old site comes down only when the new one verifiably matches or outranks it."
       }
     },
     {
       "@type": "Question",
-      "name": "Do I need to film anything after setup?",
+      "name": "Can I cancel anytime?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "After the initial 30-minute setup call and recording, no. The system runs on autopilot. You approve scripts (or skip approval — it's optional) and we handle everything else: rendering, QC, scheduling, publishing."
+        "text": "Starter is month-to-month from day one with 7 days notice. Growth and Scale have a 3-month initial term — because honest local SEO needs 60–90 days to register — then become month-to-month with 30 days notice. No fee, no transition charge, and you walk away with your domain, code, GBP, content, and citations."
       }
     },
     {
       "@type": "Question",
-      "name": "What does the $397/month Launch plan include?",
+      "name": "How much is the deposit and is it refundable?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The Launch plan at $397/month includes your personal AI avatar, voice clone, short-form videos every week with research-backed scripts, human QC on every video, and MP4 delivery to one platform. Auto-publishing to all 4 platforms is available on the Starter plan at $997/month."
+        "text": "$97 Starter / $148 Growth / $324 Scale — roughly half of the first month's subscription. Non-refundable; covers build labor performed before you're billed for month one."
       }
     },
     {
       "@type": "Question",
-      "name": "What platforms do you publish to?",
+      "name": "What happens after I cancel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Starter and Growth plans auto-publish to Instagram, TikTok, LinkedIn, and YouTube. The Launch plan delivers MP4 files via email for manual posting."
+        "text": "Free and automatic. Site stays live until end of the billing cycle. You get a complete code + content export (zip or git push), the citations list, a GBP handoff doc, a 5-minute Loom walkthrough, and we remove our Manager access from your profile."
       }
     },
     {
       "@type": "Question",
-      "name": "How long does setup take?",
+      "name": "Do you take a commission on my leads?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Your avatar and voice clone are ready within 48–72 hours of the setup call. Your first batch of videos goes live the Monday after setup is complete."
+        "text": "No. Every lead is yours. We don't insert ourselves between you and your customers. There's no per-lead fee, no booking fee, and no markup on your service prices."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I approve content before it goes live?",
+      "name": "What if my Google Business Profile is suspended?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Every Monday, you receive 5 scripts by email with a 48-hour review window. Approve as-is, request one round of revisions, or skip review entirely — your choice. The system is built to run with or without your input."
+        "text": "Fixable. GBP suspension reinstatement is included free with Growth and Scale — we identify the violation, draft the appeal, gather supporting documentation, and submit it. Most reinstatements come back in 2–4 weeks."
       }
     },
     {
       "@type": "Question",
-      "name": "What if I want to cancel?",
+      "name": "Will my work be done by someone in the US?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Month-to-month. No contracts, no cancellation fees, no awkward conversations. We'd rather earn your business every month than lock you in."
+        "text": "Yes. The strategy, audits, monthly reports, and review responses are written by us in the US. Some content drafting is AI-assisted (we edit before publish). Citations are run by our own automation, not offshore labor at $5/hr."
       }
     }
   ]
@@ -137,25 +130,10 @@ const faqSchema = {
 export const dynamic = "force-static"
 
 
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Assurgit",
-  "url": "https://assurgit.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://assurgit.com/search?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
-};
-
 export default function RootPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      {/* WebSite + Organization JSON-LD live in app/layout.tsx — this page only adds page-specific schemas */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
