@@ -8,17 +8,17 @@ const trustItems = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
       </svg>
     ),
-    title: "GBP Top-3 Focus",
-    description: "Built for the Google Maps 3-pack — the result that drives 70%+ of local clicks",
+    title: "70% of local clicks happen in the Map Pack",
+    description: "If you're not in the top 3 of Google Maps for your core service, you're invisible to most of your future customers — even the ones in your neighborhood.",
   },
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    title: "Real Custom Code",
-    description: "Not a Wix template. Same hosting platform Disney+ and Notion use — sub-second loads",
+    title: "Wix and Squarespace load slowly. Google penalizes that",
+    description: "Page builders ship bloated CSS and slow JavaScript. Google's mobile algorithm uses load speed as a ranking signal — your DIY site is competing with one hand tied behind its back.",
   },
   {
     icon: (
@@ -26,8 +26,8 @@ const trustItems = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
       </svg>
     ),
-    title: "You Own Everything",
-    description: "Code, content, GBP, domain — yours from day one. We work as Manager, never Owner",
+    title: "Most agencies hold the keys to your business",
+    description: "Your domain, your GBP, your code, your content — locked behind their login or contract. Yours stays yours. Day one. We work as Manager on your GBP, never Owner.",
   },
   {
     icon: (
@@ -35,8 +35,8 @@ const trustItems = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
       </svg>
     ),
-    title: "Real Audits, Not AI Hallucinations",
-    description: "Monthly health reports run against your live site — no fabricated keyword data",
+    title: "Most monthly reports lie",
+    description: "Vanity-metric screenshots. Fabricated keyword positions. Numbers that don't tie to actual traffic. Yours will be a written narrative against live Google data — what we shipped, what moved, what's next.",
   },
 ];
 

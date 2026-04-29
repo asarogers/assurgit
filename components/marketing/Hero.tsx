@@ -68,7 +68,7 @@ export default function Hero() {
               transition={{ duration: 0.4, delay: 0.1 }}
               className="text-xs font-bold uppercase tracking-[0.2em] text-[#2563eb] dark:text-[#2563eb] mb-5"
             >
-              Local Presence System
+              For service businesses tired of being invisible on Google
             </motion.p>
 
             {/* Headline */}
@@ -78,9 +78,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 dark:text-white leading-[1.05] tracking-tight mb-4"
             >
-              Get found and booked{" "}
+              You&apos;ve been doing the work for years.{" "}
               <br className="hidden sm:block" />
-              on Google. Done for you.
+              Why is Google ranking the new shops?
             </motion.h1>
 
             {/* Rotating persona line */}
@@ -119,7 +119,7 @@ export default function Hero() {
               transition={{ duration: 0.45, delay: 0.45 }}
               className="text-slate-600 dark:text-slate-400 text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
-              A done-for-you site, Google Business Profile, and local SEO — without the $1,500/mo retainer, the 6-month contract, or the &ldquo;we did some stuff this month&rdquo; report.
+              Word-of-mouth filled the calendar. But the customers who haven&apos;t met you yet — they&apos;re typing your service into Google Maps and picking from the top three. Without a $1,500/mo retainer, a 6-month contract, or another agency that vanishes — we get you back into those three.
             </motion.p>
 
             {/* CTAs */}

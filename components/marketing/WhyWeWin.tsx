@@ -1,23 +1,23 @@
 const advantages = [
   {
-    title: "We own the whole stack",
+    title: "Stop juggling three vendors",
     description:
-      "Site, GBP, citations, content, monitoring — all in-house. Most agencies subcontract to three vendors and add margin at every handoff. That's why our prices are this low and turnarounds this fast.",
+      "You probably have one person for the website, another for the GBP, a third for content — and they don't talk. Every handoff loses information and adds margin. With us, the same team owns the site, GBP, citations, content, and reporting. That's why prices are this low and turnarounds this fast.",
   },
   {
-    title: "Real custom code, not Wix",
+    title: "Compete on more than just looks",
     description:
-      "Your site runs on the same hosting platform Disney+, Discord, and Notion use. Sub-second loads on phones — faster than 95% of small business sites. Speed is a ranking factor.",
+      "Wix and Squarespace look fine. They're slow on mobile, ship no schema, and Google penalizes both. Your site will run on the same hosting Disney+ and Notion use — sub-second loads on phones, schema by default, faster than 95% of small business sites.",
   },
   {
-    title: "We solve the #1 local-SEO complaint",
+    title: "Actually rank for every service you sell",
     description:
-      "Missing GBP category pages is the most-cited gap in every local SEO audit. Our template + automation generates a dedicated page for every GBP category by default. Day one.",
+      "If your GBP lists 12 services but your website is one homepage, Google has nothing to point queries at. Most agencies miss this. Your site will have a dedicated, optimized page for every service and every city you serve — day one.",
   },
   {
-    title: "Real audits, not AI hallucinations",
+    title: "Get reports you can verify yourself",
     description:
-      "The community has been burned by AI tools that invent broken links and fake schema errors. Our monthly health reports are real checks against your live site, run with our own tooling, against real Google data.",
+      "Most monthly reports are screenshots from a dashboard you can't see and don't trust. Yours will be a written narrative — what changed in your market, what we shipped, what moved in your rankings, what's next. Every number traces to a real source you can click into.",
   },
   {
     title: "Programmatic NAP enforcement",
@@ -99,10 +99,10 @@ export default function WhyWeWin() {
         {/* Header */}
         <MotionWrapper className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 dark:text-white mb-4 tracking-tight">
-            Why Assurgit wins
+            What you get that you&apos;re probably not getting now
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            The edge isn&apos;t magic. It&apos;s owning the whole stack, building real custom code, and shipping a written strategy that explains every decision.
+            The gap between a service business that ranks and one that doesn&apos;t isn&apos;t talent or reviews. It&apos;s a handful of unglamorous, technical things — done consistently, every month.
           </p>
         </MotionWrapper>
 
