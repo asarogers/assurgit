@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/marketing/Navbar";
 import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
-import ProblemSection from "@/components/marketing/ProblemSection";
 import WhyWeWin from "@/components/marketing/WhyWeWin";
 import HowItWorks from "@/components/marketing/HowItWorks";
 import WhatYouGet from "@/components/marketing/WhatYouGet";
@@ -178,7 +177,6 @@ export default function RootPage() {
       <main>
         <Hero />
         <TrustBar />
-        <ProblemSection />
         <WhyWeWin />
         <HowItWorks />
         <WhatYouGet />
