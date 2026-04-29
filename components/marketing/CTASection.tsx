@@ -18,7 +18,7 @@ export default function CTASection() {
           </h2>
 
           <p className="text-white/60 text-lg max-w-xl mx-auto mb-4 leading-relaxed">
-            Book a 15-minute intake call. We&apos;ll look at your current GBP and site, tell you honestly which tier fits, and answer any questions before you put down a deposit.
+            Book a 15-minute call. We&apos;ll look at your current GBP and site, tell you honestly which tier fits, and answer any questions before you put down a deposit.
           </p>
 
           <p className="text-white/40 text-sm mb-10">
@@ -30,7 +30,7 @@ export default function CTASection() {
               href="/book"
               className="w-full sm:w-auto bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-10 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-1 glow-blue-btn"
             >
-              Book Your 15-min Intake Call
+              Book Your 15-min Call
             </Link>
             <Link
               href="#pricing"

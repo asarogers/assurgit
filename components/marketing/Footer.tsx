@@ -19,7 +19,7 @@ export default function Footer() {
               href="/book"
               className="inline-block bg-brand-accent hover:bg-brand-accent-hov text-white font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
             >
-              Book a 15-min Intake Call →
+              Book a 15-min Call →
             </Link>
           </div>
 
@@ -87,7 +87,7 @@ export default function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/pricing", label: "Pricing — from $189" },
                 { href: "/local-seo", label: "Local SEO" },
-                { href: "/book", label: "Book Intake Call" },
+                { href: "/book", label: "Book a Call" },
                 { href: "/how-it-works", label: "How It Works" },
                 { href: "/onboard", label: "Client Onboarding" },
                 { href: "/login", label: "Client Login" },

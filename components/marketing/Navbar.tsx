@@ -64,7 +64,7 @@ export default function Navbar() {
               href="/book"
               className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-5 py-2 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5 glow-blue-btn"
             >
-              Book Intake Call
+              Book a Call
             </Link>
           </div>
 
@@ -113,7 +113,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="block w-full bg-brand-accent hover:bg-brand-accent-hov text-white font-semibold py-3 rounded-lg text-center text-sm transition-colors"
               >
-                Book Intake Call
+                Book a Call
               </Link>
             </div>
           </div>

@@ -133,7 +133,7 @@ export default function Hero() {
                 href="/book"
                 className="w-full sm:w-auto bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-8 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-1 glow-blue-btn text-center"
               >
-                Book a 15-min Intake Call
+                Book a 15-min Call
               </Link>
               <a
                 href="#how-it-works"

@@ -383,7 +383,7 @@ export default function PricingSection() {
         <p className="text-center text-gray-400 dark:text-gray-500 text-sm mt-8">
           Not sure which tier?{" "}
           <Link href="/book" className="text-brand-accent hover:underline font-medium">
-            Book a 15-min intake call
+            Book a 15-min call
           </Link>{" "}
           — we&apos;ll tell you honestly which fits.
         </p>
