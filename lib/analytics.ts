@@ -109,6 +109,22 @@ function currentPath(): string {
  *  - traffic_source + utm params: from first-touch attribution in localStorage
  */
 export const Events = {
+  /** User clicked a "Book a call" / consultation button */
+  bookClick() {
+    trackEvent('book_click', {
+      page_path: currentPath(),
+      ...buildAttributionParams(),
+    });
+  },
+
+  /** User tapped a tel: link */
+  phoneClick() {
+    trackEvent('phone_click', {
+      page_path: currentPath(),
+      ...buildAttributionParams(),
+    });
+  },
+
   /** User clicked the primary CTA (e.g. "Get Started", "Book a Demo") */
   ctaClick(ctaName: string) {
     trackEvent('cta_click', {

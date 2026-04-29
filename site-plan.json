@@ -1,0 +1,1106 @@
+{
+  "project": "wellpreppedlife",
+  "generated": "2026-04-27T13:06:34.033873Z",
+  "scored_date": "2026-04-27",
+  "total_keywords": 73,
+  "sitemaps": {
+    "priority": {
+      "filename": "sitemap-priority.xml",
+      "description": "Target-now + target-soon URLs. Include with recent <lastmod>. Link prominently from homepage + hub pages.",
+      "urls": [
+        {
+          "url": "/services/in-home-meal-prep-san-francisco",
+          "keyword": "in-home meal prep San Francisco",
+          "tier": "G",
+          "archetype": "forum_fallback",
+          "opportunity": 0.72,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/meal-prep-service-bay-area",
+          "keyword": "meal prep service Bay Area",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.69,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/cooking-for-aging-parent",
+          "keyword": "cooking for aging parent",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.69,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/someone-to-cook-for-elderly",
+          "keyword": "someone to cook for elderly",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.69,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/meal-prep-service-san-jose",
+          "keyword": "meal prep service San Jose",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.66,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/personal-chef-bay-area",
+          "keyword": "personal chef Bay Area",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.66,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/wheelchair-accessible-cooking",
+          "keyword": "wheelchair accessible cooking",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.65,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/freezer-meal-prep-seniors",
+          "keyword": "freezer meal prep seniors",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.63,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/in-home-meal-prep",
+          "keyword": "in-home meal prep",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.63,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/cooking-with-limited-mobility",
+          "keyword": "cooking with limited mobility",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.63,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/personal-chef-san-jose",
+          "keyword": "personal chef San Jose",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.61,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/personal-chef-for-elderly-parents",
+          "keyword": "personal chef for elderly parents",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.6,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/post-hospital-meal-prep",
+          "keyword": "post hospital meal prep",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.6,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/single-serving-meal-prep",
+          "keyword": "single serving meal prep",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.6,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/personal-chef-oakland",
+          "keyword": "personal chef Oakland",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.59,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/adaptive-cooking",
+          "keyword": "adaptive cooking",
+          "tier": "E",
+          "archetype": "forum_fallback",
+          "opportunity": 0.57,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/chef-that-comes-to-your-house",
+          "keyword": "chef that comes to your house",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.57,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/meals-for-elderly-parent",
+          "keyword": "meals for elderly parent",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.57,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/one-handed-cooking",
+          "keyword": "one handed cooking",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.52,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/healthy-prepared-meals-for-seniors",
+          "keyword": "healthy prepared meals for seniors near me",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.52,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/cooking-for-one-senior",
+          "keyword": "cooking for one senior",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.51,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/meal-prepping-for-elderly",
+          "keyword": "meal prepping for elderly",
+          "tier": "E",
+          "archetype": "forum_fallback",
+          "opportunity": 0.5,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/pureed-meals-for-seniors",
+          "keyword": "pureed meals for seniors",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.5,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/stroke-recovery-meals",
+          "keyword": "stroke recovery meals",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.5,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/meal-prep-for-seniors-in-the-bay-area",
+          "keyword": "meal prep for seniors in the bay area",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.5,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/weekly-meal-prep-for-elderly",
+          "keyword": "weekly meal prep for elderly",
+          "tier": "E",
+          "archetype": "forum_fallback",
+          "opportunity": 0.5,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/healthy-meals-for-elderly",
+          "keyword": "healthy meals for elderly",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.5,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/meals-after-surgery-elderly",
+          "keyword": "meals after surgery elderly",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.5,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/adaptive-cooking-parkinsons",
+          "keyword": "adaptive cooking Parkinsons",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.49,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/post-surgery-meal-prep-seniors",
+          "keyword": "post surgery meal prep seniors",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.49,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/personal-chef-palo-alto",
+          "keyword": "personal chef Palo Alto",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.48,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/personal-chef-for-seniors",
+          "keyword": "personal chef for seniors",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.47,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/meals-on-wheels-alternatives",
+          "keyword": "Meals on Wheels alternatives",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.45,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/dysphagia-meal-prep",
+          "keyword": "dysphagia meal prep",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.45,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/home-cooked-meals-for-seniors",
+          "keyword": "home cooked meals for seniors",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.43,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/soft-food-meal-prep",
+          "keyword": "soft food meal prep",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.43,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/long-distance-caregiver-meal-help",
+          "keyword": "long distance caregiver meal help",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.42,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/fresh-meal-delivery-for-seniors-bay-area",
+          "keyword": "fresh meal delivery for seniors Bay Area",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.41,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/meal-prep-for-elderly-living-alone",
+          "keyword": "meal prep for elderly living alone",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.41,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/meal-delivery-for-seniors-bay-area",
+          "keyword": "meal delivery for seniors Bay Area",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.38,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        },
+        {
+          "url": "/services/senior-meal-delivery-bay-area",
+          "keyword": "senior meal delivery Bay Area",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.37,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        },
+        {
+          "url": "/services/low-sodium-meal-prep",
+          "keyword": "low sodium meal prep",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.36,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        }
+      ]
+    },
+    "longtail": {
+      "filename": "sitemap-longtail.xml",
+      "description": "Lower-tier pages. Include but don't promote in internal linking yet.",
+      "urls": [
+        {
+          "url": "/services/renal-diet-meal-prep",
+          "keyword": "renal diet meal prep",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.52,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/meal-prep-for-seniors",
+          "keyword": "meal prep for seniors",
+          "tier": "D",
+          "archetype": "forum_fallback",
+          "opportunity": 0.38,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/caregiver-relief-meals",
+          "keyword": "caregiver relief meals",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.34,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        }
+      ]
+    }
+  },
+  "orphans": {
+    "description": "Built pages that should NOT yet appear in internal links. Still indexable (in sitemap) but no link equity flow. Revisit monthly.",
+    "urls": [
+      {
+        "url": "/services/kidney-disease-meal-prep",
+        "keyword": "kidney disease meal prep",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.52,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/arthritis-kitchen-tools",
+        "keyword": "arthritis kitchen tools",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.51,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/adaptive-kitchen-tools",
+        "keyword": "adaptive kitchen tools",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.51,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/one-handed-cooking-stroke",
+        "keyword": "one handed cooking stroke",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.51,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/kitchen-safety-for-seniors",
+        "keyword": "kitchen safety for seniors",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.48,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/batch-cooking-for-caregivers",
+        "keyword": "batch cooking for caregivers",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.46,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/cooking-with-arthritis",
+        "keyword": "cooking with arthritis",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.44,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/aging-in-place-kitchen",
+        "keyword": "aging in place kitchen",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.41,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/caregiver-meal-prep",
+        "keyword": "caregiver meal prep",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.39,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      }
+    ]
+  },
+  "exclude": {
+    "description": "Do NOT build these as dedicated pages. Either unwinnable (S-tier) or need a reframed keyword target.",
+    "urls": [
+      {
+        "url": "/services/cooking-with-parkinsons",
+        "keyword": "cooking with Parkinsons",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.44,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/easy-to-swallow-meals-elderly",
+        "keyword": "easy to swallow meals elderly",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.44,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/low-potassium-meal-prep",
+        "keyword": "low potassium meal prep",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.44,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/cancer-treatment-meal-prep",
+        "keyword": "cancer treatment meal prep",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.4,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/aging-in-place-nutrition",
+        "keyword": "aging in place nutrition",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.4,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/memory-care-meals",
+        "keyword": "memory care meals",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.4,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/caregiver-meal-planning",
+        "keyword": "caregiver meal planning",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.36,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/chemo-meal-prep",
+        "keyword": "chemo meal prep",
+        "tier": "C",
+        "archetype": "wiki_locked",
+        "opportunity": 0.35,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/meal-prep-for-dementia-patients",
+        "keyword": "meal prep for dementia patients",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.35,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/dementia-meal-prep",
+        "keyword": "dementia meal prep",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.33,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/senior-meal-delivery",
+        "keyword": "senior meal delivery",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.33,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/heart-healthy-meal-prep-for-seniors",
+        "keyword": "heart healthy meal prep for seniors",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.32,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/diabetic-meal-prep",
+        "keyword": "diabetic meal prep",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.28,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/diabetic-meal-prep-for-seniors",
+        "keyword": "diabetic meal prep for seniors",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.26,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/diabetic-meal-prep-for-elderly",
+        "keyword": "diabetic meal prep for elderly",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.26,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/senior-nutrition-planning",
+        "keyword": "senior nutrition planning",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.24,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/healthy-aging-food",
+        "keyword": "healthy aging food",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.23,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/chf-diet-meal-prep",
+        "keyword": "CHF diet meal prep",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.23,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/meal-prep-for-elderly-diabetics",
+        "keyword": "meal prep for elderly diabetics",
+        "tier": "D",
+        "archetype": "wiki_locked",
+        "opportunity": 0.23,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      }
+    ]
+  },
+  "internal_linking": {
+    "homepage": {
+      "description": "Prominent blocks on the homepage. Top 5 target-now opportunities \u2014 the pages we're actively pushing up this month.",
+      "links": [
+        {
+          "url": "/services/in-home-meal-prep-san-francisco",
+          "keyword": "in-home meal prep San Francisco",
+          "tier": "G",
+          "archetype": "forum_fallback",
+          "opportunity": 0.72,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/meal-prep-service-bay-area",
+          "keyword": "meal prep service Bay Area",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.69,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/cooking-for-aging-parent",
+          "keyword": "cooking for aging parent",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.69,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/someone-to-cook-for-elderly",
+          "keyword": "someone to cook for elderly",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.69,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/meal-prep-service-san-jose",
+          "keyword": "meal prep service San Jose",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.66,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        }
+      ]
+    },
+    "hub": {
+      "description": "Services hub / category pages. Next 15 priority URLs after homepage picks.",
+      "links": [
+        {
+          "url": "/services/personal-chef-bay-area",
+          "keyword": "personal chef Bay Area",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.66,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/wheelchair-accessible-cooking",
+          "keyword": "wheelchair accessible cooking",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.65,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/freezer-meal-prep-seniors",
+          "keyword": "freezer meal prep seniors",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.63,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/in-home-meal-prep",
+          "keyword": "in-home meal prep",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.63,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/cooking-with-limited-mobility",
+          "keyword": "cooking with limited mobility",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.63,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/personal-chef-san-jose",
+          "keyword": "personal chef San Jose",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.61,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/personal-chef-for-elderly-parents",
+          "keyword": "personal chef for elderly parents",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.6,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/post-hospital-meal-prep",
+          "keyword": "post hospital meal prep",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.6,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/single-serving-meal-prep",
+          "keyword": "single serving meal prep",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.6,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/personal-chef-oakland",
+          "keyword": "personal chef Oakland",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.59,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/adaptive-cooking",
+          "keyword": "adaptive cooking",
+          "tier": "E",
+          "archetype": "forum_fallback",
+          "opportunity": 0.57,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/chef-that-comes-to-your-house",
+          "keyword": "chef that comes to your house",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.57,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/meals-for-elderly-parent",
+          "keyword": "meals for elderly parent",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.57,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/one-handed-cooking",
+          "keyword": "one handed cooking",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.52,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/healthy-prepared-meals-for-seniors",
+          "keyword": "healthy prepared meals for seniors near me",
+          "tier": "E",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.52,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        }
+      ]
+    },
+    "footer": {
+      "description": "Footer reinforcement for GBP-only queries \u2014 helps local pack signals without taking homepage real estate.",
+      "links": [
+        {
+          "url": "/services/kidney-disease-meal-prep",
+          "keyword": "kidney disease meal prep",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.52,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/arthritis-kitchen-tools",
+          "keyword": "arthritis kitchen tools",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.51,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/adaptive-kitchen-tools",
+          "keyword": "adaptive kitchen tools",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.51,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/one-handed-cooking-stroke",
+          "keyword": "one handed cooking stroke",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.51,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/kitchen-safety-for-seniors",
+          "keyword": "kitchen safety for seniors",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.48,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/batch-cooking-for-caregivers",
+          "keyword": "batch cooking for caregivers",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.46,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/cooking-with-arthritis",
+          "keyword": "cooking with arthritis",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.44,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/aging-in-place-kitchen",
+          "keyword": "aging in place kitchen",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.41,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/caregiver-meal-prep",
+          "keyword": "caregiver meal prep",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.39,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        }
+      ]
+    }
+  },
+  "clusters": {
+    "cacdbd15-6c67-c06e-612f-9173f2641fce": {
+      "size": 3,
+      "primary": "/services/meal-prep-service-bay-area",
+      "members": [
+        {
+          "url": "/services/meal-prep-service-bay-area",
+          "keyword": "meal prep service Bay Area",
+          "tier": "F",
+          "action": "target_now"
+        },
+        {
+          "url": "/services/meal-prep-for-seniors-in-the-bay-area",
+          "keyword": "meal prep for seniors in the bay area",
+          "tier": "E",
+          "action": "gbp_only"
+        },
+        {
+          "url": "/services/meal-delivery-for-seniors-bay-area",
+          "keyword": "meal delivery for seniors Bay Area",
+          "tier": "E",
+          "action": "reframe"
+        }
+      ]
+    },
+    "d55f305e-12cd-74fd-7920-a18170579857": {
+      "size": 2,
+      "primary": "/services/cooking-with-parkinsons",
+      "members": [
+        {
+          "url": "/services/cooking-with-parkinsons",
+          "keyword": "cooking with Parkinsons",
+          "tier": "D",
+          "action": "reframe"
+        },
+        {
+          "url": "/services/cooking-with-arthritis",
+          "keyword": "cooking with arthritis",
+          "tier": "D",
+          "action": "gbp_only"
+        }
+      ]
+    },
+    "a2e85611-e96f-1cf0-2ba4-13924d771bc7": {
+      "size": 2,
+      "primary": "/services/low-potassium-meal-prep",
+      "members": [
+        {
+          "url": "/services/low-potassium-meal-prep",
+          "keyword": "low potassium meal prep",
+          "tier": "D",
+          "action": "reframe"
+        },
+        {
+          "url": "/services/low-sodium-meal-prep",
+          "keyword": "low sodium meal prep",
+          "tier": "E",
+          "action": "reframe"
+        }
+      ]
+    }
+  },
+  "lastmod_schedule": [
+    {
+      "week": 0,
+      "target_date": "2026-04-27",
+      "count": 10,
+      "urls": [
+        "/services/in-home-meal-prep-san-francisco",
+        "/services/meal-prep-service-bay-area",
+        "/services/cooking-for-aging-parent",
+        "/services/someone-to-cook-for-elderly",
+        "/services/meal-prep-service-san-jose",
+        "/services/personal-chef-bay-area",
+        "/services/wheelchair-accessible-cooking",
+        "/services/freezer-meal-prep-seniors",
+        "/services/in-home-meal-prep",
+        "/services/cooking-with-limited-mobility"
+      ]
+    },
+    {
+      "week": 1,
+      "target_date": "2026-05-04",
+      "count": 10,
+      "urls": [
+        "/services/personal-chef-san-jose",
+        "/services/personal-chef-for-elderly-parents",
+        "/services/post-hospital-meal-prep",
+        "/services/single-serving-meal-prep",
+        "/services/personal-chef-oakland",
+        "/services/adaptive-cooking",
+        "/services/chef-that-comes-to-your-house",
+        "/services/meals-for-elderly-parent",
+        "/services/one-handed-cooking",
+        "/services/healthy-prepared-meals-for-seniors"
+      ]
+    },
+    {
+      "week": 2,
+      "target_date": "2026-05-11",
+      "count": 10,
+      "urls": [
+        "/services/cooking-for-one-senior",
+        "/services/meal-prepping-for-elderly",
+        "/services/pureed-meals-for-seniors",
+        "/services/stroke-recovery-meals",
+        "/services/meal-prep-for-seniors-in-the-bay-area",
+        "/services/weekly-meal-prep-for-elderly",
+        "/services/healthy-meals-for-elderly",
+        "/services/meals-after-surgery-elderly",
+        "/services/adaptive-cooking-parkinsons",
+        "/services/post-surgery-meal-prep-seniors"
+      ]
+    },
+    {
+      "week": 3,
+      "target_date": "2026-05-18",
+      "count": 10,
+      "urls": [
+        "/services/personal-chef-palo-alto",
+        "/services/personal-chef-for-seniors",
+        "/services/meals-on-wheels-alternatives",
+        "/services/dysphagia-meal-prep",
+        "/services/home-cooked-meals-for-seniors",
+        "/services/soft-food-meal-prep",
+        "/services/long-distance-caregiver-meal-help",
+        "/services/fresh-meal-delivery-for-seniors-bay-area",
+        "/services/meal-prep-for-elderly-living-alone",
+        "/services/meal-delivery-for-seniors-bay-area"
+      ]
+    },
+    {
+      "week": 4,
+      "target_date": "2026-05-25",
+      "count": 2,
+      "urls": [
+        "/services/senior-meal-delivery-bay-area",
+        "/services/low-sodium-meal-prep"
+      ]
+    }
+  ]
+}

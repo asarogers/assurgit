@@ -1,0 +1,500 @@
+Generative Engine Optimization (GEO) Implementation Guide
+
+Well Prepped Life
+
+Purpose
+
+This document outlines the steps required to ensure Well Prepped Life is properly
+recognized and referenced by modern AI systems, including:
+
+  ChatGPT
+  Google Gemini
+  Perplexity
+  Apple Intelligence
+  AI search assistants
+
+These systems rely on structured data, trusted directories, and consistent entity
+signals across the web. Completing the steps below helps establish Well Prepped Life
+as a verified business entity across the data sources these systems use.
+
+Work through the steps in order.
+Steps 1–6 form the technical foundation for AI discoverability.
+Steps 7–13 expand the brand's presence across the internet.
+
+Items marked ✅ DONE are already completed and require no action.
+Items marked ☐ still need to be done.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 1 — Add Structured Data to the Website (Schema.org)
+
+Status: ✅ DONE — No action required.
+
+What was done:
+The website already includes LocalBusiness structured data on every page.
+It is embedded in the site code and runs automatically.
+
+The data Google and AI systems can read includes:
+
+  Business name:     Well Prepped Life
+  Website:           https://wellpreppedlife.com
+  Phone:             +1-415-971-3464
+  Email:             hello@wellpreppedlife.com
+  Location:          San Francisco Bay Area, CA, US
+  Service radius:    80 km from San Francisco
+  Price range:       $$
+  Hours:             Monday–Friday, 8:00 AM – 6:00 PM
+  Services:          Meal Prep, Life Skills Coaching, Kitchen Consulting, Nutrition Coaching
+  Social profiles:   Instagram, Facebook, TikTok, LinkedIn
+
+To verify it is working correctly, paste the homepage URL into Google's
+Rich Results Test:
+
+  https://search.google.com/test/rich-results
+
+Enter: https://wellpreppedlife.com
+Click "Test URL" and confirm it shows a LocalBusiness result with no errors.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 2 — Set Up Google Search Console
+
+Status: ✅ DONE — No action required.
+
+What was done:
+  - wellpreppedlife.com has been verified in Google Search Console
+  - The sitemap has been submitted at:  https://wellpreppedlife.com/sitemap.xml
+  - The sitemap currently contains 10 pages (5 main pages + 5 blog posts)
+  - All 10 pages have been submitted to Google's Indexing API
+
+Ongoing:
+Log in to Google Search Console periodically to check the Coverage report
+for any errors flagged after new content is published:
+
+  https://search.google.com/search-console
+  → Wellpreppedlife.com property
+  → Pages (left sidebar)
+
+Look for and resolve any of the following if they appear:
+  • Soft 404 pages
+  • Crawled but not indexed
+  • Duplicate pages without canonical tags
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 3 — Submit the Website to Bing Webmaster Tools
+
+Status: ☐ NOT DONE
+
+Purpose:
+Many AI systems (ChatGPT, Copilot, Perplexity) use Bing's index for web results.
+Submitting ensures the site can be discovered by these systems.
+
+Action Steps:
+
+1. Go to:  https://www.bing.com/webmasters
+
+2. Sign in with a Microsoft account (create one free if needed).
+
+3. Click "Add a Site" and enter:
+   https://wellpreppedlife.com
+
+4. When asked to verify ownership, choose "XML file" method.
+   Download the file Bing provides and send it to your developer to upload.
+   (Or choose "CNAME" and send the developer the record to add in Cloudflare.)
+
+5. Once verified, click "Submit Sitemap" and enter:
+   https://wellpreppedlife.com/sitemap.xml
+
+6. Check back in 48 hours to confirm the site is being crawled.
+
+Business info to use if asked:
+  Business name:   Well Prepped Life
+  Website:         https://wellpreppedlife.com
+  Sitemap:         https://wellpreppedlife.com/sitemap.xml
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 4 — Create a Wikidata Entity
+
+Status: ☐ NOT DONE
+
+Purpose:
+Wikidata is a structured global knowledge database used by Google, Wikipedia,
+and many AI systems to verify that an entity (business, person, place) is real.
+Having an entry here is a strong trust signal.
+
+Action Steps:
+
+1. Go to:  https://wikidata.org/wiki/Special:NewItem
+
+2. You will need to create a free Wikidata account first.
+
+3. Fill in the form with exactly the following:
+
+   Label (English):        Well Prepped Life
+   Description (English):  Meal preparation and kitchen coaching service for
+                            seniors and disabled adults in the San Francisco
+                            Bay Area, California
+
+4. After creating the item, add the following statements
+   (use the "Add statement" button on the item page):
+
+   Property: instance of (P31)
+   Value:    service business  [search for it, select the matching result]
+
+   Property: country (P17)
+   Value:    United States of America  [search and select]
+
+   Property: located in the administrative territorial entity (P131)
+   Value:    San Francisco Bay Area  [search and select]
+
+   Property: official website (P856)
+   Value:    https://wellpreppedlife.com
+
+   Property: founded by (P112)
+   Value:    Justine Sanidad  [type the name; create a new item for her if needed]
+
+Important:
+All descriptions must be neutral and factual — no promotional language.
+Write as if describing the business to a stranger, not selling to a customer.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 5 — Set Up Apple Business Connect
+
+Status: ☐ NOT DONE
+
+Purpose:
+Apple Business Connect feeds information into Apple Maps, Siri, and Apple
+Intelligence. When someone asks Siri about meal prep services in the Bay Area,
+this listing is what Siri draws from.
+
+Action Steps:
+
+1. Go to:  https://businessconnect.apple.com
+
+2. Sign in with an Apple ID (create one free if needed).
+
+3. Click "Get Started" and fill in the listing with the following:
+
+   Business name:     Well Prepped Life
+   Website:           https://wellpreppedlife.com
+   Phone number:      (415) 971-3464
+   Email:             hello@wellpreppedlife.com
+   Business category: Personal Chef  (or "Food Preparation Services")
+
+   Service description (copy and paste this):
+   ─────────────────────────────────────────────────────────────
+   Well Prepped Life offers personalized in-home meal prep, kitchen
+   organization, and nutrition coaching for seniors and adults with
+   disabilities in the San Francisco Bay Area. Services include
+   weekly meal prep sessions, kitchen safety assessments, adaptive
+   cooking coaching, and done-for-you meal preparation.
+   ─────────────────────────────────────────────────────────────
+
+   Service area:
+   San Francisco, Oakland, Berkeley, San Jose, Palo Alto, Fremont,
+   Hayward, Walnut Creek, Concord, Daly City, South San Francisco,
+   San Mateo, Redwood City, Sunnyvale, Santa Clara — and surrounding
+   Bay Area communities
+
+4. Upload photos when prompted (founder photo, kitchen photos, food photos).
+
+5. Submit for review. Apple typically approves within 3–5 business days.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 6 — Create a Google Business Profile
+
+Status: ☐ NOT DONE
+
+Purpose:
+Google Business Profiles power local search results and Google Maps.
+AI assistants pull local business information directly from these profiles
+when answering questions like "meal prep services near me."
+
+Action Steps:
+
+1. Go to:  https://www.google.com/business/
+
+2. Sign in with the Google account associated with Well Prepped Life.
+
+3. Click "Manage now" and follow the setup with the following information:
+
+   Business name:     Well Prepped Life
+   Business category: Personal Chef  (primary)
+                      Meal Delivery Service  (secondary, add if prompted)
+   Website:           https://wellpreppedlife.com
+   Phone:             (415) 971-3464
+   Email:             hello@wellpreppedlife.com
+
+   Service area (enter each city separately):
+   San Francisco, Oakland, Berkeley, San Jose, Palo Alto, Fremont,
+   Hayward, Walnut Creek, Daly City, San Mateo, Redwood City,
+   Sunnyvale, Santa Clara, Concord, Mountain View
+
+   Business description (copy and paste this):
+   ─────────────────────────────────────────────────────────────
+   Well Prepped Life provides personalized in-home meal prep,
+   kitchen organization, and nutrition coaching for seniors and
+   adults with disabilities throughout the San Francisco Bay Area.
+   Founded by Justine Sanidad, we offer weekly meal prep sessions,
+   kitchen safety assessments, adaptive cooking coaching, and
+   done-for-you meal preparation. Our services help clients eat
+   well, stay independent, and feel confident in their kitchens.
+   Book a free Kitchen & Nutrition Assessment at wellpreppedlife.com.
+   ─────────────────────────────────────────────────────────────
+
+   Hours:  Monday–Friday, 8:00 AM – 6:00 PM
+
+4. Google will send a postcard or offer a phone/video verification.
+   Complete the verification step to make the listing go live.
+
+5. Add photos once verified: founder headshot, kitchen photos, food photos.
+
+Important:
+All information must match the website exactly — same name, phone number,
+and website URL. Inconsistencies reduce trust signals.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 7 — Create Business Directory Listings
+
+Status: ☐ NOT DONE
+
+Purpose:
+Directory listings confirm the business exists across the internet.
+AI systems check multiple sources for consistent business information.
+The more places the same name, phone, and website appear together,
+the stronger the trust signal.
+
+Use the following information on every platform. Copy and paste exactly —
+do not abbreviate or change any field.
+
+  Business name:     Well Prepped Life
+  Website:           https://wellpreppedlife.com
+  Phone:             (415) 971-3464
+  Email:             hello@wellpreppedlife.com
+  Category:          Personal Chef / Meal Preparation Service
+
+  Short description (for platforms with a character limit):
+  ─────────────────────────────────────────────────────────────
+  In-home meal prep, kitchen coaching, and nutrition support for
+  seniors and adults with disabilities in the San Francisco Bay Area.
+  ─────────────────────────────────────────────────────────────
+
+  Full description (for platforms with more space):
+  ─────────────────────────────────────────────────────────────
+  Well Prepped Life offers personalized in-home meal prep, kitchen
+  organization, and nutrition coaching for seniors and adults with
+  disabilities throughout the San Francisco Bay Area. Services include
+  weekly meal prep sessions, kitchen safety assessments, adaptive
+  cooking coaching, and done-for-you meal preparation. Founded by
+  Justine Sanidad. Book a free consultation at wellpreppedlife.com.
+  ─────────────────────────────────────────────────────────────
+
+Platforms to complete:
+
+  ☐ Yelp           https://biz.yelp.com
+  ☐ Thumbtack      https://www.thumbtack.com/business
+  ☐ Angi           https://www.angi.com/pro
+  ☐ Nextdoor       https://business.nextdoor.com
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 8 — Create a "What Is Well Prepped Life?" Page
+
+Status: ☐ NOT DONE
+
+Purpose:
+AI assistants frequently answer definition-style questions ("What is X?")
+using dedicated explanation pages. This page helps AI systems understand
+and accurately describe the brand.
+
+Action Steps:
+
+Ask the developer to create a page at:
+  https://wellpreppedlife.com/what-is-well-prepped-life
+
+The page should answer these questions plainly:
+
+  What is Well Prepped Life?
+  → A Bay Area service that provides in-home meal prep, kitchen coaching,
+    and nutrition support for seniors and adults with disabilities.
+
+  Who does it help?
+  → Seniors, adults with disabilities, people with dietary restrictions,
+    and family caregivers in the San Francisco Bay Area.
+
+  What makes it different?
+  → It is in-home and personalized. No subscription boxes or pre-packaged
+    meals. A real person comes to your kitchen.
+
+  How does it work?
+  → Book a free Kitchen & Nutrition Assessment. A consultant visits the
+    home, assesses the kitchen and dietary needs, and creates a custom plan.
+    Ongoing weekly sessions are available.
+
+  Who founded it?
+  → Justine Sanidad, a Bay Area-based nutrition and life skills consultant.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 9 — Publish Educational Content
+
+Status: ✅ PARTIALLY DONE
+
+What is already published on the website blog:
+  https://wellpreppedlife.com/blog
+
+  1. 7 Adaptive Cooking Tools That Make a Huge Difference for Seniors with Arthritis
+  2. How to Meal Prep for Someone with Diabetes: A Practical Bay Area Guide
+  3. 12 Kitchen Safety Tips for Elderly Parents Living Alone
+  4. 15 Delicious Low-Sodium Meal Ideas for Seniors (That Actually Taste Good)
+  5. How to Organize a Kitchen for Wheelchair Access: A Room-by-Room Guide
+
+Remaining actions:
+
+☐ Republish 2–3 of the blog articles on Medium:
+  https://medium.com/new-story
+  Include a note at the bottom: "Originally published at wellpreppedlife.com"
+
+☐ Republish 1–2 articles on Substack:
+  https://substack.com
+  Create a free newsletter called "Well Prepped" or similar.
+
+Publishing on these platforms extends the brand's footprint across sources
+that AI systems commonly reference.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 10 — Participate in Relevant Reddit Communities
+
+Status: ☐ NOT DONE
+
+Purpose:
+Reddit threads frequently appear in AI-generated answers.
+Authentic, helpful participation — not self-promotion — creates credible
+references that AI systems pick up.
+
+Recommended communities:
+
+  r/MealPrepSunday    https://reddit.com/r/MealPrepSunday
+  r/EatCheapAndHealthy https://reddit.com/r/EatCheapAndHealthy
+  r/HealthyFood        https://reddit.com/r/HealthyFood
+  r/sanfrancisco       https://reddit.com/r/sanfrancisco
+  r/AskSF              https://reddit.com/r/AskSF
+  r/AgingParents       https://reddit.com/r/AgingParents
+  r/CaregiverSupport   https://reddit.com/r/CaregiverSupport
+
+How to participate:
+Answer questions genuinely. Share tips from the blog. Only mention
+Well Prepped Life when directly relevant and helpful.
+Do not post promotional content — Reddit will remove it.
+
+Example of a good comment:
+  Someone asks: "My elderly mom lives alone and I'm worried about her
+  eating well. Any advice?"
+  → Share 2–3 practical tips, then mention the kitchen safety blog post
+    as a resource. Natural, helpful, not salesy.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 11 — Create a Trustpilot Business Profile
+
+Status: ☐ NOT DONE
+
+Purpose:
+Reviews on trusted third-party platforms signal to AI systems that the
+business is real and that customers are satisfied.
+
+Action Steps:
+
+1. Go to:  https://business.trustpilot.com
+
+2. Click "Get started free" and create a profile with:
+
+   Business name:  Well Prepped Life
+   Website:        https://wellpreppedlife.com
+   Category:       Personal Services / Home Services
+
+3. Once the profile is active, invite early clients to leave reviews
+   by sending them the Trustpilot profile link directly.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 12 — Create Professional Profiles
+
+Status: ☐ NOT DONE — LinkedIn exists, AngelList needed
+
+LinkedIn:
+  A company page already exists at:
+  https://www.linkedin.com/company/wellpreppedlife
+
+  Action: Ensure the company page has the following filled in completely:
+  • Logo
+  • Cover photo
+  • About section (use the full description from Step 7 above)
+  • Website: https://wellpreppedlife.com
+  • Industry: Health, Wellness & Fitness
+  • Company size: 1–10 employees
+  • Founded: [year]
+  • Location: San Francisco Bay Area, CA
+
+AngelList (Wellfound):
+
+1. Go to:  https://wellfound.com/company/add
+
+2. Create a profile with:
+   Company name:   Well Prepped Life
+   Website:        https://wellpreppedlife.com
+   Description:    Use the full description from Step 7 above
+   Category:       Health & Wellness
+   Location:       San Francisco, CA
+
+────────────────────────────────────────────────────────────────────────────────
+
+Step 13 — Future Goal: Wikipedia Page
+
+Status: ☐ NOT YET ELIGIBLE
+
+Purpose:
+Wikipedia is one of the strongest data sources used by AI systems to
+resolve and describe entities. However, Wikipedia requires that the
+subject has been independently covered in media before an article
+can be created.
+
+What is needed before this can happen:
+  • Press coverage (newspaper, magazine, or news website articles)
+  • Media interviews mentioning Well Prepped Life by name
+  • Independent articles written about the business (not by the business)
+
+Once those exist, a Wikipedia article can be created.
+Until then, the Wikidata entry (Step 4) provides the foundational
+entity reference that AI systems can use.
+
+────────────────────────────────────────────────────────────────────────────────
+
+Implementation Checklist
+
+Use this section to track progress.
+
+✅ Structured data added to website (LocalBusiness JSON-LD — live on all pages)
+✅ Google Search Console configured and sitemap submitted
+✅ All 10 pages submitted to Google Indexing API
+☐ Bing Webmaster Tools configured
+☐ Wikidata entity created
+☐ Apple Business Connect profile created
+☐ Google Business Profile created
+☐ Yelp listing created
+☐ Thumbtack listing created
+☐ Angi listing created
+☐ Nextdoor listing created
+☐ "What is Well Prepped Life?" page published
+☐ Blog articles republished on Medium and Substack
+☐ Reddit participation started
+☐ Trustpilot profile created
+☐ LinkedIn company page completed
+☐ AngelList profile created
+☐ Wikipedia page (future — requires press coverage first)
