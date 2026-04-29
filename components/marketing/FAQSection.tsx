@@ -53,6 +53,26 @@ const faqs = [
     answer:
       "The strategy, audits, monthly reports, and review responses are written by us in the US. Some content drafting is AI-assisted (Claude and GPT) — we edit before publish. Citations submissions are run by our own automation, not offshore labor at $5/hr. No part of your account is handed off to a stranger overseas.",
   },
+  {
+    question: "Aren't most SEO agencies scams? How do I know you're not one?",
+    answer:
+      "The honest answer: a lot of them are, and you're right to be cautious. The pattern is well-documented — vague deliverables, 6-month contracts, monthly reports padded with screenshots that don't tie to traffic, and spam-link tactics that get GBPs suspended. Three things separate us. (1) Written strategy: every client gets a 5-document plan up front explaining every decision, so you can hold us accountable to it. (2) Monthly reports run against your live site and live Google data — no fabricated keyword numbers. (3) Cancel any time after the 3-month initial term, take everything with you (code, content, GBP, citations). If we were running a scam, we'd structure all three of those very differently.",
+  },
+  {
+    question: "I've been on Wix or Squarespace for years. Will migrating tank my SEO?",
+    answer:
+      "No — done right, the migration usually lifts you. We map every existing URL to its new home, set up 301 redirects so Google passes the old page's authority to the new one, and import your content + photos. The old site goes dark only after the new one matches or outranks it. Most clients see a measurable lift within 60 days from the technical improvements alone (sub-second loads, schema, real service-area pages). The risk of staying on Wix is bigger: page builders ship bloated CSS that hurts Core Web Vitals — which Google explicitly uses as a ranking signal in mobile search.",
+  },
+  {
+    question: "Someone is offering to fix my suspended GBP for thousands of dollars. Is that a scam?",
+    answer:
+      "Almost always, yes. There's an entire ecosystem of bad actors who scrape suspended GBP listings and cold-call the owners offering 'fixes' for $1,500–$5,000. Don't pay them. The reinstatement process is free — you submit an appeal directly to Google with documentation. We do this as part of Growth and Scale (no extra charge), or as a one-time $499 service if you don't want a subscription. Most legitimate suspensions reinstate in 2–4 weeks once the underlying violation is corrected.",
+  },
+  {
+    question: "I'm currently paying another agency. Can you take over without losing my rankings?",
+    answer:
+      "Yes, and we do this regularly. The transition is: we audit your current setup (site, GBP, citations, content), identify what's worth preserving and what's broken, build the new site in parallel, and only switch DNS once we've verified the new site matches or beats the old one in technical scores. GBP transfer is a Manager-access change — your profile keeps every review and historical data. The old agency gets a clean handoff (we'll even help you draft the cancellation email if needed). Most agency-takeover migrations take 2–3 weeks and have zero ranking impact.",
+  },
 ];
 
 function FAQItem({

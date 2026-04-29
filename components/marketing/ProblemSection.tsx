@@ -53,6 +53,33 @@ const problems = [
     headline: "“My phone or address is wrong somewhere on the internet.”",
     body: "What it actually means: inconsistent name/address/phone across Yelp, YellowPages, Apple Maps, and dozens of directories you've forgotten about. NAP inconsistency is one of the top reasons businesses don't rank.",
   },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    headline: "“I read that 90% of SEO agencies are scams.”",
+    body: "What it actually means: you've heard the horror stories — agencies that vanished with the deposit, used spam tactics that got profiles suspended, or sent monthly reports that lied. Trust comes from proof of work: written strategy you can hold us accountable to, monthly reports run against live data, and the right to cancel anytime.",
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      </svg>
+    ),
+    headline: "“I'm paying $1,500–$3,000/mo and have no idea what's happening.”",
+    body: "What it actually means: opaque deliverables, no monthly reports, no proof of work. Most agencies bill premium because they're paying three subcontractors and adding margin at every handoff. Everything in-house means transparent reporting — and lower prices.",
+  },
+  {
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    headline: "“I tried to learn SEO myself and ran out of time.”",
+    body: "What it actually means: title tags, schema, citations, GBP posts — it's a 10-hour-a-week ongoing job, not a one-time fix. You're not bad at it. You're busy running the actual business. Outsourcing the system isn't lazy — it's how every owner above $40k/mo revenue does it.",
+  },
 ];
 
 import { StaggerContainer, MotionItem, MotionWrapper } from "@/components/marketing/MotionWrapper";

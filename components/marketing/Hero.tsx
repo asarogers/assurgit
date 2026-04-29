@@ -12,6 +12,7 @@ const trustSignals = [
   "You own everything",
   "Month-to-month after term",
   "Live in 1–2 weeks",
+  "No per-lead fee, ever",
 ];
 
 export default function Hero() {
@@ -118,7 +119,7 @@ export default function Hero() {
               transition={{ duration: 0.45, delay: 0.45 }}
               className="text-slate-600 dark:text-slate-400 text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
             >
-              A done-for-you site, Google Business Profile, and local SEO system for service businesses — without selling you yet another &ldquo;website and SEO package.&rdquo;
+              A done-for-you site, Google Business Profile, and local SEO — without the $1,500/mo retainer, the 6-month contract, or the &ldquo;we did some stuff this month&rdquo; report.
             </motion.p>
 
             {/* CTAs */}

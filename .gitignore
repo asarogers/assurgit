@@ -9,6 +9,12 @@ node_modules/
 .env.local
 .env*.local
 
+# Service-account keys — NEVER commit
+google-indexing-key.json
+ga4-key.json
+*-service-account*.json
+assurgit-*.json
+
 # Cloudflare / Wrangler
 .wrangler/
 wrangler.toml.bak

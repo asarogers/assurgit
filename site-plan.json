@@ -1,52 +1,25 @@
 {
-  "project": "wellpreppedlife",
-  "generated": "2026-04-27T13:06:34.033873Z",
-  "scored_date": "2026-04-27",
-  "total_keywords": 73,
+  "project": "assurgit",
+  "generated": "2026-04-29T07:45:54.925865Z",
+  "scored_date": "2026-04-29",
+  "total_keywords": 61,
   "sitemaps": {
     "priority": {
       "filename": "sitemap-priority.xml",
       "description": "Target-now + target-soon URLs. Include with recent <lastmod>. Link prominently from homepage + hub pages.",
       "urls": [
         {
-          "url": "/services/in-home-meal-prep-san-francisco",
-          "keyword": "in-home meal prep San Francisco",
-          "tier": "G",
-          "archetype": "forum_fallback",
-          "opportunity": 0.72,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/meal-prep-service-bay-area",
-          "keyword": "meal prep service Bay Area",
+          "url": "/services/small-business-website-builder",
+          "keyword": "small business website builder",
           "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.69,
+          "opportunity": 0.68,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/cooking-for-aging-parent",
-          "keyword": "cooking for aging parent",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.69,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/someone-to-cook-for-elderly",
-          "keyword": "someone to cook for elderly",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.69,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/meal-prep-service-san-jose",
-          "keyword": "meal prep service San Jose",
+          "url": "/services/plumber-website-design-san-jose",
+          "keyword": "plumber website design san jose",
           "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.66,
@@ -54,35 +27,26 @@
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/personal-chef-bay-area",
-          "keyword": "personal chef Bay Area",
+          "url": "/services/godaddy-website-slow",
+          "keyword": "godaddy website slow",
           "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.66,
+          "opportunity": 0.64,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/wheelchair-accessible-cooking",
-          "keyword": "wheelchair accessible cooking",
+          "url": "/services/meal-prep-service-website-bay-area",
+          "keyword": "meal prep service website bay area",
           "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.65,
+          "opportunity": 0.64,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/freezer-meal-prep-seniors",
-          "keyword": "freezer meal prep seniors",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.63,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/in-home-meal-prep",
-          "keyword": "in-home meal prep",
+          "url": "/services/wix-website-not-ranking",
+          "keyword": "wix website not ranking",
           "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.63,
@@ -90,8 +54,8 @@
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/cooking-with-limited-mobility",
-          "keyword": "cooking with limited mobility",
+          "url": "/services/squarespace-alternative-bay-area",
+          "keyword": "squarespace alternative bay area",
           "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.63,
@@ -99,44 +63,17 @@
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/personal-chef-san-jose",
-          "keyword": "personal chef San Jose",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.61,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/personal-chef-for-elderly-parents",
-          "keyword": "personal chef for elderly parents",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.6,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/post-hospital-meal-prep",
-          "keyword": "post hospital meal prep",
+          "url": "/services/wordpress-website-too-slow",
+          "keyword": "wordpress website too slow",
           "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.6,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/single-serving-meal-prep",
-          "keyword": "single serving meal prep",
-          "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.6,
+          "opportunity": 0.59,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/personal-chef-oakland",
-          "keyword": "personal chef Oakland",
+          "url": "/services/small-business-website-with-booking",
+          "keyword": "small business website with booking",
           "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.59,
@@ -144,245 +81,182 @@
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/adaptive-cooking",
-          "keyword": "adaptive cooking",
-          "tier": "E",
+          "url": "/services/small-business-website-design",
+          "keyword": "small business website design",
+          "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.57,
+          "opportunity": 0.58,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/chef-that-comes-to-your-house",
-          "keyword": "chef that comes to your house",
+          "url": "/services/website-for-handymen-bay-area",
+          "keyword": "website for handymen bay area",
           "tier": "E",
           "archetype": "mixed_strong",
-          "opportunity": 0.57,
+          "opportunity": 0.53,
           "action": "target_soon",
           "reason": "achievable within 2-3 months once lower tiers win"
         },
         {
-          "url": "/services/meals-for-elderly-parent",
-          "keyword": "meals for elderly parent",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.57,
+          "url": "/services/website-with-booksy-integration",
+          "keyword": "website with booksy integration",
+          "tier": "E",
+          "archetype": "aggregator_fortress",
+          "opportunity": 0.53,
           "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+          "reason": "aggregator_fortress \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/one-handed-cooking",
-          "keyword": "one handed cooking",
-          "tier": "F",
+          "url": "/services/small-business-website-palo-alto",
+          "keyword": "small business website palo alto",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.52,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/roofer-website-design-bay-area",
+          "keyword": "roofer website design bay area",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.52,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/affordable-small-business-website",
+          "keyword": "affordable small business website",
+          "tier": "E",
           "archetype": "forum_fallback",
           "opportunity": 0.52,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/healthy-prepared-meals-for-seniors",
-          "keyword": "healthy prepared meals for seniors near me",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.52,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/cooking-for-one-senior",
-          "keyword": "cooking for one senior",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.51,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/meal-prepping-for-elderly",
-          "keyword": "meal prepping for elderly",
-          "tier": "E",
+          "url": "/services/google-maps-not-ranking-san-jose",
+          "keyword": "google maps not ranking san jose",
+          "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.5,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/pureed-meals-for-seniors",
-          "keyword": "pureed meals for seniors",
+          "url": "/services/website-redesign-small-business",
+          "keyword": "website redesign small business",
           "tier": "E",
-          "archetype": "local_pack_dominated",
+          "archetype": "wiki_locked",
           "opportunity": 0.5,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
         },
         {
-          "url": "/services/stroke-recovery-meals",
-          "keyword": "stroke recovery meals",
+          "url": "/services/small-business-website",
+          "keyword": "small business website",
           "tier": "E",
-          "archetype": "local_pack_dominated",
+          "archetype": "wiki_locked",
           "opportunity": 0.5,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
         },
         {
-          "url": "/services/meal-prep-for-seniors-in-the-bay-area",
-          "keyword": "meal prep for seniors in the bay area",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.5,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/weekly-meal-prep-for-elderly",
-          "keyword": "weekly meal prep for elderly",
-          "tier": "E",
+          "url": "/services/google-maps-not-ranking-san-francisco",
+          "keyword": "google maps not ranking san francisco",
+          "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.5,
+          "opportunity": 0.49,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/healthy-meals-for-elderly",
-          "keyword": "healthy meals for elderly",
+          "url": "/services/salon-website-design-bay-area",
+          "keyword": "salon website design bay area",
           "tier": "E",
-          "archetype": "mixed_strong",
-          "opportunity": 0.5,
-          "action": "target_soon",
-          "reason": "achievable within 2-3 months once lower tiers win"
-        },
-        {
-          "url": "/services/meals-after-surgery-elderly",
-          "keyword": "meals after surgery elderly",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.5,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/adaptive-cooking-parkinsons",
-          "keyword": "adaptive cooking Parkinsons",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.49,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/post-surgery-meal-prep-seniors",
-          "keyword": "post surgery meal prep seniors",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.49,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/personal-chef-palo-alto",
-          "keyword": "personal chef Palo Alto",
-          "tier": "E",
-          "archetype": "mixed_strong",
+          "archetype": "aggregator_fortress",
           "opportunity": 0.48,
-          "action": "target_soon",
-          "reason": "achievable within 2-3 months once lower tiers win"
+          "action": "target_now",
+          "reason": "aggregator_fortress \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/personal-chef-for-seniors",
-          "keyword": "personal chef for seniors",
+          "url": "/services/small-business-website-that-ranks",
+          "keyword": "small business website that ranks",
           "tier": "E",
-          "archetype": "mixed_strong",
+          "archetype": "forum_fallback",
           "opportunity": 0.47,
-          "action": "target_soon",
-          "reason": "achievable within 2-3 months once lower tiers win"
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/meals-on-wheels-alternatives",
-          "keyword": "Meals on Wheels alternatives",
+          "url": "/services/custom-small-business-website",
+          "keyword": "custom small business website",
           "tier": "E",
-          "archetype": "mixed_strong",
-          "opportunity": 0.45,
-          "action": "target_soon",
-          "reason": "achievable within 2-3 months once lower tiers win"
+          "archetype": "forum_fallback",
+          "opportunity": 0.47,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/dysphagia-meal-prep",
-          "keyword": "dysphagia meal prep",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.45,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/home-cooked-meals-for-seniors",
-          "keyword": "home cooked meals for seniors",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.43,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/soft-food-meal-prep",
-          "keyword": "soft food meal prep",
+          "url": "/services/barber-website-design-san-jose",
+          "keyword": "barber website design san jose",
           "tier": "F",
+          "archetype": "aggregator_fortress",
+          "opportunity": 0.46,
+          "action": "target_now",
+          "reason": "aggregator_fortress \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/small-business-website-san-francisco",
+          "keyword": "small business website san francisco",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.45,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        },
+        {
+          "url": "/services/website-with-online-booking-integration",
+          "keyword": "website with online booking integration",
+          "tier": "E",
+          "archetype": "forum_fallback",
+          "opportunity": 0.45,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/small-business-website-oakland",
+          "keyword": "small business website oakland",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.44,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        },
+        {
+          "url": "/services/google-business-profile-not-showing-up-bay-area",
+          "keyword": "google business profile not showing up bay area",
+          "tier": "E",
           "archetype": "forum_fallback",
           "opportunity": 0.43,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/long-distance-caregiver-meal-help",
-          "keyword": "long distance caregiver meal help",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.42,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/fresh-meal-delivery-for-seniors-bay-area",
-          "keyword": "fresh meal delivery for seniors Bay Area",
-          "tier": "E",
-          "archetype": "mixed_strong",
-          "opportunity": 0.41,
-          "action": "target_soon",
-          "reason": "achievable within 2-3 months once lower tiers win"
-        },
-        {
-          "url": "/services/meal-prep-for-elderly-living-alone",
-          "keyword": "meal prep for elderly living alone",
-          "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.41,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/meal-delivery-for-seniors-bay-area",
-          "keyword": "meal delivery for seniors Bay Area",
-          "tier": "E",
-          "archetype": "wiki_locked",
-          "opportunity": 0.38,
-          "action": "reframe",
-          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-        },
-        {
-          "url": "/services/senior-meal-delivery-bay-area",
-          "keyword": "senior meal delivery Bay Area",
-          "tier": "E",
-          "archetype": "wiki_locked",
-          "opportunity": 0.37,
-          "action": "reframe",
-          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-        },
-        {
-          "url": "/services/low-sodium-meal-prep",
-          "keyword": "low sodium meal prep",
+          "url": "/services/google-business-profile-suspended-bay-area",
+          "keyword": "google business profile suspended bay area",
           "tier": "E",
           "archetype": "wiki_locked",
           "opportunity": 0.36,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        },
+        {
+          "url": "/services/fix-google-business-profile",
+          "keyword": "fix google business profile",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.21,
           "action": "reframe",
           "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
         }
@@ -393,29 +267,173 @@
       "description": "Lower-tier pages. Include but don't promote in internal linking yet.",
       "urls": [
         {
-          "url": "/services/renal-diet-meal-prep",
-          "keyword": "renal diet meal prep",
+          "url": "/services/electrician-website-design-bay-area",
+          "keyword": "electrician website design bay area",
           "tier": "D",
-          "archetype": "mixed_strong",
-          "opportunity": 0.52,
+          "archetype": "aggregator_fortress",
+          "opportunity": 0.49,
           "action": "target_later",
           "reason": "tier D \u2014 build authority via lower tiers first"
         },
         {
-          "url": "/services/meal-prep-for-seniors",
-          "keyword": "meal prep for seniors",
+          "url": "/services/chiropractor-website-design-bay-area",
+          "keyword": "chiropractor website design bay area",
           "tier": "D",
-          "archetype": "forum_fallback",
-          "opportunity": 0.38,
+          "archetype": "mixed_strong",
+          "opportunity": 0.49,
           "action": "target_later",
           "reason": "tier D \u2014 build authority via lower tiers first"
         },
         {
-          "url": "/services/caregiver-relief-meals",
-          "keyword": "caregiver relief meals",
+          "url": "/services/dentist-website-design-bay-area",
+          "keyword": "dentist website design bay area",
           "tier": "D",
           "archetype": "mixed_strong",
-          "opportunity": 0.34,
+          "opportunity": 0.49,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/hvac-website-design-bay-area",
+          "keyword": "hvac website design bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.48,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/local-seo-for-dentists-bay-area",
+          "keyword": "local seo for dentists bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.45,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/cpa-website-design-san-jose",
+          "keyword": "cpa website design san jose",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.44,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/attorney-website-design-bay-area",
+          "keyword": "attorney website design bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.44,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/local-seo-for-lawyers-bay-area",
+          "keyword": "local seo for lawyers bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.44,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/local-seo-for-plumbers-bay-area",
+          "keyword": "local seo for plumbers bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.44,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/personal-chef-website-bay-area",
+          "keyword": "personal chef website bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.44,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/contractor-website-design-bay-area",
+          "keyword": "contractor website design bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.43,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/small-business-website-bay-area",
+          "keyword": "small business website bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.43,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/therapist-website-design-san-jose",
+          "keyword": "therapist website design san jose",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.43,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/personal-trainer-website-bay-area",
+          "keyword": "personal trainer website bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.43,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/law-firm-website-design-san-francisco",
+          "keyword": "law firm website design san francisco",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.4,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/website-for-plumbers-bay-area",
+          "keyword": "website for plumbers bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.4,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/mortgage-broker-website-bay-area",
+          "keyword": "mortgage broker website bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.4,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/done-for-you-local-seo-bay-area",
+          "keyword": "done for you local seo bay area",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.37,
+          "action": "target_later",
+          "reason": "tier D \u2014 build authority via lower tiers first"
+        },
+        {
+          "url": "/services/small-business-website-san-jose",
+          "keyword": "small business website san jose",
+          "tier": "D",
+          "archetype": "mixed_strong",
+          "opportunity": 0.36,
           "action": "target_later",
           "reason": "tier D \u2014 build authority via lower tiers first"
         }
@@ -426,53 +444,26 @@
     "description": "Built pages that should NOT yet appear in internal links. Still indexable (in sitemap) but no link equity flow. Revisit monthly.",
     "urls": [
       {
-        "url": "/services/kidney-disease-meal-prep",
-        "keyword": "kidney disease meal prep",
+        "url": "/services/fix-my-squarespace-website",
+        "keyword": "fix my squarespace website",
         "tier": "D",
         "archetype": "local_pack_dominated",
-        "opportunity": 0.52,
+        "opportunity": 0.47,
         "action": "gbp_only",
         "reason": "organic is competitive; focus on GBP/local pack for this query"
       },
       {
-        "url": "/services/arthritis-kitchen-tools",
-        "keyword": "arthritis kitchen tools",
+        "url": "/services/google-business-profile-optimization-bay-area",
+        "keyword": "google business profile optimization bay area",
         "tier": "D",
         "archetype": "local_pack_dominated",
-        "opportunity": 0.51,
+        "opportunity": 0.47,
         "action": "gbp_only",
         "reason": "organic is competitive; focus on GBP/local pack for this query"
       },
       {
-        "url": "/services/adaptive-kitchen-tools",
-        "keyword": "adaptive kitchen tools",
-        "tier": "D",
-        "archetype": "local_pack_dominated",
-        "opportunity": 0.51,
-        "action": "gbp_only",
-        "reason": "organic is competitive; focus on GBP/local pack for this query"
-      },
-      {
-        "url": "/services/one-handed-cooking-stroke",
-        "keyword": "one handed cooking stroke",
-        "tier": "D",
-        "archetype": "local_pack_dominated",
-        "opportunity": 0.51,
-        "action": "gbp_only",
-        "reason": "organic is competitive; focus on GBP/local pack for this query"
-      },
-      {
-        "url": "/services/kitchen-safety-for-seniors",
-        "keyword": "kitchen safety for seniors",
-        "tier": "D",
-        "archetype": "local_pack_dominated",
-        "opportunity": 0.48,
-        "action": "gbp_only",
-        "reason": "organic is competitive; focus on GBP/local pack for this query"
-      },
-      {
-        "url": "/services/batch-cooking-for-caregivers",
-        "keyword": "batch cooking for caregivers",
+        "url": "/services/real-estate-website-design-bay-area",
+        "keyword": "real estate website design bay area",
         "tier": "D",
         "archetype": "local_pack_dominated",
         "opportunity": 0.46,
@@ -480,29 +471,38 @@
         "reason": "organic is competitive; focus on GBP/local pack for this query"
       },
       {
-        "url": "/services/cooking-with-arthritis",
-        "keyword": "cooking with arthritis",
+        "url": "/services/website-with-square-booking",
+        "keyword": "website with square booking",
         "tier": "D",
         "archetype": "local_pack_dominated",
-        "opportunity": 0.44,
+        "opportunity": 0.45,
         "action": "gbp_only",
         "reason": "organic is competitive; focus on GBP/local pack for this query"
       },
       {
-        "url": "/services/aging-in-place-kitchen",
-        "keyword": "aging in place kitchen",
+        "url": "/services/website-with-calcom-integration",
+        "keyword": "website with cal.com integration",
         "tier": "D",
         "archetype": "local_pack_dominated",
-        "opportunity": 0.41,
+        "opportunity": 0.43,
         "action": "gbp_only",
         "reason": "organic is competitive; focus on GBP/local pack for this query"
       },
       {
-        "url": "/services/caregiver-meal-prep",
-        "keyword": "caregiver meal prep",
+        "url": "/services/wix-alternative-bay-area",
+        "keyword": "wix alternative bay area",
         "tier": "D",
         "archetype": "local_pack_dominated",
-        "opportunity": 0.39,
+        "opportunity": 0.42,
+        "action": "gbp_only",
+        "reason": "organic is competitive; focus on GBP/local pack for this query"
+      },
+      {
+        "url": "/services/google-my-business-optimization-bay-area",
+        "keyword": "google my business optimization bay area",
+        "tier": "D",
+        "archetype": "local_pack_dominated",
+        "opportunity": 0.42,
         "action": "gbp_only",
         "reason": "organic is competitive; focus on GBP/local pack for this query"
       }
@@ -512,116 +512,35 @@
     "description": "Do NOT build these as dedicated pages. Either unwinnable (S-tier) or need a reframed keyword target.",
     "urls": [
       {
-        "url": "/services/cooking-with-parkinsons",
-        "keyword": "cooking with Parkinsons",
+        "url": "/services/google-maps-listing-help-bay-area",
+        "keyword": "google maps listing help bay area",
         "tier": "D",
         "archetype": "wiki_locked",
-        "opportunity": 0.44,
+        "opportunity": 0.35,
         "action": "reframe",
         "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
       },
       {
-        "url": "/services/easy-to-swallow-meals-elderly",
-        "keyword": "easy to swallow meals elderly",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.44,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/low-potassium-meal-prep",
-        "keyword": "low potassium meal prep",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.44,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/cancer-treatment-meal-prep",
-        "keyword": "cancer treatment meal prep",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.4,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/aging-in-place-nutrition",
-        "keyword": "aging in place nutrition",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.4,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/memory-care-meals",
-        "keyword": "memory care meals",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.4,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/caregiver-meal-planning",
-        "keyword": "caregiver meal planning",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.36,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/chemo-meal-prep",
-        "keyword": "chemo meal prep",
+        "url": "/services/google-business-profile-management-san-francisco",
+        "keyword": "google business profile management san francisco",
         "tier": "C",
-        "archetype": "wiki_locked",
-        "opportunity": 0.35,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/meal-prep-for-dementia-patients",
-        "keyword": "meal prep for dementia patients",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.35,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/dementia-meal-prep",
-        "keyword": "dementia meal prep",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.33,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/senior-meal-delivery",
-        "keyword": "senior meal delivery",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.33,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/heart-healthy-meal-prep-for-seniors",
-        "keyword": "heart healthy meal prep for seniors",
-        "tier": "D",
         "archetype": "wiki_locked",
         "opportunity": 0.32,
         "action": "reframe",
         "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
       },
       {
-        "url": "/services/diabetic-meal-prep",
-        "keyword": "diabetic meal prep",
+        "url": "/services/google-business-profile-setup-san-jose",
+        "keyword": "google business profile setup san jose",
+        "tier": "C",
+        "archetype": "wiki_locked",
+        "opportunity": 0.3,
+        "action": "reframe",
+        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+      },
+      {
+        "url": "/services/google-business-profile-reinstatement",
+        "keyword": "google business profile reinstatement",
         "tier": "D",
         "archetype": "wiki_locked",
         "opportunity": 0.28,
@@ -629,56 +548,29 @@
         "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
       },
       {
-        "url": "/services/diabetic-meal-prep-for-seniors",
-        "keyword": "diabetic meal prep for seniors",
+        "url": "/services/google-my-business-setup-help",
+        "keyword": "google my business setup help",
         "tier": "D",
         "archetype": "wiki_locked",
-        "opportunity": 0.26,
+        "opportunity": 0.18,
         "action": "reframe",
         "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
       },
       {
-        "url": "/services/diabetic-meal-prep-for-elderly",
-        "keyword": "diabetic meal prep for elderly",
-        "tier": "D",
+        "url": "/services/verify-google-business-profile",
+        "keyword": "verify google business profile",
+        "tier": "C",
         "archetype": "wiki_locked",
-        "opportunity": 0.26,
+        "opportunity": 0.13,
         "action": "reframe",
         "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
       },
       {
-        "url": "/services/senior-nutrition-planning",
-        "keyword": "senior nutrition planning",
-        "tier": "D",
+        "url": "/services/google-business-profile-help-bay-area",
+        "keyword": "google business profile help bay area",
+        "tier": "C",
         "archetype": "wiki_locked",
-        "opportunity": 0.24,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/healthy-aging-food",
-        "keyword": "healthy aging food",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.23,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/chf-diet-meal-prep",
-        "keyword": "CHF diet meal prep",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.23,
-        "action": "reframe",
-        "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
-      },
-      {
-        "url": "/services/meal-prep-for-elderly-diabetics",
-        "keyword": "meal prep for elderly diabetics",
-        "tier": "D",
-        "archetype": "wiki_locked",
-        "opportunity": 0.23,
+        "opportunity": 0.03,
         "action": "reframe",
         "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
       }
@@ -689,47 +581,47 @@
       "description": "Prominent blocks on the homepage. Top 5 target-now opportunities \u2014 the pages we're actively pushing up this month.",
       "links": [
         {
-          "url": "/services/in-home-meal-prep-san-francisco",
-          "keyword": "in-home meal prep San Francisco",
-          "tier": "G",
-          "archetype": "forum_fallback",
-          "opportunity": 0.72,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/meal-prep-service-bay-area",
-          "keyword": "meal prep service Bay Area",
+          "url": "/services/small-business-website-builder",
+          "keyword": "small business website builder",
           "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.69,
+          "opportunity": 0.68,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/cooking-for-aging-parent",
-          "keyword": "cooking for aging parent",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.69,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/someone-to-cook-for-elderly",
-          "keyword": "someone to cook for elderly",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.69,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/meal-prep-service-san-jose",
-          "keyword": "meal prep service San Jose",
+          "url": "/services/plumber-website-design-san-jose",
+          "keyword": "plumber website design san jose",
           "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.66,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/godaddy-website-slow",
+          "keyword": "godaddy website slow",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.64,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/meal-prep-service-website-bay-area",
+          "keyword": "meal prep service website bay area",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.64,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/wix-website-not-ranking",
+          "keyword": "wix website not ranking",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.63,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         }
@@ -739,26 +631,8 @@
       "description": "Services hub / category pages. Next 15 priority URLs after homepage picks.",
       "links": [
         {
-          "url": "/services/personal-chef-bay-area",
-          "keyword": "personal chef Bay Area",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.66,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/wheelchair-accessible-cooking",
-          "keyword": "wheelchair accessible cooking",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.65,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/freezer-meal-prep-seniors",
-          "keyword": "freezer meal prep seniors",
+          "url": "/services/squarespace-alternative-bay-area",
+          "keyword": "squarespace alternative bay area",
           "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.63,
@@ -766,62 +640,17 @@
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/in-home-meal-prep",
-          "keyword": "in-home meal prep",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.63,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/cooking-with-limited-mobility",
-          "keyword": "cooking with limited mobility",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.63,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/personal-chef-san-jose",
-          "keyword": "personal chef San Jose",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.61,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/personal-chef-for-elderly-parents",
-          "keyword": "personal chef for elderly parents",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.6,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/post-hospital-meal-prep",
-          "keyword": "post hospital meal prep",
+          "url": "/services/wordpress-website-too-slow",
+          "keyword": "wordpress website too slow",
           "tier": "E",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.6,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/single-serving-meal-prep",
-          "keyword": "single serving meal prep",
-          "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.6,
+          "opportunity": 0.59,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/personal-chef-oakland",
-          "keyword": "personal chef Oakland",
+          "url": "/services/small-business-website-with-booking",
+          "keyword": "small business website with booking",
           "tier": "F",
           "archetype": "forum_fallback",
           "opportunity": 0.59,
@@ -829,49 +658,112 @@
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/adaptive-cooking",
-          "keyword": "adaptive cooking",
-          "tier": "E",
+          "url": "/services/small-business-website-design",
+          "keyword": "small business website design",
+          "tier": "F",
           "archetype": "forum_fallback",
-          "opportunity": 0.57,
+          "opportunity": 0.58,
           "action": "target_now",
           "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         },
         {
-          "url": "/services/chef-that-comes-to-your-house",
-          "keyword": "chef that comes to your house",
+          "url": "/services/website-for-handymen-bay-area",
+          "keyword": "website for handymen bay area",
           "tier": "E",
           "archetype": "mixed_strong",
-          "opportunity": 0.57,
+          "opportunity": 0.53,
           "action": "target_soon",
           "reason": "achievable within 2-3 months once lower tiers win"
         },
         {
-          "url": "/services/meals-for-elderly-parent",
-          "keyword": "meals for elderly parent",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.57,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/one-handed-cooking",
-          "keyword": "one handed cooking",
-          "tier": "F",
-          "archetype": "forum_fallback",
-          "opportunity": 0.52,
-          "action": "target_now",
-          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
-        },
-        {
-          "url": "/services/healthy-prepared-meals-for-seniors",
-          "keyword": "healthy prepared meals for seniors near me",
+          "url": "/services/website-with-booksy-integration",
+          "keyword": "website with booksy integration",
           "tier": "E",
-          "archetype": "local_pack_dominated",
+          "archetype": "aggregator_fortress",
+          "opportunity": 0.53,
+          "action": "target_now",
+          "reason": "aggregator_fortress \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/small-business-website-palo-alto",
+          "keyword": "small business website palo alto",
+          "tier": "E",
+          "archetype": "mixed_strong",
           "opportunity": 0.52,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/roofer-website-design-bay-area",
+          "keyword": "roofer website design bay area",
+          "tier": "E",
+          "archetype": "mixed_strong",
+          "opportunity": 0.52,
+          "action": "target_soon",
+          "reason": "achievable within 2-3 months once lower tiers win"
+        },
+        {
+          "url": "/services/affordable-small-business-website",
+          "keyword": "affordable small business website",
+          "tier": "E",
+          "archetype": "forum_fallback",
+          "opportunity": 0.52,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/google-maps-not-ranking-san-jose",
+          "keyword": "google maps not ranking san jose",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.5,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/website-redesign-small-business",
+          "keyword": "website redesign small business",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.5,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        },
+        {
+          "url": "/services/small-business-website",
+          "keyword": "small business website",
+          "tier": "E",
+          "archetype": "wiki_locked",
+          "opportunity": 0.5,
+          "action": "reframe",
+          "reason": "informational intent \u2014 commercial pages won't rank; reframe with commercial modifier"
+        },
+        {
+          "url": "/services/google-maps-not-ranking-san-francisco",
+          "keyword": "google maps not ranking san francisco",
+          "tier": "F",
+          "archetype": "forum_fallback",
+          "opportunity": 0.49,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/salon-website-design-bay-area",
+          "keyword": "salon website design bay area",
+          "tier": "E",
+          "archetype": "aggregator_fortress",
+          "opportunity": 0.48,
+          "action": "target_now",
+          "reason": "aggregator_fortress \u2014 weak SERP, a focused local page can break in"
+        },
+        {
+          "url": "/services/small-business-website-that-ranks",
+          "keyword": "small business website that ranks",
+          "tier": "E",
+          "archetype": "forum_fallback",
+          "opportunity": 0.47,
+          "action": "target_now",
+          "reason": "forum_fallback \u2014 weak SERP, a focused local page can break in"
         }
       ]
     },
@@ -879,53 +771,26 @@
       "description": "Footer reinforcement for GBP-only queries \u2014 helps local pack signals without taking homepage real estate.",
       "links": [
         {
-          "url": "/services/kidney-disease-meal-prep",
-          "keyword": "kidney disease meal prep",
+          "url": "/services/fix-my-squarespace-website",
+          "keyword": "fix my squarespace website",
           "tier": "D",
           "archetype": "local_pack_dominated",
-          "opportunity": 0.52,
+          "opportunity": 0.47,
           "action": "gbp_only",
           "reason": "organic is competitive; focus on GBP/local pack for this query"
         },
         {
-          "url": "/services/arthritis-kitchen-tools",
-          "keyword": "arthritis kitchen tools",
+          "url": "/services/google-business-profile-optimization-bay-area",
+          "keyword": "google business profile optimization bay area",
           "tier": "D",
           "archetype": "local_pack_dominated",
-          "opportunity": 0.51,
+          "opportunity": 0.47,
           "action": "gbp_only",
           "reason": "organic is competitive; focus on GBP/local pack for this query"
         },
         {
-          "url": "/services/adaptive-kitchen-tools",
-          "keyword": "adaptive kitchen tools",
-          "tier": "D",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.51,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/one-handed-cooking-stroke",
-          "keyword": "one handed cooking stroke",
-          "tier": "D",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.51,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/kitchen-safety-for-seniors",
-          "keyword": "kitchen safety for seniors",
-          "tier": "D",
-          "archetype": "local_pack_dominated",
-          "opportunity": 0.48,
-          "action": "gbp_only",
-          "reason": "organic is competitive; focus on GBP/local pack for this query"
-        },
-        {
-          "url": "/services/batch-cooking-for-caregivers",
-          "keyword": "batch cooking for caregivers",
+          "url": "/services/real-estate-website-design-bay-area",
+          "keyword": "real estate website design bay area",
           "tier": "D",
           "archetype": "local_pack_dominated",
           "opportunity": 0.46,
@@ -933,29 +798,38 @@
           "reason": "organic is competitive; focus on GBP/local pack for this query"
         },
         {
-          "url": "/services/cooking-with-arthritis",
-          "keyword": "cooking with arthritis",
+          "url": "/services/website-with-square-booking",
+          "keyword": "website with square booking",
           "tier": "D",
           "archetype": "local_pack_dominated",
-          "opportunity": 0.44,
+          "opportunity": 0.45,
           "action": "gbp_only",
           "reason": "organic is competitive; focus on GBP/local pack for this query"
         },
         {
-          "url": "/services/aging-in-place-kitchen",
-          "keyword": "aging in place kitchen",
+          "url": "/services/website-with-calcom-integration",
+          "keyword": "website with cal.com integration",
           "tier": "D",
           "archetype": "local_pack_dominated",
-          "opportunity": 0.41,
+          "opportunity": 0.43,
           "action": "gbp_only",
           "reason": "organic is competitive; focus on GBP/local pack for this query"
         },
         {
-          "url": "/services/caregiver-meal-prep",
-          "keyword": "caregiver meal prep",
+          "url": "/services/wix-alternative-bay-area",
+          "keyword": "wix alternative bay area",
           "tier": "D",
           "archetype": "local_pack_dominated",
-          "opportunity": 0.39,
+          "opportunity": 0.42,
+          "action": "gbp_only",
+          "reason": "organic is competitive; focus on GBP/local pack for this query"
+        },
+        {
+          "url": "/services/google-my-business-optimization-bay-area",
+          "keyword": "google my business optimization bay area",
+          "tier": "D",
+          "archetype": "local_pack_dominated",
+          "opportunity": 0.42,
           "action": "gbp_only",
           "reason": "organic is competitive; focus on GBP/local pack for this query"
         }
@@ -963,63 +837,141 @@
     }
   },
   "clusters": {
-    "cacdbd15-6c67-c06e-612f-9173f2641fce": {
-      "size": 3,
-      "primary": "/services/meal-prep-service-bay-area",
+    "71cfdbf6-1ce1-738a-8613-52b49bc803d3": {
+      "size": 2,
+      "primary": "/services/website-for-handymen-bay-area",
       "members": [
         {
-          "url": "/services/meal-prep-service-bay-area",
-          "keyword": "meal prep service Bay Area",
+          "url": "/services/website-for-handymen-bay-area",
+          "keyword": "website for handymen bay area",
+          "tier": "E",
+          "action": "target_soon"
+        },
+        {
+          "url": "/services/website-for-plumbers-bay-area",
+          "keyword": "website for plumbers bay area",
+          "tier": "D",
+          "action": "target_later"
+        }
+      ]
+    },
+    "30805cbf-5429-4c7f-4dda-dad872853b44": {
+      "size": 2,
+      "primary": "/services/google-maps-not-ranking-san-jose",
+      "members": [
+        {
+          "url": "/services/google-maps-not-ranking-san-jose",
+          "keyword": "google maps not ranking san jose",
           "tier": "F",
           "action": "target_now"
         },
         {
-          "url": "/services/meal-prep-for-seniors-in-the-bay-area",
-          "keyword": "meal prep for seniors in the bay area",
-          "tier": "E",
-          "action": "gbp_only"
-        },
-        {
-          "url": "/services/meal-delivery-for-seniors-bay-area",
-          "keyword": "meal delivery for seniors Bay Area",
-          "tier": "E",
+          "url": "/services/google-business-profile-setup-san-jose",
+          "keyword": "google business profile setup san jose",
+          "tier": "C",
           "action": "reframe"
         }
       ]
     },
-    "d55f305e-12cd-74fd-7920-a18170579857": {
+    "77253636-8646-1859-ab28-cbdd1f6a15b5": {
       "size": 2,
-      "primary": "/services/cooking-with-parkinsons",
+      "primary": "/services/google-maps-not-ranking-san-francisco",
       "members": [
         {
-          "url": "/services/cooking-with-parkinsons",
-          "keyword": "cooking with Parkinsons",
-          "tier": "D",
-          "action": "reframe"
+          "url": "/services/google-maps-not-ranking-san-francisco",
+          "keyword": "google maps not ranking san francisco",
+          "tier": "F",
+          "action": "target_now"
         },
         {
-          "url": "/services/cooking-with-arthritis",
-          "keyword": "cooking with arthritis",
-          "tier": "D",
-          "action": "gbp_only"
+          "url": "/services/google-business-profile-management-san-francisco",
+          "keyword": "google business profile management san francisco",
+          "tier": "C",
+          "action": "reframe"
         }
       ]
     },
-    "a2e85611-e96f-1cf0-2ba4-13924d771bc7": {
-      "size": 2,
-      "primary": "/services/low-potassium-meal-prep",
+    "70eb2051-cc80-eca8-0639-9e16ab0d8a52": {
+      "size": 6,
+      "primary": "/services/google-business-profile-not-showing-up-bay-area",
       "members": [
         {
-          "url": "/services/low-potassium-meal-prep",
-          "keyword": "low potassium meal prep",
+          "url": "/services/google-business-profile-optimization-bay-area",
+          "keyword": "google business profile optimization bay area",
+          "tier": "D",
+          "action": "gbp_only"
+        },
+        {
+          "url": "/services/google-business-profile-not-showing-up-bay-area",
+          "keyword": "google business profile not showing up bay area",
+          "tier": "E",
+          "action": "target_now"
+        },
+        {
+          "url": "/services/google-my-business-optimization-bay-area",
+          "keyword": "google my business optimization bay area",
+          "tier": "D",
+          "action": "gbp_only"
+        },
+        {
+          "url": "/services/google-business-profile-suspended-bay-area",
+          "keyword": "google business profile suspended bay area",
+          "tier": "E",
+          "action": "reframe"
+        },
+        {
+          "url": "/services/google-maps-listing-help-bay-area",
+          "keyword": "google maps listing help bay area",
           "tier": "D",
           "action": "reframe"
         },
         {
-          "url": "/services/low-sodium-meal-prep",
-          "keyword": "low sodium meal prep",
-          "tier": "E",
+          "url": "/services/google-business-profile-help-bay-area",
+          "keyword": "google business profile help bay area",
+          "tier": "C",
           "action": "reframe"
+        }
+      ]
+    },
+    "307808c5-09cc-ee8a-b14c-d6c5a21c4bb3": {
+      "size": 3,
+      "primary": "/services/local-seo-for-dentists-bay-area",
+      "members": [
+        {
+          "url": "/services/local-seo-for-dentists-bay-area",
+          "keyword": "local seo for dentists bay area",
+          "tier": "D",
+          "action": "target_later"
+        },
+        {
+          "url": "/services/local-seo-for-lawyers-bay-area",
+          "keyword": "local seo for lawyers bay area",
+          "tier": "D",
+          "action": "target_later"
+        },
+        {
+          "url": "/services/local-seo-for-plumbers-bay-area",
+          "keyword": "local seo for plumbers bay area",
+          "tier": "D",
+          "action": "target_later"
+        }
+      ]
+    },
+    "880bd54e-b5f2-87e9-bcba-acd7ba6dd992": {
+      "size": 2,
+      "primary": "/services/personal-chef-website-bay-area",
+      "members": [
+        {
+          "url": "/services/personal-chef-website-bay-area",
+          "keyword": "personal chef website bay area",
+          "tier": "D",
+          "action": "target_later"
+        },
+        {
+          "url": "/services/personal-trainer-website-bay-area",
+          "keyword": "personal trainer website bay area",
+          "tier": "D",
+          "action": "target_later"
         }
       ]
     }
@@ -1027,79 +979,51 @@
   "lastmod_schedule": [
     {
       "week": 0,
-      "target_date": "2026-04-27",
+      "target_date": "2026-04-29",
       "count": 10,
       "urls": [
-        "/services/in-home-meal-prep-san-francisco",
-        "/services/meal-prep-service-bay-area",
-        "/services/cooking-for-aging-parent",
-        "/services/someone-to-cook-for-elderly",
-        "/services/meal-prep-service-san-jose",
-        "/services/personal-chef-bay-area",
-        "/services/wheelchair-accessible-cooking",
-        "/services/freezer-meal-prep-seniors",
-        "/services/in-home-meal-prep",
-        "/services/cooking-with-limited-mobility"
+        "/services/small-business-website-builder",
+        "/services/plumber-website-design-san-jose",
+        "/services/godaddy-website-slow",
+        "/services/meal-prep-service-website-bay-area",
+        "/services/wix-website-not-ranking",
+        "/services/squarespace-alternative-bay-area",
+        "/services/wordpress-website-too-slow",
+        "/services/small-business-website-with-booking",
+        "/services/small-business-website-design",
+        "/services/website-for-handymen-bay-area"
       ]
     },
     {
       "week": 1,
-      "target_date": "2026-05-04",
+      "target_date": "2026-05-06",
       "count": 10,
       "urls": [
-        "/services/personal-chef-san-jose",
-        "/services/personal-chef-for-elderly-parents",
-        "/services/post-hospital-meal-prep",
-        "/services/single-serving-meal-prep",
-        "/services/personal-chef-oakland",
-        "/services/adaptive-cooking",
-        "/services/chef-that-comes-to-your-house",
-        "/services/meals-for-elderly-parent",
-        "/services/one-handed-cooking",
-        "/services/healthy-prepared-meals-for-seniors"
+        "/services/website-with-booksy-integration",
+        "/services/small-business-website-palo-alto",
+        "/services/roofer-website-design-bay-area",
+        "/services/affordable-small-business-website",
+        "/services/google-maps-not-ranking-san-jose",
+        "/services/website-redesign-small-business",
+        "/services/small-business-website",
+        "/services/google-maps-not-ranking-san-francisco",
+        "/services/salon-website-design-bay-area",
+        "/services/small-business-website-that-ranks"
       ]
     },
     {
       "week": 2,
-      "target_date": "2026-05-11",
-      "count": 10,
+      "target_date": "2026-05-13",
+      "count": 8,
       "urls": [
-        "/services/cooking-for-one-senior",
-        "/services/meal-prepping-for-elderly",
-        "/services/pureed-meals-for-seniors",
-        "/services/stroke-recovery-meals",
-        "/services/meal-prep-for-seniors-in-the-bay-area",
-        "/services/weekly-meal-prep-for-elderly",
-        "/services/healthy-meals-for-elderly",
-        "/services/meals-after-surgery-elderly",
-        "/services/adaptive-cooking-parkinsons",
-        "/services/post-surgery-meal-prep-seniors"
-      ]
-    },
-    {
-      "week": 3,
-      "target_date": "2026-05-18",
-      "count": 10,
-      "urls": [
-        "/services/personal-chef-palo-alto",
-        "/services/personal-chef-for-seniors",
-        "/services/meals-on-wheels-alternatives",
-        "/services/dysphagia-meal-prep",
-        "/services/home-cooked-meals-for-seniors",
-        "/services/soft-food-meal-prep",
-        "/services/long-distance-caregiver-meal-help",
-        "/services/fresh-meal-delivery-for-seniors-bay-area",
-        "/services/meal-prep-for-elderly-living-alone",
-        "/services/meal-delivery-for-seniors-bay-area"
-      ]
-    },
-    {
-      "week": 4,
-      "target_date": "2026-05-25",
-      "count": 2,
-      "urls": [
-        "/services/senior-meal-delivery-bay-area",
-        "/services/low-sodium-meal-prep"
+        "/services/custom-small-business-website",
+        "/services/barber-website-design-san-jose",
+        "/services/small-business-website-san-francisco",
+        "/services/website-with-online-booking-integration",
+        "/services/small-business-website-oakland",
+        "/services/google-business-profile-not-showing-up-bay-area",
+        "/services/google-business-profile-suspended-bay-area",
+        "/services/fix-google-business-profile"
       ]
     }
   ]
