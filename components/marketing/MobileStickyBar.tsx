@@ -22,7 +22,7 @@ export default function MobileStickyBar() {
     >
       <div className="bg-[#0a0f1e] border-t border-white/10 px-4 py-3 safe-area-pb">
         <Link
-          href="/book"
+          href="/pricing"
           className="
             block w-full text-center
             bg-[#2563eb] hover:bg-[#1d4ed8]
@@ -32,7 +32,7 @@ export default function MobileStickyBar() {
             hover:-translate-y-0.5 glow-blue-btn
           "
         >
-          Book a 15-min Call
+          Get started
         </Link>
       </div>
     </div>

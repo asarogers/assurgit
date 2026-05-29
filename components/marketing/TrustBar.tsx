@@ -44,17 +44,41 @@ export default function TrustBar() {
   return (
     <section className="bg-gray-100 dark:bg-gray-900 border-y border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        {/* Social proof banner */}
-        <MotionWrapper className="text-center mb-8 pb-8 border-b border-gray-200 dark:border-gray-800">
-          <p className="text-gray-500 dark:text-gray-500 text-xs font-semibold uppercase tracking-wider mb-2">Active Client Result</p>
-          <p className="text-gray-900 dark:text-white text-base font-semibold">
-            <span className="text-emerald-600 dark:text-emerald-400 font-black">66-service GBP catalog live, 7 striking-distance keywords moving toward page 1</span>{" "}
-            inside the first month for Well Prepped Life — Bay Area in-home meal prep.
-          </p>
-          <p className="text-gray-500 dark:text-gray-600 text-xs mt-2">
-            — <Link href="/case-studies" className="hover:text-gray-700 dark:hover:text-gray-400 transition-colors">Well Prepped Life case study</Link>,
-            {" "}Mountain View, CA &middot; serving 25 Bay Area cities
-          </p>
+        {/* Real-result proof tile — the metric that actually matters: phone calls + clients */}
+        <MotionWrapper className="mb-8 pb-8 border-b border-gray-200 dark:border-gray-800">
+          <div className="rounded-2xl border-2 border-emerald-300 dark:border-emerald-800/60 bg-emerald-50 dark:bg-emerald-950/30 p-6 sm:p-8 max-w-3xl mx-auto">
+            <p className="text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Recent client result
+            </p>
+
+            {/* Before / after — the actual story */}
+            <div className="grid sm:grid-cols-[1fr_auto_1fr] gap-4 sm:gap-3 items-center mb-5">
+              <div className="rounded-xl bg-white/80 dark:bg-black/30 border border-gray-200 dark:border-white/10 p-4">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Before us</p>
+                <p className="text-gray-900 dark:text-white text-base font-bold leading-tight">
+                  No website. 2 clients, all word of mouth. Zero paid ads.
+                </p>
+              </div>
+              <div className="text-emerald-600 dark:text-emerald-400 text-2xl font-black text-center sm:rotate-0 rotate-90">&rarr;</div>
+              <div className="rounded-xl bg-emerald-100 dark:bg-emerald-900/40 border-2 border-emerald-400 dark:border-emerald-700 p-4">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">30 days after launch</p>
+                <p className="text-gray-900 dark:text-white text-base font-bold leading-tight">
+                  <span className="text-emerald-700 dark:text-emerald-400">1 new client + 2 phone calls</span> &mdash; from the site, not word of mouth.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-2">
+              <span className="font-bold">Well Prepped Life</span> &mdash; Mountain View, Bay Area in-home meal prep. They came to us with no website and two word-of-mouth clients. We built the site, audited it, set up the Google Business Profile, ran the local SEO. Within 30 days the site itself was generating leads.
+            </p>
+            <p className="text-gray-500 dark:text-gray-500 text-xs">
+              <Link href="/case-studies" className="hover:text-gray-700 dark:hover:text-gray-400 transition-colors underline underline-offset-2 font-semibold">
+                Read the full case study &rarr;
+              </Link>
+              {" "}&middot; Also: 66-service GBP catalog live, 7 striking-distance keywords moving toward page 1, serving 25 Bay Area cities.
+            </p>
+          </div>
         </MotionWrapper>
 
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

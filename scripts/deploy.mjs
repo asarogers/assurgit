@@ -68,6 +68,17 @@ async function main() {
     log('Waiting 10s for Cloudflare edge to propagate…');
     if (!DRY_RUN) await new Promise((r) => setTimeout(r, 10_000));
 
+    // Regenerate sites.json from PG before any downstream tool reads it.
+    // sites.json is a derived projection of public.clients/projects/nap_profiles —
+    // see /repo/important/PRINCIPLES.md (rule 1). Runs through /usr/bin/python3
+    // because the regenerator needs psycopg2.
+    log('Refreshing sites.json from PG (single source of truth)…');
+    try {
+      run(`/usr/bin/python3 /Users/atlas/repo/scripts/regenerate-sites-json.py`);
+    } catch {
+      log('sites.json regen failed — continuing with existing file.');
+    }
+
     log('Running post-deploy healthcheck (Arnold check_all)…');
     try {
       run(`${PYTHON} ${HEALTHCHECK} --assurgit --save-json "${AUDIT_JSON}"`);

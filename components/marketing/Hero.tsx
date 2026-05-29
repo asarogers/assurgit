@@ -68,7 +68,7 @@ export default function Hero() {
               transition={{ duration: 0.4, delay: 0.1 }}
               className="text-xs font-bold uppercase tracking-[0.2em] text-[#2563eb] dark:text-[#2563eb] mb-5"
             >
-              Local Presence System
+              Local SEO + websites for Bay Area service businesses
             </motion.p>
 
             {/* Headline */}
@@ -76,26 +76,101 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 dark:text-white leading-[1.05] tracking-tight mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-950 dark:text-white leading-[1.05] tracking-tight mb-5"
             >
-              Get found and booked{" "}
-              <br className="hidden sm:block" />
-              on Google. Done for you.
+              Smaller businesses are showing up on Google.{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                You&rsquo;re not.
+              </span>
+              {" "}
+              Let&rsquo;s fix that.
             </motion.h1>
 
-            {/* Rotating persona line */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              className="flex items-baseline gap-3 justify-center lg:justify-start flex-wrap mb-6"
+              transition={{ duration: 0.45, delay: 0.35 }}
+              className="text-slate-600 dark:text-slate-400 text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 mb-7 leading-relaxed"
             >
-              <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-400 dark:text-white/50 leading-none tracking-tight">
-                Built for
+              We get Bay Area service businesses to page 1 of Google &mdash; Maps included. Month-to-month after onboarding. Pricing on this page. <span className="text-gray-900 dark:text-white font-semibold">No 6-month contracts, no agency runaround.</span>
+            </motion.p>
+
+            {/* Audit form — the primary CTA */}
+            <motion.form
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.5 }}
+              action="/tools/seo-audit"
+              method="GET"
+              className="flex flex-col sm:flex-row items-stretch gap-3 max-w-xl mx-auto lg:mx-0 mb-3"
+            >
+              <input
+                type="text"
+                name="url"
+                placeholder="yoursite.com"
+                aria-label="Your website URL"
+                className="flex-1 h-14 px-4 text-base text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/15 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2563eb] focus:border-transparent transition-all"
+                required
+              />
+              <button
+                type="submit"
+                className="h-14 px-6 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-base rounded-xl transition-all duration-200 hover:-translate-y-0.5 glow-blue-btn whitespace-nowrap"
+              >
+                Show me what&rsquo;s broken &rarr;
+              </button>
+            </motion.form>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.65 }}
+              className="text-slate-600 dark:text-slate-500 text-sm mb-5 max-w-xl mx-auto lg:mx-0"
+            >
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Free, takes 60 seconds.</span>{" "}
+              No email required. Live Google rank, page speed, and GBP visibility.
+            </motion.p>
+
+            {/* Secondary CTA — the trust device: free 24-hr mockup */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.7 }}
+              className="max-w-xl mx-auto lg:mx-0 mb-6"
+            >
+              <Link
+                href="/book"
+                className="group block rounded-xl border-2 border-dashed border-[#2563eb]/40 dark:border-[#2563eb]/50 hover:border-[#2563eb] dark:hover:border-[#2563eb] bg-[#2563eb]/5 dark:bg-[#2563eb]/10 hover:bg-[#2563eb]/10 dark:hover:bg-[#2563eb]/15 transition-all px-5 py-4"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 dark:text-white mb-0.5">
+                      Or skip the audit &mdash; get a free homepage mockup in 24 hours.
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      Tell us about your business. We&rsquo;ll design a tailored mockup before you spend a dollar. No commitment.
+                    </p>
+                  </div>
+                  <span className="text-[#2563eb] text-xl font-bold flex-shrink-0 group-hover:translate-x-1 transition-transform">
+                    &rarr;
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Tertiary CTA — persona rotation + book a call */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+              className="flex items-center justify-center lg:justify-start gap-2 mb-8 flex-wrap text-sm"
+            >
+              <span className="text-slate-600 dark:text-slate-500">
+                We do this for
               </span>
               <span
-                className="relative inline-block overflow-hidden text-2xl sm:text-3xl lg:text-4xl font-black leading-none tracking-tight"
-                style={{ minWidth: "clamp(220px, 30vw, 360px)", height: "1.2em" }}
+                className="relative inline-block overflow-hidden font-bold"
+                style={{ minWidth: "clamp(120px, 22vw, 180px)", height: "1.2em" }}
               >
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -110,49 +185,14 @@ export default function Hero() {
                   </motion.span>
                 </AnimatePresence>
               </span>
-            </motion.div>
-
-            {/* Subheadline */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.45 }}
-              className="text-slate-600 dark:text-slate-400 text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
-            >
-              A done-for-you site, Google Business Profile, and local SEO — without the $1,500/mo retainer, the 6-month contract, or the &ldquo;we did some stuff this month&rdquo; report.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 mb-5"
-            >
+              <span className="text-slate-400 dark:text-slate-600 hidden sm:inline">&middot;</span>
               <Link
                 href="/book"
-                className="w-full sm:w-auto bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold px-8 py-4 rounded-xl text-base transition-all duration-200 hover:-translate-y-1 glow-blue-btn text-center"
+                className="text-[#2563eb] dark:text-blue-400 font-semibold underline underline-offset-4 hover:no-underline"
               >
-                Book a 15-min Call
+                or book a 15-min call &rarr;
               </Link>
-              <a
-                href="#how-it-works"
-                className="w-full sm:w-auto border border-gray-300 dark:border-white/20 hover:border-gray-500 dark:hover:border-white/40 text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-all duration-200 text-center"
-              >
-                See How It Works ↓
-              </a>
             </motion.div>
-
-            {/* Social proof */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.75 }}
-              className="text-slate-600 dark:text-slate-500 text-sm mb-8 text-center lg:text-left"
-            >
-              Site goes live in 1–2 weeks.{" "}
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">You own the code, content, GBP, and domain — day one.</span>
-            </motion.p>
 
             {/* Trust signals */}
             <motion.div
@@ -210,7 +250,7 @@ export default function Hero() {
                   <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M21 11h-2.06A6.99 6.99 0 0013 5.06V3h-2v2.06A6.99 6.99 0 005.06 11H3v2h2.06A6.99 6.99 0 0011 18.94V21h2v-2.06A6.99 6.99 0 0018.94 13H21v-2zm-9 6c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
                   </svg>
-                  <span className="text-[11px] text-gray-700 font-medium truncate">barber near me</span>
+                  <span className="text-[11px] text-gray-700 font-medium truncate">{currentPersona === "salons" ? "salon" : currentPersona === "barbers" ? "barber" : currentPersona.replace(/s$/, "")} near me</span>
                 </div>
 
                 {/* Map pins */}

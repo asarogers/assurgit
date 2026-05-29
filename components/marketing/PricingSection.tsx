@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { StaggerContainer, MotionItem, MotionWrapper } from "@/components/marketing/MotionWrapper";
+
+type BillingPeriod = "monthly" | "yearly";
 
 const tiers = [
   {
+    slug: "starter" as const,
     name: "Starter",
     tagline: "Get Found Online",
-    price: "$189",
-    period: "/month",
+    monthly: 189,
     deposit: "$97 deposit to start",
     term: "Month-to-month from day one (7 days notice)",
     whoFor: "New or underperforming service businesses that need a professional online presence without overpaying.",
@@ -30,13 +35,12 @@ const tiers = [
       "No review request system or blog content",
     ],
     cta: "Start Starter",
-    ctaHref: "/book",
   },
   {
+    slug: "growth" as const,
     name: "Growth",
     tagline: "Start Getting Consistent Leads",
-    price: "$297",
-    period: "/month",
+    monthly: 297,
     deposit: "$148 deposit to start",
     term: "3-month initial term, then month-to-month (30 days notice)",
     whoFor: "Service businesses already getting some customers who want more consistent calls and bookings.",
@@ -61,14 +65,13 @@ const tiers = [
       "No promise of specific call/lead volume",
       "Head terms in competitive markets take 4–9 months",
     ],
-    cta: "Start Growth ⭐",
-    ctaHref: "/book",
+    cta: "Start Growth",
   },
   {
+    slug: "scale" as const,
     name: "Scale",
     tagline: "Dominate Your Local Market",
-    price: "$649",
-    period: "/month",
+    monthly: 649,
     deposit: "$324 deposit to start",
     term: "3-month initial term, then month-to-month (30 days notice)",
     whoFor: "Established service businesses that want to outperform competitors and capture more market share.",
@@ -98,7 +101,6 @@ const tiers = [
       "Paid ads management is a separate add-on",
     ],
     cta: "Start Scale",
-    ctaHref: "/book",
   },
 ];
 
@@ -146,126 +148,204 @@ function Check({ yes }: { yes: boolean | string }) {
   );
 }
 
+function priceDisplay(monthly: number, period: BillingPeriod): { amount: string; suffix: string } {
+  if (period === "monthly") {
+    return { amount: `$${monthly}`, suffix: "/month" };
+  }
+  // 12 months for the price of 10 = monthly × 10, billed yearly.
+  const annual = monthly * 10;
+  return {
+    amount: `$${annual.toLocaleString("en-US")}`,
+    suffix: "/year",
+  };
+}
+
 export default function PricingSection() {
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("monthly");
+  const [loadingTier, setLoadingTier] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function startCheckout(tierSlug: "starter" | "growth" | "scale") {
+    setLoadingTier(tierSlug);
+    setError(null);
+    try {
+      const res = await fetch("/api/stripe/create-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tier: tierSlug, billing_period: billingPeriod }),
+      });
+      const data = (await res.json()) as { url?: string; error?: string };
+      if (!res.ok || !data.url) {
+        throw new Error(data?.error ?? "Could not start checkout");
+      }
+      window.location.href = data.url;
+    } catch (e: any) {
+      setError(e?.message ?? "Something went wrong. Please try again.");
+      setLoadingTier(null);
+    }
+  }
+
   return (
     <section id="pricing" className="bg-white dark:bg-gray-950 py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
-        <MotionWrapper className="text-center mb-14">
+        <MotionWrapper className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-950 dark:text-white mb-4 tracking-tight">
             Three tiers, three real roles
           </h2>
           <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            One-time deposit + monthly subscription. Annual prepay at any tier: 12 months for the price of 10 (~17% off).
+            One-time deposit + subscription. Annual prepay = 12 months for the price of 10 (~17% off).
           </p>
         </MotionWrapper>
 
-        {/* Pricing cards */}
-        <StaggerContainer className="grid lg:grid-cols-3 gap-6 items-stretch mb-16" delay={0.1}>
-          {tiers.map((tier) => (
-            <MotionItem key={tier.name}>
-              <div
-                className={`relative rounded-2xl border flex flex-col h-full transition-all duration-300 hover:-translate-y-2 ${
-                  tier.popular
-                    ? "bg-[#0f172a] border-[#2563eb] shadow-2xl animate-starter-pulse py-10 px-6 ring-2 ring-[#2563eb]/40"
-                    : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 shadow-sm hover:border-gray-300 dark:hover:border-gray-700 py-8 px-6"
+        {/* Billing-period toggle */}
+        <div className="flex justify-center mb-12" role="tablist" aria-label="Billing period">
+          <div className="inline-flex items-center bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full p-1">
+            {(["monthly", "yearly"] as const).map((p) => (
+              <button
+                key={p}
+                role="tab"
+                aria-selected={billingPeriod === p}
+                onClick={() => setBillingPeriod(p)}
+                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                  billingPeriod === p
+                    ? "bg-[#2563eb] text-white shadow"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
-                {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#2563eb] text-white text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
-                    ⭐ Recommended
-                  </div>
+                {p === "monthly" ? "Monthly" : (
+                  <span className="flex items-center gap-2">
+                    Annual
+                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                      billingPeriod === p ? "bg-white text-[#2563eb]" : "bg-brand-accent text-white"
+                    }`}>
+                      SAVE 17%
+                    </span>
+                  </span>
                 )}
+              </button>
+            ))}
+          </div>
+        </div>
 
-                <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${tier.popular ? "text-blue-400" : "text-brand-accent"}`}>
-                  {tier.name}
-                </p>
-                <p className={`text-sm font-semibold mb-3 ${tier.popular ? "text-white/80" : "text-gray-700 dark:text-gray-300"}`}>
-                  &ldquo;{tier.tagline}&rdquo;
-                </p>
+        {error && (
+          <div className="max-w-xl mx-auto mb-6 px-4 py-3 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 text-sm text-red-800 dark:text-red-200" role="alert">
+            {error}
+          </div>
+        )}
 
-                <div className="flex items-end gap-1 mb-1">
-                  <span className={`text-4xl font-black ${tier.popular ? "text-white" : "text-gray-950 dark:text-white"}`}>
-                    {tier.price}
-                  </span>
-                  <span className={`text-sm font-medium mb-2 ${tier.popular ? "text-white/50" : "text-gray-500"}`}>
-                    {tier.period}
-                  </span>
-                </div>
-                <p className={`text-xs font-semibold mb-4 ${tier.popular ? "text-blue-300" : "text-brand-accent"}`}>
-                  + {tier.deposit}
-                </p>
-
-                <p className={`text-xs font-semibold uppercase tracking-wider mb-1 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
-                  Who it&apos;s for
-                </p>
-                <p className={`text-sm leading-relaxed mb-3 ${tier.popular ? "text-white/70" : "text-gray-600 dark:text-gray-400"}`}>
-                  {tier.whoFor}
-                </p>
-
-                <p className={`text-xs font-semibold uppercase tracking-wider mb-1 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
-                  Core promise
-                </p>
-                <p className={`text-sm italic leading-relaxed mb-5 ${tier.popular ? "text-white/80" : "text-gray-700 dark:text-gray-300"}`}>
-                  {tier.promise}
-                </p>
-
-                <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
-                  What you&apos;re really getting
-                </p>
-                <ul className="space-y-2 mb-5 flex-1">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <svg
-                        className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tier.popular ? "text-blue-400" : "text-brand-accent"}`}
-                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className={`text-sm ${tier.popular ? "text-white/90" : "text-gray-700 dark:text-gray-300"}`}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
-                  What it does NOT promise
-                </p>
-                <ul className="space-y-1.5 mb-5">
-                  {tier.notPromise.map((np) => (
-                    <li key={np} className="flex items-start gap-2">
-                      <svg
-                        className={`w-3.5 h-3.5 flex-shrink-0 mt-1 ${tier.popular ? "text-white/30" : "text-gray-400 dark:text-gray-600"}`}
-                        fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                      <span className={`text-xs ${tier.popular ? "text-white/50" : "text-gray-500 dark:text-gray-500"}`}>
-                        {np}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className={`text-[11px] mb-4 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
-                  {tier.term}
-                </p>
-
-                <Link
-                  href={tier.ctaHref}
-                  className={`block w-full text-center font-bold py-3 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 ${
+        {/* Pricing cards */}
+        <StaggerContainer className="grid lg:grid-cols-3 gap-6 items-stretch mb-16" delay={0.1}>
+          {tiers.map((tier) => {
+            const { amount, suffix } = priceDisplay(tier.monthly, billingPeriod);
+            const isLoading = loadingTier === tier.slug;
+            return (
+              <MotionItem key={tier.slug}>
+                <div
+                  className={`relative rounded-2xl border flex flex-col h-full transition-all duration-300 hover:-translate-y-2 ${
                     tier.popular
-                      ? "bg-[#2563eb] text-white hover:bg-[#1d4ed8] glow-blue-btn"
-                      : "bg-brand-accent text-white hover:bg-brand-accent-hov"
+                      ? "bg-[#0f172a] border-[#2563eb] shadow-2xl animate-starter-pulse py-10 px-6 ring-2 ring-[#2563eb]/40"
+                      : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 shadow-sm hover:border-gray-300 dark:hover:border-gray-700 py-8 px-6"
                   }`}
                 >
-                  {tier.cta}
-                </Link>
-              </div>
-            </MotionItem>
-          ))}
+                  {tier.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#2563eb] text-white text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
+                       Recommended
+                    </div>
+                  )}
+
+                  <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${tier.popular ? "text-blue-400" : "text-brand-accent"}`}>
+                    {tier.name}
+                  </p>
+                  <p className={`text-sm font-semibold mb-3 ${tier.popular ? "text-white/80" : "text-gray-700 dark:text-gray-300"}`}>
+                    &ldquo;{tier.tagline}&rdquo;
+                  </p>
+
+                  <div className="flex items-end gap-1 mb-1">
+                    <span className={`text-4xl font-black ${tier.popular ? "text-white" : "text-gray-950 dark:text-white"}`}>
+                      {amount}
+                    </span>
+                    <span className={`text-sm font-medium mb-2 ${tier.popular ? "text-white/50" : "text-gray-500"}`}>
+                      {suffix}
+                    </span>
+                  </div>
+                  <p className={`text-xs font-semibold mb-4 ${tier.popular ? "text-blue-300" : "text-brand-accent"}`}>
+                    + {tier.deposit}
+                  </p>
+
+                  <p className={`text-xs font-semibold uppercase tracking-wider mb-1 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
+                    Who it&apos;s for
+                  </p>
+                  <p className={`text-sm leading-relaxed mb-3 ${tier.popular ? "text-white/70" : "text-gray-600 dark:text-gray-400"}`}>
+                    {tier.whoFor}
+                  </p>
+
+                  <p className={`text-xs font-semibold uppercase tracking-wider mb-1 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
+                    Core promise
+                  </p>
+                  <p className={`text-sm italic leading-relaxed mb-5 ${tier.popular ? "text-white/80" : "text-gray-700 dark:text-gray-300"}`}>
+                    {tier.promise}
+                  </p>
+
+                  <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
+                    What you&apos;re really getting
+                  </p>
+                  <ul className="space-y-2 mb-5 flex-1">
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <svg
+                          className={`w-4 h-4 flex-shrink-0 mt-0.5 ${tier.popular ? "text-blue-400" : "text-brand-accent"}`}
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className={`text-sm ${tier.popular ? "text-white/90" : "text-gray-700 dark:text-gray-300"}`}>
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
+                    What it does NOT promise
+                  </p>
+                  <ul className="space-y-1.5 mb-5">
+                    {tier.notPromise.map((np) => (
+                      <li key={np} className="flex items-start gap-2">
+                        <svg
+                          className={`w-3.5 h-3.5 flex-shrink-0 mt-1 ${tier.popular ? "text-white/30" : "text-gray-400 dark:text-gray-600"}`}
+                          fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span className={`text-xs ${tier.popular ? "text-white/50" : "text-gray-500 dark:text-gray-500"}`}>
+                          {np}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className={`text-[11px] mb-4 ${tier.popular ? "text-white/40" : "text-gray-400 dark:text-gray-500"}`}>
+                    {tier.term}
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => startCheckout(tier.slug)}
+                    disabled={isLoading}
+                    className={`block w-full text-center font-bold py-3 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-wait disabled:translate-y-0 ${
+                      tier.popular
+                        ? "bg-[#2563eb] text-white hover:bg-[#1d4ed8] glow-blue-btn"
+                        : "bg-brand-accent text-white hover:bg-brand-accent-hov"
+                    }`}
+                  >
+                    {isLoading ? "Redirecting…" : tier.cta}
+                  </button>
+                </div>
+              </MotionItem>
+            );
+          })}
         </StaggerContainer>
 
         {/* You own everything callout */}
@@ -342,7 +422,7 @@ export default function PricingSection() {
                 <tr className="bg-gray-950 text-white">
                   <th className="text-left py-4 px-4 font-semibold w-2/5">Feature</th>
                   <th className="text-center py-4 px-3 font-semibold">Starter<br /><span className="font-black">$189</span></th>
-                  <th className="text-center py-4 px-3 font-semibold bg-brand-accent">Growth ⭐<br /><span className="font-black">$297</span></th>
+                  <th className="text-center py-4 px-3 font-semibold bg-brand-accent">Growth <br /><span className="font-black">$297</span></th>
                   <th className="text-center py-4 px-3 font-semibold">Scale<br /><span className="font-black">$649</span></th>
                 </tr>
               </thead>

@@ -39,12 +39,14 @@ function scanDir(subdir) {
 fs.mkdirSync(path.join(ROOT, 'content'), { recursive: true });
 
 const manifest = {
-  services: scanDir('services'),
-  blog:     scanDir('blog'),
+  services:  scanDir('services'),
+  blog:      scanDir('blog'),
+  locations: scanDir('locations'),
 };
 
 fs.writeFileSync(OUT_FILE, JSON.stringify(manifest, null, 2) + '\n');
 
 const sCount = Object.keys(manifest.services).length;
 const bCount = Object.keys(manifest.blog).length;
-console.log(`[image-manifest] services: ${sCount}, blog: ${bCount} → content/image-manifest.json`);
+const lCount = Object.keys(manifest.locations).length;
+console.log(`[image-manifest] services: ${sCount}, blog: ${bCount}, locations: ${lCount} → content/image-manifest.json`);

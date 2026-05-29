@@ -36,6 +36,8 @@ const ROOT      = path.resolve(__dirname, '..');
 const LOC_DIR        = path.join(ROOT, 'public/images/locations');
 const DEFAULT_SVG    = path.join(LOC_DIR, '_default.svg');
 const LOCATIONS_DATA = path.join(ROOT, 'lib/locations-data.ts');
+const LOCATIONS_GEN  = path.join(ROOT, 'lib/locations-data.generated.ts');
+const SITE_CONFIG    = path.join(ROOT, 'lib/siteConfig.ts');
 const SAGE_BRIEF     = '/Users/atlas/repo/agents/Sage/workspace/tasks/page-brief/brief.py';
 const PYTHON         = '/opt/homebrew/bin/python3';
 
@@ -52,9 +54,11 @@ function readOrNull(p) {
 }
 
 function extractSlugs(tsSource) {
-  // Match `slug: "foo-bar"` entries in lib/locations-data.ts
+  // Match both forms:
+  //   slug: "foo-bar"          (hand-tuned TS object literals)
+  //   "slug": "foo-bar"        (JSON.stringify output in *.generated.ts)
   const out = [];
-  const rx  = /slug:\s*["']([a-z0-9-]+)["']/g;
+  const rx  = /["']?slug["']?\s*:\s*["']([a-z0-9-]+)["']/g;
   let m;
   while ((m = rx.exec(tsSource)) !== null) out.push(m[1]);
   return [...new Set(out)];
@@ -70,13 +74,27 @@ function classify(slug, defaultHash, defaultContent) {
   return { slug, status: 'real', file: p };
 }
 
+function getSiteDomain() {
+  // Read siteConfig.ts to find the site URL — avoids hardcoding any one client.
+  const cfg = readOrNull(SITE_CONFIG) || '';
+  const m = cfg.match(/url:\s*["'](https?:\/\/[^"'\/]+)["']/);
+  return m ? m[1] : null;
+}
+
 function main() {
   const tsSrc = readOrNull(LOCATIONS_DATA);
   if (!tsSrc) {
     console.error(`[fallback-locations] cannot read ${LOCATIONS_DATA}`);
     process.exit(1);
   }
-  const slugs = extractSlugs(tsSrc);
+  // Hand-tuned + auto-generated slugs both feed the queue.
+  const handSlugs = extractSlugs(tsSrc);
+  const genSrc    = readOrNull(LOCATIONS_GEN) || '';
+  const genSlugs  = extractSlugs(genSrc);
+  const slugs     = [...new Set([...handSlugs, ...genSlugs])];
+  if (genSlugs.length > 0 && !AS_JSON) {
+    console.log(`[fallback-locations] ${handSlugs.length} hand-tuned + ${genSlugs.length} generated = ${slugs.length} total slugs`);
+  }
 
   const defaultContent = readOrNull(DEFAULT_SVG);
   if (!defaultContent) {
@@ -114,9 +132,14 @@ function main() {
   }
 
   if (QUEUE) {
-    console.log(`\n[fallback-locations] queuing ${fallbacks.length} URLs to Sage's brief.py…`);
+    const domain = getSiteDomain();
+    if (!domain) {
+      console.error(`[fallback-locations] cannot determine site URL from ${SITE_CONFIG} — aborting queue`);
+      process.exit(1);
+    }
+    console.log(`\n[fallback-locations] queuing ${fallbacks.length} URLs to Sage's brief.py at ${domain}…`);
     for (const r of fallbacks) {
-      const url = `https://wellpreppedlife.com/locations/${r.slug}`;
+      const url = `${domain}/locations/${r.slug}`;
       console.log(`  → ${url}`);
       try {
         execSync(`${PYTHON} ${SAGE_BRIEF} --url "${url}"`, {

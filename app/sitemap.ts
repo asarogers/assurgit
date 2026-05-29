@@ -1,8 +1,13 @@
 import type { MetadataRoute } from "next";
+import { getAllLocationSlugs } from "@/lib/locations-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://assurgit.com";
   const now = new Date();
+
+  // Locations are auto-populated from public.nap_profiles.service_areas via
+  // scripts/sync-service-areas.mjs (run before build).
+  const locationSlugs = getAllLocationSlugs();
 
   const forSlugs = [
     "attorneys",
@@ -39,6 +44,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const bestSlugs = [
+    // Local-SEO attack-plan pages
+    "small-business-website-builder",
+    "plumber-website-design-san-jose",
+    // Legacy AI-video pages — kept indexed for now; consider retiring later
     "done-for-you-ai-video-service",
     "ai-avatar-service-for-business",
     "ai-tools-for-loan-officers",
@@ -116,6 +125,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+
+    // Location pages (/locations/) — auto-populated from nap_profiles.service_areas
+    ...locationSlugs.map((slug) => ({
+      url: `${base}/locations/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
     })),
   ];
 }

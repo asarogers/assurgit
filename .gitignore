@@ -8,6 +8,8 @@ node_modules/
 # Environment variables — never commit secrets
 .env.local
 .env*.local
+.dev.vars
+.dev.vars.local
 
 # Service-account keys — NEVER commit
 google-indexing-key.json

@@ -198,3 +198,138 @@ export async function sendOnboardingNotification({
     `,
   });
 }
+
+// Sent to a customer who's already paid the deposit out-of-band so they
+// can subscribe at the agreed tier without re-paying it. Carries a
+// short-lived token that maps to email + (optional) tier pin.
+//
+// Subject + body live in D1 (`email_templates` row keyed `subscribe_link`)
+// and are editable from the /billing/email-template admin page. We pick
+// one subject at random per send so the customer doesn't see the exact
+// same subject twice.
+//
+// Placeholders supported in subject AND body:
+//   {{businessName}}   {{tier}}   {{subscribeUrl}}
+
+const FALLBACK_TEMPLATE = {
+  subjects: [
+    "Welcome aboard — let's get you found",
+    "Welcome aboard — let's get you on the map",
+    "Welcome aboard — let's get you booked",
+  ],
+  body: `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:24px;color:#1a1a1a">
+  <p style="margin:0 0 16px">Hi {{businessName}} team,</p>
+  <p style="margin:0 0 16px">Thanks so much for the deposit — really excited to get started on your site!</p>
+  <p style="margin:28px 0"><a href="{{subscribeUrl}}" style="display:inline-block;padding:14px 26px;background:#2563eb;color:#fff;border-radius:10px;text-decoration:none;font-weight:600">Activate subscription →</a></p>
+</div>`,
+};
+
+function fillPlaceholders(
+  template: string,
+  vars: { businessName?: string; tier?: string; subscribeUrl?: string },
+): string {
+  return template
+    .replace(/\{\{\s*businessName\s*\}\}/g, vars.businessName ?? "there")
+    .replace(/\{\{\s*tier\s*\}\}/g, vars.tier ?? "")
+    .replace(/\{\{\s*subscribeUrl\s*\}\}/g, vars.subscribeUrl ?? "#");
+}
+
+async function loadSubscribeLinkTemplate(
+  db: D1Database | undefined,
+): Promise<{ subjects: string[]; body: string }> {
+  if (!db) return FALLBACK_TEMPLATE;
+  try {
+    const row = await db
+      .prepare("SELECT subject_variants, body_html FROM email_templates WHERE key = ?")
+      .bind("subscribe_link")
+      .first<{ subject_variants: string; body_html: string }>();
+    if (!row) return FALLBACK_TEMPLATE;
+    let subjects: string[];
+    try {
+      subjects = JSON.parse(row.subject_variants);
+      if (!Array.isArray(subjects) || subjects.length === 0) {
+        subjects = FALLBACK_TEMPLATE.subjects;
+      }
+    } catch {
+      subjects = FALLBACK_TEMPLATE.subjects;
+    }
+    return { subjects, body: row.body_html || FALLBACK_TEMPLATE.body };
+  } catch {
+    return FALLBACK_TEMPLATE;
+  }
+}
+
+export async function sendSubscribeLink({
+  to,
+  businessName,
+  subscribeUrl,
+  tier,
+  db,
+}: {
+  to: string;
+  businessName?: string;
+  subscribeUrl: string;
+  tier?: "starter" | "growth" | "scale";
+  db?: D1Database;
+}) {
+  const { subjects, body } = await loadSubscribeLinkTemplate(db);
+  const subjectTpl = subjects[Math.floor(Math.random() * subjects.length)];
+
+  const tierLabel = tier ? tier.charAt(0).toUpperCase() + tier.slice(1) : "";
+  const vars = {
+    businessName: businessName?.trim() || "there",
+    tier: tierLabel,
+    subscribeUrl,
+  };
+
+  const subject = fillPlaceholders(subjectTpl, vars);
+  const html = fillPlaceholders(body, vars);
+  const text = htmlToText(html);
+
+  // Deliverability-tuned headers:
+  //   - Reply-To routes replies back to a real inbox (not the noreply-style alias)
+  //   - List-Unsubscribe + List-Unsubscribe-Post satisfy Gmail/Yahoo bulk-sender
+  //     requirements (Feb 2024+); without them, transactional-looking blasts get
+  //     reputation-penalized even when DKIM/SPF/DMARC are clean.
+  return resend.emails.send({
+    from: "Ace at Assurgit <hello@assurgit.com>",
+    to,
+    replyTo: "hello@assurgit.com",
+    subject,
+    html,
+    text,
+    headers: {
+      "List-Unsubscribe": "<mailto:hello@assurgit.com?subject=unsubscribe>",
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
+  });
+}
+
+// Convert the rendered HTML into a reasonable plain-text equivalent.
+// Most spam filters score multipart-with-text-alt lower than HTML-only.
+// Heuristic: drop scripts/styles, convert <br>/<p>/headings to newlines,
+// turn anchors into "label (url)", strip remaining tags, decode common
+// entities, collapse whitespace.
+function htmlToText(html: string): string {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<a [^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, (_m, href, label) =>
+      `${String(label).replace(/<[^>]+>/g, "").trim()} (${href})`,
+    )
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/(p|div|h[1-6]|li)>/gi, "\n\n")
+    .replace(/<li[^>]*>/gi, "  • ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&#39;|&rsquo;|&apos;/g, "'")
+    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/&mdash;/g, "—")
+    .replace(/&ndash;/g, "–")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}

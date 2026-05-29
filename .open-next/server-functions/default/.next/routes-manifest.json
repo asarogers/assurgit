@@ -12,6 +12,18 @@
       "priority": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/compare",
+      "destination": "/tools/seo-audit",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/compare(?:/)?$"
+    },
+    {
+      "source": "/compare/:slug*",
+      "destination": "/tools/seo-audit",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/compare(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
     }
   ],
   "headers": [
@@ -30,7 +42,7 @@
       "headers": [
         {
           "key": "Last-Modified",
-          "value": "Fri, 24 Apr 2026 23:16:16 GMT"
+          "value": "Thu, 30 Apr 2026 09:54:14 GMT"
         },
         {
           "key": "Vary",
@@ -125,6 +137,46 @@
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/api/social/posts/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/blog/[slug]",
+      "regex": "^/blog/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/blog/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/locations/[slug]",
+      "regex": "^/locations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/locations/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/services/categories/[slug]",
+      "regex": "^/services/categories/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/services/categories/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/services/[slug]",
+      "regex": "^/services/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/services/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/subscribe/[token]",
+      "regex": "^/subscribe/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtoken": "nxtPtoken"
+      },
+      "namedRegex": "^/subscribe/(?<nxtPtoken>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -153,10 +205,28 @@
       "namedRegex": "^/about(?:/)?$"
     },
     {
+      "page": "/accessibility",
+      "regex": "^/accessibility(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/accessibility(?:/)?$"
+    },
+    {
       "page": "/analytics",
       "regex": "^/analytics(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/analytics(?:/)?$"
+    },
+    {
+      "page": "/api/admin/billing/create-link",
+      "regex": "^/api/admin/billing/create\\-link(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/billing/create\\-link(?:/)?$"
+    },
+    {
+      "page": "/api/admin/billing/email-template",
+      "regex": "^/api/admin/billing/email\\-template(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/billing/email\\-template(?:/)?$"
     },
     {
       "page": "/api/auth/login",
@@ -181,6 +251,12 @@
       "regex": "^/api/clients(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/clients(?:/)?$"
+    },
+    {
+      "page": "/api/contact",
+      "regex": "^/api/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/contact(?:/)?$"
     },
     {
       "page": "/api/cron/publish",
@@ -369,6 +445,24 @@
       "namedRegex": "^/api/social/zernio/connect(?:/)?$"
     },
     {
+      "page": "/api/stripe/create-checkout",
+      "regex": "^/api/stripe/create\\-checkout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/create\\-checkout(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/portal",
+      "regex": "^/api/stripe/portal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/portal(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/webhook",
+      "regex": "^/api/stripe/webhook(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/webhook(?:/)?$"
+    },
+    {
       "page": "/best/ai-avatar-service-for-business",
       "regex": "^/best/ai\\-avatar\\-service\\-for\\-business(?:/)?$",
       "routeKeys": {},
@@ -405,6 +499,18 @@
       "namedRegex": "^/best/heygen\\-alternatives(?:/)?$"
     },
     {
+      "page": "/best/plumber-website-design-san-jose",
+      "regex": "^/best/plumber\\-website\\-design\\-san\\-jose(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/plumber\\-website\\-design\\-san\\-jose(?:/)?$"
+    },
+    {
+      "page": "/best/small-business-website-builder",
+      "regex": "^/best/small\\-business\\-website\\-builder(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best/small\\-business\\-website\\-builder(?:/)?$"
+    },
+    {
       "page": "/best/video-content-service-for-coaches",
       "regex": "^/best/video\\-content\\-service\\-for\\-coaches(?:/)?$",
       "routeKeys": {},
@@ -415,6 +521,18 @@
       "regex": "^/best/video\\-content\\-services\\-real\\-estate\\-agents(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/best/video\\-content\\-services\\-real\\-estate\\-agents(?:/)?$"
+    },
+    {
+      "page": "/billing",
+      "regex": "^/billing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/billing(?:/)?$"
+    },
+    {
+      "page": "/billing/email-template",
+      "regex": "^/billing/email\\-template(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/billing/email\\-template(?:/)?$"
     },
     {
       "page": "/blog",
@@ -469,6 +587,24 @@
       "regex": "^/case\\-studies(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/case\\-studies(?:/)?$"
+    },
+    {
+      "page": "/checkout",
+      "regex": "^/checkout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/checkout(?:/)?$"
+    },
+    {
+      "page": "/checkout/cancel",
+      "regex": "^/checkout/cancel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/checkout/cancel(?:/)?$"
+    },
+    {
+      "page": "/checkout/success",
+      "regex": "^/checkout/success(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/checkout/success(?:/)?$"
     },
     {
       "page": "/compare/assurgit-vs-freelance-video-editor",
@@ -717,6 +853,12 @@
       "namedRegex": "^/how\\-it\\-works(?:/)?$"
     },
     {
+      "page": "/icon.png",
+      "regex": "^/icon\\.png(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/icon\\.png(?:/)?$"
+    },
+    {
       "page": "/local-seo",
       "regex": "^/local\\-seo(?:/)?$",
       "routeKeys": {},
@@ -727,6 +869,12 @@
       "regex": "^/login(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/logo-preview",
+      "regex": "^/logo\\-preview(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/logo\\-preview(?:/)?$"
     },
     {
       "page": "/onboard",
@@ -763,6 +911,12 @@
       "regex": "^/schedule(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/schedule(?:/)?$"
+    },
+    {
+      "page": "/services",
+      "regex": "^/services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services(?:/)?$"
     },
     {
       "page": "/sitemap.xml",

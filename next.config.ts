@@ -15,6 +15,13 @@ if (!process.env.VERCEL) {
 const BUILD_DATE = new Date().toUTCString();
 
 const nextConfig: NextConfig = {
+  // Retired /compare/* legacy AI-video pages (4 views in 90d). Redirect to the audit.
+  async redirects() {
+    return [
+      { source: "/compare", destination: "/tools/seo-audit", permanent: true },
+      { source: "/compare/:slug*", destination: "/tools/seo-audit", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

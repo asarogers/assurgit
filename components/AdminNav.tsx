@@ -3,18 +3,28 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { LayoutGrid, Share2, BarChart2, BookOpen, Database, LogOut } from "lucide-react";
+import { LayoutGrid, Share2, BarChart2, BookOpen, Database, CreditCard, Mail, LogOut } from "lucide-react";
 
 const NAV_ITEMS = [
-  { href: "/terminal",  label: "Projects",  icon: LayoutGrid },
-  { href: "/social",    label: "Social",    icon: Share2 },
-  { href: "/analytics", label: "Analytics", icon: BarChart2 },
-  { href: "/database",  label: "Database",  icon: Database },
-  { href: "/guide",     label: "Guide",     icon: BookOpen },
+  { href: "/terminal",                 label: "Projects",  icon: LayoutGrid },
+  { href: "/social",                   label: "Social",    icon: Share2 },
+  { href: "/analytics",                label: "Analytics", icon: BarChart2 },
+  { href: "/database",                 label: "Database",  icon: Database },
+  { href: "/billing",                  label: "Billing",   icon: CreditCard },
+  { href: "/billing/email-template",   label: "Email",     icon: Mail },
+  { href: "/guide",                    label: "Guide",     icon: BookOpen },
 ];
 
 export function AdminNav() {
   const pathname = usePathname();
+
+  // Pick the most-specific matching tab so that nested routes (e.g.
+  // /billing/email-template) don't also light up their parent (/billing).
+  const activeHref =
+    [...NAV_ITEMS]
+      .map((it) => it.href)
+      .filter((href) => pathname === href || pathname.startsWith(href + "/"))
+      .sort((a, b) => b.length - a.length)[0] ?? "";
 
   async function logout() {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -30,16 +40,18 @@ export function AdminNav() {
         {/* Nav links */}
         <nav className="flex items-center gap-1">
           {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
-            const active = pathname.startsWith(href);
+            const active = href === activeHref;
             return (
               <Link key={href} href={href}>
                 <Button
                   size="sm"
                   variant={active ? "secondary" : "ghost"}
-                  className="h-8 text-xs gap-1.5"
+                  className="h-8 text-xs gap-1.5 px-2 md:px-3"
+                  aria-label={label}
+                  title={label}
                 >
                   <Icon className="h-3.5 w-3.5" />
-                  {label}
+                  <span className="hidden md:inline">{label}</span>
                 </Button>
               </Link>
             );

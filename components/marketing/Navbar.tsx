@@ -36,9 +36,17 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center flex-shrink-0 group"
+            className="flex items-center gap-2 flex-shrink-0 group"
             aria-label="Assurgit — return to homepage"
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo-mark.png"
+              alt=""
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
             <span className="font-mono font-black text-xl tracking-tight text-gray-900 dark:text-white group-hover:text-brand-accent transition-colors">
               Assurgit
             </span>
@@ -61,10 +69,10 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
             <Link
-              href="/book"
+              href="/pricing"
               className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-5 py-2 rounded-lg text-sm transition-all duration-200 hover:-translate-y-0.5 glow-blue-btn"
             >
-              Book a Call
+              Get started
             </Link>
           </div>
 
@@ -109,11 +117,11 @@ export default function Navbar() {
             ))}
             <div className="pt-2 px-4">
               <Link
-                href="/book"
+                href="/pricing"
                 onClick={() => setIsOpen(false)}
                 className="block w-full bg-brand-accent hover:bg-brand-accent-hov text-white font-semibold py-3 rounded-lg text-center text-sm transition-colors"
               >
-                Book a Call
+                Get started
               </Link>
             </div>
           </div>

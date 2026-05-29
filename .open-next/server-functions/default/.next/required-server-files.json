@@ -299,7 +299,19 @@
       },
       "root": "/Users/atlas/repo/assurgit"
     },
-    "distDirRoot": ".next"
+    "distDirRoot": ".next",
+    "_originalRedirects": [
+      {
+        "source": "/compare",
+        "destination": "/tools/seo-audit",
+        "permanent": true
+      },
+      {
+        "source": "/compare/:slug*",
+        "destination": "/tools/seo-audit",
+        "permanent": true
+      }
+    ]
   },
   "appDir": "/Users/atlas/repo/assurgit",
   "relativeAppDir": "",

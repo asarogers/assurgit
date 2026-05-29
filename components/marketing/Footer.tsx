@@ -7,7 +7,9 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-block mb-4">
+            <Link href="/" className="inline-flex items-center gap-2 mb-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-mark.png" alt="" width={32} height={32} className="w-8 h-8" />
               <span className="font-mono font-black text-xl text-white tracking-tight">
                 Assurgit
               </span>
@@ -87,7 +89,7 @@ export default function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/pricing", label: "Pricing — from $189" },
                 { href: "/local-seo", label: "Local SEO" },
-                { href: "/book", label: "Book a Call" },
+                { href: "/pricing", label: "Get started" },
                 { href: "/how-it-works", label: "How It Works" },
                 { href: "/onboard", label: "Client Onboarding" },
                 { href: "/login", label: "Client Login" },

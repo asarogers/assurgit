@@ -260,14 +260,25 @@ export const locationDetails: LocationDetail[] = [
   },
 ];
 
+// Auto-generated stubs for service areas not yet hand-tuned. The generator at
+// scripts/sync-service-areas.mjs reads pipeline.public.nap_profiles.service_areas
+// and emits this file. Hand-tuned entries above override stubs by slug.
+import { generatedLocationDetails } from "./locations-data.generated";
+
+const handTunedSlugs = new Set(locationDetails.map((l) => l.slug));
+const mergedLocationDetails: LocationDetail[] = [
+  ...locationDetails,
+  ...generatedLocationDetails.filter((l) => !handTunedSlugs.has(l.slug)),
+];
+
 export function getLocationBySlug(slug: string): LocationDetail | null {
-  return locationDetails.find((l) => l.slug === slug) ?? null;
+  return mergedLocationDetails.find((l) => l.slug === slug) ?? null;
 }
 
 export function getAllLocationSlugs(): string[] {
-  return locationDetails.map((l) => l.slug);
+  return mergedLocationDetails.map((l) => l.slug);
 }
 
 export function getAllLocations(): LocationDetail[] {
-  return locationDetails;
+  return mergedLocationDetails;
 }

@@ -5,7 +5,7 @@ import TrustBar from "@/components/marketing/TrustBar";
 import WhyWeWin from "@/components/marketing/WhyWeWin";
 import HowItWorks from "@/components/marketing/HowItWorks";
 import WhatYouGet from "@/components/marketing/WhatYouGet";
-import PricingSection from "@/components/marketing/PricingSection";
+import PricingPlans from "@/components/marketing/PricingPlans";
 import FounderSection from "@/components/marketing/FounderSection";
 import FAQSection from "@/components/marketing/FAQSection";
 import CTASection from "@/components/marketing/CTASection";
@@ -177,11 +177,15 @@ export default function RootPage() {
       <main>
         <Hero />
         <TrustBar />
-        <WhyWeWin />
         <HowItWorks />
+        <div className="bg-zinc-950">
+          <PricingPlans variant="public" />
+        </div>
+
         <WhatYouGet />
-        <PricingSection />
+
         <FounderSection />
+        <WhyWeWin />
         <FAQSection />
         <CTASection />
       </main>

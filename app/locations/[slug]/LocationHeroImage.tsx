@@ -2,8 +2,19 @@
 
 import { useState } from "react";
 
+/**
+ * Try .png (Sage's connect.py output), fall back to .svg (manual / generated),
+ * fall back to _default.svg (the generic Bay Area hero).
+ */
+const SOURCES = [
+  (slug: string) => `/images/locations/${slug}.png`,
+  (slug: string) => `/images/locations/${slug}.svg`,
+  () => `/images/locations/_default.svg`,
+];
+
 export default function LocationHeroImage({ slug, alt }: { slug: string; alt: string }) {
-  const [src, setSrc] = useState(`/images/locations/${slug}.svg`);
+  const [idx, setIdx] = useState(0);
+  const src = SOURCES[idx](slug);
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -16,9 +27,7 @@ export default function LocationHeroImage({ slug, alt }: { slug: string; alt: st
       fetchPriority="high"
       decoding="async"
       onError={() => {
-        if (!src.endsWith("_default.svg")) {
-          setSrc("/images/locations/_default.svg");
-        }
+        if (idx < SOURCES.length - 1) setIdx(idx + 1);
       }}
     />
   );
